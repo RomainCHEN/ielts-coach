@@ -1,0 +1,21 @@
+# State files (auto-generated during sessions)
+user_profile.json
+study_plan.json
+progress.json
+
+# PDF and temp extraction files
+*.pdf
+temp_pdf_out/
+pdf_full_text.txt
+build_question_bank.py
+question_bank.json
+skills-lock.json
+.agents/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
