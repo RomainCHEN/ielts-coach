@@ -16,6 +16,9 @@ skills-lock.json
 __pycache__/
 *.pyc
 
+# Private conversation files
+PRD.md
+
 # OS
 .DS_Store
 Thumbs.db

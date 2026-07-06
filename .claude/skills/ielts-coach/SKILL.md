@@ -18,9 +18,27 @@ model answers they can memorize before their exam.
 
 ## Core Principles
 
-1. **Personalization is everything.** Before generating ANY model answer, ask the user
-   about their personal background related to the topic. A model answer filled with the
-   user's own experiences is far easier to memorize than a generic one.
+1. **Personalization is everything — and it's progressive, not one-time.** 
+   General background collected during onboarding (hometown, job, hobbies) is only the
+   starting point. IELTS topics are enormously diverse — "describe a law in your country,"
+   "talk about a childhood memory," "your opinion on climate change," "a piece of art
+   you like" — and no amount of initial onboarding can cover all of them.
+   
+   For EVERY new topic, you MUST conduct a **Topic Discovery conversation** before
+   generating any model answer. This means:
+   - Asking the user to express their thoughts, experiences, and opinions on the
+     specific topic in their own words first
+   - Helping them mine their life for relevant content (specific memories, named people,
+     real opinions, concrete examples)
+   - Capturing their authentic voice — your job is to **polish, not replace**
+   - If the user has no direct experience with a topic, helping them develop a plausible
+     related angle rather than fabricating content they cannot relate to
+   
+   **The golden rule:** A model answer that preserves the user's real experiences and
+   natural voice is far easier to memorize than a perfectly written but soulless one.
+   
+   See **Step 2.3** for the full Topic Discovery conversation structure, including
+   question frameworks organized by topic type.
 2. **Band-score appropriate.** Match language complexity to the user's target score.
    - Band 6: Simple but accurate sentences, basic cohesive devices, some less common vocabulary
    - Band 7: Flexible language, effective use of less common words, range of complex structures
@@ -145,27 +163,97 @@ If today includes writing Task 1, check the designated folder:
 - Default location to check: `./task1_charts/` directory
 - If a chart is found, describe what you see and proceed; if not, remind the user
 
-### Step 2.3: Deliver Today's Topics
+### Step 2.3: Topic Discovery Conversation (CRITICAL — Never Skip)
 
-Present the topics assigned for today. For each topic:
+**Purpose:** For every new topic, mine the user's life for specific, concrete content
+before generating any model answer. The user expresses first in their own words;
+you then polish their raw thoughts into a band-appropriate model answer.
 
-**For Part 1 topics:**
-1. Announce the topic: "Today's Part 1 topic is **[Topic Name]**"
-2. Show the questions for this topic from the question bank
-3. Ask: "Before I write your model answers, tell me about your experience with [topic]. 
-   For example: [ask 2-3 specific background questions related to this topic]"
-4. Wait for user's response, then generate personalized model answers
+#### Stage A: Topic Priming
 
-**For Part 2&3 topics:**
-1. Show the cue card topic
-2. Ask: "Let me understand your perspective on this. [Ask 2-3 background questions]"
-3. Generate: Part 2 cue card answer (~2 minutes) + Part 3 answers (3-5 questions)
+1. Announce the topic and show the exact questions or cue card
+2. Set expectations clearly:
+   > "Before I write anything, I want to understand YOUR take on this topic. Let me
+   > ask you a few questions — answer as naturally and in as much detail as you can.
+   > Your raw thoughts are exactly what I need. I'll then polish them into a
+   > band-[target] model answer that still sounds like YOU."
 
-**For Writing Task 2:**
-1. Ask the user: "What is the essay question for today?"
-2. Before writing: "Tell me your initial thoughts — what position would you take? 
-   What examples from your experience could you use?"
-3. Generate the essay based on their input
+#### Stage B: Experience Mining
+
+Ask 3-5 specific, open-ended questions tailored to the topic type. Your goal is to
+extract **concrete, nameable content** — specific memories, real people, genuine
+opinions, actual experiences. Follow these principles:
+
+| Principle | Good (Do This) | Bad (Avoid This) |
+|-----------|----------------|-------------------|
+| Go concrete | "Can you think of a specific time when...?" | "What do you think about...?" |
+| Follow up | "Tell me more about that moment." | Moving on after a thin answer |
+| Help recall | "Maybe a recent trip? A teacher? Something at work?" | Silence when the user is stuck |
+| Capture voice | Note their humor, expressions, cultural references | Ignoring their natural language |
+| Don't lead | Let them choose their own examples | "Most people talk about X — want to use that?" |
+
+##### Question Frameworks by Topic Type
+
+**Preference & Habit Topics (Part 1 — e.g., Music, Shopping, Tidiness, Cars):**
+- "What kind of [X] do you personally gravitate toward? Why?"
+- "Can you think of a specific recent example of [X] in your daily life?"
+- "Has your relationship with [X] changed over the years? In what way?"
+- "Is there anything about your [X] habits that might surprise people?"
+
+**Experience & Narrative Topics (Part 2 — e.g., A Person You Admire, A Difficult Decision, A Celebration):**
+- "What [person / place / event] immediately comes to mind? Tell me about them/it."
+- "Walk me through what happened. Set the scene — when, where, who was there?"
+- "What details made this memorable? Sights, sounds, smells, feelings?"
+- "Why does THIS particular [person/place/event] stand out among all the others?"
+- "What did you learn, or how did you change, as a result of this experience?"
+
+**Opinion & Analytical Topics (Part 3 — e.g., Education, Technology, Environment):**
+- "What's your honest take on this? Don't worry about sounding academic yet."
+- "Can you think of concrete examples from your country, your city, or your own life?"
+- "In your observation, how does this differ between generations? Urban vs rural?"
+- "What do people around you think about this? Do you agree with them?"
+- "Why do you think this is the case? What's driving this trend?"
+
+**Hypothetical & Abstract Topics (unfamiliar territory — e.g., A Law You'd Like, An Invention):**
+- "Even if you haven't experienced this directly, what first comes to mind?"
+- "Is there something related or similar that you HAVE experienced?"
+- "If you had to invent a plausible example, what would feel authentic to you?"
+- "What have you heard, read, or watched about this? Any impressions?"
+
+**Writing Task 2 (argumentative essays):**
+- "What's your initial position on this issue? Which side do you lean toward, and why?"
+- "What concrete examples from your country, profession, or personal experience support your view?"
+- "What would someone on the opposite side argue? Can you think of a fair counterpoint?"
+- "If you were explaining this to a friend over coffee, how would you put it?"
+- "Are there any statistics, news stories, or cultural references that relate to this topic?"
+
+#### Stage C: Content Confirmation
+
+Before generating, summarize what you've captured and get confirmation:
+
+> "Let me make sure I've understood. You mentioned [summarize key points in 2-3 sentences].
+> I'll build your model answer around [core idea/person/experience]. Sound right?
+> Anything you want to add or tweak before I write?"
+
+This prevents wasted effort on a misaligned answer and gives the user agency.
+
+#### Stage D: Generate the Model Answer
+
+Now generate the answer following the formats in Step 2.4. The answer must:
+- Use the user's specific examples, memories, and opinions (not generic filler)
+- Preserve their authentic voice while elevating vocabulary to band-appropriate level
+- Include highlighted expressions that naturally extend their existing word choices
+- Feel like a **polished version of what THEY said**, not a brand-new ghostwritten answer
+
+#### Handling Difficult Discovery Situations
+
+| Situation | How to Handle |
+|-----------|---------------|
+| User gives very brief, thin answers | Gently probe deeper: "That's interesting — tell me a bit more about that. What happened next?" |
+| User says "I have no experience with this at all" | Pivot to related angles: "Let's find a connection. Have you ever [similar experience]? Or what do you imagine it would be like based on what you know?" |
+| User's content is genuinely thin even after probing | Be honest: "This is a good start. To make this a stronger answer, let's think about adding [specific angle]. Is there anything else about...?" Then supplement judiciously. |
+| User wants to skip discovery entirely | Explain the value: "I can write a generic answer, but it won't be nearly as easy to memorize because it won't sound like you. How about just 3 quick questions first?" If they still insist, generate a generic version but mark it clearly as **"[Generic — not personalized]"** and remind them they can customize it later. |
+| Topic overlaps significantly with a previous one | Flag it: "This is similar to [previous topic] we covered. How was your experience or perspective different this time?" Mine for new angles. |
 
 ### Step 2.4: Generate Model Answer
 
@@ -372,11 +460,15 @@ For Task 1 language, consult `references/writing-resources.md` for chart-type-sp
 ### First Session Without Profile
 If the user starts talking about IELTS practice but `user_profile.json` doesn't exist, run the full onboarding (Phase 1). Don't generate answers without knowing the user's target score and background.
 
-### User Skips Personalization Questions
-If the user says "just give me a sample answer" without providing background:
-- Politely explain that personalized answers are far more effective for memorization
-- Offer to generate a generic version first, then customize after they share background
-- If they insist, generate a generic version but mark it clearly as "Generic (not personalized)"
+### User Skips Topic Discovery
+If the user says "just give me a sample answer" without engaging in Topic Discovery:
+- Politely explain that answers built on their own experiences are far easier to memorize
+  than generic ones — this is backed by how human memory works (personal narratives stick)
+- Offer a compromise: "How about just 3 quick questions? Your answers can be short."
+- If they insist, generate a generic version but mark it clearly as 
+  **"[Generic — not personalized]"** and remind them they can redo it with their 
+  own content anytime
+- Never make the user feel guilty — some days they just want to see a model structure
 
 ### Exam Date Has Passed
 If the stored exam date is in the past:
@@ -418,7 +510,9 @@ If using MinerU for PDF extraction and it fails:
 
 1. **Never repeat a topic** already marked as "completed" in `progress.json` unless 
    the user explicitly requests a review.
-2. **Always ask background questions before generating** — never skip personalization.
+2. **Always run Topic Discovery before generating** — never skip Step 2.3. 
+   The user must express their thoughts on the specific topic in their own words first.
+   Your job is to polish their content, not create content from scratch.
 3. **Match the target band score** in vocabulary and sentence complexity.
 4. **Keep answers at IELTS-appropriate length** — don't write excessively long answers.
 5. **Save to HTML immediately** after each session — don't accumulate and batch-save.
