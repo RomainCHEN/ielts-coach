@@ -25,7 +25,7 @@ A deeply personalized Claude Code skill for IELTS exam preparation. This agent g
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/ielts-coach.git
+git clone https://github.com/RomainCHEN/ielts-coach.git
 cd ielts-coach
 
 # Or if you already have a project, just copy the skill:
