@@ -1,66 +1,11 @@
-<style>
-  /* ===== Language Toggle ===== */
-  .lang-toggle-bar {
-    display: flex;
-    gap: 0;
-    margin-bottom: 24px;
-    border: 1px solid #d0d7de;
-    border-radius: 8px;
-    overflow: hidden;
-    width: fit-content;
-  }
-  .lang-toggle-bar label {
-    padding: 8px 20px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    color: #57606a;
-    background: #f6f8fa;
-    user-select: none;
-    transition: all 0.15s ease;
-    border-right: 1px solid #d0d7de;
-  }
-  .lang-toggle-bar label:last-of-type {
-    border-right: none;
-  }
-  .lang-toggle-bar label:hover {
-    background: #eaeef2;
-  }
-  #lang-en:checked ~ .lang-toggle-bar label[for="lang-en"],
-  #lang-zh:checked ~ .lang-toggle-bar label[for="lang-zh"] {
-    background: #1a237e;
-    color: #fff;
-  }
-  /* Hide radios */
-  .lang-radio {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-  }
-  /* Default: EN visible, ZH hidden */
-  .content-zh { display: none; }
-  #lang-zh:checked ~ .content-en { display: none; }
-  #lang-zh:checked ~ .content-zh { display: block; }
-  /* Also hide EN when ZH is active (for explicit toggle back) */
-  #lang-en:checked ~ .content-zh { display: none; }
-  #lang-en:checked ~ .content-en { display: block; }
-  /* When nothing checked, default to EN */
-  .content-en { display: block; }
-  /* Fix: content-en should also show when lang-en is checked */
-  #lang-en:checked ~ .content-zh { display: none; }
-</style>
+<p align="right">
+  <a href="#english">🇬🇧 English</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#chinese">🇨🇳 简体中文</a>
+</p>
 
-<!-- Hidden radio inputs for language toggle -->
-<input type="radio" name="ielts-lang" id="lang-en" class="lang-radio" checked>
-<input type="radio" name="ielts-lang" id="lang-zh" class="lang-radio">
+---
 
-<div class="lang-toggle-bar">
-  <label for="lang-en">🇬🇧 English</label>
-  <label for="lang-zh">🇨🇳 简体中文</label>
-</div>
-
-<!-- ==================== ENGLISH CONTENT ==================== -->
-<div class="content-en">
+<a id="english"></a>
 
 <h1>🎓 IELTS Coach — Speaking & Writing AI Preparation Agent</h1>
 
@@ -188,14 +133,11 @@ cp -r .claude/skills/ielts-coach /path/to/your-project/.claude/skills/
 
 <p>MIT — Use freely for your IELTS preparation.</p>
 
-<hr>
+<p align="right"><a href="#top">🔝 Back to top</a></p>
 
-<p align="center"><strong>Good luck on your IELTS exam! 🎯</strong></p>
+---
 
-</div>
-
-<!-- ==================== CHINESE CONTENT ==================== -->
-<div class="content-zh">
+<a id="chinese"></a>
 
 <h1>🎓 IELTS Coach — 雅思口语与写作 AI 备考助手</h1>
 
@@ -323,8 +265,4 @@ cp -r .claude/skills/ielts-coach /path/to/your-project/.claude/skills/
 
 <p>MIT — 自由用于雅思备考。</p>
 
-<hr>
-
-<p align="center"><strong>祝你雅思考试顺利！🎯</strong></p>
-
-</div>
+<p align="right"><a href="#top">🔝 回到顶部</a></p>
