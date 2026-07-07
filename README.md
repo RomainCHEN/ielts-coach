@@ -6,11 +6,10 @@
   <img src="https://img.shields.io/github/license/RomainCHEN/ielts-coach?style=flat-square&color=blue" alt="License">
   <img src="https://img.shields.io/badge/version-v2.0-1a237e?style=flat-square" alt="Version">
   <img src="https://img.shields.io/badge/topics-102-ffc107?style=flat-square" alt="Topics">
-  <img src="https://img.shields.io/badge/skills-Claude%20Code-orange?style=flat-square" alt="Claude Code">
 </p>
 
 <p align="center">
-  <strong>A Claude Code skill that doesn't just generate model answers —<br>it interviews you first, writes in <em>your</em> voice, and calibrates every sentence<br>to official IELTS band descriptors.</strong>
+  <strong>An AI agent skill that doesn't just generate model answers —<br>it interviews you first, writes in <em>your</em> voice, and calibrates every sentence<br>to official IELTS band descriptors.</strong>
 </p>
 
 <p align="center">
@@ -45,12 +44,12 @@ AI:   [Generic 250-word essay with "Firstly, Secondly, In conclusion"]
 **IELTS Coach works like this:**
 
 ```
-Agent: "Before I write anything — what's YOUR take on this topic?"
+Coach: "Before I write anything — what's YOUR take on this topic?"
        [5-minute mini-interview: mines memories, opinions, personal examples]
-Agent: "Let me summarize what I've captured. You believe X because of your
-       experience with Y. I'll build your answer around that. Sound right?"
+Coach: "Let me summarize. You believe X because of your experience with Y.
+       I'll build your answer around that. Sound right?"
 User:  "Yes, but also mention Z."
-Agent: [Polished essay IN THE USER'S VOICE, band-calibrated, zero AI flavor]
+Coach: [Polished essay IN THE USER'S VOICE, band-calibrated, zero AI flavor]
 ```
 
 | | Generic AI | IELTS Coach |
@@ -60,7 +59,7 @@ Agent: [Polished essay IN THE USER'S VOICE, band-calibrated, zero AI flavor]
 | Memorability | Hard to remember because it's not yours | Easy — it literally IS you, just polished |
 | Scoring alignment | Random | Calibrated to official IELTS descriptors per band |
 | Vision support | Depends on model | Works on ANY model (DeepSeek included) via MCP bridge |
-| Topic discovery | None | Structured 5-step interview per topic |
+| Topic discovery | None | Structured interview per topic — all 102 of them |
 
 ---
 
@@ -102,10 +101,11 @@ Agent: [Polished essay IN THE USER'S VOICE, band-calibrated, zero AI flavor]
 git clone https://github.com/RomainCHEN/ielts-coach.git
 cd ielts-coach
 
-# 2. Copy the skill into your project (or use this repo directly)
-cp -r .claude/skills/ielts-coach /path/to/your-project/.claude/skills/
+# 2. Copy the skill into your agent's skill directory:
+#    Claude Code:     cp -r skill /your-project/.claude/skills/ielts-coach/
+#    Other agents:    copy skill/ into whatever directory your agent uses for skills
 
-# 3. Start Claude Code and just talk — the skill triggers automatically
+# 3. Start your agent and just talk — the skill triggers automatically
 ```
 
 > 💡 **No configuration needed.** Say "Start my IELTS preparation" and the agent handles everything. Onboarding → Study Plan → Daily sessions with Topic Discovery → Model answers in HTML.
@@ -155,29 +155,24 @@ cp -r .claude/skills/ielts-coach /path/to/your-project/.claude/skills/
 ## 📁 Project Structure
 
 ```
-ielts-coach/
-├── .claude/skills/ielts-coach/
-│   ├── SKILL.md                              # Complete agent behavior (~700 lines)
-│   ├── references/
-│   │   ├── question-bank.md                  # Part 1 + P2&3 New topics (38+29)
-│   │   ├── question_bank_complete.json       # P2&3 Retained + Non-mainland (27+8)
-│   │   ├── band-descriptors.md               # Speaking criteria by band
-│   │   ├── writing-band-descriptors.md       # Official Writing descriptors (May 2023)
-│   │   ├── writing-resources.md              # Task 1 chart language + Task 2 templates
-│   │   └── sample-answers.md                 # Quality calibration examples
-│   ├── scripts/
-│   │   ├── state_manager.py                  # JSON state file management
-│   │   ├── build_complete_bank.py            # Question bank builder
-│   │   └── vision_mcp_server.py             # MCP vision bridge (DeepSeek → qwen-vl)
-│   └── assets/
-│       └── answer_template.html              # HTML template for answer rendering
-├── README.md                                 # ← You are here
-├── README_zh.md                              # 中文版
-├── LICENSE                                   # MIT
-└── .gitignore
+skill/
+├── SKILL.md                              # Complete agent behavior (~700 lines)
+├── references/
+│   ├── question-bank.md                  # Part 1 + P2&3 New topics (38+29)
+│   ├── question_bank_complete.json       # P2&3 Retained + Non-mainland (27+8)
+│   ├── band-descriptors.md               # Speaking criteria by band
+│   ├── writing-band-descriptors.md       # Official Writing descriptors (May 2023)
+│   ├── writing-resources.md              # Task 1 chart language + Task 2 templates
+│   └── sample-answers.md                 # Quality calibration examples
+├── scripts/
+│   ├── state_manager.py                  # JSON state file management
+│   ├── build_complete_bank.py            # Question bank builder
+│   └── vision_mcp_server.py             # MCP vision bridge (DeepSeek → qwen-vl)
+└── assets/
+    └── answer_template.html              # HTML template for answer rendering
 ```
 
-> ⚡ **This is the complete repo.** Drop it into any Claude Code project. The agent reads/writes runtime state (`user_profile.json`, `study_plan.json`, `progress.json`, `ielts_answers.html`) in your project root — none of which are tracked here.
+> ⚡ **Copy `skill/` into your agent's skill directory — that's it.** Runtime state files (`user_profile.json`, `study_plan.json`, `progress.json`, `ielts_answers.html`) are auto-generated in your project root and never tracked here.
 
 ---
 

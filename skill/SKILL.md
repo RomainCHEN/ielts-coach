@@ -614,7 +614,7 @@ the same approach — pivot to the fallback flow below.
 
 **Core principle: YOU (the agent) do all the configuration work.** The user only provides
 credentials. Never ask the user to manually edit JSON files, restart servers, or run
-commands — you handle all of that. The only thing the user must do is restart Claude Code
+commands — you handle all of that. The only thing the user must do is restart their agent
 at the end (because you cannot control their process).
 
 #### Step 1: Acknowledge and Explain
@@ -657,7 +657,7 @@ If the user chooses Bailian:
    - If the file already has content, merge; otherwise create the full structure.
    - Use these values:
      - `command`: `"python"`
-     - `args`: `[".claude/skills/ielts-coach/scripts/vision_mcp_server.py"]`
+     - `args`: `["skill/scripts/vision_mcp_server.py"]`
      - `env.VISION_API_KEY`: the key the user provided
      - `env.VISION_BASE_URL`: `"https://llm-9hbxloqkuc0kihh2.cn-beijing.maas.aliyuncs.com/apps/anthropic"`
      - `env.VISION_MODEL`: `"qwen-vl-plus"`
@@ -668,7 +668,7 @@ If the user chooses Bailian:
      "mcpServers": {
        "vision-bridge": {
          "command": "python",
-         "args": [".claude/skills/ielts-coach/scripts/vision_mcp_server.py"],
+         "args": ["skill/scripts/vision_mcp_server.py"],
          "env": {
            "VISION_API_KEY": "<user-provided-key>",
            "VISION_BASE_URL": "https://llm-9hbxloqkuc0kihh2.cn-beijing.maas.aliyuncs.com/apps/anthropic",
@@ -685,7 +685,7 @@ If the user chooses Bailian:
 
 7. **Confirm completion:**
    > "Done! I've installed the dependencies and configured the vision bridge. All you
-   > need to do now is restart Claude Code. When you're back, I'll analyze the chart
+   > need to do now is restart your agent. When you're back, I'll analyze the chart
    > for you. Ready to restart?"
 
 #### Step 3B: Set Up Custom Provider (Option 2 — Agent Does Everything)
@@ -716,7 +716,7 @@ If the user prefers their own provider:
 
 #### Step 4: Post-Restart Verification
 
-After the user restarts Claude Code and returns:
+After the user restarts their agent and returns:
 
 1. **Option A** — The MCP tool may already be available. If so, the deferred tool
    `mcp__vision-bridge__analyze_image` should appear in the system reminder.
@@ -762,7 +762,7 @@ other projects won't be affected.
 - Do NOT ask the user to run `pip install` — you run it yourself
 - Do NOT pressure the user to switch models — the MCP bridge solves the problem without changing their setup
 - Do NOT leave the user with no path forward — if they decline the MCP bridge, offer to work with a text description they can provide themselves
-- The ONLY thing the user needs to do is: (a) provide their API key, (b) restart Claude Code
+- The ONLY thing the user needs to do is: (a) provide their API key, (b) restart their agent
 
 ---
 

@@ -12,5 +12,5 @@
 ## Checklist
 
 - [ ] I've updated both README.md and README_zh.md if needed
-- [ ] I've tested with a real Claude Code session
+- [ ] I've tested with a real AI agent session
 - [ ] My changes follow the skill design principles in CONTRIBUTING.md

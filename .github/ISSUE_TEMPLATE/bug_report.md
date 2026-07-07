@@ -20,6 +20,6 @@ assignees: ""
 
 ## Environment
 
-- Claude Code version:
-- Model you're using (Claude / DeepSeek / other):
+- Agent / platform (Claude Code, Cursor, Codex CLI, etc.):
+- Model you're using:
 - OS:

@@ -3,7 +3,7 @@
 IELTS Coach — Vision MCP Bridge Server
 
 A lightweight MCP (Model Context Protocol) server that provides image analysis
-capabilities to Claude Code agents running on models without native vision support
+capabilities to AI coding agents running on models without native vision support
 (e.g., DeepSeek).
 
 Provides:
@@ -18,13 +18,13 @@ SETUP (for users)
 1. Install dependencies:
    pip install mcp httpx
 
-2. Configure Claude Code — add to ~/.claude/claude.json (or project settings.json):
+2. Add the MCP server to your agent's config (e.g., Claude Code's `.claude/settings.json`, or your agent's MCP settings):
 
    {
      "mcpServers": {
        "vision-bridge": {
          "command": "python",
-         "args": [".claude/skills/ielts-coach/scripts/vision_mcp_server.py"],
+         "args": ["skill/scripts/vision_mcp_server.py"],
          "env": {
            "VISION_API_KEY": "your-api-key-here",
            "VISION_BASE_URL": "https://llm-9hbxloqkuc0kihh2.cn-beijing.maas.aliyuncs.com/apps/anthropic",
@@ -38,7 +38,7 @@ SETUP (for users)
    # OpenAI: VISION_BASE_URL="https://api.openai.com/v1"  VISION_MODEL="gpt-4o"
    # Any OpenAI-compatible endpoint works.
 
-3. Restart Claude Code. The agent will use analyze_image when it encounters charts.
+3. Restart your agent. It will use `analyze_image` when it encounters charts.
 
 Environment Variables:
    VISION_API_KEY  (required) — API key for the vision model provider

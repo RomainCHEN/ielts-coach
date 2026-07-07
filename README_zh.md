@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>一个 Claude Code 技能。不直接扔给你一篇范文——<br>它先跟你聊几分钟，了解你怎么想、你有什么经历，<br>然后用你说话的方式帮你写出来。每句话都能在雅思评分表上找到对应。</strong>
+  <strong>一个 AI agent 技能。不直接扔给你一篇范文——<br>它先跟你聊几分钟，了解你怎么想、你有什么经历，<br>然后用你说话的方式帮你写出来。每句话都能在雅思评分表上找到对应。</strong>
 </p>
 
 <p align="center">
@@ -100,10 +100,11 @@ AI：  [扔给你一篇套话连篇的250词范文，什么"Firstly... Secondly.
 git clone https://github.com/RomainCHEN/ielts-coach.git
 cd ielts-coach
 
-# 2. 把 skill 文件夹复制到你的项目里（或者直接在当前目录用也行）
-cp -r .claude/skills/ielts-coach /你的项目路径/.claude/skills/
+# 2. 把 skill 文件夹复制到你的 agent 的 skills 目录：
+#    Claude Code:     cp -r skill /你的项目/.claude/skills/ielts-coach/
+#    其他 agent:      把 skill/ 复制到对应 agent 的 skills 目录即可
 
-# 3. 启动 Claude Code，直接说人话就行——技能会自动触发
+# 3. 启动 agent，直接说人话就行——技能会自动触发
 ```
 
 > 💡 **不用额外配置。** 说一句"开始我的雅思备考"，剩下的教练帮你搞定。入门引导 → 学习计划 → 每天聊话题 → 范文自动保存到网页。
@@ -153,29 +154,24 @@ cp -r .claude/skills/ielts-coach /你的项目路径/.claude/skills/
 ## 📁 文件结构
 
 ```
-ielts-coach/
-├── .claude/skills/ielts-coach/
-│   ├── SKILL.md                              # 教练的"大脑"（约 700 行指令）
-│   ├── references/
-│   │   ├── question-bank.md                  # Part 1 + P2&3 新题（38+29）
-│   │   ├── question_bank_complete.json       # P2&3 保留题 + 非大陆题（27+8）
-│   │   ├── band-descriptors.md               # 口语评分标准
-│   │   ├── writing-band-descriptors.md       # 官方写作评分标准（2023年5月版）
-│   │   ├── writing-resources.md              # Task 1 图表写法 + Task 2 模板
-│   │   └── sample-answers.md                 # 范文参考（用于校准质量）
-│   ├── scripts/
-│   │   ├── state_manager.py                  # JSON 状态文件读写
-│   │   ├── build_complete_bank.py            # 题库构建
-│   │   └── vision_mcp_server.py             # MCP 视觉桥接（DeepSeek → qwen-vl）
-│   └── assets/
-│       └── answer_template.html              # 范文网页模板
-├── README.md                                 # 英文版
-├── README_zh.md                              # ← 你在这
-├── LICENSE                                   # MIT
-└── .gitignore
+skill/
+├── SKILL.md                              # 教练的"大脑"（约 700 行指令）
+├── references/
+│   ├── question-bank.md                  # Part 1 + P2&3 新题（38+29）
+│   ├── question_bank_complete.json       # P2&3 保留题 + 非大陆题（27+8）
+│   ├── band-descriptors.md               # 口语评分标准
+│   ├── writing-band-descriptors.md       # 官方写作评分标准（2023年5月版）
+│   ├── writing-resources.md              # Task 1 图表写法 + Task 2 模板
+│   └── sample-answers.md                 # 范文参考（用于校准质量）
+├── scripts/
+│   ├── state_manager.py                  # JSON 状态文件读写
+│   ├── build_complete_bank.py            # 题库构建
+│   └── vision_mcp_server.py             # MCP 视觉桥接（DeepSeek → qwen-vl）
+└── assets/
+    └── answer_template.html              # 范文网页模板
 ```
 
-> ⚡ **就这么简单。** 把这个文件夹丢进你任意一个 Claude Code 项目就行。运行时的个人文件（`user_profile.json`、`study_plan.json`、`progress.json`、`ielts_answers.html`）在你自己的项目根目录下自动生成——这个仓库里不存你的隐私。
+> ⚡ **把 `skill/` 整个文件夹丢进你 agent 的 skills 目录就好。** 运行时的个人文件（`user_profile.json`、`study_plan.json`、`progress.json`、`ielts_answers.html`）在你的项目根目录下自动生成——这个仓库里不存你的隐私。
 
 ---
 
