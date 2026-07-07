@@ -33,6 +33,7 @@
 | 🖼️ **HTML 输出** | 所有答案渲染为响应式、可打印的网页，包含高亮词汇、结构笔记和一键复制。 |
 | 🔄 **计划自进化** | 动态调整：重新安排错过的课程、优先薄弱环节、未经同意绝不重复话题。 |
 | ✍️ **图表分析** | 将 Task 1 图表图片放入 `task1_charts/`，助手自动分析并生成范文。 |
+| 👁️ **视觉桥接** | 使用 DeepSeek 等不支持图像识别的模型？技能内置 MCP 服务器，可通过阿里云百炼免费 qwen-vl 模型（或你自己的服务商）代理图像分析。图表读取失败时，助手会引导你完成一次性配置，不让你卡住。 |
 
 ## 🚀 快速开始
 
@@ -61,7 +62,8 @@ cd ielts-coach
 │   └── sample-answers.md                 # 校准范文
 ├── scripts/
 │   ├── state_manager.py                  # JSON 状态文件管理
-│   └── build_complete_bank.py            # 题库构建工具
+│   ├── build_complete_bank.py            # 题库构建工具
+│   └── vision_mcp_server.py             # MCP 视觉桥接（非视觉模型使用）
 └── assets/
     └── answer_template.html              # 答案展示 HTML 模板
 ```

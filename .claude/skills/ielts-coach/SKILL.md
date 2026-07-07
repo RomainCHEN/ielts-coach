@@ -161,9 +161,15 @@ When the user returns for a session (user_profile.json exists):
 
 If today includes writing Task 1, check the designated folder:
 - Look for image files in the project directory with chart-related names
-- The user mentioned they will place chart images with specific naming
 - Default location to check: `./task1_charts/` directory
-- If a chart is found, describe what you see and proceed; if not, remind the user
+- If a chart is found, attempt to read the image and describe what you see
+- If not found and it's a Task 1 day, remind the user to provide the chart
+
+**If image reading fails** (model returns error or says it cannot process images):
+Your current model likely lacks vision support (common with DeepSeek and some non-Claude models).
+Proceed to **[Image Recognition Fallback](#image-recognition-fallback)** to guide the user
+through setting up a local MCP vision bridge. Do NOT silently skip the chart — the user
+needs the image described to practice Task 1.
 
 ### Step 2.3: Topic Discovery Conversation (CRITICAL — Never Skip)
 
@@ -338,6 +344,17 @@ According to the official IELTS Writing Band Descriptors (updated May 2023), Tas
 | **6** | Covers requirements; presents and adequately highlights key features; attempts overview; selects information appropriately with data support |
 | **7** | Covers requirements; clearly presents and highlights key features; clear overview; logical grouping; appropriate data selection |
 | **8** | Fully covers all requirements; skilfully selects and clearly presents, highlights, and illustrates key features; occasional omission only |
+
+**❌ CRITICAL: Report data ONLY — never interpret or speculate.** IELTS Task 1 assesses your ability to describe and compare data, not draw conclusions about causes, societal trends, or future implications. Violating this boundary triggers severe TA penalties at any band level.
+
+| Avoid (Interpretation) | Use Instead (Data Report) |
+|------------------------|---------------------------|
+| "This trend points to a significant shift in social attitudes..." | "While first marriages fell by X, remarriages rose by Y over the same period." |
+| "The increase likely reflects changing economic conditions..." | "The figure increased from X to Y between [year] and [year]." |
+| "This suggests that people are becoming more..." | "The data shows a divergence between the two categories." |
+| "The decline can be attributed to..." | "The number declined steadily from X in [year] to Y in [year]." |
+
+**The only safe "summary" is a numerical comparison:** state what went up, what went down, and by how much. End each detail paragraph with data, never with a "why" or "what this means" statement.
 
 For detailed Task 1 vocabulary (trend language, comparison structures), see `references/writing-resources.md`.
 
@@ -572,6 +589,127 @@ For Task 1 language, consult `references/writing-resources.md` for chart-type-sp
 
 ---
 
+## Image Recognition Fallback
+
+This section covers what to do when the user's agent model cannot process images
+(e.g., DeepSeek, some open-source models, or API-only text models).
+
+### When to Trigger
+
+Trigger this flow when EITHER:
+- The model fails to read a chart image in Step 2.2
+- The model fails to read a PDF scan or screenshot the user uploads
+- The user explicitly mentions their model "can't see images"
+- Any Read tool call on an image file returns an error or blank content
+
+### Detection
+
+If a Read call on an image (PNG/JPG/PDF) returns an error or the model says it cannot
+describe the image, immediately recognize this as a vision support gap. Do NOT retry
+the same approach — pivot to the fallback flow below.
+
+### Step-by-Step Fallback Flow
+
+#### Step 1: Acknowledge and Explain
+
+> "It looks like your current model doesn't support image recognition (this is common
+> with models like DeepSeek and some others). No worries — I can help you set up a
+> local MCP vision bridge. This is a small server that runs on your machine and lets
+> me analyze images through a vision-capable model."
+
+#### Step 2: Ask About Provider Preference
+
+> "Here are your options:
+> 1. **Alibaba Cloud Bailian (百炼)** — Free tier available, uses qwen-vl models.
+>    The base URL is already configured. You just need to provide your API key.
+> 2. **Use your own vision-capable model** — If you already subscribe to a service
+>    that supports vision (OpenAI, Claude API, or any OpenAI-compatible endpoint),
+>    you can use that instead. You'll provide the base URL and API key."
+
+Ask: "Which option would you prefer? Or would you rather skip the chart for now?"
+
+#### Step 3A: Set Up Bailian (Option 1 — Default/Recommended)
+
+If the user chooses Bailian:
+
+1. Check if `scripts/vision_mcp_server.py` exists in the skill directory
+2. If yes, tell the user:
+   > "The MCP server script is already at `.claude/skills/ielts-coach/scripts/vision_mcp_server.py`.
+   > Here's what you need to do:
+   > 1. Install the dependency: `pip install mcp httpx`
+   > 2. Go to [Alibaba Cloud Bailian Console](https://bailian.console.aliyun.com/) to get your API key
+   > 3. Add the MCP server to your Claude Code config. Open `~/.claude/claude.json` and add:"
+
+   Provide the exact JSON config block:
+   ```json
+   {
+     "mcpServers": {
+       "vision-bridge": {
+         "command": "python",
+         "args": [".claude/skills/ielts-coach/scripts/vision_mcp_server.py"],
+         "env": {
+           "VISION_API_KEY": "your-bailian-api-key-here",
+           "VISION_BASE_URL": "https://llm-9hbxloqkuc0kihh2.cn-beijing.maas.aliyuncs.com/apps/anthropic",
+           "VISION_MODEL": "qwen-vl-plus"
+         }
+       }
+     }
+   }
+   ```
+
+4. After confirming setup, tell the user to restart Claude Code and say:
+   > "Once you restart, say 'check the chart' and I'll use the vision bridge to analyze it."
+
+5. If the MCP server script does NOT exist at the expected path (unlikely if using this skill), create it from the template in `scripts/vision_mcp_server.py`.
+
+#### Step 3B: Set Up Custom Provider (Option 2)
+
+If the user prefers their own provider:
+
+> "Great — I'll help you configure it. Please provide:
+> - **Base URL** — the OpenAI-compatible chat completions endpoint
+>   (e.g., `https://api.openai.com/v1` for OpenAI, `https://api.anthropic.com/v1/messages` would NOT work — must be OpenAI-compatible format)
+> - **API Key** — your authentication key
+> - **Model Name** — the exact model ID that supports vision
+>   (e.g., `gpt-4o`, `claude-sonnet-5-20250901` if using Anthropic with compatible proxy)"
+
+Once the user provides these, proceed the same as Step 3A but with the user's custom values.
+
+#### Step 4: Verify and Use
+
+After the user sets up the MCP server and restarts:
+
+1. Load the tool schema via ToolSearch: `mcp__vision-bridge__analyze_image`
+2. Use the tool to analyze the chart image
+3. Proceed with generating the Task 1 model answer as normal
+4. If the tool call fails, help the user debug (wrong API key, network issue, etc.)
+
+### MCP Server Details
+
+The vision bridge MCP server (`scripts/vision_mcp_server.py`) provides:
+
+| Tool | Purpose |
+|------|---------|
+| `analyze_image` | Takes an image file path, returns a detailed text description suitable for IELTS Task 1 analysis |
+| `get_model_info` | Returns the configured model name and provider for verification |
+
+**How it works:**
+1. Reads the image file, encodes it as base64
+2. Sends it to the configured vision model endpoint (OpenAI-compatible chat completions API)
+3. The prompt asks the model to describe the image in IELTS Task 1 terms: chart type, axes, trends, key data points, units
+4. Returns the text description to the agent
+
+**Prerequisites:** Python 3.10+, `pip install mcp httpx`
+
+### What NOT to Do
+
+- Do NOT repeatedly retry Read on the same image — if it fails once on a non-vision model, it will fail every time
+- Do NOT pretend to describe the chart from the filename or guess its content
+- Do NOT pressure the user to switch models — the MCP bridge solves the problem without changing their setup
+- Do NOT leave the user with no path forward — if they decline the MCP bridge, offer to work with a text description they can provide themselves
+
+---
+
 ## Edge Cases & Special Situations
 
 ### First Session Without Profile
@@ -621,6 +759,16 @@ If using MinerU for PDF extraction and it fails:
 - Use the local cached extraction if available
 - Continue with other parts of the session
 
+### Model Lacks Vision Support (Cannot Read Images)
+If the model reports it cannot process images (common with DeepSeek and some open-source models):
+- Do NOT retry the same approach — recognize this as a vision capability gap
+- Immediately trigger the **[Image Recognition Fallback](#image-recognition-fallback)** flow
+- Guide the user through setting up the local MCP vision bridge
+- Default recommendation: Alibaba Cloud Bailian's free qwen-vl model
+- If the user prefers their own vision-capable provider, help them configure it
+- If the user declines the MCP bridge entirely, fall back to asking them to describe the image in text
+- Key principle: provide a path forward — never leave the user stuck because of model limitations
+
 ---
 
 ## Important Rules
@@ -648,7 +796,10 @@ If using MinerU for PDF extraction and it fails:
 7. **Save to HTML immediately** after each session — don't accumulate and batch-save.
 8. **Update state files** (study_plan.json, progress.json) after every session.
 9. **Be encouraging but honest** — if an answer needs improvement, say so constructively.
-10. **If unsure about anything**, ask the user before proceeding.
+10. **If image recognition fails, pivot immediately to the [Image Recognition Fallback](#image-recognition-fallback) flow.**
+    Do not retry the same approach repeatedly. Guide the user to set up the MCP vision bridge.
+    Never leave the user stuck because of model limitations — always offer a path forward.
+11. **If unsure about anything**, ask the user before proceeding.
 
 ---
 
@@ -662,3 +813,5 @@ When the user says:
 - "Show my answers" → Tell them to open ielts_answers.html in browser
 - "I have my writing topic" → Go to Phase 2 writing flow
 - "Review [topic]" → Re-generate answers for a completed topic
+- "My model can't see images" / "Chart won't load" → Go to [Image Recognition Fallback](#image-recognition-fallback)
+- "Check the chart" / "Analyze this chart" → Use the MCP vision bridge (`analyze_image` tool) if configured; otherwise trigger fallback

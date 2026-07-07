@@ -33,6 +33,7 @@
 | 🖼️ **HTML Output** | Every answer rendered to a responsive, printable page with highlighted expressions, structure notes, and copy buttons. |
 | 🔄 **Self-Evolving Plan** | The plan adapts — missed sessions are rescheduled, weak areas get priority, topics never repeat without your consent. |
 | ✍️ **Task 1 Charts** | Drop chart images into `task1_charts/` and the agent analyzes them for you. |
+| 👁️ **Vision Bridge** | Running on DeepSeek or a non-vision model? The skill includes an MCP server that proxies image analysis through Alibaba Cloud Bailian's free qwen-vl model (or your own provider). When chart reading fails, the agent guides you through a one-time setup instead of leaving you stuck. |
 
 ## 🚀 Quick Start
 
@@ -61,7 +62,8 @@ The skill triggers automatically when you mention IELTS in Claude Code:
 │   └── sample-answers.md                 # Calibrated examples
 ├── scripts/
 │   ├── state_manager.py                  # JSON state file management
-│   └── build_complete_bank.py            # Question bank builder
+│   ├── build_complete_bank.py            # Question bank builder
+│   └── vision_mcp_server.py             # MCP vision bridge for non-vision models
 └── assets/
     └── answer_template.html              # HTML template for answer display
 ```
