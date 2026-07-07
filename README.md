@@ -80,7 +80,7 @@ Coach: [Polished essay IN THE USER'S VOICE, band-calibrated, zero AI flavor]
 </tr>
 <tr>
   <td width="48"><strong>👁️</strong></td>
-  <td><strong>Vision Bridge for Non-Vision Models</strong><br>Running on DeepSeek? Your agent cannot see charts. The included MCP server proxies images through Alibaba Cloud Bailian's free qwen-vl model, or any provider you choose. Agent auto-configures everything. You just provide the API key.</td>
+  <td><strong>Vision Bridge for Non-Vision Models</strong><br>Running on DeepSeek? Your agent cannot see charts. The included MCP server proxies images through Alibaba Cloud Bailian's free qwen3.7-plus model via DashScope, or any provider you choose. Agent auto-configures everything. You just provide the API key.</td>
 </tr>
 <tr>
   <td width="48"><strong>🖼️</strong></td>
@@ -167,7 +167,7 @@ ielts-coach/
 ├── scripts/
 │   ├── state_manager.py                  # JSON state file management
 │   ├── build_complete_bank.py            # Question bank builder
-│   └── vision_mcp_server.py             # MCP vision bridge (DeepSeek → qwen-vl)
+│   └── vision_mcp_server.py             # MCP vision bridge (DeepSeek → qwen3.7-plus)
 └── assets/
     └── answer_template.html              # HTML template for answer rendering
 ```
@@ -195,7 +195,7 @@ IELTS Coach personalizes on 4 dimensions simultaneously. No static template can 
 
 ```
 ┌──────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│  Your Chart  │────▶│  vision_bridge    │────▶│  qwen-vl-plus    │
+│  Your Chart  │────▶│  vision_bridge    │────▶│  qwen3.7-plus    │
 │  (PNG/JPG)   │     │  (MCP Server)     │     │  (Free tier)     │
 └──────────────┘     └──────────────────┘     └────────┬────────┘
                                                         │
@@ -210,7 +210,7 @@ IELTS Coach personalizes on 4 dimensions simultaneously. No static template can 
 └──────────────┘     └──────────────────┘
 ```
 
-**One-time setup (agent does everything):** pip install → settings.json → restart. Only input needed: your Bailian API key.
+**One-time setup (agent does everything):** pip install mcp httpx → write `.claude/settings.json` → restart. Only input needed: your Bailian API key (from [bailian.console.aliyun.com](https://bailian.console.aliyun.com/)). Model: `qwen3.7-plus` via `dashscope.aliyuncs.com/compatible-mode/v1`.
 
 Supports custom providers too. Any OpenAI-compatible vision endpoint works.
 

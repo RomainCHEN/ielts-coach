@@ -626,8 +626,9 @@ at the end (because you cannot control their process).
 #### Step 2: Ask About Provider Preference
 
 > "Pick a vision provider:
-> 1. **Alibaba Cloud Bailian (百炼, recommended)** — Free tier, qwen-vl model.
->    I just need your API key (get it from https://bailian.console.aliyun.com/).
+> 1. **Alibaba Cloud Bailian (百炼, recommended)** — Free tier. Uses DashScope
+>    API (`dashscope.aliyuncs.com/compatible-mode/v1`) with qwen3.7-plus,
+>    which natively supports image recognition. I just need your API key.
 > 2. **Your own provider** — If you already use OpenAI, Claude API, or any
 >    OpenAI-compatible vision service, I'll configure that instead."
 
@@ -659,8 +660,8 @@ If the user chooses Bailian:
      - `command`: `"python"`
      - `args`: `["ielts-coach/scripts/vision_mcp_server.py"]`
      - `env.VISION_API_KEY`: the key the user provided
-     - `env.VISION_BASE_URL`: `"https://llm-9hbxloqkuc0kihh2.cn-beijing.maas.aliyuncs.com/apps/anthropic"`
-     - `env.VISION_MODEL`: `"qwen-vl-plus"`
+     - `env.VISION_BASE_URL`: `"https://dashscope.aliyuncs.com/compatible-mode/v1"`
+     - `env.VISION_MODEL`: `"qwen3.7-plus"`
 
    Target structure for `.claude/settings.json`:
    ```json
@@ -671,8 +672,8 @@ If the user chooses Bailian:
          "args": ["ielts-coach/scripts/vision_mcp_server.py"],
          "env": {
            "VISION_API_KEY": "<user-provided-key>",
-           "VISION_BASE_URL": "https://llm-9hbxloqkuc0kihh2.cn-beijing.maas.aliyuncs.com/apps/anthropic",
-           "VISION_MODEL": "qwen-vl-plus"
+           "VISION_BASE_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+           "VISION_MODEL": "qwen3.7-plus"
          }
        }
      }
@@ -763,6 +764,19 @@ other projects won't be affected.
 - Do NOT pressure the user to switch models — the MCP bridge solves the problem without changing their setup
 - Do NOT leave the user with no path forward — if they decline the MCP bridge, offer to work with a text description they can provide themselves
 - The ONLY thing the user needs to do is: (a) provide their API key, (b) restart their agent
+
+### Vision Bridge Troubleshooting
+
+When debugging a vision bridge setup or failure, check these in order:
+
+| Symptom | Likely Cause | Fix |
+|---------|-------------|-----|
+| API returns 404 | Wrong protocol (Anthropic `/v1/messages` when endpoint expects `/chat/completions`) | Use `dashscope.aliyuncs.com/compatible-mode/v1` — this is OpenAI-compatible. The older `llm-9hbxloqkuc0kihh2.cn-beijing.maas.aliyuncs.com/apps/anthropic` may not work or may use a different protocol. |
+| Request times out (>60s) | Image + long prompt takes time to process | Set timeout to at least 120 seconds (`httpx.Timeout(120.0, connect=30.0)`) |
+| Model returns but doesn't describe image | Model may be text-only (e.g., `qwen-plus`, `qwen-turbo`) | Only `qwen3.7-plus`, `qwen-vl-plus`, `qwen-vl-max` support vision. Verify the model name. |
+| MCP tool not appearing in session | SDK version mismatch — `@server.tool()` decorator not available in all MCP SDK versions | `vision_mcp_server.py` uses `@server.list_tools()` + `@server.call_tool()` for broad SDK compatibility |
+| Bailian key rejected (401) | Key type mismatch | Keys from `bailian.console.aliyun.com` work with DashScope. Verify the key has model service access enabled. |
+| OpenSSL/bad handshake on Windows | Python SSL configuration | No fix needed — the standard `dashscope.aliyuncs.com` endpoint works without special SSL config |
 
 ---
 

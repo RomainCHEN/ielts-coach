@@ -79,7 +79,7 @@ AI：  [扔给你一篇套话连篇的250词范文，通篇 Firstly... Secondly.
 </tr>
 <tr>
   <td width="48"><strong>👁️</strong></td>
-  <td><strong>DeepSeek 也能看图</strong><br>用 DeepSeek 的话 agent 读不了图表图片。没关系，内置了一个 MCP 服务器，把图片甩给阿里云百炼免费的 qwen-vl 模型去看，看完告诉你图上有什么。全程 agent 自己配好，你只需要给一个 API key。</td>
+  <td><strong>DeepSeek 也能看图</strong><br>用 DeepSeek 的话 agent 读不了图表图片。没关系，内置了一个 MCP 服务器，把图片甩给阿里云百炼免费的 qwen3.7-plus 模型去看（通过 DashScope），看完告诉你图上有什么。全程 agent 自己配好，你只需要给一个 API key。</td>
 </tr>
 <tr>
   <td width="48"><strong>🖼️</strong></td>
@@ -166,7 +166,7 @@ ielts-coach/
 ├── scripts/
 │   ├── state_manager.py                  # JSON 状态文件读写
 │   ├── build_complete_bank.py            # 题库构建
-│   └── vision_mcp_server.py             # MCP 视觉桥接（DeepSeek → qwen-vl）
+│   └── vision_mcp_server.py             # MCP 视觉桥接（DeepSeek → qwen3.7-plus）
 └── assets/
     └── answer_template.html              # 范文网页模板
 ```
@@ -194,7 +194,7 @@ ielts-coach/
 
 ```
 ┌──────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│  你的图表     │────▶│  vision_bridge    │────▶│  qwen-vl-plus    │
+│  你的图表     │────▶│  vision_bridge    │────▶│  qwen3.7-plus    │
 │  (PNG/JPG)   │     │  (MCP 服务器)     │     │  (百炼免费额度)   │
 └──────────────┘     └──────────────────┘     └────────┬────────┘
                                                         │
