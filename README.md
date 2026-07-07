@@ -1,8 +1,5 @@
-<p align="center">
-  <picture>
-    <img src="https://img.shields.io/badge/May--Aug_2026-IELTS-blue?style=for-the-badge&logo=ielts&logoColor=white" alt="Season">
-  </picture>
-</p>
+<h1 align="center">🎓 IELTS Coach</h1>
+<h3 align="center">The Most Personalized IELTS Speaking & Writing AI Coach</h3>
 
 <p align="center">
   <img src="https://img.shields.io/github/stars/RomainCHEN/ielts-coach?style=flat-square&color=yellow" alt="Stars">
@@ -11,9 +8,6 @@
   <img src="https://img.shields.io/badge/topics-102-ffc107?style=flat-square" alt="Topics">
   <img src="https://img.shields.io/badge/skills-Claude%20Code-orange?style=flat-square" alt="Claude Code">
 </p>
-
-<h1 align="center">🎓 IELTS Coach</h1>
-<h3 align="center">The Most Personalized IELTS Speaking & Writing AI Coach</h3>
 
 <p align="center">
   <strong>A Claude Code skill that doesn't just generate model answers —<br>it interviews you first, writes in <em>your</em> voice, and calibrates every sentence<br>to official IELTS band descriptors.</strong>
