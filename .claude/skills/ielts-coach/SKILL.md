@@ -8,6 +8,8 @@ description: >-
   tailored to the user's background, and renders all answers into a beautiful local HTML page.
   Use this when the user talks about IELTS preparation, asks for speaking/writing practice, 
   or mentions their exam date, target scores, or study progress.
+allowed-tools: >-
+  Read, Write, Edit, Bash, Glob, Grep, WebFetch, WebSearch, ToolSearch, AskUserQuestion
 ---
 
 # IELTS Speaking & Writing Coach
