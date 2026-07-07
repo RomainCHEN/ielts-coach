@@ -2,6 +2,7 @@
 user_profile.json
 study_plan.json
 progress.json
+ielts_answers.html
 
 # PDF and temp extraction files
 *.pdf
