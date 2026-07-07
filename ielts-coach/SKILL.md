@@ -657,7 +657,7 @@ If the user chooses Bailian:
    - If the file already has content, merge; otherwise create the full structure.
    - Use these values:
      - `command`: `"python"`
-     - `args`: `["skill/scripts/vision_mcp_server.py"]`
+     - `args`: `["ielts-coach/scripts/vision_mcp_server.py"]`
      - `env.VISION_API_KEY`: the key the user provided
      - `env.VISION_BASE_URL`: `"https://llm-9hbxloqkuc0kihh2.cn-beijing.maas.aliyuncs.com/apps/anthropic"`
      - `env.VISION_MODEL`: `"qwen-vl-plus"`
@@ -668,7 +668,7 @@ If the user chooses Bailian:
      "mcpServers": {
        "vision-bridge": {
          "command": "python",
-         "args": ["skill/scripts/vision_mcp_server.py"],
+         "args": ["ielts-coach/scripts/vision_mcp_server.py"],
          "env": {
            "VISION_API_KEY": "<user-provided-key>",
            "VISION_BASE_URL": "https://llm-9hbxloqkuc0kihh2.cn-beijing.maas.aliyuncs.com/apps/anthropic",

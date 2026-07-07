@@ -58,7 +58,7 @@ Coach: [Polished essay IN THE USER'S VOICE, band-calibrated, zero AI flavor]
 | AI detection risk | High (dashes, clichés, mechanical linkers) | Near-zero (natural cohesion, human voice) |
 | Memorability | Hard to remember because it is not yours | Easy: it literally IS you, just polished |
 | Scoring alignment | Random | Calibrated to official IELTS descriptors per band |
-| Vision support | Depends on model | Works on ANY model (DeepSeek included) via MCP bridge |
+| Vision support | Depends on model | Works on any model (DeepSeek included) via MCP bridge |
 | Topic discovery | None | Structured interview per topic, covering all 102 |
 
 ---
@@ -102,8 +102,8 @@ git clone https://github.com/RomainCHEN/ielts-coach.git
 cd ielts-coach
 
 # 2. Copy the skill into your agent's skill directory:
-#    Claude Code:     cp -r skill /your-project/.claude/skills/ielts-coach/
-#    Other agents:    copy skill/ into whatever directory your agent uses for skills
+#    Claude Code:     cp -r ielts-coach /your-project/.claude/skills/
+#    Other agents:    copy ielts-coach/ into whatever directory your agent uses for skills
 
 # 3. Start your agent and just talk. The skill triggers automatically.
 ```
@@ -155,7 +155,7 @@ cd ielts-coach
 ## 📁 Project Structure
 
 ```
-skill/
+ielts-coach/
 ├── SKILL.md                              # Complete agent behavior (~700 lines)
 ├── references/
 │   ├── question-bank.md                  # Part 1 + P2&3 New topics (38+29)
@@ -172,7 +172,7 @@ skill/
     └── answer_template.html              # HTML template for answer rendering
 ```
 
-> ⚡ **Copy the `skill/` folder into your agent's skill directory. That is it.** Runtime state files (`user_profile.json`, `study_plan.json`, `progress.json`, `ielts_answers.html`) are auto-generated in your project root and never tracked here.
+> ⚡ **Copy the `ielts-coach/` folder into your agent's skill directory. That is it.** Runtime state files (`user_profile.json`, `study_plan.json`, `progress.json`, `ielts_answers.html`) are auto-generated in your project root and never tracked here.
 
 ---
 

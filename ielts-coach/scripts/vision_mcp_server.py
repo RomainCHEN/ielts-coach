@@ -24,7 +24,7 @@ SETUP (for users)
      "mcpServers": {
        "vision-bridge": {
          "command": "python",
-         "args": ["skill/scripts/vision_mcp_server.py"],
+         "args": ["ielts-coach/scripts/vision_mcp_server.py"],
          "env": {
            "VISION_API_KEY": "your-api-key-here",
            "VISION_BASE_URL": "https://llm-9hbxloqkuc0kihh2.cn-beijing.maas.aliyuncs.com/apps/anthropic",

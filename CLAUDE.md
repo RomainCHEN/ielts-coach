@@ -7,7 +7,7 @@ all content to a beautiful local HTML page.
 ## Project Structure
 
 ```
-skill/
+ielts-coach/
 ├── SKILL.md                              # Core agent behavior instructions
 ├── references/
 │   ├── question-bank.md                  # Part 1 + P2&3 New topics (full detail)
@@ -26,8 +26,8 @@ skill/
 
 This skill uses standard MCP protocol and OpenAI-compatible APIs. It works with:
 
-- **Claude Code** — copy `skill/` into `.claude/skills/ielts-coach/`
-- **Cursor, Codex CLI, Gemini CLI, OpenCode, Antigravity** — copy `skill/` into the agent's skill directory
+- **Claude Code** — copy `ielts-coach/` into `.claude/skills/`
+- **Cursor, Codex CLI, Gemini CLI, OpenCode, Antigravity** — copy `ielts-coach/` into the agent's skill directory
 - **Any agent** supporting MCP — the vision bridge server is standard MCP
 
 ## How to Use

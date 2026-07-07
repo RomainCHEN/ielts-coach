@@ -100,9 +100,9 @@ AI：  [扔给你一篇套话连篇的250词范文，通篇 Firstly... Secondly.
 git clone https://github.com/RomainCHEN/ielts-coach.git
 cd ielts-coach
 
-# 2. 把 skill 文件夹复制到你的 agent 的 skills 目录：
-#    Claude Code:     cp -r skill /你的项目/.claude/skills/ielts-coach/
-#    其他 agent:      把 skill/ 复制到对应 agent 的 skills 目录即可
+# 2. 把 ielts-coach 文件夹复制到你的 agent 的 skills 目录：
+#    Claude Code:     cp -r ielts-coach /你的项目/.claude/skills/
+#    其他 agent:      把 ielts-coach/ 复制到对应 agent 的 skills 目录即可
 
 # 3. 启动 agent，直接说人话就行，技能会自动触发
 ```
@@ -154,7 +154,7 @@ cd ielts-coach
 ## 📁 文件结构
 
 ```
-skill/
+ielts-coach/
 ├── SKILL.md                              # 教练的大脑（约 700 行指令）
 ├── references/
 │   ├── question-bank.md                  # Part 1 + P2&3 新题（38+29）
@@ -171,7 +171,7 @@ skill/
     └── answer_template.html              # 范文网页模板
 ```
 
-> ⚡ **把 `skill/` 整个文件夹丢进你 agent 的 skills 目录就好。** 运行时的个人文件（`user_profile.json`、`study_plan.json`、`progress.json`、`ielts_answers.html`）在你的项目根目录下自动生成，这个仓库里不存你的隐私。
+> ⚡ **把 `ielts-coach/` 整个文件夹丢进你 agent 的 skills 目录就好。** 运行时的个人文件（`user_profile.json`、`study_plan.json`、`progress.json`、`ielts_answers.html`）在你的项目根目录下自动生成，这个仓库里不存你的隐私。
 
 ---
 
