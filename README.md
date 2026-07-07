@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>An AI agent skill that doesn't just generate model answers —<br>it interviews you first, writes in <em>your</em> voice, and calibrates every sentence<br>to official IELTS band descriptors.</strong>
+  <strong>An AI agent skill that interviews you first, writes in <em>your</em> voice,<br>and calibrates every sentence to official IELTS band descriptors.</strong>
 </p>
 
 <p align="center">
@@ -37,29 +37,29 @@
 Most IELTS AI tools work like this:
 
 ```
-User: "Write me an essay about climate change."
-AI:   [Generic 250-word essay with "Firstly, Secondly, In conclusion"]
+User: Write me an essay about climate change.
+AI:   [Generates a 250-word essay full of Firstly, Secondly, In conclusion]
 ```
 
 **IELTS Coach works like this:**
 
 ```
-Coach: "Before I write anything — what's YOUR take on this topic?"
+Coach: Before I write anything, what is YOUR take on this topic?
        [5-minute mini-interview: mines memories, opinions, personal examples]
-Coach: "Let me summarize. You believe X because of your experience with Y.
-       I'll build your answer around that. Sound right?"
-User:  "Yes, but also mention Z."
+Coach: Let me make sure I have this right. You believe X because of
+       your experience with Y. I will build your answer around that.
+User:  Yes, and also mention Z.
 Coach: [Polished essay IN THE USER'S VOICE, band-calibrated, zero AI flavor]
 ```
 
 | | Generic AI | IELTS Coach |
 |---|---|---|
-| Personalization | Vague "some people believe..." | Specific: "When I was working at [your company]..." |
+| Personalization | Vague references to some people or society | Specific: When I was working at [your company]... |
 | AI detection risk | High (dashes, clichés, mechanical linkers) | Near-zero (natural cohesion, human voice) |
-| Memorability | Hard to remember because it's not yours | Easy — it literally IS you, just polished |
+| Memorability | Hard to remember because it is not yours | Easy: it literally IS you, just polished |
 | Scoring alignment | Random | Calibrated to official IELTS descriptors per band |
 | Vision support | Depends on model | Works on ANY model (DeepSeek included) via MCP bridge |
-| Topic discovery | None | Structured interview per topic — all 102 of them |
+| Topic discovery | None | Structured interview per topic, covering all 102 |
 
 ---
 
@@ -68,23 +68,23 @@ Coach: [Polished essay IN THE USER'S VOICE, band-calibrated, zero AI flavor]
 <table>
 <tr>
   <td width="48"><strong>🎯</strong></td>
-  <td><strong>Progressive Topic Discovery</strong><br>Not just onboarding. Every new topic triggers a structured mini-interview — the agent mines <em>your</em> specific memories, opinions, and experiences before writing a single word. 102 topics, 102 personalized answers.</td>
+  <td><strong>Progressive Topic Discovery</strong><br>Not just onboarding. Every new topic triggers a structured mini-interview. The agent mines <em>your</em> specific memories, opinions, and experiences before writing a single word. 102 topics, 102 personalized answers.</td>
 </tr>
 <tr>
   <td width="48"><strong>📋</strong></td>
-  <td><strong>Official Band Descriptor Alignment</strong><br>Writing answers calibrated against the public IELTS Writing Band Descriptors (updated May 2023). Task Response, Coherence & Cohesion, Lexical Resource, and Grammatical Range & Accuracy — all four criteria tuned to your target band.</td>
+  <td><strong>Official Band Descriptor Alignment</strong><br>Writing answers calibrated against the public IELTS Writing Band Descriptors (updated May 2023). Task Response, Coherence and Cohesion, Lexical Resource, and Grammatical Range and Accuracy. All four criteria tuned to your target band.</td>
 </tr>
 <tr>
   <td width="48"><strong>🚫</strong></td>
-  <td><strong>Anti-AI-Flavor Enforcement</strong><br>Explicitly screens for and eliminates AI patterns: no em dashes, no scare quotes, no "not only... but also..." repetition, no "Firstly/Secondly/Finally" chains, no "This essay will discuss..." clichés. Reads like polished human writing.</td>
+  <td><strong>Anti-AI-Flavor Enforcement</strong><br>Explicitly screens for and eliminates AI patterns: no em dashes, no scare quotes, no mechanical linkers like Firstly/Secondly/Finally, no This essay will discuss clichés. Reads like polished human writing.</td>
 </tr>
 <tr>
   <td width="48"><strong>👁️</strong></td>
-  <td><strong>Vision Bridge for Non-Vision Models</strong><br>Running on DeepSeek? Your agent can't see charts. The included MCP server proxies images through Alibaba Cloud Bailian's free qwen-vl model (or any provider you choose). Agent auto-configures everything — you just provide the API key.</td>
+  <td><strong>Vision Bridge for Non-Vision Models</strong><br>Running on DeepSeek? Your agent cannot see charts. The included MCP server proxies images through Alibaba Cloud Bailian's free qwen-vl model, or any provider you choose. Agent auto-configures everything. You just provide the API key.</td>
 </tr>
 <tr>
   <td width="48"><strong>🖼️</strong></td>
-  <td><strong>Beautiful HTML Output</strong><br>Responsive, printable, navigable. Highlighted vocabulary, structure notes, copy buttons. Navy + gold IELTS-themed design.</td>
+  <td><strong>Beautiful HTML Output</strong><br>Responsive, printable, navigable. Highlighted vocabulary, structure notes, copy buttons. Navy and gold IELTS-themed design.</td>
 </tr>
 <tr>
   <td width="48"><strong>🔄</strong></td>
@@ -105,12 +105,12 @@ cd ielts-coach
 #    Claude Code:     cp -r skill /your-project/.claude/skills/ielts-coach/
 #    Other agents:    copy skill/ into whatever directory your agent uses for skills
 
-# 3. Start your agent and just talk — the skill triggers automatically
+# 3. Start your agent and just talk. The skill triggers automatically.
 ```
 
-> 💡 **No configuration needed.** Say "Start my IELTS preparation" and the agent handles everything. Onboarding → Study Plan → Daily sessions with Topic Discovery → Model answers in HTML.
+> 💡 **No configuration needed.** Say Start my IELTS preparation and the agent handles everything. Onboarding → Study Plan → Daily sessions with Topic Discovery → Model answers in HTML.
 
-**For DeepSeek / non-vision model users:** The first time a chart image fails to load, the agent auto-guides you through the 2-minute Vision Bridge setup. You only provide an API key.
+**For DeepSeek and non-vision model users:** The first time a chart image fails to load, the agent auto-guides you through the 2-minute Vision Bridge setup. You only provide an API key.
 
 ---
 
@@ -172,18 +172,18 @@ skill/
     └── answer_template.html              # HTML template for answer rendering
 ```
 
-> ⚡ **Copy `skill/` into your agent's skill directory — that's it.** Runtime state files (`user_profile.json`, `study_plan.json`, `progress.json`, `ielts_answers.html`) are auto-generated in your project root and never tracked here.
+> ⚡ **Copy the `skill/` folder into your agent's skill directory. That is it.** Runtime state files (`user_profile.json`, `study_plan.json`, `progress.json`, `ielts_answers.html`) are auto-generated in your project root and never tracked here.
 
 ---
 
 ## 🎯 The 4D Personalization Engine
 
-IELTS Coach personalizes on 4 dimensions simultaneously — something no static template can do:
+IELTS Coach personalizes on 4 dimensions simultaneously. No static template can do this.
 
 | Dimension | Source | Example |
 |---|---|---|
-| **1. Personal Identity** | Onboarding | "As a software engineer in Shenzhen..." |
-| **2. Topic-Specific Experience** | Topic Discovery interview | "When I was debugging that production outage at 3am..." |
+| **1. Personal Identity** | Onboarding | As a software engineer in Shenzhen... |
+| **2. Topic-Specific Experience** | Topic Discovery interview | When I was debugging that production outage at 3am... |
 | **3. Target Band Calibration** | User's target score | Band 7 vocabulary density, flexible cohesive devices |
 | **4. Human Voice Preservation** | User's raw language during Discovery | Their humor, their cultural references, their sentence rhythm |
 
@@ -212,7 +212,7 @@ IELTS Coach personalizes on 4 dimensions simultaneously — something no static 
 
 **One-time setup (agent does everything):** pip install → settings.json → restart. Only input needed: your Bailian API key.
 
-Supports custom providers too — any OpenAI-compatible vision endpoint.
+Supports custom providers too. Any OpenAI-compatible vision endpoint works.
 
 ---
 
@@ -231,7 +231,7 @@ Open an issue or PR.
 
 ## 📜 License
 
-MIT © [Romain Chen](https://github.com/RomainCHEN) — use freely, modify freely, good luck on your exam.
+MIT © [Romain Chen](https://github.com/RomainCHEN). Use freely, modify freely. Good luck on your exam.
 
 ---
 
