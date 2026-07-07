@@ -610,37 +610,57 @@ the same approach — pivot to the fallback flow below.
 
 ### Step-by-Step Fallback Flow
 
+**Core principle: YOU (the agent) do all the configuration work.** The user only provides
+credentials. Never ask the user to manually edit JSON files, restart servers, or run
+commands — you handle all of that. The only thing the user must do is restart Claude Code
+at the end (because you cannot control their process).
+
 #### Step 1: Acknowledge and Explain
 
-> "It looks like your current model doesn't support image recognition (this is common
-> with models like DeepSeek and some others). No worries — I can help you set up a
-> local MCP vision bridge. This is a small server that runs on your machine and lets
-> me analyze images through a vision-capable model."
+> "It looks like your current model doesn't support image recognition (common with
+> DeepSeek and others). No worries — I'll set up a local MCP vision bridge for you.
+> This takes about 2 minutes and only needs to be done once."
 
 #### Step 2: Ask About Provider Preference
 
-> "Here are your options:
-> 1. **Alibaba Cloud Bailian (百炼)** — Free tier available, uses qwen-vl models.
->    The base URL is already configured. You just need to provide your API key.
-> 2. **Use your own vision-capable model** — If you already subscribe to a service
->    that supports vision (OpenAI, Claude API, or any OpenAI-compatible endpoint),
->    you can use that instead. You'll provide the base URL and API key."
+> "Pick a vision provider:
+> 1. **Alibaba Cloud Bailian (百炼, recommended)** — Free tier, qwen-vl model.
+>    I just need your API key (get it from https://bailian.console.aliyun.com/).
+> 2. **Your own provider** — If you already use OpenAI, Claude API, or any
+>    OpenAI-compatible vision service, I'll configure that instead."
 
-Ask: "Which option would you prefer? Or would you rather skip the chart for now?"
+Ask: "Which option? Or would you rather skip this chart for now?"
 
-#### Step 3A: Set Up Bailian (Option 1 — Default/Recommended)
+#### Step 3A: Set Up Bailian (Option 1 — Agent Does Everything)
 
 If the user chooses Bailian:
 
-1. Check if `scripts/vision_mcp_server.py` exists in the skill directory
-2. If yes, tell the user:
-   > "The MCP server script is already at `.claude/skills/ielts-coach/scripts/vision_mcp_server.py`.
-   > Here's what you need to do:
-   > 1. Install the dependency: `pip install mcp httpx`
-   > 2. Go to [Alibaba Cloud Bailian Console](https://bailian.console.aliyun.com/) to get your API key
-   > 3. Add the MCP server to your Claude Code config. Open `~/.claude/claude.json` and add:"
+1. **Ask for the API key only:**
+   > "Go to [bailian.console.aliyun.com](https://bailian.console.aliyun.com/) →
+   >   API Key management → create or copy your key. Paste it here."
 
-   Provide the exact JSON config block:
+2. **Wait for the user to paste the key.** Validate it's non-empty.
+
+3. **Install dependencies** (run this yourself — do NOT ask the user):
+   ```bash
+   pip install mcp httpx
+   ```
+
+4. **Verify the script exists:** Check that `scripts/vision_mcp_server.py` is present in
+   the skill directory. If not, create it from the template.
+
+5. **Configure the MCP server** — edit the project settings file yourself:
+   - First, check if `./.claude/settings.json` exists. If not, create it.
+   - The MCP server config goes under `mcpServers` key.
+   - If the file already has content, merge; otherwise create the full structure.
+   - Use these values:
+     - `command`: `"python"`
+     - `args`: `[".claude/skills/ielts-coach/scripts/vision_mcp_server.py"]`
+     - `env.VISION_API_KEY`: the key the user provided
+     - `env.VISION_BASE_URL`: `"https://llm-9hbxloqkuc0kihh2.cn-beijing.maas.aliyuncs.com/apps/anthropic"`
+     - `env.VISION_MODEL`: `"qwen-vl-plus"`
+
+   Target structure for `.claude/settings.json`:
    ```json
    {
      "mcpServers": {
@@ -648,7 +668,7 @@ If the user chooses Bailian:
          "command": "python",
          "args": [".claude/skills/ielts-coach/scripts/vision_mcp_server.py"],
          "env": {
-           "VISION_API_KEY": "your-bailian-api-key-here",
+           "VISION_API_KEY": "<user-provided-key>",
            "VISION_BASE_URL": "https://llm-9hbxloqkuc0kihh2.cn-beijing.maas.aliyuncs.com/apps/anthropic",
            "VISION_MODEL": "qwen-vl-plus"
          }
@@ -657,32 +677,61 @@ If the user chooses Bailian:
    }
    ```
 
-4. After confirming setup, tell the user to restart Claude Code and say:
-   > "Once you restart, say 'check the chart' and I'll use the vision bridge to analyze it."
+6. **If `.claude/settings.json` already has content** (e.g., existing `mcpServers` or
+   other keys), carefully merge the `vision-bridge` entry into the existing `mcpServers`
+   object without overwriting other servers or top-level settings.
 
-5. If the MCP server script does NOT exist at the expected path (unlikely if using this skill), create it from the template in `scripts/vision_mcp_server.py`.
+7. **Confirm completion:**
+   > "Done! I've installed the dependencies and configured the vision bridge. All you
+   > need to do now is restart Claude Code. When you're back, I'll analyze the chart
+   > for you. Ready to restart?"
 
-#### Step 3B: Set Up Custom Provider (Option 2)
+#### Step 3B: Set Up Custom Provider (Option 2 — Agent Does Everything)
 
 If the user prefers their own provider:
 
-> "Great — I'll help you configure it. Please provide:
-> - **Base URL** — the OpenAI-compatible chat completions endpoint
->   (e.g., `https://api.openai.com/v1` for OpenAI, `https://api.anthropic.com/v1/messages` would NOT work — must be OpenAI-compatible format)
-> - **API Key** — your authentication key
-> - **Model Name** — the exact model ID that supports vision
->   (e.g., `gpt-4o`, `claude-sonnet-5-20250901` if using Anthropic with compatible proxy)"
+1. **Collect credentials:**
+   > "Please provide:
+   > - **Base URL** — your OpenAI-compatible chat completions endpoint
+   >   (e.g., `https://api.openai.com/v1`)
+   > - **API Key** — your key
+   > - **Model Name** — the vision-capable model ID (e.g., `gpt-4o`)"
 
-Once the user provides these, proceed the same as Step 3A but with the user's custom values.
+2. **Wait for the user to provide all three.** Validate each is non-empty.
+   If the base URL doesn't end with `/v1`, note it's fine — the server handles this.
 
-#### Step 4: Verify and Use
+3. **Install dependencies** (run this yourself):
+   ```bash
+   pip install mcp httpx
+   ```
 
-After the user sets up the MCP server and restarts:
+4. **Configure the MCP server** — same process as Step 3A, but with the user's custom values:
+   - `env.VISION_BASE_URL`: user's provided base URL
+   - `env.VISION_MODEL`: user's provided model name
+   - `env.VISION_API_KEY`: user's provided key
 
-1. Load the tool schema via ToolSearch: `mcp__vision-bridge__analyze_image`
-2. Use the tool to analyze the chart image
-3. Proceed with generating the Task 1 model answer as normal
-4. If the tool call fails, help the user debug (wrong API key, network issue, etc.)
+5. **Confirm completion** — same as Step 3A.
+
+#### Step 4: Post-Restart Verification
+
+After the user restarts Claude Code and returns:
+
+1. **Option A** — The MCP tool may already be available. If so, the deferred tool
+   `mcp__vision-bridge__analyze_image` should appear in the system reminder.
+   Load its schema via ToolSearch and proceed to analyze.
+
+2. **Option B** — If the tool doesn't appear (new session, different context), ask
+   the user to confirm they restarted, then try reading a chart image — the fallback
+   should succeed now.
+
+3. **If the tool call fails** after setup:
+   - Check the error message. Common issues: wrong API key (401), network issue (timeout),
+     model doesn't support vision (400).
+   - For Bailian: remind the user the key must be from the Bailian console, not Alibaba Cloud's
+     general API key. It needs access to the model service.
+   - Offer to update the API key or switch providers.
+
+4. **Once working**, proceed with generating the Task 1 model answer as normal.
 
 ### MCP Server Details
 
@@ -699,14 +748,19 @@ The vision bridge MCP server (`scripts/vision_mcp_server.py`) provides:
 3. The prompt asks the model to describe the image in IELTS Task 1 terms: chart type, axes, trends, key data points, units
 4. Returns the text description to the agent
 
-**Prerequisites:** Python 3.10+, `pip install mcp httpx`
+**Configuration location:** `./.claude/settings.json` in the project directory.
+This keeps the MCP server scoped to the IELTS Coach project —
+other projects won't be affected.
 
 ### What NOT to Do
 
 - Do NOT repeatedly retry Read on the same image — if it fails once on a non-vision model, it will fail every time
 - Do NOT pretend to describe the chart from the filename or guess its content
+- Do NOT ask the user to manually edit configuration files — you do ALL the editing
+- Do NOT ask the user to run `pip install` — you run it yourself
 - Do NOT pressure the user to switch models — the MCP bridge solves the problem without changing their setup
 - Do NOT leave the user with no path forward — if they decline the MCP bridge, offer to work with a text description they can provide themselves
+- The ONLY thing the user needs to do is: (a) provide their API key, (b) restart Claude Code
 
 ---
 
