@@ -41,6 +41,46 @@ Similarity: similarly, likewise, both...and..., in the same way
 
 ## Task 2 - Essay Structure
 
+### Official Scoring Criteria (from IELTS Writing Band Descriptors)
+
+IELTS Writing Task 2 is scored across **four equally weighted criteria** (25% each).
+The source is the official public band descriptors published by IELTS.
+Task 2 counts for **⅔ of the total Writing score**; Task 1 counts for ⅓.
+
+#### 1. Task Response (TR)
+| Band | Requirement |
+|------|------------|
+| **6** | Addresses all parts of the task, though some parts may be more fully covered than others. Presents a relevant position, though conclusions may become unclear or repetitive. Main ideas are relevant but some may be inadequately developed or lack supporting evidence. |
+| **7** | Addresses all parts of the task. Presents a clear position **throughout** the response. Main ideas are extended and supported; may show a tendency to over-generalise or supporting ideas may lack focus. |
+| **8** | Sufficiently addresses all parts of the task. Presents a **well-developed response** with a clear position. Ideas are relevant, extended, and well-supported. Occasional omissions may occur. |
+
+#### 2. Coherence and Cohesion (CC)
+| Band | Requirement |
+|------|------------|
+| **6** | Arranges information coherently with clear overall progression. Cohesive devices used to some good effect, but cohesion within/between sentences may be **faulty or mechanical**. Paragraphing may not always be logical. |
+| **7** | Logically organises information; clear progression throughout. Uses a range of cohesive devices **flexibly** (including reference and substitution), with some inaccuracies or over/under-use. Clear central topic within each paragraph. |
+| **8** | Message can be followed **with ease**. Information is logically sequenced. Cohesion is **well managed**; lapses are occasional. Paragraphing used sufficiently and appropriately. |
+
+> **Key insight for CC:** Band 6 essays over-use mechanical linkers (Firstly, Secondly, Finally). Band 7+ uses reference (this, these, such), substitution (one, do so), and natural logical flow. The difference between "mechanical" (6) and "flexible" (7) is one of the biggest differentiators in IELTS writing.
+
+#### 3. Lexical Resource (LR)
+| Band | Requirement |
+|------|------------|
+| **6** | Adequate range of vocabulary for the task. Attempts to use less common vocabulary but with some inaccuracy. Some errors in spelling and/or word formation but they do not impede communication. |
+| **7** | Sufficient range to allow some **flexibility and precision**. Uses less common and/or idiomatic items with some awareness of **style and collocation**. Only a few errors in spelling/word formation. |
+| **8** | Wide resource used **fluently and flexibly** to convey precise meanings. Skilful use of uncommon and/or idiomatic items when appropriate. Occasional inaccuracies in word choice and collocation. |
+
+> **Key insight for LR:** The jump from 6→7 requires collocation awareness (words that naturally go together: "pose a threat", not "give a threat"). The jump from 7→8 requires the vocabulary to feel effortless rather than "studied."
+
+#### 4. Grammatical Range and Accuracy (GRA)
+| Band | Requirement |
+|------|------------|
+| **6** | A mix of simple and complex sentence forms. Errors in grammar and punctuation occur but rarely impede communication. Complex structures are less accurate than simple ones. |
+| **7** | A variety of complex structures used with some flexibility and accuracy. Frequent error-free sentences. Grammar and punctuation generally well controlled. A few errors may persist. |
+| **8** | A wide range of structures within the scope of the task is used **flexibly and accurately**. The majority of sentences are error-free. Punctuation is well managed. Occasional, non-systematic errors. |
+
+---
+
 ### Essay Types
 1. **Opinion** (To what extent do you agree or disagree?)
 2. **Discussion** (Discuss both views and give your opinion)
@@ -48,36 +88,44 @@ Similarity: similarly, likewise, both...and..., in the same way
 4. **Advantages-Disadvantages** (Do the advantages outweigh the disadvantages?)
 5. **Two-part Question** (Why is this? What can be done?)
 
-### Universal Essay Template
+### Universal Essay Structure
 
 ```
 Introduction (40-50 words)
-├── Hook: General statement about the topic
-├── Context: Why this is important/relevant
-└── Thesis: Your position + outline of body paragraphs
+├── Paraphrase the question (never copy it verbatim)
+├── State your clear position (thesis)
+└── Briefly outline what your essay will cover
 
 Body Paragraph 1 (80-100 words)
-├── Topic Sentence: Main idea
-├── Explanation: Develop the idea
-├── Example: Specific, concrete example
-└── Link: Connect back to thesis / transition
+├── Topic Sentence: Clear main idea for this paragraph
+├── Explanation: Develop and elaborate the idea
+├── Example: Specific, concrete example (ideally personalized from Topic Discovery)
+└── Mini-conclusion or transition
 
 Body Paragraph 2 (80-100 words)
-├── Topic Sentence: Main idea
-├── Explanation: Develop the idea
+├── Topic Sentence: Second main idea
+├── Explanation: Develop and elaborate
 ├── Example: Specific, concrete example
-└── Link: Connect back to thesis
+└── Link back to thesis
 
 Conclusion (30-40 words)
-├── Restate position (use different words)
-├── Summarize key points
-└── Final thought / recommendation
+├── Restate position (using different words from the introduction)
+├── Summarise the main argument's logic (not just "both sides are important")
+└── Final thought — no new ideas introduced here
 ```
 
-### Band-Specific Essay Requirements
-**Band 6**: All parts addressed, clear position, adequate paragraphing, some complex sentences
-**Band 7**: All parts addressed, clear position throughout, logical organization, range of complex structures
-**Band 8**: Well-developed response, extended ideas, skillful paragraphing, wide range of structures
+### Band-Specific Calibration Guide
+
+When the user's target is Band 6, 7, or 8, adjust as follows:
+
+| Dimension | Band 6 | Band 7 | Band 8 |
+|-----------|--------|--------|--------|
+| Position clarity | Stated in introduction | Maintained throughout | Nuanced but clear throughout |
+| Idea development | Simple explanation | Extended with examples | Fully developed, multi-layered |
+| Cohesive devices | Some connectors (and, but, because) | Flexible range (furthermore, in contrast, this suggests) | Natural flow, minimal overt signalling |
+| Vocabulary | Adequate, some topic words | Less common words with good collocation | Precise, effortless, skilful uncommon items |
+| Sentence structure | Mix of simple + compound | Variety of complex, frequent error-free | Wide range, majority error-free |
+| Paragraphing | Generally logical | Clear central topic per paragraph | Seamless, appropriate throughout |
 
 ### Topic-Specific Vocabulary Banks
-Use the essay topic to pull relevant vocabulary. Always include 5-8 topic-specific terms per essay.
+Use the essay topic to pull relevant vocabulary. Always include 5-8 topic-specific terms per essay drawn from the user's own vocabulary usage during Topic Discovery — build from what they already know rather than imposing a word list.
