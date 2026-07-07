@@ -20,6 +20,10 @@ __pycache__/
 # Private conversation files
 PRD.md
 
+# User's personal directories (not part of the skill)
+references/
+task1_charts/
+
 # OS
 .DS_Store
 Thumbs.db
