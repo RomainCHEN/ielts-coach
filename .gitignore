@@ -23,7 +23,11 @@ PRD.md
 # User's personal directories (not part of the skill)
 references/
 task1_charts/
-.claude/skills/
+.claude/
+.mcp.json
+
+# Log files
+*.log
 
 # OS
 .DS_Store

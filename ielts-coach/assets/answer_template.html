@@ -99,49 +99,6 @@
             transition: width 0.5s ease;
         }
 
-        /* ===== Navigation ===== */
-        .nav {
-            background: white;
-            border-bottom: 1px solid var(--border);
-            padding: 0.8rem 2rem;
-            position: sticky;
-            top: 130px;
-            z-index: 99;
-        }
-
-        .nav-inner {
-            max-width: 960px;
-            margin: 0 auto;
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .nav-tag {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: 99px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            cursor: pointer;
-            border: 2px solid var(--border);
-            background: white;
-            transition: all 0.2s;
-            text-decoration: none;
-            color: var(--text);
-        }
-
-        .nav-tag:hover, .nav-tag.active {
-            border-color: var(--navy);
-            background: var(--navy);
-            color: white;
-        }
-
-        .nav-tag.part1 { border-left: 3px solid var(--teal); }
-        .nav-tag.part23 { border-left: 3px solid var(--coral); }
-        .nav-tag.writing { border-left: 3px solid var(--gold); }
-
         /* ===== Main Content ===== */
         .main {
             max-width: 960px;
@@ -149,37 +106,8 @@
             padding: 1.5rem 2rem;
         }
 
-        /* ===== Session Block ===== */
-        .session-block {
-            margin-bottom: 2rem;
-        }
-
-        .session-header {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-            padding: 0.5rem 0;
-            border-bottom: 2px solid var(--navy);
-        }
-
-        .session-date {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--navy);
-        }
-
-        .session-badge {
-            font-size: 0.7rem;
-            padding: 0.2rem 0.6rem;
-            border-radius: 99px;
-            background: var(--navy);
-            color: white;
-            font-weight: 600;
-        }
-
-        /* ===== Answer Card ===== */
-        .answer-card {
+        /* ===== Day Card (Collapsible) ===== */
+        .day-card {
             background: var(--card-bg);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
@@ -188,20 +116,150 @@
             transition: box-shadow 0.2s;
         }
 
-        .answer-card:hover { box-shadow: var(--shadow-hover); }
+        .day-card:hover { box-shadow: var(--shadow-hover); }
+
+        /* summary = clickable header */
+        .day-card > summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            user-select: none;
+            transition: background 0.15s;
+            border: none;
+            outline: none;
+        }
+
+        .day-card > summary::-webkit-details-marker { display: none; }
+        .day-card > summary::marker { display: none; content: ''; }
+
+        .day-card > summary:hover { background: #f8f9fa; }
+
+        .day-card[open] > summary {
+            border-bottom: 1px solid var(--border);
+            background: #fafbfc;
+        }
+
+        /* Day number circle */
+        .day-number {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .day-card.completed .day-number {
+            background: linear-gradient(135deg, #2e7d32, #43a047);
+        }
+
+        .day-card.pending .day-number {
+            background: linear-gradient(135deg, #757575, #9e9e9e);
+        }
+
+        /* Day info block */
+        .day-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .day-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .day-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+        }
+
+        /* Topic badges in summary */
+        .day-topics-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+
+        .topic-pill {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 99px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .topic-pill.p1 { background: #e0f2f1; color: #00695c; }
+        .topic-pill.p2 { background: #fce4ec; color: #c62828; }
+        .topic-pill.p3 { background: #fce4ec; color: #c62828; }
+        .topic-pill.wt1 { background: #fff8e1; color: #f57f17; }
+        .topic-pill.wt2 { background: #fff8e1; color: #f57f17; }
+
+        /* Status badge */
+        .status-badge {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 99px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .status-badge.done { background: #e8f5e9; color: #2e7d32; }
+        .status-badge.pending { background: #fff3e0; color: #e65100; }
+
+        /* Chevron icon */
+        .chevron {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .day-card[open] .chevron { transform: rotate(90deg); }
+
+        /* Day content area */
+        .day-content {
+            padding: 1.5rem;
+        }
+
+        /* ===== Answer Card (inner) ===== */
+        .answer-card {
+            background: #fafbfc;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .answer-card:last-child { margin-bottom: 0; }
 
         .answer-card-header {
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1.2rem;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             gap: 1rem;
             flex-wrap: wrap;
+            background: white;
         }
 
         .answer-card-title {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--navy);
         }
@@ -210,7 +268,7 @@
             display: inline-block;
             padding: 0.15rem 0.5rem;
             border-radius: 99px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
             margin-right: 0.5rem;
             text-transform: uppercase;
@@ -234,7 +292,7 @@
             display: inline-block;
             padding: 0.15rem 0.5rem;
             border-radius: 4px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
         }
 
@@ -244,13 +302,13 @@
         .band-9 { background: #f3e5f5; color: #7b1fa2; }
 
         .answer-card-body {
-            padding: 1.5rem;
+            padding: 1.2rem 1.5rem;
         }
 
         .answer-card-body .question-block {
-            margin-bottom: 1.2rem;
-            padding: 0.8rem 1rem;
-            background: #f8f9fa;
+            margin-bottom: 1rem;
+            padding: 0.7rem 1rem;
+            background: white;
             border-radius: var(--radius-sm);
             border-left: 3px solid var(--navy);
         }
@@ -258,31 +316,39 @@
         .question-block .q-text {
             font-weight: 600;
             color: var(--navy);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
         }
 
         .question-block .a-text {
             color: var(--text);
             line-height: 1.7;
+            font-size: 0.9rem;
         }
 
         .cue-card-box {
             background: linear-gradient(135deg, #fff8e1, #ffecb3);
             border: 2px solid var(--gold);
             border-radius: var(--radius-sm);
-            padding: 1rem 1.2rem;
-            margin-bottom: 1.2rem;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1rem;
         }
 
         .cue-card-box .cue-title {
             font-weight: 700;
             color: #f57f17;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
         }
 
         .cue-card-box ul {
             list-style: none;
             padding: 0;
+        }
+
+        .cue-card-box ul li {
+            font-size: 0.85rem;
+            padding: 0.1rem 0;
         }
 
         .cue-card-box ul li::before {
@@ -292,6 +358,7 @@
 
         .essay-block {
             line-height: 1.8;
+            font-size: 0.9rem;
         }
 
         .essay-block p {
@@ -307,7 +374,7 @@
         }
 
         .highlights-section h4 {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--coral);
             margin-bottom: 0.6rem;
         }
@@ -315,15 +382,15 @@
         .highlight-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .highlight-tag {
             background: linear-gradient(135deg, #fce4ec, #f8bbd0);
             color: #880e4f;
-            padding: 0.35rem 0.7rem;
+            padding: 0.3rem 0.6rem;
             border-radius: 6px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
         }
 
@@ -332,17 +399,17 @@
         }
 
         .highlight-tag .meaning {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             opacity: 0.8;
             display: block;
         }
 
         .tip-block {
             margin-top: 0.8rem;
-            padding: 0.6rem 1rem;
+            padding: 0.5rem 0.8rem;
             background: #e8f5e9;
             border-radius: var(--radius-sm);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #2e7d32;
         }
 
@@ -355,10 +422,10 @@
         .copy-btn {
             background: none;
             border: 1px solid var(--border);
-            padding: 0.3rem 0.8rem;
+            padding: 0.25rem 0.6rem;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-secondary);
             transition: all 0.2s;
         }
@@ -399,9 +466,8 @@
         /* ===== Print Styles ===== */
         @media print {
             .header { position: static; }
-            .nav { display: none; }
             .copy-btn { display: none; }
-            .answer-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .day-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
             body { font-size: 11pt; }
         }
 
@@ -413,7 +479,9 @@
             .stat-card { padding: 0.4rem 0.7rem; }
             .stat-card .stat-value { font-size: 1.1rem; }
             .main { padding: 1rem; }
-            .nav { padding: 0.5rem 1rem; top: 110px; }
+            .day-card > summary { padding: 1rem; }
+            .day-content { padding: 1rem; }
+            .day-topics-preview { display: none; }
             .answer-card-header { flex-direction: column; }
             .answer-card-body { padding: 1rem; }
         }
@@ -448,20 +516,27 @@
     </div>
 </header>
 
-<nav class="nav" id="navBar">
-    <div class="nav-inner">
-        <span style="font-weight:600;font-size:0.85rem;margin-right:0.5rem;">Filter:</span>
-        <a href="#" class="nav-tag active" data-filter="all">📋 All</a>
-        <a href="#" class="nav-tag part1" data-filter="p1">🎤 Part 1</a>
-        <a href="#" class="nav-tag part23" data-filter="p2">🎙️ Part 2</a>
-        <a href="#" class="nav-tag part23" data-filter="p3">💬 Part 3</a>
-        <a href="#" class="nav-tag writing" data-filter="wt1">📊 Task 1</a>
-        <a href="#" class="nav-tag writing" data-filter="wt2">📝 Task 2</a>
-    </div>
-</nav>
-
 <main class="main" id="answersContainer">
-    <!-- Answers will be inserted here -->
+    <!-- Day cards will be inserted here -->
+    <!-- Example structure:
+    <details class="day-card completed" open>
+        <summary>
+            <div class="day-number">D1</div>
+            <div class="day-info">
+                <div class="day-title">Day 1 <span class="status-badge done">✓ Completed</span></div>
+                <div class="day-date">July 7, 2026</div>
+                <div class="day-topics-preview">
+                    <span class="topic-pill p1">🎤 Part 1: Work or Studies</span>
+                    <span class="topic-pill p2">🎙️ Part 2: An Interesting Video</span>
+                </div>
+            </div>
+            <span class="chevron">▸</span>
+        </summary>
+        <div class="day-content">
+            <article class="answer-card">...</article>
+        </div>
+    </details>
+    -->
     <div class="empty-state" id="emptyState">
         <div class="icon">📚</div>
         <h2>No answers yet</h2>
@@ -475,36 +550,6 @@
 </footer>
 
 <script>
-// ===== Filter functionality =====
-document.querySelectorAll('.nav-tag').forEach(tag => {
-    tag.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelectorAll('.nav-tag').forEach(t => t.classList.remove('active'));
-        this.classList.add('active');
-        const filter = this.dataset.filter;
-
-        document.querySelectorAll('.answer-card').forEach(card => {
-            if (filter === 'all' || card.dataset.type === filter) {
-                card.style.display = '';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-
-        // Show/hide session blocks
-        document.querySelectorAll('.session-block').forEach(block => {
-            const visibleCards = block.querySelectorAll('.answer-card[style*="display:"]').length;
-            const allCards = block.querySelectorAll('.answer-card').length;
-            const hiddenCards = block.querySelectorAll('.answer-card[style*="display: none"]').length;
-            if (hiddenCards === allCards) {
-                block.style.display = 'none';
-            } else {
-                block.style.display = '';
-            }
-        });
-    });
-});
-
 // ===== Copy functionality =====
 function copyAnswer(btn) {
     const card = btn.closest('.answer-card');
