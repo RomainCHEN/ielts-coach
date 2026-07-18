@@ -155,6 +155,23 @@ AI：  [扔给你一篇套话连篇的250词范文，通篇 Firstly... Secondly.
 **Step 2: 图片上传**
 ![表单 Step 2 上传](docs/screenshots/form_step2_upload.png)
 
+### 输出 HTML 预览
+
+**页面总览：可折叠的 Day 卡片**
+![HTML 总览](docs/screenshots/html_overview.png)
+
+**Day 1 展开：答案卡片**
+![Day 1 展开](docs/screenshots/html_day1_expanded.png)
+
+**答案详情：Speaking Part 1**
+![答案卡片](docs/screenshots/html_answer_cards.png)
+
+**高亮词汇区域**
+![高亮词汇](docs/screenshots/html_highlights.png)
+
+**手机端视图**
+![手机端](docs/screenshots/html_mobile.png)
+
 ---
 
 ## ⚡ 快速上手

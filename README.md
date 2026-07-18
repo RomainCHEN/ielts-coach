@@ -156,6 +156,23 @@ The web form is the core interaction interface for Topic Discovery. Instead of a
 **Step 2: Image Upload**
 ![Form Step 2 Upload](docs/screenshots/form_step2_upload.png)
 
+### Output HTML Preview
+
+**Page Overview: Collapsible Day Cards**
+![HTML Overview](docs/screenshots/html_overview.png)
+
+**Day 1 Expanded: Answer Cards**
+![Day 1 Expanded](docs/screenshots/html_day1_expanded.png)
+
+**Answer Detail: Speaking Part 1**
+![Answer Cards](docs/screenshots/html_answer_cards.png)
+
+**Highlight Expressions Section**
+![Highlights](docs/screenshots/html_highlights.png)
+
+**Mobile View**
+![Mobile](docs/screenshots/html_mobile.png)
+
 ---
 
 ## ⚡ Quick Start
