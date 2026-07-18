@@ -147,31 +147,23 @@ The web form is the core interaction interface for Topic Discovery. Instead of a
 
 ### Screenshots
 
-**Step 1: Topic Discovery Form (Empty)**
-![Form Step 1 Empty](docs/screenshots/form_step1_empty.png)
+**Web Form: Topic Discovery**
+![Web Form](docs/screenshots/form_overview.png)
 
-**Step 1: Topic Discovery Form (Filled)**
-![Form Step 1 Filled](docs/screenshots/form_step1_filled.png)
+**Web Form: Filled Answers**
+![Web Form Filled](docs/screenshots/form_filled.png)
 
-**Step 2: Image Upload**
-![Form Step 2 Upload](docs/screenshots/form_step2_upload.png)
+**Output HTML: Header & Stats**
+![HTML Header](docs/screenshots/html_header.png)
 
-### Output HTML Preview
+**Output HTML: Collapsible Day Card**
+![Day Card Collapsed](docs/screenshots/html_day_collapsed.png)
 
-**Page Overview: Collapsible Day Cards**
-![HTML Overview](docs/screenshots/html_overview.png)
+**Output HTML: Answer Card**
+![Answer Card](docs/screenshots/html_qa_card.png)
 
-**Day 1 Expanded: Answer Cards**
-![Day 1 Expanded](docs/screenshots/html_day1_expanded.png)
-
-**Answer Detail: Speaking Part 1**
-![Answer Cards](docs/screenshots/html_answer_cards.png)
-
-**Highlight Expressions Section**
+**Output HTML: Highlight Expressions**
 ![Highlights](docs/screenshots/html_highlights.png)
-
-**Mobile View**
-![Mobile](docs/screenshots/html_mobile.png)
 
 ---
 

@@ -146,31 +146,25 @@ AI：  [扔给你一篇套话连篇的250词范文，通篇 Firstly... Secondly.
 
 ### 截图
 
-**Step 1: 话题挖掘表单（空白）**
-![表单 Step 1 空白](docs/screenshots/form_step1_empty.png)
+**网页表单：话题挖掘**
+![网页表单](docs/screenshots/form_overview.png)
 
-**Step 1: 话题挖掘表单（已填写）**
-![表单 Step 1 已填写](docs/screenshots/form_step1_filled.png)
-
-**Step 2: 图片上传**
-![表单 Step 2 上传](docs/screenshots/form_step2_upload.png)
+**网页表单：已填写回答**
+![表单已填写](docs/screenshots/form_filled.png)
 
 ### 输出 HTML 预览
 
-**页面总览：可折叠的 Day 卡片**
-![HTML 总览](docs/screenshots/html_overview.png)
+**页头与统计信息**
+![HTML 页头](docs/screenshots/html_header.png)
 
-**Day 1 展开：答案卡片**
-![Day 1 展开](docs/screenshots/html_day1_expanded.png)
+**可折叠的 Day 卡片**
+![Day 卡片收起](docs/screenshots/html_day_collapsed.png)
 
-**答案详情：Speaking Part 1**
-![答案卡片](docs/screenshots/html_answer_cards.png)
+**答案卡片详情**
+![答案卡片](docs/screenshots/html_qa_card.png)
 
 **高亮词汇区域**
 ![高亮词汇](docs/screenshots/html_highlights.png)
-
-**手机端视图**
-![手机端](docs/screenshots/html_mobile.png)
 
 ---
 
