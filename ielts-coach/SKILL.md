@@ -193,37 +193,58 @@ user experience. The form is served by a local Python server.
 
 **How to use the web form:**
 
-1. **Generate questions JSON file** with the topic name and 3-5 questions:
+1. **Generate a config JSON file** with steps, questions, and question types:
    ```json
    {
+     "title": "IELTS Coach - Topic Discovery",
+     "description": "请回答以下问题...",
      "topic": "Topic Name",
-     "questions": [
-       {"id": "q1", "question": "What is your favourite food?", "type": "textarea"},
-       {"id": "q2", "question": "Do you prefer online or in-store shopping?", "type": "radio", "options": ["Online", "In-store", "Both"]}
+     "steps": [
+       {
+         "title": "Step 1: Topic Discovery",
+         "description": "先告诉我关于这个话题的信息。",
+         "tip": "请尽可能详细地回答...",
+         "questions": [
+           {"id": "q1", "label": "What is your favourite food?", "type": "textarea"},
+           {"id": "q2", "label": "Do you prefer online shopping?", "type": "radio", "options": ["Online", "In-store", "Both"]}
+         ]
+       },
+       {
+         "title": "Step 2: Upload Chart",
+         "description": "请上传你的 Writing Task 1 图表图片。",
+         "questions": [
+           {"id": "chart", "label": "上传图表图片", "type": "paste"}
+         ]
+       }
      ]
    }
    ```
-   Save to: `topic_form_questions.json` in the project directory.
+   Save to: `topic_form_config.json` in the project directory.
 
-2. **Start the server** (run in background):
+2. **Start the server directly** (NOT in background — the server will stay alive until user submits):
    ```bash
-   python ielts-coach/scripts/topic_form_server.py --questions topic_form_questions.json --answers topic_form_answers.json --port 8765
+   python ielts-coach/scripts/topic_form_server.py --config topic_form_config.json --answers topic_form_answers.json --images-dir task1_charts --port 8765
    ```
+   The server will automatically open the browser, stay alive waiting for user
+   submission, save answers to `topic_form_answers.json`, and shut down automatically.
 
-3. **Open the browser** automatically (the server does this) or tell the user:
-   > "请在浏览器中打开 http://127.0.0.1:8765/form 填写你的回答。填完后点击提交按钮。"
+3. **Tell the user** to open the browser and fill in the form:
+   > "浏览器应该已经自动打开了。请在表单中填写你的回答，然后点击'提交所有回答'按钮。"
 
-4. **Tell the user to fill in the form** and submit when done.
+4. **After user submits**, the server will automatically shut down and save the answers.
 
-5. **After user submits**, read the answers from `topic_form_answers.json`.
+5. **Read the answers** from `topic_form_answers.json`.
+   If images were uploaded, they are saved to the `--images-dir` folder.
 
 6. **Continue with content confirmation** (Stage C) and answer generation (Stage D).
 
-**Advantages over CLI interaction:**
-- User can see all questions at once and answer at their own pace
-- Better visual experience with form validation and progress bar
-- User can take their time without pressure
-- Answers are saved structured (JSON format)
+**Supported question types:**
+- `textarea` — Multi-line text input
+- `radio` — Single choice from options
+- `image` — File upload with preview
+- `paste` — Clipboard paste (Ctrl+V) or file upload
+
+**⚠️ Important:** The server runs as a foreground process and blocks until the user submits. Do NOT run it in background — it will be killed by the CLI environment.
 
 #### Stage A: Topic Priming
 
