@@ -1,0 +1,23 @@
+{
+  "title": "IELTS Coach - Demo",
+  "description": "This is a demo of the Topic Discovery web form.",
+  "topic": "Music",
+  "steps": [
+    {
+      "title": "Step 1: Topic Discovery",
+      "description": "Please answer the following questions about your music preferences.",
+      "tip": "The more detailed your answers, the more personalized the model answers will be.",
+      "questions": [
+        {"id": "q1", "label": "What kind of music do you prefer?", "type": "textarea", "placeholder": "e.g., Classical, Pop, Rock..."},
+        {"id": "q2", "label": "Do you play any musical instruments?", "type": "textarea", "placeholder": "Describe your experience..."}
+      ]
+    },
+    {
+      "title": "Step 2: Upload Chart",
+      "description": "Upload your IELTS Writing Task 1 chart image.",
+      "questions": [
+        {"id": "chart", "label": "Upload chart image", "type": "paste"}
+      ]
+    }
+  ]
+}

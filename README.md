@@ -4,7 +4,7 @@
 <p align="center">
   <img src="https://img.shields.io/github/stars/RomainCHEN/ielts-coach?style=flat-square&color=yellow" alt="Stars">
   <img src="https://img.shields.io/github/license/RomainCHEN/ielts-coach?style=flat-square&color=blue" alt="License">
-  <img src="https://img.shields.io/badge/version-v2.0-1a237e?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/badge/version-v3.0-1a237e?style=flat-square" alt="Version">
   <img src="https://img.shields.io/badge/topics-102-ffc107?style=flat-square" alt="Topics">
 </p>
 
@@ -22,6 +22,7 @@
 
 - [🧠 What Makes This Different](#-what-makes-this-different)
 - [✨ Features](#-features)
+- [🌐 Topic Discovery Web Form](#-topic-discovery-web-form)
 - [⚡ Quick Start](#-quick-start)
 - [🔄 The Workflow](#-the-workflow)
 - [📁 Project Structure](#-project-structure)
@@ -45,7 +46,7 @@ AI:   [Generates a 250-word essay full of Firstly, Secondly, In conclusion]
 
 ```
 Coach: Before I write anything, what is YOUR take on this topic?
-       [5-minute mini-interview: mines memories, opinions, personal examples]
+       [Web form opens → you fill in your thoughts at your own pace]
 Coach: Let me make sure I have this right. You believe X because of
        your experience with Y. I will build your answer around that.
 User:  Yes, and also mention Z.
@@ -59,13 +60,17 @@ Coach: [Polished essay IN THE USER'S VOICE, band-calibrated, zero AI flavor]
 | Memorability | Hard to remember because it is not yours | Easy: it literally IS you, just polished |
 | Scoring alignment | Random | Calibrated to official IELTS descriptors per band |
 | Vision support | Depends on model | Works on any model (DeepSeek included) via MCP bridge |
-| Topic discovery | None | Structured interview per topic, covering all 102 |
+| Topic discovery | None | Web form + structured interview, covering all 102 |
 
 ---
 
 ## ✨ Features
 
 <table>
+<tr>
+  <td width="48"><strong>🌐</strong></td>
+  <td><strong>Topic Discovery Web Form</strong><br>Instead of typing answers in the CLI, a beautiful web form opens in your browser. Multi-step forms with progress indicators, image upload, and clipboard paste support. Fill in answers at your own pace, then submit with one click.</td>
+</tr>
 <tr>
   <td width="48"><strong>🎯</strong></td>
   <td><strong>Progressive Topic Discovery</strong><br>Not just onboarding. Every new topic triggers a structured mini-interview. The agent mines <em>your</em> specific memories, opinions, and experiences before writing a single word. 102 topics, 102 personalized answers.</td>
@@ -84,13 +89,70 @@ Coach: [Polished essay IN THE USER'S VOICE, band-calibrated, zero AI flavor]
 </tr>
 <tr>
   <td width="48"><strong>🖼️</strong></td>
-  <td><strong>Beautiful HTML Output</strong><br>Responsive, printable, navigable. Highlighted vocabulary, structure notes, copy buttons. Navy and gold IELTS-themed design.</td>
+  <td><strong>Beautiful HTML Output</strong><br>Collapsible day cards with expand/collapse. Responsive, printable. Highlighted vocabulary, structure notes, copy buttons. Navy and gold IELTS-themed design.</td>
 </tr>
 <tr>
   <td width="48"><strong>🔄</strong></td>
   <td><strong>Self-Evolving Study Plan</strong><br>Reschedules missed sessions, prioritizes weak areas, tracks progress across sessions via JSON state files. 102 topics never repeat unless you ask.</td>
 </tr>
 </table>
+
+---
+
+## 🌐 Topic Discovery Web Form
+
+The web form is the core interaction interface for Topic Discovery. Instead of answering questions one by one in the CLI, you get a beautiful, multi-step form in your browser.
+
+### How It Works
+
+```
+┌──────────────────────────────────────────────────────────┐
+│  Agent generates questions                               │
+│       │                                                  │
+│       ▼                                                  │
+│  ┌─────────────────────────────┐                         │
+│  │  Web Form Server starts     │  ← Auto-opens browser  │
+│  │  http://127.0.0.1:8765/form │                         │
+│  └─────────────────────────────┘                         │
+│       │                                                  │
+│       ▼                                                  │
+│  User fills in answers in browser                        │
+│  (multi-step, progress bar, image upload)                │
+│       │                                                  │
+│       ▼                                                  │
+│  Submit → Answers saved to JSON → Server auto-closes     │
+│       │                                                  │
+│       ▼                                                  │
+│  Agent reads answers → Generates model answers           │
+└──────────────────────────────────────────────────────────┘
+```
+
+### Features
+
+- **Multi-step forms** — Questions organized by topic (Speaking Part 1, Part 2, Writing)
+- **Progress indicator** — Step dots show current progress
+- **Image upload** — Drag & drop or click to upload chart images for Writing Task 1
+- **Clipboard paste** — Ctrl+V to paste screenshots directly
+- **Auto-save** — Answers saved to JSON file, images saved to `task1_charts/`
+- **Beautiful UI** — Gradient purple background, responsive design, works on mobile
+
+### Supported Question Types
+
+| Type | Description | Use Case |
+|------|-------------|----------|
+| `textarea` | Multi-line text input | Most Topic Discovery questions |
+| `radio` | Single choice from options | Preference questions |
+| `image` | File upload with preview | Writing Task 1 charts |
+| `paste` | Clipboard paste or file upload | Screenshots, chart images |
+
+### Screenshots
+
+<!-- Add your screenshots here -->
+<!-- ![Web Form Step 1](docs/screenshots/form_step1.png) -->
+<!-- ![Web Form Step 2](docs/screenshots/form_step2.png) -->
+<!-- ![Form Submission Success](docs/screenshots/form_success.png) -->
+
+> 📸 To add screenshots: Open the form in your browser, take screenshots, and save them to `docs/screenshots/`. Then uncomment the image references above.
 
 ---
 
@@ -108,7 +170,7 @@ cd ielts-coach
 # 3. Start your agent and just talk. The skill triggers automatically.
 ```
 
-> 💡 **No configuration needed.** Say Start my IELTS preparation and the agent handles everything. Onboarding → Study Plan → Daily sessions with Topic Discovery → Model answers in HTML.
+> 💡 **No configuration needed.** Say "Start my IELTS preparation" and the agent handles everything. Onboarding → Study Plan → Daily sessions with Topic Discovery → Model answers in HTML.
 
 **For DeepSeek and non-vision model users:** The first time a chart image fails to load, the agent auto-guides you through the 2-minute Vision Bridge setup. You only provide an API key.
 
@@ -131,9 +193,13 @@ cd ielts-coach
 │       │                                                  │
 │       ▼                                                  │
 │  ┌─────────────────────────────┐                         │
-│  │  TOPIC DISCOVERY (per topic) │  ← The secret sauce    │
-│  │  Stage A: Priming           │                         │
-│  │  Stage B: Experience Mining │                         │
+│  │  TOPIC DISCOVERY             │  ← The secret sauce    │
+│  │  ┌──────────────────────┐   │                         │
+│  │  │ Web Form opens in    │   │                         │
+│  │  │ browser (multi-step) │   │                         │
+│  │  │ User fills answers   │   │                         │
+│  │  │ Submit → JSON saved  │   │                         │
+│  │  └──────────────────────┘   │                         │
 │  │  Stage C: Content Confirm   │                         │
 │  │  Stage D: Generate Answer   │                         │
 │  └─────────────────────────────┘                         │
@@ -156,7 +222,7 @@ cd ielts-coach
 
 ```
 ielts-coach/
-├── SKILL.md                              # Complete agent behavior (~700 lines)
+├── SKILL.md                              # Complete agent behavior (~800 lines)
 ├── references/
 │   ├── question-bank.md                  # Part 1 + P2&3 New topics (38+29)
 │   ├── question_bank_complete.json       # P2&3 Retained + Non-mainland (27+8)
@@ -167,9 +233,12 @@ ielts-coach/
 ├── scripts/
 │   ├── state_manager.py                  # JSON state file management
 │   ├── build_complete_bank.py            # Question bank builder
+│   ├── topic_form_server.py              # Web form server (Topic Discovery)
 │   └── vision_mcp_server.py             # MCP vision bridge (DeepSeek → qwen3.7-plus)
-└── assets/
-    └── answer_template.html              # HTML template for answer rendering
+├── assets/
+│   └── answer_template.html              # HTML template for answer rendering
+└── docs/
+    └── screenshots/                      # Screenshots for documentation
 ```
 
 > ⚡ **Copy the `ielts-coach/` folder into your agent's skill directory. That is it.** Runtime state files (`user_profile.json`, `study_plan.json`, `progress.json`, `ielts_answers.html`) are auto-generated in your project root and never tracked here.
@@ -183,7 +252,7 @@ IELTS Coach personalizes on 4 dimensions simultaneously. No static template can 
 | Dimension | Source | Example |
 |---|---|---|
 | **1. Personal Identity** | Onboarding | As a software engineer in Shenzhen... |
-| **2. Topic-Specific Experience** | Topic Discovery interview | When I was debugging that production outage at 3am... |
+| **2. Topic-Specific Experience** | Topic Discovery interview (via web form) | When I was debugging that production outage at 3am... |
 | **3. Target Band Calibration** | User's target score | Band 7 vocabulary density, flexible cohesive devices |
 | **4. Human Voice Preservation** | User's raw language during Discovery | Their humor, their cultural references, their sentence rhythm |
 
@@ -224,6 +293,7 @@ This is a personal exam preparation tool, but improvements are warmly welcome:
 - Suggest HTML design improvements
 - Share calibrated sample answers for the reference pool
 - Report AI-flavor patterns that slipped through
+- Add screenshots for documentation
 
 Open an issue or PR.
 
