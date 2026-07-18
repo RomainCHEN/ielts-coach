@@ -147,12 +147,14 @@ The web form is the core interaction interface for Topic Discovery. Instead of a
 
 ### Screenshots
 
-<!-- Add your screenshots here -->
-<!-- ![Web Form Step 1](docs/screenshots/form_step1.png) -->
-<!-- ![Web Form Step 2](docs/screenshots/form_step2.png) -->
-<!-- ![Form Submission Success](docs/screenshots/form_success.png) -->
+**Step 1: Topic Discovery Form (Empty)**
+![Form Step 1 Empty](docs/screenshots/form_step1_empty.png)
 
-> 📸 To add screenshots: Open the form in your browser, take screenshots, and save them to `docs/screenshots/`. Then uncomment the image references above.
+**Step 1: Topic Discovery Form (Filled)**
+![Form Step 1 Filled](docs/screenshots/form_step1_filled.png)
+
+**Step 2: Image Upload**
+![Form Step 2 Upload](docs/screenshots/form_step2_upload.png)
 
 ---
 

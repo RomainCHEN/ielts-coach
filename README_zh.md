@@ -144,6 +144,17 @@ AI：  [扔给你一篇套话连篇的250词范文，通篇 Firstly... Secondly.
 | `image` | 文件上传带预览 | Writing Task 1 图表 |
 | `paste` | 剪贴板粘贴或文件上传 | 截图、图表图片 |
 
+### 截图
+
+**Step 1: 话题挖掘表单（空白）**
+![表单 Step 1 空白](docs/screenshots/form_step1_empty.png)
+
+**Step 1: 话题挖掘表单（已填写）**
+![表单 Step 1 已填写](docs/screenshots/form_step1_filled.png)
+
+**Step 2: 图片上传**
+![表单 Step 2 上传](docs/screenshots/form_step2_upload.png)
+
 ---
 
 ## ⚡ 快速上手
