@@ -186,6 +186,45 @@ needs the image described to practice Task 1.
 before generating any model answer. The user expresses first in their own words;
 you then polish their raw thoughts into a band-appropriate model answer.
 
+#### Web Form Mode (Preferred for rich interaction)
+
+Instead of asking questions one by one in the CLI, use the web form for a better
+user experience. The form is served by a local Python server.
+
+**How to use the web form:**
+
+1. **Generate questions JSON file** with the topic name and 3-5 questions:
+   ```json
+   {
+     "topic": "Topic Name",
+     "questions": [
+       {"id": "q1", "question": "What is your favourite food?", "type": "textarea"},
+       {"id": "q2", "question": "Do you prefer online or in-store shopping?", "type": "radio", "options": ["Online", "In-store", "Both"]}
+     ]
+   }
+   ```
+   Save to: `topic_form_questions.json` in the project directory.
+
+2. **Start the server** (run in background):
+   ```bash
+   python ielts-coach/scripts/topic_form_server.py --questions topic_form_questions.json --answers topic_form_answers.json --port 8765
+   ```
+
+3. **Open the browser** automatically (the server does this) or tell the user:
+   > "请在浏览器中打开 http://127.0.0.1:8765/form 填写你的回答。填完后点击提交按钮。"
+
+4. **Tell the user to fill in the form** and submit when done.
+
+5. **After user submits**, read the answers from `topic_form_answers.json`.
+
+6. **Continue with content confirmation** (Stage C) and answer generation (Stage D).
+
+**Advantages over CLI interaction:**
+- User can see all questions at once and answer at their own pace
+- Better visual experience with form validation and progress bar
+- User can take their time without pressure
+- Answers are saved structured (JSON format)
+
 #### Stage A: Topic Priming
 
 1. Announce the topic and show the exact questions or cue card
