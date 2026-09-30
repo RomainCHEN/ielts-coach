@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Task 1 模板速查</title>
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+        --navy: #1a237e;
+        --navy-light: #283593;
+        --gold: #ffc107;
+        --gold-light: #fff8e1;
+        --coral: #e91e63;
+        --teal: #009688;
+        --teal-light: #e0f2f1;
+        --purple: #6a1b9a;
+        --purple-light: #f3e5f5;
+        --blue: #1565c0;
+        --blue-light: #e3f2fd;
+        --green: #2e7d32;
+        --green-light: #e8f5e9;
+        --orange: #e65100;
+        --orange-light: #fff3e0;
+        --bg: #f5f6fa;
+        --card-bg: #ffffff;
+        --text: #212121;
+        --text-secondary: #616161;
+        --border: #e0e0e0;
+        --shadow: 0 2px 10px rgba(26,35,126,0.06);
+        --radius: 14px;
+        --radius-sm: 8px;
+    }
+
+    body {
+        font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+    }
+
+    /* ===== Header ===== */
+    .header {
+        background: linear-gradient(135deg, var(--navy) 0%, #3949ab 60%, #5e35b1 100%);
+        color: white;
+        padding: 1.4rem 1.5rem 1.2rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 14px rgba(0,0,0,0.2);
+    }
+    .header-inner { max-width: 1000px; margin: 0 auto; }
+    .header h1 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.3px; }
+    .header h1 .icon { margin-right: 0.4rem; }
+    .header p.sub { font-size: 0.82rem; opacity: 0.9; margin-top: 0.3rem; }
+    .header-chips {
+        display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.7rem;
+    }
+    .chip {
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.25);
+        padding: 0.22rem 0.7rem;
+        border-radius: 99px;
+        font-size: 0.72rem;
+        font-weight: 600;
+    }
+    .chip a { color: white; text-decoration: none; }
+    .chip a:hover { text-decoration: underline; }
+
+    /* ===== Nav / Table of contents ===== */
+    .toc {
+        max-width: 1000px;
+        margin: 1.2rem auto 0;
+        padding: 0 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.6rem;
+    }
+    .toc-item {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0.7rem 0.9rem;
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--navy);
+        text-decoration: none;
+        box-shadow: var(--shadow);
+        transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .toc-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 14px rgba(26,35,126,0.15);
+    }
+    .toc-item .emoji { display: block; font-size: 1.2rem; margin-bottom: 0.15rem; }
+
+    /* ===== Main layout ===== */
+    .main { max-width: 1000px; margin: 0 auto; padding: 1.2rem 1.5rem 3rem; }
+
+    /* ===== Universal structure section ===== */
+    .section-title {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--navy);
+        margin: 2.2rem 0 1rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 3px solid var(--gold);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .section-title:first-child { margin-top: 0.5rem; }
+
+    .card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 1.3rem 1.5rem;
+        margin-bottom: 1.2rem;
+        border: 1px solid rgba(224,224,224,0.6);
+    }
+
+    .structure-flow {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 0.9rem;
+    }
+    .flow-step {
+        background: var(--navy-light);
+        color: white;
+        border-radius: var(--radius-sm);
+        padding: 0.9rem 1rem;
+        position: relative;
+    }
+    .flow-step .step-num {
+        display: inline-block;
+        background: var(--gold);
+        color: var(--navy);
+        font-weight: 800;
+        border-radius: 99px;
+        width: 26px; height: 26px;
+        line-height: 26px;
+        text-align: center;
+        font-size: 0.8rem;
+        margin-bottom: 0.4rem;
+    }
+    .flow-step .step-title { font-weight: 700; font-size: 0.92rem; }
+    .flow-step .step-desc { font-size: 0.75rem; opacity: 0.92; margin-top: 0.25rem; }
+
+    .warning-box {
+        background: #fff3f0;
+        border-left: 4px solid var(--coral);
+        border-radius: var(--radius-sm);
+        padding: 1rem 1.2rem;
+        margin-top: 1.2rem;
+    }
+    .warning-box .w-title { font-weight: 800; color: var(--coral); font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .warning-box ul { padding-left: 1.2rem; font-size: 0.87rem; }
+    .warning-box li { margin-bottom: 0.3rem; }
+    .warning-box .ok { color: var(--green); font-weight: 600; }
+
+    /* ===== Chart sections ===== */
+    .chart-card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+        border: 1px solid rgba(224,224,224,0.6);
+    }
+    .chart-card-header {
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: white;
+    }
+    .chart-card-header .big-icon { font-size: 1.8rem; }
+    .chart-card-header .h-title { font-size: 1.12rem; font-weight: 800; }
+    .chart-card-header .h-sub { font-size: 0.78rem; opacity: 0.92; margin-top: 0.1rem; }
+    .chart-card-header.line { background: linear-gradient(135deg, #1565c0, #1e88e5); }
+    .chart-card-header.bar { background: linear-gradient(135deg, #e65100, #f57c00); }
+    .chart-card-header.pie { background: linear-gradient(135deg, #c2185b, #e91e63); }
+    .chart-card-header.table { background: linear-gradient(135deg, #00695c, #00897b); }
+    .chart-card-header.process { background: linear-gradient(135deg, #4a148c, #7b1fa2); }
+    .chart-card-header.map { background: linear-gradient(135deg, #33691e, #558b2f); }
+
+    .chart-card-body { padding: 1.2rem 1.5rem 1.5rem; }
+
+    .tpl-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.1rem;
+    }
+    .tpl-box {
+        background: #fafbfe;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0.9rem 1.1rem;
+    }
+    .tpl-box .tpl-label {
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--navy);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+    }
+    .tpl-box p { font-size: 0.88rem; margin-bottom: 0.45rem; }
+    .tpl-box p:last-child { margin-bottom: 0; }
+
+    /* Fill-in placeholder */
+    .fill {
+        background: var(--gold-light);
+        border: 1px dashed var(--gold);
+        border-radius: 4px;
+        padding: 0 0.25rem;
+        color: var(--navy);
+        font-weight: 600;
+    }
+
+    /* Highlight vocabulary */
+    .vocab-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 0.5rem;
+    }
+    .vocab-item {
+        background: var(--teal-light);
+        border-radius: var(--radius-sm);
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+    }
+    .vocab-item .en { font-weight: 700; color: var(--teal); }
+    .vocab-item .cn { color: var(--text-secondary); font-size: 0.78rem; margin-left: 0.3rem; }
+    .vocab-item.orange { background: var(--orange-light); }
+    .vocab-item.orange .en { color: var(--orange); }
+    .vocab-item.purple { background: var(--purple-light); }
+    .vocab-item.purple .en { color: var(--purple); }
+    .vocab-item.blue { background: var(--blue-light); }
+    .vocab-item.blue .en { color: var(--blue); }
+    .vocab-item.green { background: var(--green-light); }
+    .vocab-item.green .en { color: var(--green); }
+
+    .sub-h { font-size: 0.95rem; font-weight: 800; color: var(--navy); margin: 1.1rem 0 0.5rem; }
+    .sub-h .cn { color: var(--text-secondary); font-weight: 600; font-size: 0.85rem; margin-left: 0.4rem; }
+
+    /* Example answer */
+    .example-box {
+        background: #fbfcff;
+        border: 2px solid var(--navy-light);
+        border-radius: var(--radius-sm);
+        padding: 1rem 1.2rem;
+        margin-top: 1rem;
+    }
+    .example-box .ex-title {
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: var(--navy);
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+    }
+    .example-box p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .example-box .note { font-size: 0.76rem; color: var(--text-secondary); border-top: 1px dashed var(--border); padding-top: 0.5rem; margin-top: 0.5rem; }
+    .example-box em { color: var(--teal); font-style: normal; font-weight: 700; }
+
+    /* ===== Global phrase bank ===== */
+    .phrase-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+    .phrase-table th {
+        background: var(--navy);
+        color: white;
+        text-align: left;
+        padding: 0.55rem 0.9rem;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+    }
+    .phrase-table td {
+        padding: 0.5rem 0.9rem;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #fafbfe; }
+    .phrase-table .en { font-weight: 600; color: var(--navy); }
+    .phrase-table .cn { color: var(--text-secondary); font-size: 0.78rem; }
+    .phrase-table .grp { background: var(--gold-light) !important; font-weight: 700; }
+
+    /* Mistake checklist */
+    .mistake-item {
+        display: flex; gap: 0.7rem; align-items: flex-start;
+        padding: 0.65rem 0;
+        border-bottom: 1px dashed var(--border);
+        font-size: 0.88rem;
+    }
+    .mistake-item:last-child { border-bottom: none; }
+    .mistake-item .x { color: var(--coral); font-weight: 800; flex-shrink: 0; }
+    .mistake-item .fix { color: var(--green); font-weight: 600; }
+
+    /* Footer */
+    .footer {
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        border-top: 1px solid var(--border);
+        margin-top: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+        .main { padding: 1rem 0.9rem 2rem; }
+        .chart-card-body { padding: 1rem 1rem 1.2rem; }
+        .header h1 { font-size: 1.1rem; }
+        .tpl-row { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <h1><span class="icon">✍️</span>IELTS Writing Task 1 模板速查</h1>
+        <p class="sub">6 大题型快速套用模板 + 万能表达库 · 目标 {{TARGET_WRITING}} · {{COUNTDOWN}}</p>
+        <div class="header-chips">
+            <span class="chip">📈 Line Graph 折线图</span>
+            <span class="chip">📊 Bar Chart 柱状图</span>
+            <span class="chip">🥧 Pie Chart 饼图</span>
+            <span class="chip">📋 Table 表格</span>
+            <span class="chip">⚙️ Process 流程图</span>
+            <span class="chip">🗺️ Map 地图</span>
+        </div>
+    </div>
+</header>
+
+<nav class="toc">
+    <a class="toc-item" href="#structure"><span class="emoji">🏗️</span>万能结构</a>
+    <a class="toc-item" href="#line"><span class="emoji">📈</span>折线图</a>
+    <a class="toc-item" href="#bar"><span class="emoji">📊</span>柱状图</a>
+    <a class="toc-item" href="#pie"><span class="emoji">🥧</span>饼图</a>
+    <a class="toc-item" href="#table"><span class="emoji">📋</span>表格</a>
+    <a class="toc-item" href="#process"><span class="emoji">⚙️</span>流程图</a>
+    <a class="toc-item" href="#map"><span class="emoji">🗺️</span>地图</a>
+    <a class="toc-item" href="#phrases"><span class="emoji">🧰</span>万能表达库</a>
+    <a class="toc-item" href="#mistakes"><span class="emoji">🚫</span>常见扣分点</a>
+</nav>
+
+<main class="main">
+
+    <!-- ===== 万能结构 ===== -->
+    <div id="structure">
+        <h2 class="section-title">🏗️ 万能四段结构（所有题型通用）</h2>
+
+        <div class="card">
+            <div class="structure-flow">
+                <div class="flow-step">
+                    <span class="step-num">1</span>
+                    <div class="step-title">Introduction 开头</div>
+                    <div class="step-desc">1 句：改写题目，不照抄。Time + Chart Type + What</div>
+                </div>
+                <div class="flow-step">
+                    <span class="step-num">2</span>
+                    <div class="step-title">Overview 概述</div>
+                    <div class="step-desc">2-3 句：最大趋势 / 对比结论。⚠️ 不写具体数据</div>
+                </div>
+                <div class="flow-step">
+                    <span class="step-num">3</span>
+                    <div class="step-title">Detail 1 细节段1</div>
+                    <div class="step-desc">3-4 句：第一组特征 + 数据支撑</div>
+                </div>
+                <div class="flow-step">
+                    <span class="step-num">4</span>
+                    <div class="step-title">Detail 2 细节段2</div>
+                    <div class="step-desc">3-4 句：剩余特征 + 对比</div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <div class="w-title">⚠️ Task 1 铁律：只描述数据，绝不解释原因</div>
+                <ul>
+                    <li><span class="ok">✅ 安全：</span>"The figure <em>increased from 5% to 12%</em> between 2000 and 2010."</li>
+                    <li><span class="ok">✅ 安全：</span>"While A <em>fell by half</em>, B <em>rose steadily</em> over the same period."</li>
+                    <li>❌ 危险：解释原因（"because of..."）</li>
+                    <li>❌ 危险：预测未来（"this trend will continue..."）</li>
+                    <li>❌ 危险：评价好坏（"this is a worrying trend"）</li>
+                    <li>❌ 危险：概述段里写具体数字</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 折线图 ===== -->
+    <div id="line">
+        <h2 class="section-title">📈 Line Graph 折线图</h2>
+
+        <div class="chart-card">
+            <div class="chart-card-header line">
+                <span class="big-icon">📈</span>
+                <div>
+                    <div class="h-title">趋势描述题</div>
+                    <div class="h-sub">重点：上升 / 下降 / 波动 / 峰值 / 平稳 · 一般有时间轴（years）</div>
+                </div>
+            </div>
+            <div class="chart-card-body">
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">✏️ 开头改写 Introduction</div>
+                        <p>The line graph <em>illustrates</em> how the number of <span class="fill">X</span> <em>changed over a period of</em> <span class="fill">XX years</span>, from <span class="fill">year</span> to <span class="fill">year</span>.</p>
+                        <p><em>Alternative:</em> The graph <em>depicts</em> the <span class="fill">trend in</span> <span class="fill">X</span> between <span class="fill">year</span> and <span class="fill">year</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔍 概述 Overview（无数据）</div>
+                        <p>Overall, <span class="fill">X</span> <em>followed a broadly upward/declining trajectory</em>, while <span class="fill">Y</span> remained <em>relatively stable</em> throughout the period.</p>
+                        <p><em>Another option:</em> Overall, the most striking feature is the <em>sharp rise</em> in <span class="fill">X</span>, which <em>contrasted with</em> the gradual fall in <span class="fill">Y</span>.</p>
+                    </div>
+                </div>
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔢 细节段开头句</div>
+                        <p>In <span class="fill">year</span>, <span class="fill">X</span> stood at <span class="fill">value</span>, before <em>climbing steadily</em> to <em>a peak of</em> <span class="fill">value</span> in <span class="fill">year</span>.</p>
+                        <p>By contrast, <span class="fill">Y</span> started at <span class="fill">value</span> and then <em>plummeted</em> to <em>a low of</em> <span class="fill">value</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔄 趋势衔接句</div>
+                        <p>For the remainder of the period, the figure <em>fluctuated</em> between <span class="fill">low</span> and <span class="fill">high</span>, before <em>levelling off</em> at <span class="fill">value</span>.</p>
+                        <p>After an initial <em>dip</em>, the numbers <em>recovered</em> and went on to <em>surpass</em> their earlier peak.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-h">🎯 折线图专属词汇 <span class="cn">（按强度排序）</span></h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item blue"><span class="en">rose / increased / climbed</span><span class="cn">上升</span></div>
+                    <div class="vocab-item blue"><span class="en">soared / surged</span><span class="cn">猛涨</span></div>
+                    <div class="vocab-item blue"><span class="en">plummeted / plunged</span><span class="cn">暴跌</span></div>
+                    <div class="vocab-item blue"><span class="en">dipped / dipped slightly</span><span class="cn">小幅下跌</span></div>
+                    <div class="vocab-item blue"><span class="en">fluctuated / oscillated</span><span class="cn">波动</span></div>
+                    <div class="vocab-item blue"><span class="en">peaked at / reached a high of</span><span class="cn">达到峰值</span></div>
+                    <div class="vocab-item blue"><span class="en">bottomed out at / hit a low of</span><span class="cn">触底</span></div>
+                    <div class="vocab-item blue"><span class="en">levelled off / plateaued</span><span class="cn">趋于平稳</span></div>
+                    <div class="vocab-item blue"><span class="en">remained stable / stayed constant</span><span class="cn">保持不变</span></div>
+                    <div class="vocab-item blue"><span class="en">an upward/downward trend</span><span class="cn">上升/下降趋势</span></div>
+                    <div class="vocab-item blue"><span class="en">steadily / gradually / sharply</span><span class="cn">稳步 / 逐渐 / 急剧（副词）</span></div>
+                    <div class="vocab-item blue"><span class="en">over the same period</span><span class="cn">在同一时期</span></div>
+                </div>
+
+                <div class="example-box">
+                    <div class="ex-title">💡 完整示例（UK Transport 2000-2020 已练过）</div>
+                    <p>The line graph shows how the number of passengers using four transport modes in the UK changed between 2000 and 2020.</p>
+                    <p>Overall, rail travel saw the most dramatic increase, while local bus journeys declined steadily over the two decades.</p>
+                    <p>In 2000, around 2 million trips were made by rail, a figure that <em>rose sharply</em> to roughly 5 million by 2020. Cycling also gained popularity, <em>tripling</em> from 0.5 to 1.5 million over the same period. Bus travel, in contrast, followed the opposite path, <em>falling</em> from 3 million to below 2 million.</p>
+                    <p class="note">📌 记住节奏：概述给"对比 + 总趋势"，细节段按"一组上升 + 一组下降"分组展开。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 柱状图 ===== -->
+    <div id="bar">
+        <h2 class="section-title">📊 Bar Chart 柱状图</h2>
+
+        <div class="chart-card">
+            <div class="chart-card-header bar">
+                <span class="big-icon">📊</span>
+                <div>
+                    <div class="h-title">对比描述题</div>
+                    <div class="h-sub">重点：谁最高 / 谁最低 / 相差多少 · 有时间变化时也写趋势</div>
+                </div>
+            </div>
+            <div class="chart-card-body">
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">✏️ 开头改写 Introduction</div>
+                        <p>The bar chart <em>compares</em> the <span class="fill">proportion/number of</span> <span class="fill">X</span> <em>across</em> <span class="fill">categories</span> in <span class="fill">year(s)</span>.</p>
+                        <p><em>Alternative:</em> The chart <em>provides a breakdown of</em> <span class="fill">X</span> by <span class="fill">category</span>, measured in <span class="fill">units</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔍 概述 Overview</div>
+                        <p>Overall, <span class="fill">Category A</span> <em>accounted for the largest share</em>, whereas <span class="fill">Category B</span> <em>recorded the lowest figure</em> in every year shown.</p>
+                        <p><em>Another option:</em> Overall, there was a <em>clear gap between</em> <span class="fill">A</span> and <span class="fill">B</span>, and this difference <em>widened</em> over the period.</p>
+                    </div>
+                </div>
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔢 细节段开头句</div>
+                        <p><span class="fill">A</span> was <em>by far the highest</em>, at <span class="fill">value</span>, followed by <span class="fill">B</span> with <span class="fill">value</span>.</p>
+                        <p><span class="fill">A</span> <em>outnumbered</em> <span class="fill">B</span> by <span class="fill">margin</span>, while <span class="fill">C</span> was <em>the least popular</em>, standing at just <span class="fill">value</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔄 对比衔接句</div>
+                        <p><em>In contrast</em>, <span class="fill">B</span> experienced an <em>opposite trend</em>, rising from <span class="fill">value</span> to <span class="fill">value</span>.</p>
+                        <p><em>Similarly / Likewise</em>, <span class="fill">C</span> remained <em>consistently low</em> at around <span class="fill">value</span>.</p>
+                        <p><em>Compared with</em> <span class="fill">year</span>, the figure for <span class="fill">D</span> had <em>roughly doubled</em> by <span class="fill">year</span>.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-h">🎯 柱状图专属词汇 <span class="cn">（对比/占比优先）</span></h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item orange"><span class="en">accounted for / comprised</span><span class="cn">占比</span></div>
+                    <div class="vocab-item orange"><span class="en">the highest / the lowest figure</span><span class="cn">最高 / 最低值</span></div>
+                    <div class="vocab-item orange"><span class="en">significantly more/less than</span><span class="cn">明显多于/少于</span></div>
+                    <div class="vocab-item orange"><span class="en">by far the most/least</span><span class="cn">遥遥领先/垫底</span></div>
+                    <div class="vocab-item orange"><span class="en">outnumbered / was exceeded by</span><span class="cn">超过 / 被超过</span></div>
+                    <div class="vocab-item orange"><span class="en">roughly / approximately</span><span class="cn">大约（数据模糊化）</span></div>
+                    <div class="vocab-item orange"><span class="en">nearly / just under</span><span class="cn">接近 / 略低于</span></div>
+                    <div class="vocab-item orange"><span class="en">three times as high as</span><span class="cn">是...的三倍</span></div>
+                    <div class="vocab-item orange"><span class="en">double / triple</span><span class="cn">翻倍 / 翻三倍</span></div>
+                    <div class="vocab-item orange"><span class="en">in contrast / whereas / compared to</span><span class="cn">对比连接</span></div>
+                    <div class="vocab-item orange"><span class="en">a clear gap between A and B</span><span class="cn">A和B差距明显</span></div>
+                    <div class="vocab-item orange"><span class="en">followed by</span><span class="cn">其次是（排序用）</span></div>
+                </div>
+
+                <div class="example-box">
+                    <div class="ex-title">💡 完整示例（European Income Spending 已练过）</div>
+                    <p>The bar chart compares household spending across several European countries between 1998 and 2008.</p>
+                    <p>Overall, spending rose in nearly every country, with France recording the highest figures in both years and Poland the lowest.</p>
+                    <p>France led the way at around 1,900 euros in 1998, <em>far ahead of</em> its nearest rival. By 2008 its figure had climbed to roughly 2,300 euros. Poland, by contrast, spent the least of all, although it also saw the steepest proportional rise, from about 400 to nearly 800 euros.</p>
+                    <p class="note">📌 柱状图 = 先说谁最高谁最低（概述），再挑 2-3 个有对比意义的数字展开。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 饼图 ===== -->
+    <div id="pie">
+        <h2 class="section-title">🥧 Pie Chart 饼图</h2>
+
+        <div class="chart-card">
+            <div class="chart-card-header pie">
+                <span class="big-icon">🥧</span>
+                <div>
+                    <div class="h-title">占比描述题</div>
+                    <div class="h-sub">重点：百分比词汇 · 最大/最小份额 · 多个饼图对比（常考2-3个年份）</div>
+                </div>
+            </div>
+            <div class="chart-card-body">
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">✏️ 开头改写 Introduction</div>
+                        <p>The pie charts show <em>how</em> <span class="fill">X</span> was <em>divided among</em> <span class="fill">categories</span> in <span class="fill">year 1</span> and <span class="fill">year 2</span>.</p>
+                        <p><em>Alternative:</em> The charts <em>illustrate the proportion of</em> <span class="fill">X</span> attributable to each <span class="fill">category</span> over two time periods.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔍 概述 Overview</div>
+                        <p>Overall, <span class="fill">A</span> <em>made up the bulk of</em> <span class="fill">X</span> in both years, whereas <span class="fill">B</span> accounted for <em>only a small fraction</em>.</p>
+                        <p><em>Another option:</em> Overall, the most notable change was the <em>substantial growth</em> in <span class="fill">A</span>'s share, which came largely at the <em>expense of</em> <span class="fill">B</span>.</p>
+                    </div>
+                </div>
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔢 细节段开头句</div>
+                        <p>In <span class="fill">year</span>, <span class="fill">A</span> was the dominant category, <em>accounting for</em> <span class="fill">XX%</span>, <em>more than double</em> that of <span class="fill">B</span>, which stood at <span class="fill">XX%</span>.</p>
+                        <p>The remaining categories were <em>split fairly evenly</em>, each hovering at around <span class="fill">XX%</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔄 对比衔接句</div>
+                        <p>By <span class="fill">year</span>, the <em>balance had shifted</em>: <span class="fill">A</span>'s share <em>fell to</em> <span class="fill">XX%</span>, while <span class="fill">B</span> <em>grew to</em> <span class="fill">XX%</span>.</p>
+                        <p>Most categories <em>changed little</em>, but <span class="fill">C</span> <em>halved</em> from <span class="fill">XX%</span> to <span class="fill">XX%</span>.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-h">🎯 饼图专属词汇 <span class="cn">（百分比描述）</span></h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item purple"><span class="en">accounted for / represented</span><span class="cn">占</span></div>
+                    <div class="vocab-item purple"><span class="en">the majority / a minority of</span><span class="cn">大多数 / 少数</span></div>
+                    <div class="vocab-item purple"><span class="en">the bulk of / the lion's share</span><span class="cn">绝大部分</span></div>
+                    <div class="vocab-item purple"><span class="en">a small fraction / a tiny proportion</span><span class="cn">很小一部分</span></div>
+                    <div class="vocab-item purple"><span class="en">approximately / roughly / around</span><span class="cn">大约</span></div>
+                    <div class="vocab-item purple"><span class="en">just over / just under / almost</span><span class="cn">略高于 / 略低于 / 几乎</span></div>
+                    <div class="vocab-item purple"><span class="en">more than double / half of</span><span class="cn">超过两倍 / 一半</span></div>
+                    <div class="vocab-item purple"><span class="en">at the expense of</span><span class="cn">以...为代价（份额转移）</span></div>
+                    <div class="vocab-item purple"><span class="en">the balance had shifted</span><span class="cn">格局发生转变</span></div>
+                    <div class="vocab-item purple"><span class="en">shared equally / split evenly</span><span class="cn">平分 / 均匀分配</span></div>
+                    <div class="vocab-item purple"><span class="en">came close behind</span><span class="cn">紧随其后</span></div>
+                    <div class="vocab-item purple"><span class="en">remained the same / unchanged</span><span class="cn">保持不变</span></div>
+                </div>
+
+                <div class="example-box">
+                    <div class="ex-title">💡 完整示例（Sydney Water Use 已练过）</div>
+                    <p>The pie charts compare how water was used in different sectors in Sydney in 1997 and 2007.</p>
+                    <p>Overall, households were the largest consumers of water in both years, while industry used the least.</p>
+                    <p>Domestic use <em>accounted for</em> roughly 35% of the total in 1997 and had risen to about 45% by 2007, an increase of ten percentage points. Industry, by contrast, <em>fell from</em> around 25% to <em>just over</em> 10% over the same decade, a decline that <em>more than halved</em> its share.</p>
+                    <p class="note">📌 饼图铁律：每个数据都必须是百分比 + 一定要用模糊表达（approximately/around），别照抄精确数字。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 表格 ===== -->
+    <div id="table">
+        <h2 class="section-title">📋 Table 表格</h2>
+
+        <div class="chart-card">
+            <div class="chart-card-header table">
+                <span class="big-icon">📋</span>
+                <div>
+                    <div class="h-title">多维数据题</div>
+                    <div class="h-sub">重点：不能逐行念数字 · 必须挑最值 + 排序 + 对比 · 常考国家/年份对比</div>
+                </div>
+            </div>
+            <div class="chart-card-body">
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">✏️ 开头改写 Introduction</div>
+                        <p>The table <em>presents data on</em> <span class="fill">X</span> in <span class="fill">places</span>, <em>broken down by</em> <span class="fill">category</span> for <span class="fill">year(s)</span>.</p>
+                        <p><em>Alternative:</em> The table <em>gives an overview of</em> <span class="fill">X</span> across <span class="fill">places</span>, with figures measured in <span class="fill">units</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔍 概述 Overview</div>
+                        <p>Overall, <span class="fill">A</span> <em>recorded the highest figures</em> across all categories, while <span class="fill">B</span> consistently <em>trailed at the bottom</em>.</p>
+                        <p><em>Another option:</em> Overall, the table reveals <em>wide disparities between</em> <span class="fill">places</span>, with the difference being most pronounced in <span class="fill">category</span>.</p>
+                    </div>
+                </div>
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔢 细节段开头句（排序法）</div>
+                        <p><em>At the top of the table</em>, <span class="fill">A</span> reported <span class="fill">value</span>, <em>well ahead of</em> <span class="fill">B</span> at <span class="fill">value</span>. <span class="fill">C</span> came <em>third</em>, with <span class="fill">value</span>.</p>
+                        <p><em>By contrast</em>, <span class="fill">D</span> had the <em>lowest</em> figure of <span class="fill">value</span>, only about <em>a fifth of</em> <span class="fill">A</span>'s total.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔄 细节段开头句（对比法）</div>
+                        <p><em>In terms of</em> <span class="fill">category 1</span>, <span class="fill">A</span> <em>led</em> with <span class="fill">value</span>, <em>followed by</em> <span class="fill">B</span> at <span class="fill">value</span>.</p>
+                        <p><em>As far as</em> <span class="fill">category 2</span> <em>is concerned</em>, however, the order was <em>reversed</em>, with <span class="fill">B</span> exceeding <span class="fill">A</span> by <span class="fill">margin</span>.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-h">🎯 表格专属词汇 <span class="cn">（排序 & 比较）</span></h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item green"><span class="en">at the top / bottom of the table</span><span class="cn">位于榜首 / 垫底</span></div>
+                    <div class="vocab-item green"><span class="en">recorded the highest/lowest figure</span><span class="cn">记录最高/最低值</span></div>
+                    <div class="vocab-item green"><span class="en">well ahead of / trailed behind</span><span class="cn">远超 / 落后于</span></div>
+                    <div class="vocab-item green"><span class="en">in terms of / as far as ... is concerned</span><span class="cn">就...而言</span></div>
+                    <div class="vocab-item green"><span class="en">the order was reversed</span><span class="cn">次序颠倒</span></div>
+                    <div class="vocab-item green"><span class="en">a fifth / a quarter / half of</span><span class="cn">几分之几表达</span></div>
+                    <div class="vocab-item green"><span class="en">wide disparities between</span><span class="cn">巨大差异</span></div>
+                    <div class="vocab-item green"><span class="en">remained unchanged / stayed constant</span><span class="cn">维持不变</span></div>
+                    <div class="vocab-item green"><span class="en">exceeded / was exceeded by</span><span class="cn">超过 / 被超越</span></div>
+                    <div class="vocab-item green"><span class="en">slightly higher/lower than</span><span class="cn">略高/低于</span></div>
+                    <div class="vocab-item green"><span class="en">ranged from ... to ...</span><span class="cn">范围从...到...</span></div>
+                    <div class="vocab-item green"><span class="en">on average / typically</span><span class="cn">平均 / 通常</span></div>
+                </div>
+
+                <div class="example-box">
+                    <div class="ex-title">💡 完整示例（Medical Care 三国对比 已练过）</div>
+                    <p>The table provides data on medical care across three European countries over a ten-year period.</p>
+                    <p>Overall, Country A consistently outperformed the other two in most indicators, while Country C had the least favourable figures throughout.</p>
+                    <p><em>At the top of the table</em>, Country A reported 85 doctors per 100,000 people, <em>well ahead of</em> Country B's 70 and Country C's 52. The gap was even wider in hospital beds, where Country A had 6.2 per 1,000 residents, roughly <em>double</em> Country C's figure.</p>
+                    <p class="note">📌 表格最容易写成"清单"，务必用 排序（top/middle/bottom）或 维度对比（in terms of X）来分组，永远别逐行读。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 流程图 ===== -->
+    <div id="process">
+        <h2 class="section-title">⚙️ Process Diagram 流程图</h2>
+
+        <div class="chart-card">
+            <div class="chart-card-header process">
+                <span class="big-icon">⚙️</span>
+                <div>
+                    <div class="h-title">流程描述题</div>
+                    <div class="h-sub">重点：阶段词 first/subsequently/finally · 被动语态 · 概括段写"总共几个阶段+起点终点"</div>
+                </div>
+            </div>
+            <div class="chart-card-body">
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">✏️ 开头改写 Introduction</div>
+                        <p>The diagram <em>outlines the process by which</em> <span class="fill">X</span> is <em>produced / manufactured</em>, from <span class="fill">raw material</span> to <span class="fill">final product</span>.</p>
+                        <p><em>Alternative:</em> The illustration <em>shows the various stages involved in</em> <span class="fill">X</span>, starting with <span class="fill">A</span> and ending with <span class="fill">B</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔍 概述 Overview（无细节）</div>
+                        <p>Overall, the process <em>consists of</em> <span class="fill">X</span> distinct stages, beginning with <span class="fill">A</span> and concluding with <span class="fill">B</span>.</p>
+                        <p><em>Another option:</em> Overall, it is a <em>largely linear/manual/automated</em> process with <span class="fill">X</span> steps, although <span class="fill">stage</span> involves <em>some recycling/reuse</em>.</p>
+                        <p><em>For natural cycles:</em> Overall, the cycle <em>repeats itself</em>, passing through <span class="fill">X</span> main phases.</p>
+                    </div>
+                </div>
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔢 细节段开头句（第一段）</div>
+                        <p><em>In the first stage</em>, <span class="fill">raw material</span> is <em>collected</em> and then <em>transported</em> to a <span class="fill">processing facility</span>.</p>
+                        <p><em>At the start of the process</em>, the <span class="fill">material</span> is <em>heated</em> in a container, during which time it <em>turns into</em> <span class="fill">substance</span>.</p>
+                        <p><em>Once</em> <span class="fill">X</span> has been completed, the <span class="fill">output</span> moves to the <em>next stage</em>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔄 细节段开头句（衔接）</div>
+                        <p><em>Subsequently / Following this</em>, the <span class="fill">material</span> is <em>combined with</em> <span class="fill">Y</span> and <em>pressed into</em> <span class="fill">shape</span>.</p>
+                        <p><em>At the next stage</em>, the mixture is <em>poured</em> into moulds, where it <em>sets</em> and is then <em>removed</em> for packaging.</p>
+                        <p><em>In the final stage</em>, the finished <span class="fill">product</span> is <em>packaged</em> and <em>distributed</em> to retailers.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-h">🎯 流程图专属词汇 <span class="cn">（阶段词 + 动词）</span></h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item purple"><span class="en">initially / at the start of the process</span><span class="cn">首先</span></div>
+                    <div class="vocab-item purple"><span class="en">subsequently / following this</span><span class="cn">接着</span></div>
+                    <div class="vocab-item purple"><span class="en">at the next stage / at this point</span><span class="cn">下一步 / 此时</span></div>
+                    <div class="vocab-item purple"><span class="en">once ... has been done</span><span class="cn">一旦...完成后</span></div>
+                    <div class="vocab-item purple"><span class="en">in the final stage / finally</span><span class="cn">最后</span></div>
+                    <div class="vocab-item purple"><span class="en">is collected / transported / processed</span><span class="cn">被收集 / 运输 / 加工（被动）</span></div>
+                    <div class="vocab-item purple"><span class="en">is heated / pressed / poured / moulded</span><span class="cn">被加热 / 压制 / 灌注 / 塑形</span></div>
+                    <div class="vocab-item purple"><span class="en">turns into / is converted into</span><span class="cn">转变为</span></div>
+                    <div class="vocab-item purple"><span class="en">is combined with / mixed with</span><span class="cn">与...混合</span></div>
+                    <div class="vocab-item purple"><span class="en">is packaged and distributed</span><span class="cn">包装并分销</span></div>
+                    <div class="vocab-item purple"><span class="en">the cycle repeats itself</span><span class="cn">循环往复（自然循环）</span></div>
+                    <div class="vocab-item purple"><span class="en">raw material / by-product / end product</span><span class="cn">原料 / 副产品 / 成品</span></div>
+                </div>
+
+                <div class="example-box">
+                    <div class="ex-title">💡 完整示例（Carbonated Drinks Process / Stone Age Tools 已练过）</div>
+                    <p>The diagram outlines the process by which soft drinks are produced, from the sourcing of water to the finished bottles on shelves.</p>
+                    <p>Overall, the process involves five main stages, beginning with water treatment and ending with the distribution of the packaged product.</p>
+                    <p><em>At the start of the process</em>, raw water is filtered and treated with chemicals to remove impurities. It is then <em>combined with</em> flavouring and carbon dioxide in a large mixing tank. <em>Following this</em>, the mixture is bottled, sealed, and <em>finally</em> distributed to shops for sale.</p>
+                    <p class="note">📌 流程图三大要点：全程被动语态、不写时间/数量、概述必须写"共几个阶段+起终点"。已经练过碳饮料和石器工具两个流程题，这个很熟了。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 地图 ===== -->
+    <div id="map">
+        <h2 class="section-title">🗺️ Map 地图</h2>
+
+        <div class="chart-card">
+            <div class="chart-card-header map">
+                <span class="big-icon">🗺️</span>
+                <div>
+                    <div class="h-title">变化对比题</div>
+                    <div class="h-sub">重点：was replaced by / converted into · 方位词 north/south · 前后对比（now vs before）</div>
+                </div>
+            </div>
+            <div class="chart-card-body">
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">✏️ 开头改写 Introduction</div>
+                        <p>The maps <em>illustrate the development of</em> <span class="fill">a place</span> between <span class="fill">year 1</span> and <span class="fill">year 2</span>, showing how the area <em>changed over time</em>.</p>
+                        <p><em>Alternative:</em> The two diagrams <em>compare the layout of</em> <span class="fill">place</span> in <span class="fill">year 1</span> with its <em>present-day arrangement</em>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔍 概述 Overview</div>
+                        <p>Overall, the area <em>underwent significant redevelopment</em>, with most of the <span class="fill">old features</span> <em>giving way to</em> modern facilities.</p>
+                        <p><em>Another option:</em> Overall, the most striking change was the <em>expansion of</em> <span class="fill">X</span>, which now occupies an area that was formerly <span class="fill">use</span>.</p>
+                        <p><em>If little changed:</em> Overall, while <span class="fill">X</span> remained <em>virtually unchanged</em>, <span class="fill">Y</span> was <em>completely transformed</em>.</p>
+                    </div>
+                </div>
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔢 细节段开头句（变化）</div>
+                        <p>In the <em>north-eastern corner</em> of the map, the <span class="fill">old factory</span> was <em>demolished and replaced by</em> a <span class="fill">new housing estate</span>.</p>
+                        <p>The <span class="fill">carpark</span> to the south of the main road was <em>converted into</em> a <span class="fill">shopping centre</span>.</p>
+                        <p>The <span class="fill">river bank</span>, which had been <em>undeveloped</em>, now features a <span class="fill">park</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🔄 细节段开头句（保持不变）</div>
+                        <p>By contrast, the <span class="fill">station</span> in the centre of the map <em>remained in its original location</em>, though it was <em>extended</em>.</p>
+                        <p>The <span class="fill">existing</span> <span class="fill">X</span> was <em>retained</em>, whereas the <span class="fill">Y</span> that had <em>previously</em> occupied the northern area was <em>removed</em>.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-h">🎯 地图专属词汇 <span class="cn">（方位 + 变化）</span></h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item green"><span class="en">was replaced by / gave way to</span><span class="cn">被替代 / 让位于</span></div>
+                    <div class="vocab-item green"><span class="en">was converted into / transformed into</span><span class="cn">被改造成</span></div>
+                    <div class="vocab-item green"><span class="en">was demolished / removed / knocked down</span><span class="cn">被拆除</span></div>
+                    <div class="vocab-item green"><span class="en">was constructed / built / added</span><span class="cn">被新建</span></div>
+                    <div class="vocab-item green"><span class="en">remained unchanged / was retained</span><span class="cn">保持不变 / 保留</span></div>
+                    <div class="vocab-item green"><span class="en">underwent significant redevelopment</span><span class="cn">经历大规模改造</span></div>
+                    <div class="vocab-item green"><span class="en">expanded / extended</span><span class="cn">扩建</span></div>
+                    <div class="vocab-item green"><span class="en">in the north-east / south-west corner</span><span class="cn">东北角 / 西南角</span></div>
+                    <div class="vocab-item green"><span class="en">to the north/south/east/west of</span><span class="cn">在...的北/南/东/西</span></div>
+                    <div class="vocab-item green"><span class="en">adjacent to / next to / near</span><span class="cn">紧邻 / 附近</span></div>
+                    <div class="vocab-item green"><span class="en">surrounded by</span><span class="cn">被...环绕</span></div>
+                    <div class="vocab-item green"><span class="en">virtually unchanged</span><span class="cn">几乎没变</span></div>
+                </div>
+
+                <div class="example-box">
+                    <div class="ex-title">💡 完整示例（Museum Floor Plans 已练过）</div>
+                    <p>The two maps show how the layout of a museum changed between 1998 and 2008.</p>
+                    <p>Overall, the museum underwent considerable redevelopment, with the entrance moving and several new exhibition areas being created.</p>
+                    <p><em>To the north</em> of the building, the old entrance hall was <em>relocated</em> to the east side, and the former ticket office was <em>converted into</em> a gift shop. In the centre, what had been a temporary exhibition space <em>gave way to</em> a permanent gallery, while the café, which had been <em>confined to</em> the south-west corner, was <em>extended</em> along the southern wall.</p>
+                    <p class="note">📌 地图：概述写"大变化方向"，细节段按"哪里变了 / 哪里没变"分组，方位词必须准确。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 万能表达库 ===== -->
+    <div id="phrases">
+        <h2 class="section-title">🧰 万能表达库（跨题型通用）</h2>
+
+        <div class="card">
+            <h3 class="sub-h">📌 数字引用开头的常用句式 <span class="cn">（让句子不重复）</span></h3>
+            <table class="phrase-table">
+                <tr><th>功能</th><th>表达</th><th>中文</th></tr>
+                <tr><td rowspan="3">最高 / 最低</td><td class="en">the highest/lowest figure was recorded for ...</td><td class="cn">最高/最低值出现在...</td></tr>
+                <tr><td class="en">X reached a peak of ...</td><td class="cn">X达到峰值...</td></tr>
+                <tr><td class="en">... stood at the bottom of the ranking</td><td class="cn">...排在末尾</td></tr>
+                <tr class="grp"><td colspan="3">🔗 数据对比衔接</td></tr>
+                <tr><td>对比</td><td class="en">whereas / while / in contrast / by contrast</td><td class="cn">而 / 相比之下</td></tr>
+                <tr><td>相同</td><td class="en">similarly / likewise / in the same way</td><td class="cn">同样地</td></tr>
+                <tr><td>程度</td><td class="en">significantly / considerably / markedly</td><td class="cn">显著地</td></tr>
+                <tr><td>程度</td><td class="en">slightly / marginally / narrowly</td><td class="cn">略微</td></tr>
+                <tr><td>倍数</td><td class="en">X was twice/three times as high as Y</td><td class="cn">X是Y的两/三倍</td></tr>
+                <tr><td>倍数</td><td class="en">X exceeded Y by ...</td><td class="cn">X超过Y达...</td></tr>
+                <tr class="grp"><td colspan="3">🧮 大约 / 精确 表达</td></tr>
+                <tr><td>大约</td><td class="en">approximately / roughly / about / around</td><td class="cn">大约</td></tr>
+                <tr><td>接近</td><td class="en">nearly / almost / just under / approaching</td><td class="cn">接近</td></tr>
+                <tr><td>略超</td><td class="en">just over / slightly more than</td><td class="cn">略超</td></tr>
+                <tr class="grp"><td colspan="3">🕐 时间表达</td></tr>
+                <tr><td>期间</td><td class="en">over the period / during this time / throughout</td><td class="cn">在此期间 / 贯穿</td></tr>
+                <tr><td>起点终点</td><td class="en">from ... to ... / between ... and ...</td><td class="cn">从...到...</td></tr>
+                <tr><td>同段</td><td class="en">over the same period / during the same decade</td><td class="cn">同一时期</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3 class="sub-h">🔑 开头改写常用动词 <span class="cn">（替换 show 避免重复）</span></h3>
+            <div class="vocab-grid">
+                <div class="vocab-item"><span class="en">illustrates / depicts</span><span class="cn">展示</span></div>
+                <div class="vocab-item"><span class="en">compares / contrasts</span><span class="cn">比较</span></div>
+                <div class="vocab-item"><span class="en">provides data on / presents</span><span class="cn">提供数据</span></div>
+                <div class="vocab-item"><span class="en">outlines / describes the process of</span><span class="cn">概述流程</span></div>
+                <div class="vocab-item"><span class="en">gives an overview of</span><span class="cn">给出概览</span></div>
+                <div class="vocab-item"><span class="en">records / registers</span><span class="cn">记录（数据）</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 常见扣分点 ===== -->
+    <div id="mistakes">
+        <h2 class="section-title">🚫 常见扣分点自查清单</h2>
+
+        <div class="card">
+            <div class="mistake-item"><span class="x">✗</span><div><b>概述段带具体数字</b> — 概述只写趋势和结论，数据留给细节段。<br><span class="fix">✓ 改正：</span>Overview 里写 "rose sharply"，不写 "from 5% to 15%"。</div></div>
+            <div class="mistake-item"><span class="x">✗</span><div><b>照抄题目原句</b> — 开头必须改写（paraphrase），直接抄会扣 Lexical Resource 分。<br><span class="fix">✓ 改正：</span>换个动词（illustrates→shows）+ 换个句式。</div></div>
+            <div class="mistake-item"><span class="x">✗</span><div><b>解释原因 / 预测未来</b> — Task 1 只描述，不分析。<br><span class="fix">✓ 改正：</span>删掉 "because..." "this suggests..." "will continue..."。</div></div>
+            <div class="mistake-item"><span class="x">✗</span><div><b>逐行 / 逐项念数据</b> — 表格和饼图最常犯，没有信息分组。<br><span class="fix">✓ 改正：</span>先排高低，再挑最值得写的 2-3 组对比。</div></div>
+            <div class="mistake-item"><span class="x">✗</span><div><b>数据精确到小数</b> — 口语化夸张反而更真实，考官看描述能力不看复读。<br><span class="fix">✓ 改正：</span>用 approximately / just over / roughly。</div></div>
+            <div class="mistake-item"><span class="x">✗</span><div><b>地图/流程图用了主动语态</b> — 流程和变化描述应大量用被动语态。<br><span class="fix">✓ 改正：</span>"the building was demolished" 而不是 "they demolished the building"。</div></div>
+            <div class="mistake-item"><span class="x">✗</span><div><b>一个动词反复用</b> — increase 从头用到尾。<br><span class="fix">✓ 改正：</span>rise / climb / grow / surge / soar 轮换。</div></div>
+            <div class="mistake-item"><span class="x">✗</span><div><b>字数不足 150</b> — 写到 160-180 词最安全。<br><span class="fix">✓ 改正：</span>细节段两组对比展开即可达标。</div></div>
+            <div class="mistake-item"><span class="x">✗</span><div><b>用 em dash（—）</b> — 强 AI 信号，考官容易识别。<br><span class="fix">✓ 改正：</span>改用逗号、冒号、句号。</div></div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer">
+    IELTS Task 1 模板速查 · 冲刺 7.0 · 6 大题型模板 + 万能表达 · 考前反复刷
+</footer>
+
+</body>
+</html>

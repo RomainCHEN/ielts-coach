@@ -1,323 +1,114 @@
-<h1 align="center">🎓 IELTS Coach</h1>
-<h3 align="center">The Most Personalized IELTS Speaking & Writing AI Coach</h3>
+<p align="center">
+  <img src="docs/readme/hero.svg" width="100%" alt="IELTS Coach: interviews you first, then writes band-calibrated model answers in your own voice. 2026 Sep-Dec bank, 100 topics.">
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/github/stars/RomainCHEN/ielts-coach?style=flat-square&color=yellow" alt="Stars">
   <img src="https://img.shields.io/github/license/RomainCHEN/ielts-coach?style=flat-square&color=blue" alt="License">
-  <img src="https://img.shields.io/badge/version-v3.0-1a237e?style=flat-square" alt="Version">
-  <img src="https://img.shields.io/badge/topics-102-ffc107?style=flat-square" alt="Topics">
+  <img src="https://img.shields.io/badge/version-v4.0-1a237e?style=flat-square" alt="Version 4.0">
+  <img src="https://img.shields.io/badge/bank-2026%20Sep--Dec%20·%20100%20topics-ffc107?style=flat-square" alt="Question bank: 2026 Sep-Dec, 100 topics">
 </p>
 
-<p align="center">
-  <strong>An AI agent skill that interviews you first, writes in <em>your</em> voice,<br>and calibrates every sentence to official IELTS band descriptors.</strong>
-</p>
+<p align="center"><a href="README_zh.md">简体中文</a> · English</p>
 
-<p align="center">
-  <a href="README_zh.md">🇨🇳 简体中文</a>
-</p>
+IELTS Coach is an agent skill for IELTS Speaking and Writing. It asks about your own experiences before writing anything, then turns your raw answers into model answers at your target band, collected in a local HTML page you can revise from. When the cycle ends, it builds a prep summary website from everything you practised.
 
----
-
-## 📑 Table of Contents
-
-- [🧠 What Makes This Different](#-what-makes-this-different)
-- [✨ Features](#-features)
-- [🌐 Topic Discovery Web Form](#-topic-discovery-web-form)
-- [⚡ Quick Start](#-quick-start)
-- [🔄 The Workflow](#-the-workflow)
-- [📁 Project Structure](#-project-structure)
-- [🎯 The 4D Personalization Engine](#-the-4d-personalization-engine)
-- [👁️ Vision Bridge for Non-Vision Models](#%EF%B8%8F-vision-bridge-for-non-vision-models)
-- [🤝 Contributing](#-contributing)
-- [📜 License](#-license)
-
----
-
-## 🧠 What Makes This Different
-
-Most IELTS AI tools work like this:
-
-```
-User: Write me an essay about climate change.
-AI:   [Generates a 250-word essay full of Firstly, Secondly, In conclusion]
-```
-
-**IELTS Coach works like this:**
-
-```
-Coach: Before I write anything, what is YOUR take on this topic?
-       [Web form opens → you fill in your thoughts at your own pace]
-Coach: Let me make sure I have this right. You believe X because of
-       your experience with Y. I will build your answer around that.
-User:  Yes, and also mention Z.
-Coach: [Polished essay IN THE USER'S VOICE, band-calibrated, zero AI flavor]
-```
-
-| | Generic AI | IELTS Coach |
-|---|---|---|
-| Personalization | Vague references to some people or society | Specific: When I was working at [your company]... |
-| AI detection risk | High (dashes, clichés, mechanical linkers) | Near-zero (natural cohesion, human voice) |
-| Memorability | Hard to remember because it is not yours | Easy: it literally IS you, just polished |
-| Scoring alignment | Random | Calibrated to official IELTS descriptors per band |
-| Vision support | Depends on model | Works on any model (DeepSeek included) via MCP bridge |
-| Topic discovery | None | Web form + structured interview, covering all 102 |
-
----
-
-## ✨ Features
+## What you get
 
 <table>
 <tr>
-  <td width="48"><strong>🌐</strong></td>
-  <td><strong>Topic Discovery Web Form</strong><br>Instead of typing answers in the CLI, a beautiful web form opens in your browser. Multi-step forms with progress indicators, image upload, and clipboard paste support. Fill in answers at your own pace, then submit with one click.</td>
-</tr>
-<tr>
-  <td width="48"><strong>🎯</strong></td>
-  <td><strong>Progressive Topic Discovery</strong><br>Not just onboarding. Every new topic triggers a structured mini-interview. The agent mines <em>your</em> specific memories, opinions, and experiences before writing a single word. 102 topics, 102 personalized answers.</td>
-</tr>
-<tr>
-  <td width="48"><strong>📋</strong></td>
-  <td><strong>Official Band Descriptor Alignment</strong><br>Writing answers calibrated against the public IELTS Writing Band Descriptors (updated May 2023). Task Response, Coherence and Cohesion, Lexical Resource, and Grammatical Range and Accuracy. All four criteria tuned to your target band.</td>
-</tr>
-<tr>
-  <td width="48"><strong>🚫</strong></td>
-  <td><strong>Anti-AI-Flavor Enforcement</strong><br>Explicitly screens for and eliminates AI patterns: no em dashes, no scare quotes, no mechanical linkers like Firstly/Secondly/Finally, no This essay will discuss clichés. Reads like polished human writing.</td>
-</tr>
-<tr>
-  <td width="48"><strong>👁️</strong></td>
-  <td><strong>Vision Bridge for Non-Vision Models</strong><br>Running on DeepSeek? Your agent cannot see charts. The included MCP server proxies images through Alibaba Cloud Bailian's free qwen3.7-plus model via DashScope, or any provider you choose. Agent auto-configures everything. You just provide the API key.</td>
-</tr>
-<tr>
-  <td width="48"><strong>🖼️</strong></td>
-  <td><strong>Beautiful HTML Output</strong><br>Collapsible day cards with expand/collapse. Responsive, printable. Highlighted vocabulary, structure notes, copy buttons. Navy and gold IELTS-themed design.</td>
-</tr>
-<tr>
-  <td width="48"><strong>🔄</strong></td>
-  <td><strong>Self-Evolving Study Plan</strong><br>Reschedules missed sessions, prioritizes weak areas, tracks progress across sessions via JSON state files. 102 topics never repeat unless you ask.</td>
+<td width="50%"><img src="docs/screenshots/site_hub.png" alt="Summary site hub on a phone: countdown, targets, practice stats and links to the sprint sheets"></td>
+<td width="50%"><img src="docs/screenshots/site_review.png" alt="Review page: current bank coverage per section, unprepared topics in red"><br><br><img src="docs/screenshots/site_materials.png" alt="Personal material cards: reusable stories tagged by topic type"></td>
 </tr>
 </table>
 
----
+<sub>Screenshots use the fictional demo learner in <code>tests/fixtures/demo</code>.</sub>
 
-## 🌐 Topic Discovery Web Form
+- **Model answers in your voice.** Every topic starts with Topic Discovery: a local web form (or chat) that asks what you actually think and remember. The answer is a polished version of that, so it is easy to memorise.
+- **Band calibration.** Vocabulary, structures and cohesion follow the IELTS descriptors for your target band; writing answers are checked against the official Writing Band Descriptors (May 2023) and an anti-AI-flavour list (no em dashes, no "Firstly/Secondly/Finally").
+- **A plan that never repeats.** Topics are spread over your available days and tracked in JSON state files across sessions.
+- **The current bank.** 2026 Sep-Dec (cut-off 24 Sep), 100 speaking topics, parsed straight from the season PDF.
+- **Season migration.** When a new bank arrives, topics you already prepared keep counting if they were carried over.
+- **One-click summary site.** Countdown hub, speaking sprint sheet with your own story cards, Task 1/Task 2 template sheets, a coverage review with a gap list, and a searchable bank of every highlight expression.
 
-The web form is the core interaction interface for Topic Discovery. Instead of answering questions one by one in the CLI, you get a beautiful, multi-step form in your browser.
+## How it works
 
-### How It Works
+<p align="center"><img src="docs/readme/workflow.svg" width="100%" alt="Onboard, plan, discover, polish, review; each session loops discover and polish. New season: PDF, build_complete_bank, migrate_season, plan goes on."></p>
 
-```
-┌──────────────────────────────────────────────────────────┐
-│  Agent generates questions                               │
-│       │                                                  │
-│       ▼                                                  │
-│  ┌─────────────────────────────┐                         │
-│  │  Web Form Server starts     │  ← Auto-opens browser  │
-│  │  http://127.0.0.1:8765/form │                         │
-│  └─────────────────────────────┘                         │
-│       │                                                  │
-│       ▼                                                  │
-│  User fills in answers in browser                        │
-│  (multi-step, progress bar, image upload)                │
-│       │                                                  │
-│       ▼                                                  │
-│  Submit → Answers saved to JSON → Server auto-closes     │
-│       │                                                  │
-│       ▼                                                  │
-│  Agent reads answers → Generates model answers           │
-└──────────────────────────────────────────────────────────┘
-```
+<p align="center"><img src="docs/screenshots/form_overview.png" width="70%" alt="Topic Discovery web form opened in the browser"></p>
 
-### Features
+## Quick start
 
-- **Multi-step forms** — Questions organized by topic (Speaking Part 1, Part 2, Writing)
-- **Progress indicator** — Step dots show current progress
-- **Image upload** — Drag & drop or click to upload chart images for Writing Task 1
-- **Clipboard paste** — Ctrl+V to paste screenshots directly
-- **Auto-save** — Answers saved to JSON file, images saved to `task1_charts/`
-- **Beautiful UI** — Gradient purple background, responsive design, works on mobile
+1. Give this repository URL to your agent and ask it to install the skill, or copy the folder yourself:
+   ```bash
+   git clone https://github.com/RomainCHEN/ielts-coach.git
+   cp -r ielts-coach/ielts-coach <your-project>/.claude/skills/   # Claude Code
+   # other agents: copy ielts-coach/ into the agent's skills directory
+   ```
+2. In your project, say "Start my IELTS preparation" (or "开始备考"). The agent asks for your exam date, target bands and background, then proposes a plan.
+3. Each day, say "Start today's practice". Open `ielts_answers.html` to review.
+4. At the end, say "Make my summary site" and open `summary_site/index.html`.
 
-### Supported Question Types
+Requirements: Python 3.10+ for the scripts. `pip install pymupdf` is needed only to rebuild the bank from a PDF (`pdfplumber`, if installed, adds a cross-check). The vision bridge for non-vision models needs `pip install mcp httpx`.
 
-| Type | Description | Use Case |
-|------|-------------|----------|
-| `textarea` | Multi-line text input | Most Topic Discovery questions |
-| `radio` | Single choice from options | Preference questions |
-| `image` | File upload with preview | Writing Task 1 charts |
-| `paste` | Clipboard paste or file upload | Screenshots, chart images |
+## Question bank
 
-### Screenshots
+| Section | Topics |
+|---|---|
+| Part 1 new / retained / essential | 11 / 17 / 5 |
+| Part 2&3 new / retained | 28 / 27 |
+| Non-mainland Part 1 / Part 2&3 | 6 / 6 |
+| **Mainland candidates / all** | **88 / 100** |
 
-**Web Form: Topic Discovery**
-![Web Form](docs/screenshots/form_overview.png)
+The bank lives in [`ielts-coach/references/question_bank_complete.json`](ielts-coach/references/question_bank_complete.json) (for the agent) and [`question-bank.md`](ielts-coach/references/question-bank.md) (for you). 48 topics are marked as carried over from May-Aug 2026.
 
-**Web Form: Filled Answers**
-![Web Form Filled](docs/screenshots/form_filled.png)
+### Updating to a new season
 
-**Output HTML: Header & Stats**
-![HTML Header](docs/screenshots/html_header.png)
-
-**Output HTML: Collapsible Day Card**
-![Day Card Collapsed](docs/screenshots/html_day_collapsed.png)
-
-**Output HTML: Answer Card**
-![Answer Card](docs/screenshots/html_qa_card.png)
-
-**Output HTML: Highlight Expressions**
-![Highlights](docs/screenshots/html_highlights.png)
-
----
-
-## ⚡ Quick Start
+<p align="center"><img src="docs/readme/terminal.svg" width="100%" alt="Terminal: the bank builder parses 100 topics with a matching pdfplumber cross-check, the migration dry run carries topics over, the site builder reports coverage."></p>
 
 ```bash
-# 1. Clone
-git clone https://github.com/RomainCHEN/ielts-coach.git
-cd ielts-coach
-
-# 2. Copy the skill into your agent's skill directory:
-#    Claude Code:     cp -r ielts-coach /your-project/.claude/skills/
-#    Other agents:    copy ielts-coach/ into whatever directory your agent uses for skills
-
-# 3. Start your agent and just talk. The skill triggers automatically.
+python ielts-coach/scripts/build_complete_bank.py --pdf "<season>.pdf" \
+  --season "2027年1-4月" --season-code 2027-01-04 --cutoff 2027-01-20 \
+  --previous-json old/question_bank_complete.json --previous-md old/question-bank.md
+python ielts-coach/scripts/migrate_season.py --root .          # dry run, then --apply
 ```
 
-> 💡 **No configuration needed.** Say "Start my IELTS preparation" and the agent handles everything. Onboarding → Study Plan → Daily sessions with Topic Discovery → Model answers in HTML.
+The builder refuses to write if any section count differs from the count printed in the PDF. Scanned PDFs have no text layer: OCR them first (for example with MinerU) and pass the text with `--text`.
 
-**For DeepSeek and non-vision model users:** The first time a chart image fails to load, the agent auto-guides you through the 2-minute Vision Bridge setup. You only provide an API key.
+## Your data stays local
 
----
+`user_profile.json`, `study_plan.json`, `progress.json`, `ielts_answers.html`, `summary_content.json` and `summary_site/` are created in your project and are git-ignored. The summary site contains your personal stories; publishing it is your call. The optional vision bridge sends chart images to the provider you configure.
 
-## 🔄 The Workflow
-
-```
-┌──────────────────────────────────────────────────────────┐
-│                   FIRST SESSION                           │
-│  Onboarding → Study Plan → Ready                         │
-│  (5 min: exam date, target score, background, schedule)   │
-└─────────────────────┬────────────────────────────────────┘
-                      │
-                      ▼
-┌──────────────────────────────────────────────────────────┐
-│                   EVERY SESSION                           │
-│                                                          │
-│  Greet + progress summary                                │
-│       │                                                  │
-│       ▼                                                  │
-│  ┌─────────────────────────────┐                         │
-│  │  TOPIC DISCOVERY             │  ← The secret sauce    │
-│  │  ┌──────────────────────┐   │                         │
-│  │  │ Web Form opens in    │   │                         │
-│  │  │ browser (multi-step) │   │                         │
-│  │  │ User fills answers   │   │                         │
-│  │  │ Submit → JSON saved  │   │                         │
-│  │  └──────────────────────┘   │                         │
-│  │  Stage C: Content Confirm   │                         │
-│  │  Stage D: Generate Answer   │                         │
-│  └─────────────────────────────┘                         │
-│       │                                                  │
-│       ▼                                                  │
-│  Model answer (your voice, your stories)                 │
-│  + Highlighted expressions                               │
-│  + Band-specific calibration                             │
-│  + Anti-AI-flavor check                                  │
-│       │                                                  │
-│       ▼                                                  │
-│  Save to ielts_answers.html                              │
-│  Update progress → See you tomorrow                      │
-└──────────────────────────────────────────────────────────┘
-```
-
----
-
-## 📁 Project Structure
+## Project structure
 
 ```
-ielts-coach/
-├── SKILL.md                              # Complete agent behavior (~800 lines)
-├── references/
-│   ├── question-bank.md                  # Part 1 + P2&3 New topics (38+29)
-│   ├── question_bank_complete.json       # P2&3 Retained + Non-mainland (27+8)
-│   ├── band-descriptors.md               # Speaking criteria by band
-│   ├── writing-band-descriptors.md       # Official Writing descriptors (May 2023)
-│   ├── writing-resources.md              # Task 1 chart language + Task 2 templates
-│   └── sample-answers.md                 # Quality calibration examples
+ielts-coach/                      the skill (copy this folder)
+├── SKILL.md                      main flow: season check → onboarding → sessions → summary site
+├── references/                   loaded on demand
+│   ├── question_bank_complete.json · question-bank.md
+│   ├── topic-discovery.md · answer-formats.md · html-rendering.md · vision-fallback.md
+│   └── band-descriptors.md · writing-band-descriptors.md · writing-resources.md · sample-answers.md
 ├── scripts/
-│   ├── state_manager.py                  # JSON state file management
-│   ├── build_complete_bank.py            # Question bank builder
-│   ├── topic_form_server.py              # Web form server (Topic Discovery)
-│   └── vision_mcp_server.py             # MCP vision bridge (DeepSeek → qwen3.7-plus)
-├── assets/
-│   └── answer_template.html              # HTML template for answer rendering
-└── docs/
-    └── screenshots/                      # Screenshots for documentation
+│   ├── build_complete_bank.py    season PDF → bank files (validated, cross-checked)
+│   ├── migrate_season.py         carry progress over to a new season
+│   ├── build_summary_site.py     one-click prep summary website
+│   ├── topic_form_server.py      Topic Discovery web form
+│   ├── state_manager.py          JSON state helpers
+│   └── vision_mcp_server.py      MCP vision bridge for non-vision models
+└── assets/
+    ├── answer_template.html      answer page template
+    └── summary_site/             generic sprint and template sheets
+tests/                            python -m unittest discover -s tests
 ```
 
-> ⚡ **Copy the `ielts-coach/` folder into your agent's skill directory. That is it.** Runtime state files (`user_profile.json`, `study_plan.json`, `progress.json`, `ielts_answers.html`) are auto-generated in your project root and never tracked here.
+## Non-vision models
 
----
+If your model cannot read Task 1 charts (DeepSeek, for example), the agent sets up a small MCP server that forwards the image to a vision model: Alibaba Cloud Bailian `qwen3.7-plus` by default, or any OpenAI-compatible endpoint. You provide the API key and restart the agent. Details: [`references/vision-fallback.md`](ielts-coach/references/vision-fallback.md). The key is stored in the agent's MCP config file in plain text, so keep that file out of version control.
 
-## 🎯 The 4D Personalization Engine
+## Contributing
 
-IELTS Coach personalizes on 4 dimensions simultaneously. No static template can do this.
+Issues and PRs are welcome: wrong or missing questions, parser failures on a new season PDF, design fixes for the HTML pages, AI-flavour patterns that slipped through. Run the tests before opening a PR.
 
-| Dimension | Source | Example |
-|---|---|---|
-| **1. Personal Identity** | Onboarding | As a software engineer in Shenzhen... |
-| **2. Topic-Specific Experience** | Topic Discovery interview (via web form) | When I was debugging that production outage at 3am... |
-| **3. Target Band Calibration** | User's target score | Band 7 vocabulary density, flexible cohesive devices |
-| **4. Human Voice Preservation** | User's raw language during Discovery | Their humor, their cultural references, their sentence rhythm |
+## License
 
-**Result:** An answer that scores well on IELTS rubrics AND the user can actually remember under exam pressure.
-
----
-
-## 👁️ Vision Bridge for Non-Vision Models
-
-```
-┌──────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│  Your Chart  │────▶│  vision_bridge    │────▶│  qwen3.7-plus    │
-│  (PNG/JPG)   │     │  (MCP Server)     │     │  (Free tier)     │
-└──────────────┘     └──────────────────┘     └────────┬────────┘
-                                                        │
-                                              ┌─────────▼─────────┐
-                                              │  Structured text   │
-                                              │  chart description │
-                                              └─────────┬─────────┘
-                                                        │
-┌──────────────┐     ┌──────────────────┐              │
-│  Task 1      │◀────│  Your Agent      │◀─────────────┘
-│  Model Answer│     │  (DeepSeek, etc.) │
-└──────────────┘     └──────────────────┘
-```
-
-**One-time setup (agent does everything):** pip install mcp httpx → write `.claude/settings.json` → restart. Only input needed: your Bailian API key (from [bailian.console.aliyun.com](https://bailian.console.aliyun.com/)). Model: `qwen3.7-plus` via `dashscope.aliyuncs.com/compatible-mode/v1`.
-
-Supports custom providers too. Any OpenAI-compatible vision endpoint works.
-
----
-
-## 🤝 Contributing
-
-This is a personal exam preparation tool, but improvements are warmly welcome:
-
-- Report topic inaccuracies or missing questions
-- Suggest HTML design improvements
-- Share calibrated sample answers for the reference pool
-- Report AI-flavor patterns that slipped through
-- Add screenshots for documentation
-
-Open an issue or PR.
-
----
-
-## 📜 License
-
-MIT © [Romain Chen](https://github.com/RomainCHEN). Use freely, modify freely. Good luck on your exam.
-
----
-
-<p align="center">
-  <sub>Built for IELTS May–August 2026 season · 102 speaking topics · Speaking + Writing</sub>
-  <br>
-  <sub>Made with ❤️ by someone who knows how stressful IELTS prep can be</sub>
-</p>
+MIT © [Romain Chen](https://github.com/RomainCHEN)

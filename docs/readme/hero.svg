@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" width="1200" height="440" role="img" aria-labelledby="t d">
+  <title id="t">IELTS Coach</title>
+  <desc id="d">IELTS Coach interviews you first, then writes band-calibrated model answers in your own voice. Shown with a Part 2 cue card from the September to December 2026 bank and a target band badge.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a237e"/>
+      <stop offset="0.62" stop-color="#3949ab"/>
+      <stop offset="1" stop-color="#8e3b46"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd54f"/>
+      <stop offset="1" stop-color="#ffb300"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="440" rx="28" fill="url(#bg)"/>
+  <!-- faint grid of answer lines: the "study notebook" motif -->
+  <g stroke="#ffffff" stroke-opacity="0.06" stroke-width="2">
+    <line x1="0" y1="110" x2="1200" y2="110"/><line x1="0" y1="170" x2="1200" y2="170"/>
+    <line x1="0" y1="230" x2="1200" y2="230"/><line x1="0" y1="290" x2="1200" y2="290"/>
+    <line x1="0" y1="350" x2="1200" y2="350"/>
+  </g>
+
+  <g font-family="'Segoe UI','PingFang SC','Microsoft YaHei',system-ui,-apple-system,sans-serif">
+    <text x="64" y="92" fill="#ffc107" font-size="18" font-weight="700" letter-spacing="3">AI AGENT SKILL · SPEAKING + WRITING</text>
+    <text x="62" y="172" fill="#ffffff" font-size="76" font-weight="800" letter-spacing="-1.5">IELTS Coach</text>
+    <text x="64" y="224" fill="#ffffff" fill-opacity="0.92" font-size="26">Interviews you first, then writes band-calibrated</text>
+    <text x="64" y="260" fill="#ffffff" fill-opacity="0.92" font-size="26">model answers in <tspan font-weight="700" fill="#ffc107">your own voice</tspan>.</text>
+
+    <g font-size="19" font-weight="600" fill="#ffffff">
+      <rect x="64" y="300" width="292" height="44" rx="22" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.3"/>
+      <text x="84" y="329">📚 2026年9-12月 · 100 topics</text>
+      <rect x="368" y="300" width="226" height="44" rx="22" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.3"/>
+      <text x="388" y="329">♻️ Season migration</text>
+      <rect x="64" y="356" width="264" height="44" rx="22" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.3"/>
+      <text x="84" y="385">🧭 One-click summary site</text>
+      <rect x="340" y="356" width="254" height="44" rx="22" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.3"/>
+      <text x="360" y="385">🚫 Anti-AI-flavour checks</text>
+    </g>
+
+    <!-- stacked cards behind: one per daily topic -->
+    <g transform="rotate(6 930 220)"><rect x="742" y="70" width="400" height="290" rx="20" fill="#e0f2f1"/></g>
+    <g transform="rotate(2 930 220)"><rect x="716" y="80" width="410" height="296" rx="20" fill="#fff8e1"/></g>
+    <!-- front card: Part 2 cue card from the current bank -->
+    <g transform="rotate(-3 900 230)">
+      <rect x="690" y="88" width="420" height="300" rx="20" fill="#ffffff"/>
+      <rect x="690" y="88" width="10" height="300" rx="5" fill="#e91e63"/>
+      <text x="726" y="130" fill="#e91e63" font-size="18" font-weight="800" letter-spacing="2">PART 2 · CUE CARD</text>
+      <text x="726" y="170" fill="#1a237e" font-size="27" font-weight="800">Describe a noisy place</text>
+      <text x="726" y="203" fill="#1a237e" font-size="27" font-weight="800">you have been to</text>
+      <text x="726" y="240" fill="#616161" font-size="19" font-weight="600">You should say:</text>
+      <g fill="#212121" font-size="19">
+        <text x="740" y="270">• Where it is</text>
+        <text x="740" y="298">• When you went there</text>
+        <text x="740" y="326">• What you did there</text>
+        <text x="740" y="354">• And explain why it's noisy</text>
+      </g>
+    </g>
+    <!-- target band badge -->
+    <circle cx="1106" cy="92" r="52" fill="url(#gold)"/>
+    <text x="1106" y="98" text-anchor="middle" fill="#1a237e" font-size="32" font-weight="800">7.0</text>
+    <text x="1106" y="122" text-anchor="middle" fill="#1a237e" font-size="14" font-weight="700" letter-spacing="1">TARGET</text>
+  </g>
+</svg>

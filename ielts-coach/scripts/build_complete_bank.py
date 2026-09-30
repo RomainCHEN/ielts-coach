@@ -1,491 +1,470 @@
 """
-Build the COMPLETE IELTS question bank JSON from MinerU + PyMuPDF extraction.
-Covers ALL topics: P1 new (16) + P1 retained (17) + P1 essential (5) +
-P2&3 new (29) + P2&3 retained (27) + P2&3 non-mainland (8)
+Build the IELTS speaking question bank from a season PDF.
+
+Parses the 雅思哥-style season PDF (native text layer) and writes:
+  references/question_bank_complete.json   machine-readable, ALL topics
+  references/question-bank.md              human-readable, ALL topics
+
+Usage:
+  python build_complete_bank.py --pdf "<season>.pdf" --season "2026年9-12月" \
+      --season-code 2026-09-12 --cutoff 2026-09-24 \
+      [--previous-json old.json] [--previous-md old.md] [--dry-run]
+
+  --previous-*   previous season's bank; carried-over topics get a
+                 `carried_over_from` key so progress can be migrated
+                 (see migrate_season.py).
+  --text FILE    use pre-extracted text instead of opening the PDF.
+
+Extraction: PyMuPDF (fitz) first; pdfplumber, when installed, is used as an
+independent cross-check of the question count. Scanned PDFs without a text
+layer are rejected with a clear message (use an OCR tool such as MinerU first
+and pass its text output with --text).
+
+Only the Python standard library is required besides one PDF library.
 """
-import json, re, sys
+import argparse
+import difflib
+import json
+import re
+import sys
+from datetime import date
 from pathlib import Path
 
-BASE = Path(__file__).parent.parent  # ielts-coach/
+BASE = Path(__file__).resolve().parent.parent  # ielts-coach/
 REFS = BASE / "references"
 
-# Complete P2&3 Retained Topics (27 total) - compiled from PDF extraction
-part23_retained = [
-    {
-        "id": 1, "name_cn": "完美工作", "name_en": "A Perfect Job",
-        "cue_card": "Describe a perfect job you would like to have in the future",
-        "cue_points": ["What it is", "How you knew about it", "What you need to learn to get this job", "And explain why you think it is a perfect job for you"],
-        "part3": [
-            "What kind of job can be called a dream job?",
-            "What jobs do children want to do when they grow up?",
-            "Do people's ideal jobs change as they grow up?",
-            "What should people consider when choosing jobs?",
-            "Is salary the main reason why people choose a certain job?",
-            "What kind of jobs are the most popular in your country?"
-        ]
-    },
-    {
-        "id": 2, "name_cn": "想见的名人", "name_en": "A Famous Person You Would Like to Meet",
-        "cue_card": "Describe a famous person you would like to meet",
-        "cue_points": ["Who he/she is", "How you knew him/her", "How/where you would like to meet him/her", "And explain why you would like to meet him/her"],
-        "part3": [
-            "What are the advantages and disadvantages of being a famous child?",
-            "What can today's children do to become famous?",
-            "What can children do with their fame?",
-            "Do people become famous because of their talent?",
-            "Is it easy to become famous in your country?",
-            "Do you want to be a famous person?"
-        ]
-    },
-    {
-        "id": 3, "name_cn": "禁用手机的场合", "name_en": "An Occasion Without Mobile Phone",
-        "cue_card": "Describe an occasion when you were not allowed to use your mobile phone",
-        "cue_points": ["When it was", "Where it was", "Why you were not allowed to use your mobile phone", "And how you felt about it"],
-        "part3": [
-            "How do young and old people use mobile phones differently?",
-            "What positive and negative impact do mobile phones have on friendship?",
-            "Is it a waste of time to take pictures with mobile phones?",
-            "Do you think it is necessary to have laws on the use of mobile phones?",
-            "What are examples of good and poor phone manners?",
-            "How does the internet benefit people?"
-        ]
-    },
-    {
-        "id": 4, "name_cn": "给别人建议", "name_en": "Giving Advice to Others",
-        "cue_card": "Describe a time when you gave advice to others",
-        "cue_points": ["When it was", "To whom you gave the advice", "What the advice was", "And explain why you gave the advice"],
-        "part3": [
-            "Should people prepare before giving advice?",
-            "Is it good to ask advice from strangers online?",
-            "What are the personalities of people whose job is to give advice to others?",
-            "What are the problems if you ask too many people for advice?",
-            "Why do some people think it is better to ask for advice from friends than from parents?",
-            "When would old people ask young people for advice?"
-        ]
-    },
-    {
-        "id": 5, "name_cn": "想拥有的科技产品", "name_en": "A Piece of Technology You Want to Own",
-        "cue_card": "Describe a piece of technology (not a phone) that you would like to own",
-        "cue_points": ["What it is", "How much it costs", "How you knew about it", "And explain why you would like to own it"],
-        "part3": [
-            "What are the differences between the technology of the past and that of today?",
-            "What technology do young people like to use?",
-            "What are the differences between online and face-to-face communication?",
-            "Do you think technology has changed the way people communicate?",
-            "What negative effects does technology have on people's relationships?",
-            "What are the differences between making friends in real life and online?"
-        ]
-    },
-    {
-        "id": 6, "name_cn": "擅长做计划的人", "name_en": "A Person Good at Planning",
-        "cue_card": "Describe a person who makes plans a lot and is good at planning",
-        "cue_points": ["Who he/she is", "How you knew him/her", "What plans he/she makes", "And explain how you feel about this person"],
-        "part3": [
-            "Do you think it's important to plan ahead?",
-            "What activities do we need to plan ahead?",
-            "Do you think children should plan their future careers?",
-            "Should children ask their teachers or parents for advice when making plans?",
-            "Is making study plans popular among young people?",
-            "Do you think choosing a college major is closely related to a person's future career?"
-        ]
-    },
-    {
-        "id": 7, "name_cn": "喜欢画画的孩子", "name_en": "A Child Who Loves Drawing",
-        "cue_card": "Describe a child who loves drawing/painting",
-        "cue_points": ["Who he/she is", "How/when you knew him/her", "How often he/she draws/paints", "And explain why you think he/she loves drawing/painting"],
-        "part3": [
-            "What is the right age for a child to learn drawing?",
-            "Why do most children draw more often than adults do?",
-            "Why do some people visit galleries or museums instead of viewing artworks online?",
-            "Do you think galleries and museums should be free of charge?",
-            "How do artworks inspire people?",
-            "What are the differences between reading a book and visiting a museum?"
-        ]
-    },
-    {
-        "id": 8, "name_cn": "App/程序", "name_en": "A Program or App",
-        "cue_card": "Describe a program or app on your computer or phone",
-        "cue_points": ["What it is", "How often you use it", "When/how you found it", "And explain how you feel about it"],
-        "part3": [
-            "What are the differences between old and young people when using apps?",
-            "Why do some people not like using apps?",
-            "What apps are popular in your country? Why?",
-            "Should parents limit their children's use of computer programs and games?",
-            "Do you think young people are more and more reliant on these programs?",
-            "What do you think about some countries banning children from using social media?"
-        ]
-    },
-    {
-        "id": 9, "name_cn": "微笑的场合", "name_en": "An Occasion of Smiling",
-        "cue_card": "Describe an occasion when many people were smiling",
-        "cue_points": ["When it happened", "Who you were with", "What happened", "And explain why most people were smiling"],
-        "part3": [
-            "Do you think people who like to smile are more friendly?",
-            "Why do most people smile in photographs?",
-            "Do women smile more than men? Why?",
-            "Do people smile more when they are younger or older?",
-            "Is smiling important in your culture?",
-            "Are there any occasions when people need to pretend to smile?"
-        ]
-    },
-    {
-        "id": 10, "name_cn": "为家人骄傲", "name_en": "Proud of a Family Member",
-        "cue_card": "Describe a time when you felt proud of a family member",
-        "cue_points": ["When it happened", "Who the person is", "What the person did", "And explain why you felt proud of him/her"],
-        "part3": [
-            "When would parents feel proud of their children?",
-            "Should parents reward children? Why and how?",
-            "Is it good to reward children too often? Why?",
-            "On what occasions would adults be proud of themselves?",
-            "Do rewards help a child become better?",
-            "What do you think about children working hard just for grades?"
-        ]
-    },
-    {
-        "id": 11, "name_cn": "对家庭重要的东西", "name_en": "Something Important in Family",
-        "cue_card": "Describe something important that has been kept in your family for a long time",
-        "cue_points": ["What it is", "When your family had it", "How your family got it", "And explain why it is important to your family"],
-        "part3": [
-            "What things do families keep for a long time?",
-            "What's the difference between things valued by people in the past and today?",
-            "What kinds of things are kept in museums?",
-            "What's the influence of technology on museums?",
-            "What are the benefits of technology for learning history?",
-            "Why do people visit museums?"
-        ]
-    },
-    {
-        "id": 12, "name_cn": "自行车/摩托车/汽车旅行", "name_en": "A Vehicle Trip",
-        "cue_card": "Describe a bicycle/motorcycle/car trip you would like to go on",
-        "cue_points": ["Who you would like to go with", "Where you would like to go", "When you would like to go", "And explain why you would like to go by that vehicle"],
-        "part3": [
-            "Which form of vehicle is more popular in your country, bikes, cars or motorcycles?",
-            "Do you think air pollution comes mostly from mobile vehicles?",
-            "Do you think people need to change the way of transportation drastically?",
-            "How are the transportation systems in urban areas and rural areas different?",
-            "Why do more people own and drive private vehicles now?",
-            "What do you think of the future of electric cars?"
-        ]
-    },
-    {
-        "id": 13, "name_cn": "机智解决问题的人", "name_en": "Smart Problem Solver",
-        "cue_card": "Describe a person who solved a problem in a smart way",
-        "cue_points": ["Who this person is", "What the problem was", "How he/she solved it", "And explain why you think he/she did it in a smart way"],
-        "part3": [
-            "Do you think children are born smart or they learn to become smart?",
-            "How do children become smart at school?",
-            "Why are some people well-rounded and others only good at one thing?",
-            "Why does modern society need talents of all kinds?",
-            "Do you think smart children are happier than other children?",
-            "Is it important for schools to identify and develop each student's talents?"
-        ]
-    },
-    {
-        "id": 14, "name_cn": "朋友自学", "name_en": "Friend Who Self-Learned",
-        "cue_card": "Describe one of your friends who learned something without a teacher",
-        "cue_points": ["Who he/she is", "What he/she learned", "Why he/she learned this", "And explain whether it would be easier to learn from a teacher"],
-        "part3": [
-            "Is it necessary to keep learning after graduating from school?",
-            "Should teachers make learning in their classes fun?",
-            "Do you think there are too many subjects for students to learn?",
-            "Is it better to focus on a few subjects or to learn many subjects?",
-            "Do you think enterprises should provide training for their employees?",
-            "Do you think it is good for older adults to continue learning?"
-        ]
-    },
-    {
-        "id": 15, "name_cn": "不享受的音乐活动", "name_en": "Unenjoyed Music Event",
-        "cue_card": "Describe an event you attended in which you didn't enjoy the music played",
-        "cue_points": ["What it was", "Who you went with", "Why you decided to go there", "And explain why you didn't enjoy it"],
-        "part3": [
-            "What kind of music events do people like today?",
-            "Do you think children should receive some musical education?",
-            "What are the differences between old and young people's music preferences?",
-            "What kind of music events are there in your country?",
-            "Why do many people like listening to music while doing sports?",
-            "What are the differences between listening to music at home and at a live concert?"
-        ]
-    },
-    {
-        "id": 16, "name_cn": "近期看过且享受的电影", "name_en": "A Recently Enjoyed Movie",
-        "cue_card": "Describe a movie you watched and enjoyed recently",
-        "cue_points": ["When and where you watched it", "Who you watched it with", "What it was about", "And explain why you watched this movie"],
-        "part3": [
-            "What kinds of movies do you think are successful in your country?",
-            "What are the factors that make a successful movie?",
-            "Do you think movies influence people's behavior?",
-            "Why do some people prefer watching movies at home?",
-            "Do different age groups like the same kinds of movies?",
-            "Should films be made in local languages or in international languages?"
-        ]
-    },
-    {
-        "id": 17, "name_cn": "有趣的建筑", "name_en": "An Interesting Building",
-        "cue_card": "Describe an interesting building you have seen",
-        "cue_points": ["Where it is", "What it looks like", "What it is used for", "And explain why you think it is interesting"],
-        "part3": [
-            "What kinds of buildings are popular in your country?",
-            "Is it important to preserve old buildings?",
-            "What are the differences between modern and traditional buildings?",
-            "Do buildings need to be beautiful or functional?",
-            "How does the design of a building affect people's mood?",
-            "Should governments spend money on building design?"
-        ]
-    },
-    {
-        "id": 18, "name_cn": "发挥想象力", "name_en": "Using Imagination",
-        "cue_card": "Describe a time when you needed to use your imagination",
-        "cue_points": ["When it was", "Why you needed to use your imagination", "What you did", "And explain how you felt about it"],
-        "part3": [
-            "Is imagination important for children?",
-            "How can teachers help children develop imagination?",
-            "What jobs need imagination?",
-            "Do you think technology limits children's imagination?",
-            "How does reading help develop imagination?",
-            "Is imagination more important than knowledge?"
-        ]
-    },
-    {
-        "id": 19, "name_cn": "乐于助人的人", "name_en": "A Helpful Person",
-        "cue_card": "Describe a person who likes to help others",
-        "cue_points": ["Who this person is", "How you knew him/her", "What he/she often does to help others", "And explain how you feel about this person"],
-        "part3": [
-            "Why do some people like to help others?",
-            "How can children learn to help others?",
-            "Should helping others be taught in schools?",
-            "What are the benefits of volunteering?",
-            "Do you think people are less willing to help others nowadays?",
-            "How can technology help people help others?"
-        ]
-    },
-    {
-        "id": 20, "name_cn": "花费超过预期的物品", "name_en": "An Item Cost More Than Expected",
-        "cue_card": "Describe something you bought that cost more than you expected",
-        "cue_points": ["What it was", "Why you bought it", "How much it cost", "And explain how you felt about spending more than expected"],
-        "part3": [
-            "Why do people sometimes spend more than they planned?",
-            "Do young people save money?",
-            "Is it important to teach children about money?",
-            "Why do people buy expensive things?",
-            "What influences people's spending habits?",
-            "Should schools teach financial literacy?"
-        ]
-    },
-    {
-        "id": 21, "name_cn": "鼓励别人做不愿做的事", "name_en": "Encouraging Someone Unwilling",
-        "cue_card": "Describe a time when you encouraged someone to do something they didn't want to do",
-        "cue_points": ["Who the person was", "What they didn't want to do", "How you encouraged them", "And explain what the result was"],
-        "part3": [
-            "Why are some people reluctant to try new things?",
-            "How can parents encourage their children?",
-            "Is encouragement more effective than criticism?",
-            "What kind of encouragement works best?",
-            "Should employers encourage their employees? How?",
-            "When is it better NOT to encourage someone?"
-        ]
-    },
-    {
-        "id": 22, "name_cn": "想从事的短期海外工作", "name_en": "Short-term Overseas Work",
-        "cue_card": "Describe a short-term job you would like to do in a foreign country",
-        "cue_points": ["What the job is", "Where you would like to go", "How long you would like to work there", "And explain why you want to do it"],
-        "part3": [
-            "What short-term jobs do young people do in other countries?",
-            "What challenges do young people face when working abroad?",
-            "What are the benefits of working for an international company?",
-            "What personal skills are required to work in an international company?",
-            "What kind of work can young people do in foreign countries?",
-            "Why are some people unwilling to work in other countries?"
-        ]
-    },
-    {
-        "id": 23, "name_cn": "爱护自然之人", "name_en": "A Nature Lover",
-        "cue_card": "Describe a person who likes to look after the natural world",
-        "cue_points": ["Who this person is", "What he or she does", "How he or she does it", "And explain how you feel about this person"],
-        "part3": [
-            "Do you think parents should teach their children how to protect the environment?",
-            "What laws about the environment are effective in your country?",
-            "Which do people prefer, rewards or punishment, for environmental protection?",
-            "Is it easy for children in cities to get close to the natural world?",
-            "What can people do to protect the natural world?",
-            "Is it important to teach students environmental protection at school?"
-        ]
-    },
-    {
-        "id": 24, "name_cn": "商店", "name_en": "A Shop You Enjoy Visiting",
-        "cue_card": "Describe a shop/store you enjoy visiting",
-        "cue_points": ["What the shop's name is", "Where it is", "What it sells", "And explain why you enjoy visiting it"],
-        "part3": [
-            "What kinds of shops are popular in your country?",
-            "Do you prefer shopping online or in physical stores?",
-            "How have shops changed in recent years?",
-            "What makes a shop successful?",
-            "Is customer service important in shops?",
-            "How do shops attract customers?"
-        ]
-    },
-    {
-        "id": 25, "name_cn": "去过且喜欢的城市", "name_en": "A City You Visited and Liked",
-        "cue_card": "Describe a city you have been to and liked",
-        "cue_points": ["What city it is", "When you went there", "What you did there", "And explain why you liked it"],
-        "part3": [
-            "What makes a city attractive to tourists?",
-            "How does tourism affect a city?",
-            "What are the differences between living in a big city and a small city?",
-            "Should cities limit the number of tourists?",
-            "What problems do big cities face?",
-            "How can cities become more livable?"
-        ]
-    },
-    {
-        "id": 26, "name_cn": "安静的地方", "name_en": "A Quiet Place",
-        "cue_card": "Describe a quiet place you like to go to",
-        "cue_points": ["Where it is", "How often you go there", "What you do there", "And explain why you like this quiet place"],
-        "part3": [
-            "Why do people need quiet time?",
-            "Are cities noisier now than in the past?",
-            "How does noise affect people's health?",
-            "What can people do to find quiet in a busy city?",
-            "Should there be quiet zones in cities?",
-            "How do you create a quiet environment at home?"
-        ]
-    },
-    {
-        "id": 27, "name_cn": "喜欢的电视/网络节目", "name_en": "A TV/Online Program You Like",
-        "cue_card": "Describe a TV program or online show you like to watch",
-        "cue_points": ["What it is about", "How often you watch it", "Who you watch it with", "And explain why you like it"],
-        "part3": [
-            "What kinds of TV programs are popular in your country?",
-            "Do people watch more online content than TV now?",
-            "How has the internet changed the way people watch programs?",
-            "Do different age groups like different programs?",
-            "What makes a TV program successful?",
-            "Should children's TV watching be limited?"
-        ]
-    }
+# Section keys in output order: (json key, part, id prefix, human label)
+SECTIONS = [
+    ("part1_new", "part1", "new", "Part 1 New Topics (大陆新题)"),
+    ("part23_new", "part23", "new", "Part 2&3 New Topics (大陆新题)"),
+    ("part1_retained", "part1", "retained", "Part 1 Retained Topics (保留题)"),
+    ("part1_essential", "part1", "essential", "Part 1 Essential Topics (万年老题)"),
+    ("part23_retained", "part23", "retained", "Part 2&3 Retained Topics (保留题)"),
+    ("part1_nonmainland", "part1", "nonmainland", "Part 1 Non-mainland New Topics (非大陆新题)"),
+    ("part23_nonmainland", "part23", "nonmainland", "Part 2&3 Non-mainland New Topics (非大陆新题)"),
 ]
+MAINLAND_KEYS = ["part1_new", "part23_new", "part1_retained", "part1_essential", "part23_retained"]
 
-# Non-mainland Part 2&3 New Topics (8 total)
-part23_nonmainland = [
-    {
-        "id": 1, "name_cn": "想有空时去旅游的地方", "name_en": "A Place to Travel in Free Time",
-        "cue_card": "Describe a place you would like to travel to when you have free time",
-        "cue_points": ["Where it is", "How you knew about it", "What you would like to do there", "And explain why you would like to go there"],
-        "part3": [
-            "Where do people in your country like to travel?",
-            "Is it important to take holidays?",
-            "How do people choose travel destinations?",
-            "What are the benefits of traveling?"
-        ]
-    },
-    {
-        "id": 2, "name_cn": "收到特殊蛋糕", "name_en": "A Special Cake Received",
-        "cue_card": "Describe a special cake you received",
-        "cue_points": ["When you received it", "Who gave it to you", "What it looked like", "And explain why it was special"],
-        "part3": [
-            "On what occasions do people give cakes?",
-            "Do people in your country prefer homemade or store-bought cakes?",
-            "What kinds of gifts do people give on special occasions?",
-            "Is gift-giving important in your culture?"
-        ]
-    },
-    {
-        "id": 3, "name_cn": "在成功公司工作的人", "name_en": "A Person Working in a Successful Company",
-        "cue_card": "Describe a person who works in a successful company",
-        "cue_points": ["Who this person is", "What company he/she works for", "What he/she does", "And explain how you feel about this person"],
-        "part3": [
-            "What makes a company successful?",
-            "What skills do successful companies look for?",
-            "Is it better to work for a big company or a small one?",
-            "How can companies motivate their employees?"
-        ]
-    },
-    {
-        "id": 4, "name_cn": "语言学习", "name_en": "Language Learning",
-        "cue_card": "Describe an experience of learning a language",
-        "cue_points": ["What language you learned", "How you learned it", "What difficulties you faced", "And explain how you felt about it"],
-        "part3": [
-            "Why do people learn foreign languages?",
-            "Is it easier for children to learn languages?",
-            "What is the best way to learn a language?",
-            "How has technology changed language learning?",
-            "Should learning a foreign language be compulsory in schools?"
-        ]
-    },
-    {
-        "id": 5, "name_cn": "重要河流/湖泊", "name_en": "An Important River/Lake",
-        "cue_card": "Describe an important river or lake in your country",
-        "cue_points": ["Where it is", "What it looks like", "Why it is important", "And explain how you feel about it"],
-        "part3": [
-            "Why are rivers and lakes important?",
-            "How do rivers and lakes affect people's lives?",
-            "What environmental problems do rivers and lakes face?",
-            "How can we protect water resources?",
-            "Are there any famous rivers or lakes in your country?"
-        ]
-    },
-    {
-        "id": 6, "name_cn": "花费甚少的外出日", "name_en": "A Day Out That Cost Little",
-        "cue_card": "Describe a day out that cost very little money",
-        "cue_points": ["When it was", "Where you went", "Who you went with", "And explain why it cost very little"],
-        "part3": [
-            "Do people need to spend a lot of money to have a good time?",
-            "What free activities do people enjoy in your country?",
-            "How do people budget for entertainment?",
-            "Is it important to save money?"
-        ]
-    },
-    {
-        "id": 7, "name_cn": "组织快乐活动", "name_en": "Organizing a Happy Event",
-        "cue_card": "Describe a time when you organized a happy event",
-        "cue_points": ["What the event was", "How you organized it", "Who participated", "And explain why it was happy"],
-        "part3": [
-            "What kinds of events do people organize?",
-            "What skills are needed to organize an event?",
-            "How do events bring people together?",
-            "What makes an event memorable?",
-            "Do people in your country like to celebrate together?"
-        ]
-    },
-    {
-        "id": 8, "name_cn": "交通拥堵", "name_en": "Traffic Congestion",
-        "cue_card": "Describe a time when you were stuck in a traffic jam",
-        "cue_points": ["When it happened", "Where it happened", "What you did while waiting", "And explain how you felt about it"],
-        "part3": [
-            "What causes traffic congestion in cities?",
-            "How does traffic congestion affect people's lives?",
-            "What can governments do to reduce traffic?",
-            "Do you think public transport is the solution?",
-            "How will transportation change in the future?"
-        ]
-    }
-]
-
-# Build complete bank
-complete_bank = {
-    "metadata": {
-        "season": "2026年5-8月",
-        "source": "IELTS Speaking Question Bank PDF + MinerU extraction",
-        "last_updated": "2026-07-06",
-        "total_topics": {
-            "part1_new": 16,
-            "part1_retained": 17,
-            "part1_essential": 5,
-            "part23_new": 29,
-            "part23_retained": 27,
-            "part23_nonmainland": 8,
-            "total": 102
-        }
-    },
-    "part23_retained": part23_retained,
-    "part23_nonmainland": part23_nonmainland
+# Chinese glosses for Part 1 topics (the PDF lists Part 1 in English only).
+# Missing entries fall back to the previous season, then to "" with a warning.
+P1_CN = {
+    "travelling": "旅行", "rubbish and recycling": "垃圾与回收", "tiredness": "疲惫",
+    "shoes": "鞋子", "politeness": "礼貌", "fruit and vegetables": "水果和蔬菜",
+    "advertisement": "广告", "paper": "纸", "secondary school": "中学", "name": "名字",
+    "opportunities": "机会", "lost and found": "失物招领", "computers/tablets": "电脑/平板",
+    "collecting things": "收藏物品", "street market": "街边市场", "feeling bored": "感到无聊",
+    "friends": "朋友", "music": "音乐", "teachers": "老师", "social media": "社交媒体",
+    "tidiness": "整洁", "websites": "网站", "watch": "手表", "shopping": "购物",
+    "cars": "汽车", "public gardens and parks": "公园和花园", "science": "科学",
+    "mirrors": "镜子", "outer space and stars": "外太空和星星", "singing": "唱歌",
+    "clothing": "服装", "jokes & comedies": "笑话和喜剧", "headphones": "耳机",
+    "morning time": "早晨", "work or studies": "工作或学习", "home/accommodation": "住所",
+    "hometown": "家乡", "the area you live in": "居住区域", "the city you live in": "居住的城市",
 }
 
-# Save
-out_path = REFS / "question_bank_complete.json"
-with open(out_path, "w", encoding="utf-8") as f:
-    json.dump(complete_bank, f, ensure_ascii=False, indent=2)
+SMALL_WORDS = {"a", "an", "the", "and", "or", "but", "nor", "of", "in", "on", "at",
+               "to", "for", "by", "with", "from", "as", "into", "than", "that"}
 
-print(f"Saved: {out_path}")
-print(f"Part 2&3 Retained: {len(part23_retained)} topics ✓")
-print(f"Part 2&3 Non-mainland: {len(part23_nonmainland)} topics ✓")
-print(f"Total in supplement: {len(part23_retained) + len(part23_nonmainland)} topics")
+
+# --------------------------------------------------------------------------- #
+# Extraction
+# --------------------------------------------------------------------------- #
+def extract_pages(pdf_path):
+    try:
+        import fitz  # PyMuPDF
+    except ImportError:
+        fitz = None
+    if fitz is not None:
+        with fitz.open(pdf_path) as doc:
+            return [p.get_text() for p in doc]
+    try:
+        import pdfplumber
+    except ImportError:
+        sys.exit("No PDF library found. Install one: pip install pymupdf")
+    with pdfplumber.open(pdf_path) as pdf:
+        return [(p.extract_text() or "") for p in pdf.pages]
+
+
+def count_question_lines(pages):
+    return sum(1 for t in pages for l in t.splitlines() if l.strip().endswith(("?", "？")))
+
+
+def cross_check(pdf_path, primary_pages):
+    """Independent second parser; returns a message, never aborts."""
+    try:
+        import pdfplumber
+    except ImportError:
+        return "cross-check skipped (pdfplumber not installed)"
+    with pdfplumber.open(pdf_path) as pdf:
+        other = [(p.extract_text() or "") for p in pdf.pages]
+    a, b = count_question_lines(primary_pages), count_question_lines(other)
+    status = "OK" if a == b else "MISMATCH - inspect the PDF manually"
+    return f"cross-check question lines: primary={a} pdfplumber={b} {status}"
+
+
+# --------------------------------------------------------------------------- #
+# Parsing
+# --------------------------------------------------------------------------- #
+def norm(s):
+    s = s.replace("：", ":").replace("？", "?").replace("’", "'").replace("‘", "'")
+    s = s.replace("（", "(").replace("）", ")").replace("\u3000", " ")
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def clean_lines(pages):
+    """Body lines from the first content page, page numbers dropped."""
+    lines = []
+    started = False
+    for text in pages:
+        for raw in text.splitlines():
+            line = norm(raw)
+            if not line or re.fullmatch(r"\d{1,3}", line):
+                continue
+            if not started:
+                # the TOC repeats the headings with dotted leaders; skip until
+                # the real section heading (no leader dots) appears
+                if not re.match(r"^一、\s*大陆地区新题$", line):
+                    continue
+                started = True
+            lines.append(line)
+    return lines
+
+
+RE_REGION = re.compile(r"^(一|二|三)、\s*(.+)$")
+RE_GROUP = re.compile(r"^Part\s*(1|2&3)\s+(.+?)\((\d+)\s*道\)$")
+RE_P1 = re.compile(r"^(\d+)\s*P1\s+(.+)$")
+RE_P2 = re.compile(r"^(\d+)\s*P2\s+(.+)$")
+RE_ESS = re.compile(r"^万年老题\s+(.+)$")
+SENT_END = ("?", ".", "!", ")", "。")
+
+
+def join_wrapped(items):
+    """Merge PDF line-wraps: a line that does not end a sentence continues."""
+    out, buf = [], ""
+    for it in items:
+        buf = f"{buf} {it}".strip() if buf else it
+        if buf.endswith(SENT_END):
+            out.append(buf)
+            buf = ""
+    if buf:
+        out.append(buf)
+    return out
+
+
+def section_key(region, part, group):
+    if region == "三":
+        return "part1_nonmainland" if part == "1" else "part23_nonmainland"
+    if "万年" in group:
+        return "part1_essential"
+    if "保留" in group:
+        return "part1_retained" if part == "1" else "part23_retained"
+    return "part1_new" if part == "1" else "part23_new"
+
+
+def parse_p2_body(body):
+    """body: lines after the P2 header -> cue_card, cue_points, part3."""
+    try:
+        i_say = next(i for i, l in enumerate(body) if l.lower().startswith("you should say"))
+        i_p3 = next(i for i, l in enumerate(body) if l == "P3")
+    except StopIteration:
+        raise ValueError(f"malformed cue card: {body[:3]}")
+    cue_card = " ".join(body[:i_say])
+    points = []
+    for l in body[i_say + 1:i_p3]:
+        if points and l[:1].islower():
+            points[-1] += " " + l  # wrapped cue point
+        else:
+            points.append(l)
+    return cue_card, points, join_wrapped(body[i_p3 + 1:])
+
+
+def parse_bank(lines):
+    bank = {k: [] for k, *_ in SECTIONS}
+    declared = {}
+    region = part = group = None
+    current = None  # (key, header, body_lines)
+
+    def flush():
+        if not current:
+            return
+        key, header, body = current
+        sec = next(s for s in SECTIONS if s[0] == key)
+        num = len(bank[key]) + 1
+        topic = {"id": num, "topic_id": f"{sec[2]}-{num}"}
+        if sec[1] == "part1":
+            topic.update(name_en=header, name_cn="", questions=join_wrapped(body))
+        else:
+            cue, pts, p3 = parse_p2_body(body)
+            topic.update(name_cn=header, name_en="", cue_card=cue, cue_points=pts, part3=p3)
+        bank[key].append(topic)
+
+    for line in lines:
+        m = RE_REGION.match(line)
+        if m:
+            flush(); current = None
+            region = m.group(1)
+            continue
+        m = RE_GROUP.match(line)
+        if m:
+            flush(); current = None
+            part, group = m.group(1), m.group(2)
+            key = section_key(region, part, group)
+            declared[key] = int(m.group(3))
+            continue
+        m = RE_P1.match(line) or RE_P2.match(line) or RE_ESS.match(line)
+        if m and region:
+            flush()
+            key = section_key(region, part, group)
+            current = (key, m.groups()[-1].strip(), [])
+            continue
+        if current:
+            current[2].append(line)
+    flush()
+    return bank, declared
+
+
+# --------------------------------------------------------------------------- #
+# Previous season (carry-over mapping)
+# --------------------------------------------------------------------------- #
+def key_text(s):
+    s = re.sub(r"\(.*?\)", " ", s.lower())
+    return re.sub(r"[^a-z0-9]+", " ", s).strip()
+
+
+def load_previous_md(path):
+    """Parse question-bank.md (this builder's format or the legacy one)."""
+    out = []
+    key = None
+    cur = None
+    text = Path(path).read_text(encoding="utf-8")
+    for line in text.splitlines():
+        h2 = re.match(r"^## (Part 1|Part 2&3) (.+)$", line)
+        if h2:
+            label = h2.group(2).lower()
+            p = "part1" if h2.group(1) == "Part 1" else "part23"
+            kind = ("essential" if "essential" in label else "retained" if "retained" in label
+                    else "nonmainland" if "non-mainland" in label else "new")
+            key = (p, kind)
+            continue
+        h3 = re.match(r"^### (?:(\d+)\. )?(.+)$", line)
+        if h3 and key:
+            p, kind = key
+            idx = len([t for t in out if (t["part"], t["kind"]) == key]) + 1
+            title = h3.group(2)
+            m = re.match(r"^(.*?) \((.+)\)$", title)
+            a, b = (m.group(1), m.group(2)) if m else (title, "")
+            name_en, name_cn = (a, b) if p == "part1" else (b, a)
+            cur = {"part": p, "kind": kind, "topic_id": f"{kind}-{idx}",
+                   "name_en": name_en, "name_cn": name_cn, "cue_card": ""}
+            out.append(cur)
+            continue
+        if cur and line.startswith("**Cue Card:**"):
+            cur["cue_card"] = line.split("**Cue Card:**", 1)[1].strip()
+    return out
+
+
+def load_previous_json(path):
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    out = []
+    for key, p, kind, _ in SECTIONS:
+        for t in data.get(key, []):
+            out.append({"part": p, "kind": kind,
+                        "topic_id": t.get("topic_id") or f"{kind}-{t['id']}",
+                        "name_en": t.get("name_en", ""), "name_cn": t.get("name_cn", ""),
+                        "cue_card": t.get("cue_card", "")})
+    return data.get("metadata", {}), out
+
+
+def map_previous(bank, previous, prev_code):
+    """Attach carried_over_from + reuse previous names for continuity."""
+    carried = 0
+    for key, p, *_ in SECTIONS:
+        pool = [t for t in previous if t["part"] == p]
+        for t in bank[key]:
+            t["carried_over_from"] = None
+            probe = key_text(t["name_en"] if p == "part1" else t["cue_card"])
+            best, score = None, 0.0
+            for old in pool:
+                cand = key_text(old["name_en"] if p == "part1" else old["cue_card"])
+                if not cand:
+                    continue
+                r = 1.0 if cand == probe else difflib.SequenceMatcher(None, probe, cand).ratio()
+                if r > score:
+                    best, score = old, r
+            if best and score >= (0.95 if p == "part1" else 0.88):
+                t["carried_over_from"] = f"{prev_code}:{p}:{best['topic_id']}"
+                carried += 1
+                if p == "part1" and not t["name_cn"]:
+                    t["name_cn"] = best["name_cn"]
+                if p == "part23" and not t["name_en"]:
+                    t["name_en"] = best["name_en"]
+    return carried
+
+
+# --------------------------------------------------------------------------- #
+# Enrichment, validation, rendering
+# --------------------------------------------------------------------------- #
+def title_case(s):
+    words = s.split()
+    return " ".join(w if (i and w.lower() in SMALL_WORDS) else w[:1].upper() + w[1:]
+                    for i, w in enumerate(words))
+
+
+def derive_name_en(cue_card):
+    s = re.sub(r"\(.*?\)", "", cue_card)
+    s = re.sub(r"^Describe\s+", "", s, flags=re.I).strip(" .")
+    return title_case(re.sub(r"\s+", " ", s))
+
+
+def enrich(bank):
+    missing = []
+    for key, p, *_ in SECTIONS:
+        for t in bank[key]:
+            if p == "part1" and not t["name_cn"]:
+                t["name_cn"] = P1_CN.get(t["name_en"].lower(), "")
+                if not t["name_cn"]:
+                    missing.append(t["name_en"])
+            if p == "part23" and not t["name_en"]:
+                t["name_en"] = derive_name_en(t["cue_card"])
+    return missing
+
+
+def validate(bank, declared):
+    errors = []
+    for key, p, *_ in SECTIONS:
+        got = len(bank[key])
+        if key in declared and declared[key] != got:
+            errors.append(f"{key}: PDF declares {declared[key]}, parsed {got}")
+        for t in bank[key]:
+            tag = f"{key}#{t['id']}"
+            if p == "part1" and len(t["questions"]) < 3:
+                errors.append(f"{tag} has only {len(t['questions'])} questions")
+            if p == "part23":
+                if not t["cue_card"].lower().startswith("describe"):
+                    errors.append(f"{tag} cue card does not start with Describe")
+                if len(t["cue_points"]) < 3 or len(t["part3"]) < 3:
+                    errors.append(f"{tag} cue points/Part 3 look truncated")
+    return errors
+
+
+def totals(bank):
+    t = {k: len(bank[k]) for k, *_ in SECTIONS}
+    t["mainland"] = sum(t[k] for k in MAINLAND_KEYS)
+    t["total"] = sum(len(bank[k]) for k, *_ in SECTIONS)
+    return t
+
+
+def render_md(bank, meta):
+    tt = meta["total_topics"]
+    L = [f"# IELTS Speaking Question Bank ({meta['season']})", "",
+         f"Source: `{meta['source_file']}` (cut-off {meta['cutoff']}). "
+         f"Generated by `scripts/build_complete_bank.py` - do not edit by hand; "
+         f"`question_bank_complete.json` holds the same data for scheduling.", "",
+         "## Structure Overview", ""]
+    for key, _, _, label in SECTIONS:
+        L.append(f"- **{label}**: {tt[key]}")
+    L += [f"- **Total: {tt['total']} topics** (mainland candidates: {tt['mainland']}; "
+          f"non-mainland candidates: {tt['total']})", "",
+          "> Mainland candidates skip the two non-mainland sections. "
+          "Topics marked ♻️ were carried over from the previous season.", ""]
+    for key, p, _, label in SECTIONS:
+        L += [f"## {label} ({tt[key]})", ""]
+        for t in bank[key]:
+            mark = " ♻️" if t.get("carried_over_from") else ""
+            if p == "part1":
+                head = f"{t['name_en']} ({t['name_cn']})" if t["name_cn"] else t["name_en"]
+                L.append(f"### {t['id']}. {head}{mark}")
+                L += [f"- {q}" for q in t["questions"]]
+            else:
+                L.append(f"### {t['id']}. {t['name_cn']} ({t['name_en']}){mark}")
+                L.append(f"**Cue Card:** {t['cue_card']}")
+                L.append("You should say: " + " | ".join(t["cue_points"]))
+                L += ["", "**Part 3:**"] + [f"- {q}" for q in t["part3"]]
+            L.append("")
+    return "\n".join(L).rstrip() + "\n"
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--pdf", required=True)
+    ap.add_argument("--text", help="pre-extracted text file (one page per '\\f')")
+    ap.add_argument("--season", required=True, help='e.g. "2026年9-12月"')
+    ap.add_argument("--season-code", required=True, help="e.g. 2026-09-12")
+    ap.add_argument("--cutoff", default=date.today().isoformat(), help="bank cut-off date")
+    ap.add_argument("--previous-json")
+    ap.add_argument("--previous-md")
+    ap.add_argument("--out-dir", default=str(REFS))
+    ap.add_argument("--dry-run", action="store_true")
+    a = ap.parse_args(argv)
+
+    if a.text:
+        pages = Path(a.text).read_text(encoding="utf-8").split("\f")
+        check = "cross-check skipped (--text input)"
+    else:
+        pages = extract_pages(a.pdf)
+        if sum(len(p.strip()) for p in pages) < 500:
+            sys.exit("PDF has no usable text layer (scanned?). Run OCR (e.g. MinerU) "
+                     "and pass the text with --text.")
+        check = cross_check(a.pdf, pages)
+    print(check)
+
+    bank, declared = parse_bank(clean_lines(pages))
+
+    prev_code, previous = None, []
+    if a.previous_json:
+        pmeta, pj = load_previous_json(a.previous_json)
+        prev_code = pmeta.get("season_code")
+        if not prev_code:  # legacy bank: derive "2026-05-08" from "2026年5-8月"
+            m = re.search(r"(\d{4})年(\d{1,2})-(\d{1,2})月", pmeta.get("season", ""))
+            prev_code = f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}" if m else "previous"
+        previous += pj
+    if a.previous_md:
+        seen = {(t["part"], t["topic_id"]) for t in previous}
+        previous += [t for t in load_previous_md(a.previous_md) if (t["part"], t["topic_id"]) not in seen]
+        prev_code = prev_code or "previous"
+    carried = map_previous(bank, previous, prev_code) if previous else 0
+    if not previous:
+        for k, *_ in SECTIONS:
+            for t in bank[k]:
+                t["carried_over_from"] = None
+
+    missing_cn = enrich(bank)
+    errors = validate(bank, declared)
+
+    meta = {
+        "season": a.season,
+        "season_code": a.season_code,
+        "cutoff": a.cutoff,
+        "source_file": Path(a.pdf).name,
+        "source": "IELTS speaking season PDF, parsed by scripts/build_complete_bank.py",
+        "extracted_with": "PyMuPDF (+ pdfplumber cross-check)",
+        "previous_season": prev_code,
+        "carried_over_topics": carried,
+        "last_updated": date.today().isoformat(),
+        "total_topics": totals(bank),
+    }
+    out = {"metadata": meta, **{k: bank[k] for k, *_ in SECTIONS}}
+
+    for key, *_ in SECTIONS:
+        print(f"  {key:<20} {len(bank[key]):>3}  (declared {declared.get(key, '-')})")
+    print(f"  total {meta['total_topics']['total']} | mainland {meta['total_topics']['mainland']} "
+          f"| carried over {carried}")
+    if missing_cn:
+        print("WARNING: add Chinese names to P1_CN for: " + ", ".join(missing_cn))
+    if errors:
+        print("VALIDATION FAILED:\n  " + "\n  ".join(errors))
+        return 1
+    if a.dry_run:
+        print("dry run: nothing written")
+        return 0
+    od = Path(a.out_dir)
+    od.mkdir(parents=True, exist_ok=True)
+    (od / "question_bank_complete.json").write_text(
+        json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (od / "question-bank.md").write_text(render_md(bank, meta), encoding="utf-8")
+    print(f"wrote {od / 'question_bank_complete.json'} and {od / 'question-bank.md'}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

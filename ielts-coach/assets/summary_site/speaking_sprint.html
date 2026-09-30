@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS 口语最后冲刺</title>
+<!-- Template: rendered by scripts/build_summary_site.py. Keep personal content out of this file. -->
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+        --navy: #1a237e;
+        --navy-light: #283593;
+        --gold: #ffc107;
+        --gold-light: #fff8e1;
+        --coral: #e91e63;
+        --coral-light: #fce4ec;
+        --teal: #00897b;
+        --teal-light: #e0f2f1;
+        --purple: #6a1b9a;
+        --purple-light: #f3e5f5;
+        --blue: #1565c0;
+        --blue-light: #e3f2fd;
+        --green: #2e7d32;
+        --green-light: #e8f5e9;
+        --orange: #e65100;
+        --orange-light: #fff3e0;
+        --bg: #f5f6fa;
+        --card-bg: #ffffff;
+        --text: #212121;
+        --text-secondary: #616161;
+        --border: #e0e0e0;
+        --shadow: 0 2px 10px rgba(26,35,126,0.06);
+        --radius: 14px;
+        --radius-sm: 8px;
+    }
+
+    body {
+        font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+    }
+
+    /* Header */
+    .header {
+        background: linear-gradient(135deg, #1a237e 0%, #3949ab 60%, #e65100 160%);
+        color: white;
+        padding: 1.5rem 1.5rem 1.3rem;
+    }
+    .header-inner { max-width: 1000px; margin: 0 auto; }
+    .header h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.3px; }
+    .header p.sub { font-size: 0.85rem; opacity: 0.92; margin-top: 0.3rem; }
+    .header-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.8rem; }
+    .chip {
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.25);
+        padding: 0.22rem 0.7rem;
+        border-radius: 99px;
+        font-size: 0.72rem;
+        font-weight: 600;
+    }
+
+    /* TOC */
+    .toc {
+        max-width: 1000px;
+        margin: 1.2rem auto 0;
+        padding: 0 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 0.6rem;
+    }
+    .toc-item {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0.7rem 0.9rem;
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--navy);
+        text-decoration: none;
+        box-shadow: var(--shadow);
+        transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .toc-item:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(26,35,126,0.15); }
+    .toc-item .emoji { display: block; font-size: 1.2rem; margin-bottom: 0.15rem; }
+
+    .main { max-width: 1000px; margin: 0 auto; padding: 1.2rem 1.5rem 3rem; }
+
+    .section-title {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--navy);
+        margin: 2.2rem 0 1rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 3px solid var(--gold);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .section-title:first-child { margin-top: 0.5rem; }
+
+    /* Timing overview */
+    .timing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.9rem; }
+    .timing-card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 1rem 1.2rem;
+        border-top: 4px solid var(--gold);
+        border: 1px solid var(--border);
+    }
+    .timing-card.p1 { border-top-color: var(--teal); }
+    .timing-card.p2 { border-top-color: var(--coral); }
+    .timing-card.p3 { border-top-color: var(--purple); }
+    .timing-card .tc-title { font-weight: 800; font-size: 1rem; color: var(--navy); margin-bottom: 0.3rem; }
+    .timing-card .tc-time { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+    .timing-card .tc-desc { font-size: 0.82rem; }
+
+    /* Formula chain cards */
+    .formula-card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 1.2rem 1.4rem;
+        margin-bottom: 1.2rem;
+        border: 1px solid rgba(224,224,224,0.6);
+        border-left: 5px solid var(--navy);
+    }
+    .formula-card.person { border-left-color: var(--coral); }
+    .formula-card.place { border-left-color: var(--teal); }
+    .formula-card.object { border-left-color: var(--blue); }
+    .formula-card.experience { border-left-color: var(--orange); }
+    .formula-card.abstract { border-left-color: var(--purple); }
+
+    .formula-card .fc-title { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: 0.3rem; }
+    .formula-card .fc-sub { font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 0.8rem; }
+
+    .chain {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.8rem;
+        padding: 0.8rem 1rem;
+        background: #fafbfe;
+        border-radius: var(--radius-sm);
+        border: 1px dashed var(--border);
+    }
+    .chain-step {
+        background: var(--navy);
+        color: white;
+        padding: 0.4rem 0.8rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.82rem;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+    .chain-step.en { background: var(--navy-light); }
+    .chain-arrow { color: var(--text-secondary); font-weight: 700; font-size: 1.1rem; }
+
+    /* Expression chips */
+    .expr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.5rem; margin-top: 0.6rem; }
+    .expr-item {
+        background: #fafbfe;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0.55rem 0.85rem;
+        font-size: 0.85rem;
+    }
+    .expr-item .en { font-weight: 700; color: var(--navy); }
+    .expr-item .cn { color: var(--text-secondary); font-size: 0.78rem; margin-left: 0.3rem; }
+    .expr-item .use { display: block; font-size: 0.74rem; color: var(--green); margin-top: 0.15rem; }
+
+    /* Material library */
+    .material-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.9rem; }
+    .material-card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 1rem 1.2rem;
+        border: 1px solid var(--border);
+    }
+    .material-card .mc-title { font-weight: 800; font-size: 0.95rem; color: var(--navy); margin-bottom: 0.4rem; }
+    .material-card .mc-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+    .material-card .mc-tag {
+        font-size: 0.68rem;
+        padding: 0.15rem 0.6rem;
+        border-radius: 99px;
+        font-weight: 600;
+        background: var(--gold-light);
+        color: #b8860b;
+    }
+    .material-card .mc-body { font-size: 0.82rem; color: var(--text); }
+    .material-card .mc-body ul { padding-left: 1.1rem; margin-top: 0.2rem; }
+    .material-card .mc-body li { margin-bottom: 0.25rem; }
+
+    /* Rescue phrases */
+    .rescue-box {
+        background: linear-gradient(135deg, #fff8e1, #fff3e0);
+        border: 2px solid var(--gold);
+        border-radius: var(--radius);
+        padding: 1.2rem 1.4rem;
+        margin-top: 1rem;
+    }
+    .rescue-box .rb-title { font-weight: 800; color: #b8860b; font-size: 1rem; margin-bottom: 0.6rem; }
+    .rescue-item {
+        display: flex;
+        gap: 0.6rem;
+        align-items: flex-start;
+        padding: 0.5rem 0;
+        border-bottom: 1px dashed #e0c060;
+        font-size: 0.85rem;
+    }
+    .rescue-item:last-child { border-bottom: none; }
+    .rescue-item .en { font-weight: 700; color: var(--navy); }
+    .rescue-item .cn { color: var(--text-secondary); font-size: 0.78rem; }
+
+    .footer {
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        border-top: 1px solid var(--border);
+        margin-top: 1rem;
+    }
+
+    @media (max-width: 640px) {
+        .main { padding: 1rem 0.9rem 2rem; }
+        .header h1 { font-size: 1.2rem; }
+        .chain { flex-direction: column; align-items: flex-start; }
+        .chain-arrow { transform: rotate(90deg); }
+    }
+</style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <h1>🎤 IELTS 口语最后冲刺</h1>
+        <p class="sub">目标 Band {{TARGET_SPEAKING}} · {{COUNTDOWN}} · 逻辑链条 + 万能表达 + 你的素材库</p>
+        <div class="header-chips">
+            <span class="chip">📌 Part 1：直接回答 + 例子 + 感受</span>
+            <span class="chip">📌 Part 2：一个故事贯穿 cue card</span>
+            <span class="chip">📌 Part 3：观点 + 理由 + 例子</span>
+        </div>
+    </div>
+</header>
+
+<nav class="toc">
+    <a class="toc-item" href="#timing"><span class="emoji">⏱️</span>答题节奏</a>
+    <a class="toc-item" href="#p1"><span class="emoji">1️⃣</span>Part 1 逻辑</a>
+    <a class="toc-item" href="#p2"><span class="emoji">2️⃣</span>Part 2 逻辑</a>
+    <a class="toc-item" href="#p3"><span class="emoji">3️⃣</span>Part 3 逻辑</a>
+    <a class="toc-item" href="#connectives"><span class="emoji">🔗</span>连接词&强调</a>
+    <a class="toc-item" href="#rescue"><span class="emoji">🆘</span>救命句</a>
+    <a class="toc-item" href="#materials"><span class="emoji">🎒</span>我的素材库</a>
+</nav>
+
+<main class="main">
+
+    <!-- ===== 答题节奏 ===== -->
+    <div id="timing">
+        <h2 class="section-title">⏱️ 答题节奏速记</h2>
+        <div class="timing-grid">
+            <div class="timing-card p1">
+                <div class="tc-title">Part 1 · 日常问答</div>
+                <div class="tc-time">每题 20-40 秒 · 2-4 句话</div>
+                <div class="tc-desc">别背长答案！直接回答 → 加一个例子 → 一句感受，就够。答完就停，别硬凑。</div>
+            </div>
+            <div class="timing-card p2">
+                <div class="tc-title">Part 2 · 1分钟准备 + 2分钟说</div>
+                <div class="tc-time">约 250 词 · 全程说满</div>
+                <div class="tc-desc">准备时只写 4-5 个关键词（谁/哪/什么/为什么）。开场直接点题，每个 cue point 都覆盖，结尾一句收束。</div>
+            </div>
+            <div class="timing-card p3">
+                <div class="tc-title">Part 3 · 深度讨论</div>
+                <div class="tc-time">每题 60-80 秒 · 3-5 句话</div>
+                <div class="tc-desc">观点 → 理由 → 例子，三件套。用正式一点的词汇，可以加"但是/另一方面"体现思辨。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Part 1 ===== -->
+    <div id="p1">
+        <h2 class="section-title">1️⃣ Part 1 逻辑链条（4 类话题）</h2>
+
+        <div class="formula-card">
+            <div class="fc-title">A. 偏好 / 习惯题（Music, Food, Shopping, Hobby, Reading, Cars...）</div>
+            <div class="fc-sub">最常考，占 Part 1 一半以上</div>
+            <div class="chain">
+                <span class="chain-step">直接表态</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">一个具体例子</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">原因/感受</span>
+            </div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">I'd say I'm really into...</span><span class="cn">我很喜欢</span><span class="use">开场直接回答</span></div>
+                <div class="expr-item"><span class="en">I gravitate towards...</span><span class="cn">我倾向于</span><span class="use">比 like 高级</span></div>
+                <div class="expr-item"><span class="en">To be honest, ...</span><span class="cn">说实话</span><span class="use">拉近距离</span></div>
+                <div class="expr-item"><span class="en">That's partly because...</span><span class="cn">部分原因是</span><span class="use">补原因</span></div>
+                <div class="expr-item"><span class="en">It's my go-to when I need to unwind.</span><span class="cn">这是我放松时的首选</span><span class="use">万能收尾</span></div>
+                <div class="expr-item"><span class="en">I'm a huge fan of...</span><span class="cn">我是...的超级粉丝</span></div>
+                <div class="expr-item"><span class="en">I've always been drawn to...</span><span class="cn">我一直被...吸引</span></div>
+                <div class="expr-item"><span class="en">It's grown on me over the years.</span><span class="cn">这些年我越来越喜欢它</span><span class="use">谈变化</span></div>
+                <div class="expr-item"><span class="en">I used to ... but now I'm more into ...</span><span class="cn">我以前...但现在更...</span><span class="use">谈转变</span></div>
+            </div>
+        </div>
+
+        <div class="formula-card place">
+            <div class="fc-title">B. 描述题（Hometown, Home, The Area/City You Live In, Building, Scenery...）</div>
+            <div class="fc-sub">让你描述一个地方或事物</div>
+            <div class="chain">
+                <span class="chain-step">总体印象</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">一个具体细节</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">你的感受</span>
+            </div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">It's quite... / It has a really ... feel to it</span><span class="cn">它相当.../很有...的感觉</span></div>
+                <div class="expr-item"><span class="en">What I love most is...</span><span class="cn">我最喜欢的是</span></div>
+                <div class="expr-item"><span class="en">The best part is...</span><span class="cn">最好的部分是</span></div>
+                <div class="expr-item"><span class="en">You'd never guess, but...</span><span class="cn">你绝对想不到</span><span class="use">引出细节</span></div>
+                <div class="expr-item"><span class="en">It's one of those places that ...</span><span class="cn">它是那种...的地方</span></div>
+                <div class="expr-item"><span class="en">There's a real sense of ... about it.</span><span class="cn">它有一种...的感觉</span></div>
+                <div class="expr-item"><span class="en">You can feel the ... as soon as you arrive.</span><span class="cn">一到就能感受到</span></div>
+                <div class="expr-item"><span class="en">It's surrounded by ... / It's famous for ...</span><span class="cn">它被...环绕 / 以...闻名</span></div>
+            </div>
+        </div>
+
+        <div class="formula-card experience">
+            <div class="fc-title">C. 回忆题（Childhood, Memory, Pets, Gifts, Life stages...）</div>
+            <div class="fc-sub">让你回忆过去</div>
+            <div class="chain">
+                <span class="chain-step">一个具体回忆</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">细节画面</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">现在的感受</span>
+            </div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">When I was younger, ...</span><span class="cn">我小时候</span></div>
+                <div class="expr-item"><span class="en">I still remember the day when...</span><span class="cn">我仍记得那一天</span></div>
+                <div class="expr-item"><span class="en">Looking back, ...</span><span class="cn">回头看</span></div>
+                <div class="expr-item"><span class="en">It's one of my earliest memories.</span><span class="cn">这是我最早期的记忆之一</span></div>
+                <div class="expr-item"><span class="en">I have vivid memories of ...</span><span class="cn">我对...有清晰的记忆</span></div>
+                <div class="expr-item"><span class="en">It brings back memories of ...</span><span class="cn">它让我想起...</span></div>
+                <div class="expr-item"><span class="en">Those were simpler times.</span><span class="cn">那是更单纯的时光</span></div>
+            </div>
+        </div>
+
+        <div class="formula-card abstract">
+            <div class="fc-title">D. 观点题（Social media, Science, Websites, Parks...）</div>
+            <div class="fc-sub">让你表达看法</div>
+            <div class="chain">
+                <span class="chain-step">立场</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">一个理由</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">一个例子</span>
+            </div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">I genuinely think...</span><span class="cn">我真的认为</span></div>
+                <div class="expr-item"><span class="en">From my point of view, ...</span><span class="cn">在我看来</span></div>
+                <div class="expr-item"><span class="en">What I've noticed is...</span><span class="cn">我注意到的是</span></div>
+                <div class="expr-item"><span class="en">That said, I can see the other side too.</span><span class="cn">不过我也理解另一面</span><span class="use">体现思辨</span></div>
+                <div class="expr-item"><span class="en">If you ask me, ...</span><span class="cn">要我说</span></div>
+                <div class="expr-item"><span class="en">There's no doubt that ...</span><span class="cn">毫无疑问</span></div>
+                <div class="expr-item"><span class="en">It's a double-edged sword.</span><span class="cn">这是双刃剑</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Part 2 ===== -->
+    <div id="p2">
+        <h2 class="section-title">2️⃣ Part 2 逻辑链条（5 类话题）</h2>
+
+        <div class="formula-card person">
+            <div class="fc-title">A. 人物题（A Person Who..., A Friend, A Teacher, A Famous Person...）</div>
+            <div class="fc-sub">12 个你练过的人物话题，全是这个套路</div>
+            <div class="chain">
+                <span class="chain-step en">WHO + 关系</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step en">一个具体故事/特质</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step en">对你的影响/你的感受</span>
+            </div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">The person who comes to mind is...</span><span class="cn">我想到的人是</span></div>
+                <div class="expr-item"><span class="en">What makes him/her special is...</span><span class="cn">他/她特别之处在于</span></div>
+                <div class="expr-item"><span class="en">There was this one time when...</span><span class="cn">有这么一次</span><span class="use">引出故事</span></div>
+                <div class="expr-item"><span class="en">To this day, he/she remains...</span><span class="cn">至今他/她仍是</span></div>
+                <div class="expr-item"><span class="en">I first met him/her when ...</span><span class="cn">我第一次见到他/她是...</span></div>
+                <div class="expr-item"><span class="en">He/She has this quality of ...</span><span class="cn">他/她有一种...的特质</span></div>
+                <div class="expr-item"><span class="en">I've always looked up to ...</span><span class="cn">我一直仰慕...</span></div>
+            </div>
+        </div>
+
+        <div class="formula-card place">
+            <div class="fc-title">B. 地点题（A Place to Recommend, A Home to Visit, A City You Visited...）</div>
+            <div class="fc-sub">地点题的灵魂是"画面感"</div>
+            <div class="chain">
+                <span class="chain-step en">WHERE + 描述</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step en">你在那做了什么/经历</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step en">为什么喜欢/重要</span>
+            </div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">It's located in... / not far from...</span><span class="cn">它位于</span></div>
+                <div class="expr-item"><span class="en">The moment you step in, ...</span><span class="cn">一踏进去就...</span></div>
+                <div class="expr-item"><span class="en">What I remember most is...</span><span class="cn">我最记得的是</span></div>
+                <div class="expr-item"><span class="en">It holds a special place in my heart.</span><span class="cn">它在我心中有特殊位置</span></div>
+                <div class="expr-item"><span class="en">It's the kind of place where you can ...</span><span class="cn">这是那种你可以...的地方</span></div>
+                <div class="expr-item"><span class="en">The atmosphere there is ...</span><span class="cn">那里的氛围是...</span></div>
+                <div class="expr-item"><span class="en">It's off the beaten track.</span><span class="cn">它很冷门/人迹罕至</span><span class="use">高分表达</span></div>
+            </div>
+        </div>
+
+        <div class="formula-card object">
+            <div class="fc-title">C. 物品题（A Piece of Technology, A Special Cake, An Item Cost More...）</div>
+            <div class="fc-sub">物品题的灵魂是"它对我的意义"</div>
+            <div class="chain">
+                <span class="chain-step en">WHAT + 描述</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step en">怎么得到/为什么买</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step en">意义/价值</span>
+            </div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">It's basically a ... that ...</span><span class="cn">它基本上是一个...</span></div>
+                <div class="expr-item"><span class="en">I got it / bought it when...</span><span class="cn">我是在...时候得到/买的</span></div>
+                <div class="expr-item"><span class="en">What makes it special is...</span><span class="cn">它特别在</span></div>
+                <div class="expr-item"><span class="en">I can't imagine my life without it.</span><span class="cn">无法想象没有它的生活</span></div>
+                <div class="expr-item"><span class="en">It's not the most expensive, but ...</span><span class="cn">它不是最贵的，但...</span></div>
+                <div class="expr-item"><span class="en">It's been with me through ...</span><span class="cn">它陪伴我经历了...</span></div>
+                <div class="expr-item"><span class="en">Every time I see it, it reminds me of ...</span><span class="cn">每次看到它，就让我想起</span></div>
+            </div>
+        </div>
+
+        <div class="formula-card experience">
+            <div class="fc-title">D. 经历题（A Time When..., An Occasion..., A Day Out...）</div>
+            <div class="fc-sub">15 个你练过的经历题，用时间线讲故事</div>
+            <div class="chain">
+                <span class="chain-step en">WHEN/WHERE 开场</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step en">过程（起→中→末）</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step en">感悟/收获</span>
+            </div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">This happened ... last year/a few weeks ago</span><span class="cn">发生在...</span></div>
+                <div class="expr-item"><span class="en">At first, ... Then, ... Finally, ...</span><span class="cn">起初...然后...最后</span></div>
+                <div class="expr-item"><span class="en">What surprised me most was...</span><span class="cn">最让我惊讶的是</span></div>
+                <div class="expr-item"><span class="en">Looking back, it taught me that...</span><span class="cn">回头看，它教会我</span></div>
+                <div class="expr-item"><span class="en">It all started when ...</span><span class="cn">一切始于...</span></div>
+                <div class="expr-item"><span class="en">Little did I know that ...</span><span class="cn">我当时完全没想到</span><span class="use">制造悬念</span></div>
+                <div class="expr-item"><span class="en">It turned out to be ...</span><span class="cn">结果竟然是</span></div>
+            </div>
+        </div>
+
+        <div class="formula-card abstract">
+            <div class="fc-title">E. 抽象/计划题（A Law, An Important Decision, A Long-term Goal, An Opinion Change...）</div>
+            <div class="fc-sub">抽象题的灵魂是"具体化到一个例子"</div>
+            <div class="chain">
+                <span class="chain-step en">定义/点题</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step en">具体化（一个例子）</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step en">为什么/意义</span>
+            </div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">One [decision/change] that stands out is...</span><span class="cn">一个突出的...是</span></div>
+                <div class="expr-item"><span class="en">Let me give you a concrete example.</span><span class="cn">让我举个具体例子</span></div>
+                <div class="expr-item"><span class="en">This matters because...</span><span class="cn">这很重要因为</span></div>
+                <div class="expr-item"><span class="en">In the long run, ...</span><span class="cn">从长远看</span></div>
+                <div class="expr-item"><span class="en">It's hard to put into words, but ...</span><span class="cn">很难用语言表达，但</span><span class="use">万能开场</span></div>
+                <div class="expr-item"><span class="en">The key turning point was ...</span><span class="cn">关键的转折点是</span></div>
+                <div class="expr-item"><span class="en">It all comes down to ...</span><span class="cn">归根到底是</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Part 3 ===== -->
+    <div id="p3">
+        <h2 class="section-title">3️⃣ Part 3 逻辑链条（4 类问题）</h2>
+
+        <div class="formula-card">
+            <div class="fc-title">A. 观点分析题（Why...? / Do you think...?）</div>
+            <div class="chain">
+                <span class="chain-step">观点</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">理由</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">例子</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">反向思考（可选）</span>
+            </div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">I genuinely believe that...</span><span class="cn">我真的相信</span></div>
+                <div class="expr-item"><span class="en">The main reason is that...</span><span class="cn">主要原因是</span></div>
+                <div class="expr-item"><span class="en">A case in point is...</span><span class="cn">一个例子是</span></div>
+                <div class="expr-item"><span class="en">Having said that, ...</span><span class="cn">话虽如此</span><span class="use">引出另一面</span></div>
+                <div class="expr-item"><span class="en">I'm in two minds about this.</span><span class="cn">我对此有些矛盾</span></div>
+                <div class="expr-item"><span class="en">The way I see it, ...</span><span class="cn">在我看来</span></div>
+                <div class="expr-item"><span class="en">It boils down to ...</span><span class="cn">归结起来是</span></div>
+            </div>
+        </div>
+
+        <div class="formula-card place">
+            <div class="fc-title">B. 对比题（What's the difference between...?）</div>
+            <div class="chain">
+                <span class="chain-step">一方特点</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">另一方特点</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">总结差异</span>
+            </div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">The contrast is quite striking.</span><span class="cn">对比相当鲜明</span></div>
+                <div class="expr-item"><span class="en">On the one hand... / On the other hand...</span><span class="cn">一方面/另一方面</span></div>
+                <div class="expr-item"><span class="en">whereas / while / by contrast</span><span class="cn">而/相比之下</span></div>
+                <div class="expr-item"><span class="en">In general, I'd say...</span><span class="cn">总的来说</span></div>
+                <div class="expr-item"><span class="en">There's a world of difference between ...</span><span class="cn">...之间有天壤之别</span></div>
+                <div class="expr-item"><span class="en">X is in a league of its own.</span><span class="cn">X 独树一帜</span></div>
+                <div class="expr-item"><span class="en">The gap is narrowing / widening.</span><span class="cn">差距在缩小/扩大</span></div>
+            </div>
+        </div>
+
+        <div class="formula-card object">
+            <div class="fc-title">C. 趋势题（How has X changed...? / What's the future of...?）</div>
+            <div class="chain">
+                <span class="chain-step">过去</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">现在</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">原因/未来</span>
+            </div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">Things have changed dramatically.</span><span class="cn">事情变化巨大</span></div>
+                <div class="expr-item"><span class="en">In the past, ... Nowadays, ...</span><span class="cn">过去...现在</span></div>
+                <div class="expr-item"><span class="en">This is largely because...</span><span class="cn">这主要是因为</span></div>
+                <div class="expr-item"><span class="en">I'm optimistic that...</span><span class="cn">我乐观地认为</span></div>
+                <div class="expr-item"><span class="en">This trend shows no sign of slowing down.</span><span class="cn">这个趋势没有放缓迹象</span></div>
+                <div class="expr-item"><span class="en">It's still in its early stages.</span><span class="cn">它仍处于早期阶段</span></div>
+                <div class="expr-item"><span class="en">We're likely to see ... in the years ahead.</span><span class="cn">未来几年我们可能会看到</span></div>
+            </div>
+        </div>
+
+        <div class="formula-card abstract">
+            <div class="fc-title">D. 建议题（How can we...? / What should...?）</div>
+            <div class="chain">
+                <span class="chain-step">问题</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">建议</span>
+                <span class="chain-arrow">→</span>
+                <span class="chain-step">理由 + 预期效果</span>
+            </div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">The most effective way would be to...</span><span class="cn">最有效的方式是</span></div>
+                <div class="expr-item"><span class="en">A good starting point is...</span><span class="cn">一个好的起点是</span></div>
+                <div class="expr-item"><span class="en">If this were implemented, ...</span><span class="cn">如果实施的话</span><span class="use">虚拟语气加分</span></div>
+                <div class="expr-item"><span class="en">It would go a long way toward...</span><span class="cn">对...大有帮助</span></div>
+                <div class="expr-item"><span class="en">The ball is in the government's court.</span><span class="cn">这得看政府的行动</span></div>
+                <div class="expr-item"><span class="en">It's easier said than done, but ...</span><span class="cn">说起来容易做起来难，但</span></div>
+                <div class="expr-item"><span class="en">A shift in mindset is needed.</span><span class="cn">需要观念的转变</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 万能连接与强调 ===== -->
+    <div id="connectives">
+        <h2 class="section-title">🔗 万能连接词 & 强调表达</h2>
+
+        <div class="formula-card">
+            <div class="fc-title">A. 连接词（让回答更连贯，每句一个就够，别堆）</div>
+            <div class="fc-sub">用自然的连接词替代"嗯...然后...还有..."</div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">Having said that, ...</span><span class="cn">话虽如此</span><span class="use">转折</span></div>
+                <div class="expr-item"><span class="en">On top of that, ...</span><span class="cn">除此之外</span><span class="use">递进</span></div>
+                <div class="expr-item"><span class="en">For instance, ... / Take ... for example</span><span class="cn">比如</span><span class="use">举例</span></div>
+                <div class="expr-item"><span class="en">That's largely because ...</span><span class="cn">这主要是因为</span><span class="use">因果</span></div>
+                <div class="expr-item"><span class="en">In a nutshell, ...</span><span class="cn">简而言之</span><span class="use">总结</span></div>
+                <div class="expr-item"><span class="en">Mind you, ...</span><span class="cn">不过话说回来</span><span class="use">补充修正</span></div>
+                <div class="expr-item"><span class="en">Come to think of it, ...</span><span class="cn">仔细一想</span><span class="use">补充想法</span></div>
+                <div class="expr-item"><span class="en">More importantly, ...</span><span class="cn">更重要的是</span><span class="use">强调</span></div>
+            </div>
+        </div>
+
+        <div class="formula-card person">
+            <div class="fc-title">B. 强调程度（让词汇更有冲击力）</div>
+            <div class="fc-sub">替换掉 boring 的 very / really</div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">incredibly / remarkably</span><span class="cn">极其、惊人地</span></div>
+                <div class="expr-item"><span class="en">absolutely / utterly</span><span class="cn">完全、彻底</span></div>
+                <div class="expr-item"><span class="en">by far the most ...</span><span class="cn">毫无疑问最...</span></div>
+                <div class="expr-item"><span class="en">nothing short of ...</span><span class="cn">简直是、不亚于</span></div>
+                <div class="expr-item"><span class="en">to a certain extent</span><span class="cn">在某种程度上</span><span class="use">弱化</span></div>
+                <div class="expr-item"><span class="en">on the whole / by and large</span><span class="cn">总的来说</span></div>
+                <div class="expr-item"><span class="en">a bit of a ... / somewhat</span><span class="cn">有点、略微</span><span class="use">弱化</span></div>
+                <div class="expr-item"><span class="en">particularly / especially</span><span class="cn">尤其</span></div>
+            </div>
+        </div>
+
+        <div class="formula-card place">
+            <div class="fc-title">C. 让步与平衡（体现思辨，Part 3 高分关键）</div>
+            <div class="fc-sub">让考官觉得你"想得全面"，不是非黑即白</div>
+            <div class="expr-grid">
+                <div class="expr-item"><span class="en">It's a bit of a double-edged sword.</span><span class="cn">这有点像双刃剑</span></div>
+                <div class="expr-item"><span class="en">There's no one-size-fits-all answer.</span><span class="cn">没有放之四海皆准的答案</span></div>
+                <div class="expr-item"><span class="en">It largely depends on the situation.</span><span class="cn">很大程度上取决于情况</span></div>
+                <div class="expr-item"><span class="en">I can see both sides of the argument.</span><span class="cn">我能理解双方观点</span></div>
+                <div class="expr-item"><span class="en">That being said, I still lean towards ...</span><span class="cn">尽管如此，我仍倾向</span></div>
+                <div class="expr-item"><span class="en">It's not as clear-cut as it seems.</span><span class="cn">事情没有表面那么简单</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 救命句 ===== -->
+    <div id="rescue">
+        <h2 class="section-title">🆘 万能救命句（卡壳时用）</h2>
+        <div class="rescue-box">
+            <div class="rb-title">这些句子能帮你争取 2-3 秒思考时间，还显得很自然</div>
+            <div class="rescue-item"><span class="en">That's an interesting question. Let me think for a second.</span><span class="cn">这问题有意思，让我想一下</span></div>
+            <div class="rescue-item"><span class="en">I've never really thought about that before, but I'd say...</span><span class="cn">我从没想过，但我会说</span></div>
+            <div class="rescue-item"><span class="en">To be honest, it's a bit hard to say, but...</span><span class="cn">说实话有点难说，但</span></div>
+            <div class="rescue-item"><span class="en">Well, it depends on the situation, but generally...</span><span class="cn">看情况，但一般</span></div>
+            <div class="rescue-item"><span class="en">If I had to sum it up in one word, I'd say...</span><span class="cn">用一个词总结就是</span></div>
+            <div class="rescue-item"><span class="en">What I mean is that...</span><span class="cn">我的意思是</span><span class="cn" style="color:var(--green)">（发现自己说错了，用它纠正）</span></div>
+            <div class="rescue-item"><span class="en">Sorry, let me put it another way.</span><span class="cn">抱歉，换个说法</span><span class="cn" style="color:var(--green)">（重新组织语言）</span></div>
+        </div>
+    </div>
+
+{{MATERIALS}}
+
+</main>
+
+<footer class="footer">
+    IELTS 口语最后冲刺 · 目标 Band {{TARGET_SPEAKING}} · 逻辑链条 + 万能表达 + 素材库 · 考前反复过一遍
+</footer>
+
+</body>
+</html>

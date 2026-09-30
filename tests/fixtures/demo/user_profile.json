@@ -1,0 +1,13 @@
+{
+  "exam_date": "2026-12-12",
+  "target_speaking": 7.0,
+  "target_writing": 6.5,
+  "personal": {
+    "name": "",
+    "status": "student",
+    "education": "Year 3, Environmental Engineering",
+    "hometown": "Hangzhou",
+    "hobbies": ["badminton", "film photography"],
+    "future_plans": "Master's in sustainability abroad"
+  }
+}

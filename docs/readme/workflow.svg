@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-labelledby="t d">
+  <title id="t">IELTS Coach workflow</title>
+  <desc id="d">Five steps: onboard, plan, discover, polish, review. Below, the season loop: a new season PDF is parsed, progress is migrated, and the plan continues without repeating topics.</desc>
+  <rect width="1200" height="400" rx="24" fill="#f5f6fa"/>
+  <g font-family="'Segoe UI','PingFang SC','Microsoft YaHei',system-ui,-apple-system,sans-serif">
+    <g id="steps">
+      <!-- step boxes: x = 40 + i*228 -->
+      <g>
+        <rect x="40" y="40" width="200" height="170" rx="18" fill="#ffffff" stroke="#e0e0e0" stroke-width="2"/>
+        <circle cx="80" cy="82" r="22" fill="#1a237e"/><text x="80" y="90" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">1</text>
+        <text x="62" y="138" fill="#1a237e" font-size="24" font-weight="800">Onboard</text>
+        <text x="62" y="168" fill="#616161" font-size="18">exam date, targets,</text>
+        <text x="62" y="192" fill="#616161" font-size="18">your background</text>
+      </g>
+      <g>
+        <rect x="268" y="40" width="200" height="170" rx="18" fill="#ffffff" stroke="#e0e0e0" stroke-width="2"/>
+        <circle cx="308" cy="82" r="22" fill="#1a237e"/><text x="308" y="90" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">2</text>
+        <text x="290" y="138" fill="#1a237e" font-size="24" font-weight="800">Plan</text>
+        <text x="290" y="168" fill="#616161" font-size="18">unique topics per</text>
+        <text x="290" y="192" fill="#616161" font-size="18">day, never repeated</text>
+      </g>
+      <g>
+        <rect x="496" y="40" width="200" height="170" rx="18" fill="#fff8e1" stroke="#ffc107" stroke-width="3"/>
+        <circle cx="536" cy="82" r="22" fill="#ffc107"/><text x="536" y="90" text-anchor="middle" fill="#1a237e" font-size="22" font-weight="800">3</text>
+        <text x="518" y="138" fill="#1a237e" font-size="24" font-weight="800">Discover</text>
+        <text x="518" y="168" fill="#795548" font-size="18">you answer first,</text>
+        <text x="518" y="192" fill="#795548" font-size="18">in a web form</text>
+      </g>
+      <g>
+        <rect x="724" y="40" width="200" height="170" rx="18" fill="#ffffff" stroke="#e0e0e0" stroke-width="2"/>
+        <circle cx="764" cy="82" r="22" fill="#1a237e"/><text x="764" y="90" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">4</text>
+        <text x="746" y="138" fill="#1a237e" font-size="24" font-weight="800">Polish</text>
+        <text x="746" y="168" fill="#616161" font-size="18">band-calibrated,</text>
+        <text x="746" y="192" fill="#616161" font-size="18">no AI flavour</text>
+      </g>
+      <g>
+        <rect x="952" y="40" width="208" height="170" rx="18" fill="#ffffff" stroke="#e0e0e0" stroke-width="2"/>
+        <circle cx="992" cy="82" r="22" fill="#1a237e"/><text x="992" y="90" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">5</text>
+        <text x="974" y="138" fill="#1a237e" font-size="24" font-weight="800">Review</text>
+        <text x="974" y="168" fill="#616161" font-size="18">answer page, then</text>
+        <text x="974" y="192" fill="#616161" font-size="18">summary website</text>
+      </g>
+    </g>
+    <g fill="#9fa8da">
+      <path d="M244 125 l18 0 -6 -8 M262 125 l-6 8" stroke="#9fa8da" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M472 125 l18 0 -6 -8 M490 125 l-6 8" stroke="#9fa8da" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M700 125 l18 0 -6 -8 M718 125 l-6 8" stroke="#9fa8da" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M928 125 l18 0 -6 -8 M946 125 l-6 8" stroke="#9fa8da" stroke-width="4" fill="none" stroke-linecap="round"/>
+    </g>
+    <!-- daily loop back from 4 to 3 -->
+    <path d="M824 214 C 824 250, 596 250, 596 216" stroke="#ffc107" stroke-width="3" fill="none" stroke-dasharray="7 7"/>
+    <text x="710" y="266" text-anchor="middle" fill="#b8860b" font-size="18" font-weight="700">every session</text>
+
+    <!-- season loop -->
+    <rect x="40" y="292" width="1120" height="76" rx="18" fill="#e0f2f1" stroke="#00897b" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="68" y="338" fill="#00695c" font-size="20" font-weight="800">♻️ New season</text>
+    <g font-size="19" fill="#00695c" font-weight="600">
+      <rect x="226" y="310" width="210" height="40" rx="10" fill="#ffffff"/>
+      <text x="331" y="337" text-anchor="middle">season PDF</text>
+      <text x="458" y="337" text-anchor="middle" font-size="22">→</text>
+      <rect x="480" y="310" width="260" height="40" rx="10" fill="#ffffff"/>
+      <text x="610" y="337" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="18">build_complete_bank</text>
+      <text x="762" y="337" text-anchor="middle" font-size="22">→</text>
+      <rect x="784" y="310" width="210" height="40" rx="10" fill="#ffffff"/>
+      <text x="889" y="337" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="18">migrate_season</text>
+      <text x="1016" y="337" text-anchor="middle" font-size="22">→</text>
+      <text x="1086" y="337" text-anchor="middle">plan goes on</text>
+    </g>
+  </g>
+</svg>

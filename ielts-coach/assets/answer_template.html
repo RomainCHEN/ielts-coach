@@ -37,7 +37,7 @@
         .header {
             background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
             color: white;
-            padding: 2rem 2rem 1.5rem;
+            padding: 1rem 1.5rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -50,45 +50,46 @@
         }
 
         .header h1 {
-            font-size: 1.8rem;
+            font-size: 1.2rem;
             font-weight: 700;
             letter-spacing: -0.5px;
         }
 
-        .header h1 .icon { margin-right: 0.5rem; }
+        .header h1 .icon { margin-right: 0.4rem; }
 
         .header-stats {
             display: flex;
-            gap: 1.5rem;
-            margin-top: 1rem;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .stat-card {
             background: rgba(255,255,255,0.12);
             border-radius: var(--radius-sm);
-            padding: 0.6rem 1rem;
+            padding: 0.3rem 0.7rem;
             backdrop-filter: blur(8px);
         }
 
         .stat-card .stat-value {
-            font-size: 1.4rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--gold);
         }
 
         .stat-card .stat-label {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             opacity: 0.8;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .progress-bar-container {
-            margin-top: 0.8rem;
+            margin-top: 0.4rem;
             background: rgba(255,255,255,0.15);
             border-radius: 99px;
-            height: 6px;
+            height: 4px;
             overflow: hidden;
         }
 
@@ -436,23 +437,6 @@
             border-color: var(--navy);
         }
 
-        /* ===== Empty State ===== */
-        .empty-state {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--text-secondary);
-        }
-
-        .empty-state .icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .empty-state h2 {
-            color: var(--navy);
-            margin-bottom: 0.5rem;
-        }
-
         /* ===== Footer ===== */
         .footer {
             text-align: center;
@@ -468,16 +452,18 @@
             .header { position: static; }
             .copy-btn { display: none; }
             .day-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .day-card[open] > summary ~ * { display: block !important; }
             body { font-size: 11pt; }
         }
 
         /* ===== Responsive ===== */
         @media (max-width: 768px) {
-            .header { padding: 1.2rem 1rem; }
-            .header h1 { font-size: 1.3rem; }
-            .header-stats { gap: 0.8rem; }
-            .stat-card { padding: 0.4rem 0.7rem; }
-            .stat-card .stat-value { font-size: 1.1rem; }
+            .header { padding: 0.8rem 1rem; }
+            .header h1 { font-size: 1rem; }
+            .header-stats { gap: 0.5rem; }
+            .stat-card { padding: 0.2rem 0.5rem; }
+            .stat-card .stat-value { font-size: 0.9rem; }
+            .stat-card .stat-label { font-size: 0.55rem; }
             .main { padding: 1rem; }
             .day-card > summary { padding: 1rem; }
             .day-content { padding: 1rem; }
