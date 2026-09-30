@@ -21,10 +21,13 @@ __pycache__/
 PRD.md
 
 # User's personal directories (not part of the skill)
-references/
-task1_charts/
+/references/
+/task1_charts/
 .claude/
 .mcp.json
+
+# Fictional demo data used by tests and README screenshots
+!tests/fixtures/**
 
 # Log files
 *.log
@@ -32,3 +35,19 @@ task1_charts/
 # OS
 .DS_Store
 Thumbs.db
+
+# Personal outputs - never publish (contain the learner's own stories)
+/summary_site/
+/summary_content.json
+*.bak-*
+topic_form_config.json
+topic_form_answers.json
+/index.html
+/ielts_speaking_sprint.html
+/ielts_task1_templates.html
+/ielts_task2_templates.html
+
+# Local tooling / deploy config
+.vercel
+.vercelignore
+.kiro/

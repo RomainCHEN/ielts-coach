@@ -1,336 +1,114 @@
-<h1 align="center">🎓 IELTS Coach</h1>
-<h3 align="center">最懂你的雅思口语与写作 AI 教练</h3>
+<p align="center">
+  <img src="docs/readme/hero.svg" width="100%" alt="IELTS Coach：先听你说，再用你自己的语气写出对应目标分的范文。2026 年 9-12 月题库，100 个话题。">
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/github/stars/RomainCHEN/ielts-coach?style=flat-square&color=yellow" alt="Stars">
   <img src="https://img.shields.io/github/license/RomainCHEN/ielts-coach?style=flat-square&color=blue" alt="License">
-  <img src="https://img.shields.io/badge/version-v3.0-1a237e?style=flat-square" alt="Version">
-  <img src="https://img.shields.io/badge/题库-102个话题-ffc107?style=flat-square" alt="题库">
+  <img src="https://img.shields.io/badge/version-v4.0-1a237e?style=flat-square" alt="版本 4.0">
+  <img src="https://img.shields.io/badge/题库-2026年9--12月%20·%20100个话题-ffc107?style=flat-square" alt="题库：2026 年 9-12 月，100 个话题">
 </p>
 
-<p align="center">
-  <strong>一个 AI agent 技能。先跟你聊几分钟，了解你怎么想、你有什么经历，<br>然后用你说话的方式帮你写出来。每句话都能在雅思评分表上找到对应。</strong>
-</p>
+<p align="center">简体中文 · <a href="README.md">English</a></p>
 
-<p align="center">
-  <a href="README.md">🇬🇧 English</a>
-</p>
+IELTS Coach 是一个雅思口语和写作的 agent 技能。写范文之前，它先问你真实的经历和想法，再把你的原话打磨成符合目标分数的答案，统一收进一个本地 HTML 页面。备考周期结束时，它能把你练过的全部内容一键生成一个备考总结网站。
 
----
-
-## 📑 目录
-
-- [🧠 跟别的工具有什么不一样](#-跟别的工具有什么不一样)
-- [✨ 能干什么](#-能干什么)
-- [🌐 话题挖掘网页表单](#-话题挖掘网页表单)
-- [⚡ 快速上手](#-快速上手)
-- [🔄 是怎么工作的](#-是怎么工作的)
-- [📁 文件结构](#-文件结构)
-- [🎯 四个维度的个性化](#-四个维度的个性化)
-- [👁️ DeepSeek 也能看图](#%EF%B8%8F-deepseek-也能看图)
-- [🤝 一起完善](#-一起完善)
-- [📜 许可](#-许可)
-
----
-
-## 🧠 跟别的工具有什么不一样
-
-大部分雅思 AI 工具是这样的：
-
-```
-你：  帮我写一篇关于气候变化的大作文。
-AI：  [扔给你一篇套话连篇的250词范文，通篇 Firstly... Secondly... In conclusion]
-```
-
-**这个 Coach 是这样干的：**
-
-```
-教练：先不急着写，聊聊你怎么看这个话题？
-      [聊个五分钟：挖你的真实经历、想法、身边的故事]
-教练：好，我理一下。你其实想说的是……对吧？那我围绕这个来写。
-你：  对，再加一句……
-教练：[一篇你自己看着都觉得这说的就是我的范文，分数匹配，没有 AI 味儿]
-```
-
-| | 一般 AI 工具 | IELTS Coach |
-|---|---|---|
-| 有没有你自己的想法 | Some people believe... 不知道谁 believe | 我去年在XX公司上班的时候…… 就是你的故事 |
-| 会不会被看出来是 AI 写的 | 大概率会（破折号、套话、机械过渡） | 基本不会（自然流畅，像真人写的） |
-| 好不好背 | 难背，内容跟你没关系 | 好背：本来就是你说的话，只是帮你润色了一下 |
-| 能不能对上评分标准 | 随缘 | 对着官方评分表一条一条校准 |
-| 能不能看图 | 看你用的模型支持不支持 | 啥模型都能，包括 DeepSeek，靠 MCP 桥接 |
-| 会不会先跟你聊 | 上来就写 | 每个话题先聊再写，102个话题不重样 |
-
----
-
-## ✨ 能干什么
+## 你会得到什么
 
 <table>
 <tr>
-  <td width="48"><strong>🌐</strong></td>
-  <td><strong>话题挖掘网页表单</strong><br>不用在命令行里一条条回答问题。一个漂亮的网页表单会在浏览器里打开，支持多步骤填写、进度条、图片上传和剪贴板粘贴。按你自己的节奏填完，点一下提交就行。</td>
-</tr>
-<tr>
-  <td width="48"><strong>🎯</strong></td>
-  <td><strong>别上来就写，先聊聊</strong><br>入门引导收集的那些背景只是基础。每碰到一个新话题，管它是描述一部法律还是你最难忘的一次旅行，教练都会先跟你聊几分钟，挖你的具体经历、真实想法、身边的故事。你的生活就是最好的素材。</td>
-</tr>
-<tr>
-  <td width="48"><strong>📋</strong></td>
-  <td><strong>对着官方评分标准写</strong><br>写作范文不是瞎写的。任务回应、连贯与衔接、词汇丰富度、语法多样性与准确性，这四个评分维度，每个都对着官方 Band Descriptors（2023年5月版）校准到你的目标分数。</td>
-</tr>
-<tr>
-  <td width="48"><strong>🚫</strong></td>
-  <td><strong>把 AI 味儿去掉</strong><br>专门检查并干掉那些一看就是 AI 写的痕迹：不用破折号，不用 not only... but also... 的堆砌，不用 Firstly... Secondly... Finally... 那种念稿子一样的过渡，不说 This essay will discuss... 之类的套话。读起来像正常人写的。</td>
-</tr>
-<tr>
-  <td width="48"><strong>👁️</strong></td>
-  <td><strong>DeepSeek 也能看图</strong><br>用 DeepSeek 的话 agent 读不了图表图片。没关系，内置了一个 MCP 服务器，把图片甩给阿里云百炼免费的 qwen3.7-plus 模型去看（通过 DashScope），看完告诉你图上有什么。全程 agent 自己配好，你只需要给一个 API key。</td>
-</tr>
-<tr>
-  <td width="48"><strong>🖼️</strong></td>
-  <td><strong>排版好看的 HTML</strong><br>所有范文输出到一个网页，手机上也能看，打印出来也行。高亮词汇、结构分析、一键复制。配色是雅思经典的海军蓝加金色。</td>
-</tr>
-<tr>
-  <td width="48"><strong>🔄</strong></td>
-  <td><strong>学习计划会自己调整</strong><br>今天没空练就自动往后排。某个话题写得不顺就优先再练一次。102 个话题不会偷偷重复安排，除非你自己说再来一题。进度全记在本地 JSON 文件里，跨会话不丢失。</td>
+<td width="50%"><img src="docs/screenshots/site_hub.png" alt="手机上的总结网站首页：倒计时、目标分、练习统计和各页入口"></td>
+<td width="50%"><img src="docs/screenshots/site_review.png" alt="复盘页：当季题库各部分覆盖率，红色是还没准备的话题"><br><br><img src="docs/screenshots/site_materials.png" alt="个人素材卡：按题型打标签、可迁移的故事"></td>
 </tr>
 </table>
 
----
+<sub>截图使用 <code>tests/fixtures/demo</code> 里的虚构考生数据。</sub>
 
-## 🌐 话题挖掘网页表单
+- **用你的话写范文。** 每个话题先做「话题挖掘」：本地网页表单（或直接在对话里）问你真实的想法和回忆，范文是在这之上打磨出来的，所以好背。
+- **按目标分校准。** 词汇、句式和衔接对应目标分段的评分标准；作文对照官方写作评分标准（2023 年 5 月版）和一份反 AI 味清单（不用破折号，不写 Firstly/Secondly/Finally）。
+- **计划不重复。** 话题按你可用的天数分配，JSON 状态文件跨会话记录进度。
+- **当季题库。** 2026 年 9-12 月（截止 9 月 24 日），100 个口语话题，直接从题库 PDF 解析。
+- **换季迁移。** 新题库到了以后，保留下来的话题如果你已经准备过，照样算完成。
+- **一键备考总结网站。** 倒计时首页、带个人素材卡的口语冲刺页、Task 1/Task 2 模板速查、题库覆盖复盘和补漏清单，以及可搜索的亮点表达库。
 
-网页表单是话题挖掘的核心交互界面。不用在命令行里一条条回答问题，而是在浏览器里打开一个漂亮的多步骤表单。
+## 工作流程
 
-### 工作流程
+<p align="center"><img src="docs/readme/workflow.svg" width="100%" alt="建档、排计划、话题挖掘、打磨范文、复盘；每次练习在挖掘和打磨之间循环。换季：题库 PDF、build_complete_bank、migrate_season，计划继续。"></p>
 
-```
-┌──────────────────────────────────────────────────────────┐
-│  Agent 生成问题                                           │
-│       │                                                  │
-│       ▼                                                  │
-│  ┌─────────────────────────────┐                         │
-│  │  网页表单服务器启动           │  ← 自动打开浏览器       │
-│  │  http://127.0.0.1:8765/form │                         │
-│  └─────────────────────────────┘                         │
-│       │                                                  │
-│       ▼                                                  │
-│  用户在浏览器中填写回答                                    │
-│  （多步骤、进度条、图片上传）                               │
-│       │                                                  │
-│       ▼                                                  │
-│  提交 → 答案保存到 JSON → 服务器自动关闭                    │
-│       │                                                  │
-│       ▼                                                  │
-│  Agent 读取答案 → 生成模型答案                              │
-└──────────────────────────────────────────────────────────┘
-```
+<p align="center"><img src="docs/screenshots/form_overview.png" width="70%" alt="在浏览器里打开的话题挖掘表单"></p>
 
-### 功能特点
+## 快速上手
 
-- **多步骤表单** — 问题按话题分组（Part 1、Part 2、Writing）
-- **进度指示器** — 步骤点显示当前进度
-- **图片上传** — 拖拽或点击上传 Writing Task 1 图表
-- **剪贴板粘贴** — Ctrl+V 直接粘贴截图
-- **自动保存** — 答案保存到 JSON，图片保存到 `task1_charts/`
-- **漂亮界面** — 渐变紫色背景，响应式设计，手机也能用
+1. 把这个仓库地址发给你的 agent，让它帮你安装；或者手动复制：
+   ```bash
+   git clone https://github.com/RomainCHEN/ielts-coach.git
+   cp -r ielts-coach/ielts-coach <你的项目>/.claude/skills/   # Claude Code
+   # 其他 agent：把 ielts-coach/ 复制到对应的 skills 目录
+   ```
+2. 在项目里说「开始备考」。agent 会问考试日期、目标小分和你的背景，然后给出计划。
+3. 每天说「开始今天的练习」，打开 `ielts_answers.html` 复习。
+4. 最后说「生成备考总结网站」，打开 `summary_site/index.html`。
 
-### 支持的问题类型
+环境要求：脚本需要 Python 3.10+。只有从 PDF 重建题库时才需要 `pip install pymupdf`（装了 `pdfplumber` 会额外做一次交叉校验）。给不支持看图的模型用的视觉桥接需要 `pip install mcp httpx`。
 
-| 类型 | 说明 | 用途 |
-|------|------|------|
-| `textarea` | 多行文本输入 | 大部分话题挖掘问题 |
-| `radio` | 单选 | 偏好类问题 |
-| `image` | 文件上传带预览 | Writing Task 1 图表 |
-| `paste` | 剪贴板粘贴或文件上传 | 截图、图表图片 |
+## 题库
 
-### 截图
+| 部分 | 话题数 |
+|---|---|
+| Part 1 新题 / 保留题 / 万年老题 | 11 / 17 / 5 |
+| Part 2&3 新题 / 保留题 | 28 / 27 |
+| 非大陆 Part 1 / Part 2&3 | 6 / 6 |
+| **大陆考生 / 全部** | **88 / 100** |
 
-**网页表单：话题挖掘**
-![网页表单](docs/screenshots/form_overview.png)
+题库在 [`ielts-coach/references/question_bank_complete.json`](ielts-coach/references/question_bank_complete.json)（给 agent 用）和 [`question-bank.md`](ielts-coach/references/question-bank.md)（给你看）。其中 48 个话题标注了从 2026 年 5-8 月题库沿用。
 
-**网页表单：已填写回答**
-![表单已填写](docs/screenshots/form_filled.png)
+### 更新到新一季题库
 
-### 输出 HTML 预览
-
-**页头与统计信息**
-![HTML 页头](docs/screenshots/html_header.png)
-
-**可折叠的 Day 卡片**
-![Day 卡片收起](docs/screenshots/html_day_collapsed.png)
-
-**答案卡片详情**
-![答案卡片](docs/screenshots/html_qa_card.png)
-
-**高亮词汇区域**
-![高亮词汇](docs/screenshots/html_highlights.png)
-
----
-
-## ⚡ 快速上手
+<p align="center"><img src="docs/readme/terminal.svg" width="100%" alt="终端：题库构建器解析出 100 个话题且与 pdfplumber 交叉校验一致，迁移脚本预演结果，总结网站生成器输出覆盖率。"></p>
 
 ```bash
-# 1. 下载
-git clone https://github.com/RomainCHEN/ielts-coach.git
-cd ielts-coach
-
-# 2. 把 ielts-coach 文件夹复制到你的 agent 的 skills 目录：
-#    Claude Code:     cp -r ielts-coach /你的项目/.claude/skills/
-#    其他 agent:      把 ielts-coach/ 复制到对应 agent 的 skills 目录即可
-
-# 3. 启动 agent，直接说人话就行，技能会自动触发
+python ielts-coach/scripts/build_complete_bank.py --pdf "<题库>.pdf" \
+  --season "2027年1-4月" --season-code 2027-01-04 --cutoff 2027-01-20 \
+  --previous-json old/question_bank_complete.json --previous-md old/question-bank.md
+python ielts-coach/scripts/migrate_season.py --root .          # 先预演，再加 --apply
 ```
 
-> 💡 **不用额外配置。** 说一句开始我的雅思备考，剩下的教练帮你搞定。入门引导 → 学习计划 → 每天聊话题 → 范文自动保存到网页。
+只要任何一部分的解析数量和 PDF 目录里写的数量对不上，构建器就不会写文件。扫描版 PDF 没有文字层，需要先 OCR（例如 MinerU），再用 `--text` 传入文本。
 
-**用 DeepSeek 或者其他非视觉模型的同学：** 第一次碰到图表读不出来的时候，教练会自动引导你花两分钟搭好视觉桥接。你全程只需要提供一个 API key。
+## 你的数据只在本地
 
----
+`user_profile.json`、`study_plan.json`、`progress.json`、`ielts_answers.html`、`summary_content.json` 和 `summary_site/` 都生成在你自己的项目里，并且已加入 git 忽略。总结网站里有你的个人故事，要不要公开由你决定。可选的视觉桥接会把图表图片发给你配置的服务商。
 
-## 🔄 是怎么工作的
-
-```
-┌──────────────────────────────────────────────────────────┐
-│                   第一次用                                  │
-│  填信息 → 自动生成学习计划 → 搞定                           │
-│  （5分钟：考试日期、目标分、你是干啥的、啥时候有空）          │
-└─────────────────────┬────────────────────────────────────┘
-                      │
-                      ▼
-┌──────────────────────────────────────────────────────────┐
-│                   每次打开                                  │
-│                                                          │
-│  打个招呼 + 告诉你上次练到哪了                               │
-│       │                                                  │
-│       ▼                                                  │
-│  ┌─────────────────────────────────┐                     │
-│  │  话题挖掘（每个话题走一遍）         │  ← 核心差异          │
-│  │  ┌──────────────────────┐       │                     │
-│  │  │ 浏览器打开网页表单     │       │                     │
-│  │  │ 你填写你的回答        │       │                     │
-│  │  │ 提交 → 答案保存到JSON │       │                     │
-│  │  └──────────────────────┘       │                     │
-│  │  C: 确认内容                     │                     │
-│  │  D: 生成范文                     │                     │
-│  └─────────────────────────────────┘                     │
-│       │                                                  │
-│       ▼                                                  │
-│  用你自己的话写出来的范文                                    │
-│  + 高亮词汇                                               │
-│  + 对应目标分数                                            │
-│  + 去掉 AI 味儿                                           │
-│       │                                                  │
-│       ▼                                                  │
-│  保存到 ielts_answers.html                                │
-│  更新进度 → 明天见                                         │
-└──────────────────────────────────────────────────────────┘
-```
-│  │  B: 引导你回忆相关经历           │                     │
-│  │  C: 跟你确认：我理解对了吗？       │                     │
-│  │  D: 把你的话润色成范文           │                     │
-│  └─────────────────────────────────┘                     │
-│       │                                                  │
-│       ▼                                                  │
-│  一篇范文（你的故事、你说话的感觉）                           │
-│  + 高亮好词好句                                             │
-│  + 冲着你的目标分数校准                                       │
-│  + 检查有没有 AI 味儿                                        │
-│       │                                                  │
-│       ▼                                                  │
-│  保存到 ielts_answers.html                                 │
-│  更新进度 → 明天见 👋                                        │
-└──────────────────────────────────────────────────────────┘
-```
-
----
-
-## 📁 文件结构
+## 文件结构
 
 ```
-ielts-coach/
-├── SKILL.md                              # 教练的大脑（约 800 行指令）
-├── references/
-│   ├── question-bank.md                  # Part 1 + P2&3 新题（38+29）
-│   ├── question_bank_complete.json       # P2&3 保留题 + 非大陆题（27+8）
-│   ├── band-descriptors.md               # 口语评分标准
-│   ├── writing-band-descriptors.md       # 官方写作评分标准（2023年5月版）
-│   ├── writing-resources.md              # Task 1 图表写法 + Task 2 模板
-│   └── sample-answers.md                 # 范文参考（用于校准质量）
+ielts-coach/                      技能本体（复制这个文件夹）
+├── SKILL.md                      主流程：换季检查 → 建档 → 每日练习 → 总结网站
+├── references/                   按需读取
+│   ├── question_bank_complete.json · question-bank.md
+│   ├── topic-discovery.md · answer-formats.md · html-rendering.md · vision-fallback.md
+│   └── band-descriptors.md · writing-band-descriptors.md · writing-resources.md · sample-answers.md
 ├── scripts/
-│   ├── state_manager.py                  # JSON 状态文件读写
-│   ├── build_complete_bank.py            # 题库构建
-│   ├── topic_form_server.py              # 话题挖掘网页表单服务器
-│   └── vision_mcp_server.py             # MCP 视觉桥接（DeepSeek → qwen3.7-plus）
+│   ├── build_complete_bank.py    题库 PDF → 题库文件（带校验和交叉核对）
+│   ├── migrate_season.py         把进度迁移到新一季
+│   ├── build_summary_site.py     一键生成备考总结网站
+│   ├── topic_form_server.py      话题挖掘网页表单
+│   ├── state_manager.py          JSON 状态文件工具
+│   └── vision_mcp_server.py      给不支持看图的模型用的 MCP 视觉桥接
 └── assets/
-    └── answer_template.html              # 范文网页模板
+    ├── answer_template.html      答案页模板
+    └── summary_site/             通用的冲刺页和模板页
+tests/                            python -m unittest discover -s tests
 ```
 
-> ⚡ **把 `ielts-coach/` 整个文件夹丢进你 agent 的 skills 目录就好。** 运行时的个人文件（`user_profile.json`、`study_plan.json`、`progress.json`、`ielts_answers.html`）在你的项目根目录下自动生成，这个仓库里不存你的隐私。
+## 模型看不了图怎么办
 
----
+如果你用的模型读不了 Task 1 图表（比如 DeepSeek），agent 会配置一个小的 MCP 服务，把图片转给视觉模型：默认用阿里云百炼 `qwen3.7-plus`，也可以用任何兼容 OpenAI 的接口。你只需要提供 API Key 并重启 agent。详见 [`references/vision-fallback.md`](ielts-coach/references/vision-fallback.md)。Key 以明文保存在 agent 的 MCP 配置文件里，别把这个文件提交到仓库。
 
-## 🎯 四个维度的个性化
+## 参与贡献
 
-任何静态模板都做不到的事情。这个教练同时在四个维度上做个性化：
+欢迎提 issue 或 PR：题目有误或缺失、新一季 PDF 解析失败、HTML 页面的设计问题、漏网的 AI 味表达。提 PR 前请先跑一遍测试。
 
-| 维度 | 来源 | 举个例子 |
-|---|---|---|
-| **1. 你是谁** | 入门引导 | 我在深圳当程序员…… |
-| **2. 你经历过什么** | 话题挖掘聊天 | 那次凌晨三点抢修线上故障的时候…… |
-| **3. 你要考几分** | 你的目标分数 | Band 7 的词汇密度，不用硬塞生僻词 |
-| **4. 你是什么口吻** | 聊天里捕捉到的语言习惯 | 你说话的那种幽默感、你的文化背景、你的句式节奏 |
+## 许可
 
-**最后出来的效果：** 一篇在雅思评分表上拿得到目标分，而且你考试那天真的能想起来怎么说的范文。
-
----
-
-## 👁️ DeepSeek 也能看图
-
-```
-┌──────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│  你的图表     │────▶│  vision_bridge    │────▶│  qwen3.7-plus    │
-│  (PNG/JPG)   │     │  (MCP 服务器)     │     │  (百炼免费额度)   │
-└──────────────┘     └──────────────────┘     └────────┬────────┘
-                                                        │
-                                              ┌─────────▼─────────┐
-                                              │  把图里的内容用     │
-                                              │  文字描述出来        │
-                                              └─────────┬─────────┘
-                                                        │
-┌──────────────┐     ┌──────────────────┐              │
-│  Task 1      │◀────│  你的 Agent       │◀─────────────┘
-│  范文         │     │  (DeepSeek等)     │
-└──────────────┘     └──────────────────┘
-```
-
-**一次配好，后面不用管（全程 agent 自己动）：** pip install → 写 settings.json → 重启。你只做一件事：给 API key。
-
-想用自己的模型也行，任何兼容 OpenAI 接口格式的视觉模型都能接。
-
----
-
-## 🤝 一起完善
-
-这个工具原本是我自己备考用的，觉得好用就开源了。非常欢迎一起改进：
-
-- 发现题库有错漏？提个 Issue
-- HTML 页面有什么好的设计想法？说来听听
-- 你也写了范文愿意分享？丢进参考库
-- 发现范文里还有 AI 味儿没去掉？告诉我
-
-直接提 Issue 或者 PR 都行。
-
----
-
-## 📜 许可
-
-MIT © [Romain Chen](https://github.com/RomainCHEN)。随便用、随便改。祝你上岸。
-
----
-
-<p align="center">
-  <sub>覆盖 2026年5-8月 雅思口语季 · 102个话题 · 口语 + 写作</sub>
-  <br>
-  <sub>一个被雅思折磨过的人用心写的工具 ❤️</sub>
-</p>
+MIT © [Romain Chen](https://github.com/RomainCHEN)

@@ -1,708 +1,1964 @@
 {
   "metadata": {
-    "season": "2026年5-8月",
-    "source": "IELTS Speaking Question Bank PDF + MinerU extraction",
-    "last_updated": "2026-07-06",
+    "season": "2026年9-12月",
+    "season_code": "2026-09-12",
+    "cutoff": "2026-09-24",
+    "source_file": "2026年9-12月最新雅思口语题库终版-0924.pdf",
+    "source": "IELTS speaking season PDF, parsed by scripts/build_complete_bank.py",
+    "extracted_with": "PyMuPDF (+ pdfplumber cross-check)",
+    "previous_season": "2026-05-08",
+    "carried_over_topics": 48,
+    "last_updated": "2026-10-01",
     "total_topics": {
-      "part1_new": 16,
+      "part1_new": 11,
+      "part23_new": 28,
       "part1_retained": 17,
       "part1_essential": 5,
-      "part23_new": 29,
       "part23_retained": 27,
-      "part23_nonmainland": 8,
-      "total": 102
+      "part1_nonmainland": 6,
+      "part23_nonmainland": 6,
+      "mainland": 88,
+      "total": 100
     }
   },
-  "part23_retained": [
+  "part1_new": [
     {
       "id": 1,
-      "name_cn": "完美工作",
-      "name_en": "A Perfect Job",
-      "cue_card": "Describe a perfect job you would like to have in the future",
-      "cue_points": [
-        "What it is",
-        "How you knew about it",
-        "What you need to learn to get this job",
-        "And explain why you think it is a perfect job for you"
+      "topic_id": "new-1",
+      "name_en": "Travelling",
+      "name_cn": "旅行",
+      "questions": [
+        "What transport do you often use when travelling?",
+        "Do you often ride a bicycle?",
+        "Do you prefer to sit by the window when travelling?",
+        "Did you have a long journey with your family as a child?"
       ],
-      "part3": [
-        "What kind of job can be called a dream job?",
-        "What jobs do children want to do when they grow up?",
-        "Do people's ideal jobs change as they grow up?",
-        "What should people consider when choosing jobs?",
-        "Is salary the main reason why people choose a certain job?",
-        "What kind of jobs are the most popular in your country?"
-      ]
+      "carried_over_from": null
     },
     {
       "id": 2,
-      "name_cn": "想见的名人",
-      "name_en": "A Famous Person You Would Like to Meet",
-      "cue_card": "Describe a famous person you would like to meet",
-      "cue_points": [
-        "Who he/she is",
-        "How you knew him/her",
-        "How/where you would like to meet him/her",
-        "And explain why you would like to meet him/her"
+      "topic_id": "new-2",
+      "name_en": "Rubbish and recycling",
+      "name_cn": "垃圾与回收",
+      "questions": [
+        "Did you recycle when you were a kid?",
+        "Is waste sorting common in your country?",
+        "How do you recycle things like paper and plastic?",
+        "What do you do when you see rubbish on the street?"
       ],
-      "part3": [
-        "What are the advantages and disadvantages of being a famous child?",
-        "What can today's children do to become famous?",
-        "What can children do with their fame?",
-        "Do people become famous because of their talent?",
-        "Is it easy to become famous in your country?",
-        "Do you want to be a famous person?"
-      ]
+      "carried_over_from": null
     },
     {
       "id": 3,
-      "name_cn": "禁用手机的场合",
-      "name_en": "An Occasion Without Mobile Phone",
-      "cue_card": "Describe an occasion when you were not allowed to use your mobile phone",
-      "cue_points": [
-        "When it was",
-        "Where it was",
-        "Why you were not allowed to use your mobile phone",
-        "And how you felt about it"
+      "topic_id": "new-3",
+      "name_en": "Tiredness",
+      "name_cn": "疲惫",
+      "questions": [
+        "What do you do when you feel tired?",
+        "When would you feel tired?",
+        "Do you often feel tired?",
+        "When you feel tired, do you still go out with your friends?"
       ],
-      "part3": [
-        "How do young and old people use mobile phones differently?",
-        "What positive and negative impact do mobile phones have on friendship?",
-        "Is it a waste of time to take pictures with mobile phones?",
-        "Do you think it is necessary to have laws on the use of mobile phones?",
-        "What are examples of good and poor phone manners?",
-        "How does the internet benefit people?"
-      ]
+      "carried_over_from": null
     },
     {
       "id": 4,
-      "name_cn": "给别人建议",
-      "name_en": "Giving Advice to Others",
-      "cue_card": "Describe a time when you gave advice to others",
-      "cue_points": [
-        "When it was",
-        "To whom you gave the advice",
-        "What the advice was",
-        "And explain why you gave the advice"
+      "topic_id": "new-4",
+      "name_en": "Shoes",
+      "name_cn": "鞋子",
+      "questions": [
+        "Which do you prefer, fashionable shoes or comfortable shoes?",
+        "How much money do you usually spend on shoes?",
+        "Have you ever bought shoes online?",
+        "Do you like buying shoes? How often?"
       ],
-      "part3": [
-        "Should people prepare before giving advice?",
-        "Is it good to ask advice from strangers online?",
-        "What are the personalities of people whose job is to give advice to others?",
-        "What are the problems if you ask too many people for advice?",
-        "Why do some people think it is better to ask for advice from friends than from parents?",
-        "When would old people ask young people for advice?"
-      ]
+      "carried_over_from": null
     },
     {
       "id": 5,
-      "name_cn": "想拥有的科技产品",
-      "name_en": "A Piece of Technology You Want to Own",
-      "cue_card": "Describe a piece of technology (not a phone) that you would like to own",
-      "cue_points": [
-        "What it is",
-        "How much it costs",
-        "How you knew about it",
-        "And explain why you would like to own it"
+      "topic_id": "new-5",
+      "name_en": "Politeness",
+      "name_cn": "礼貌",
+      "questions": [
+        "What did you do to show your politeness as a child?",
+        "On what occasions should we be polite?",
+        "Do you think being polite is very important?",
+        "How did you learn to be polite as a child?"
       ],
-      "part3": [
-        "What are the differences between the technology of the past and that of today?",
-        "What technology do young people like to use?",
-        "What are the differences between online and face-to-face communication?",
-        "Do you think technology has changed the way people communicate?",
-        "What negative effects does technology have on people's relationships?",
-        "What are the differences between making friends in real life and online?"
-      ]
+      "carried_over_from": null
     },
     {
       "id": 6,
-      "name_cn": "擅长做计划的人",
-      "name_en": "A Person Good at Planning",
-      "cue_card": "Describe a person who makes plans a lot and is good at planning",
-      "cue_points": [
-        "Who he/she is",
-        "How you knew him/her",
-        "What plans he/she makes",
-        "And explain how you feel about this person"
+      "topic_id": "new-6",
+      "name_en": "Fruit and vegetables",
+      "name_cn": "水果和蔬菜",
+      "questions": [
+        "Do people in your country like planting vegetables?",
+        "Were there any kind of fruits and vegetables you disliked as a child?",
+        "What kind of fruits and vegetables do you dislike?",
+        "Where do you usually buy fruit and vegetables?",
+        "How often do you eat fruit and vegetables?"
       ],
-      "part3": [
-        "Do you think it's important to plan ahead?",
-        "What activities do we need to plan ahead?",
-        "Do you think children should plan their future careers?",
-        "Should children ask their teachers or parents for advice when making plans?",
-        "Is making study plans popular among young people?",
-        "Do you think choosing a college major is closely related to a person's future career?"
-      ]
+      "carried_over_from": null
     },
     {
       "id": 7,
-      "name_cn": "喜欢画画的孩子",
-      "name_en": "A Child Who Loves Drawing",
-      "cue_card": "Describe a child who loves drawing/painting",
-      "cue_points": [
-        "Who he/she is",
-        "How/when you knew him/her",
-        "How often he/she draws/paints",
-        "And explain why you think he/she loves drawing/painting"
+      "topic_id": "new-7",
+      "name_en": "Advertisement",
+      "name_cn": "广告",
+      "questions": [
+        "Do you often see advertisements when you are on your phone or computer?",
+        "What kind of advertising do you like?",
+        "Do you like advertisements?",
+        "Do you see a lot of advertising on trains or other transport?",
+        "Is there an advertisement that made an impression on you when you were a child?",
+        "Have you ever bought something because of an advertisement?"
       ],
-      "part3": [
-        "What is the right age for a child to learn drawing?",
-        "Why do most children draw more often than adults do?",
-        "Why do some people visit galleries or museums instead of viewing artworks online?",
-        "Do you think galleries and museums should be free of charge?",
-        "How do artworks inspire people?",
-        "What are the differences between reading a book and visiting a museum?"
-      ]
+      "carried_over_from": null
     },
     {
       "id": 8,
-      "name_cn": "App/程序",
-      "name_en": "A Program or App",
-      "cue_card": "Describe a program or app on your computer or phone",
-      "cue_points": [
-        "What it is",
-        "How often you use it",
-        "When/how you found it",
-        "And explain how you feel about it"
+      "topic_id": "new-8",
+      "name_en": "Paper",
+      "name_cn": "纸",
+      "questions": [
+        "Do you carry paper and pens with you when you go out?",
+        "Do people still keep handwritten letters today?",
+        "Do you still write physical letters?",
+        "What did you like to do with paper as a child?",
+        "Have you made any crafts with paper?"
       ],
-      "part3": [
-        "What are the differences between old and young people when using apps?",
-        "Why do some people not like using apps?",
-        "What apps are popular in your country? Why?",
-        "Should parents limit their children's use of computer programs and games?",
-        "Do you think young people are more and more reliant on these programs?",
-        "What do you think about some countries banning children from using social media?"
-      ]
+      "carried_over_from": null
     },
     {
       "id": 9,
-      "name_cn": "微笑的场合",
-      "name_en": "An Occasion of Smiling",
-      "cue_card": "Describe an occasion when many people were smiling",
-      "cue_points": [
-        "When it happened",
-        "Who you were with",
-        "What happened",
-        "And explain why most people were smiling"
+      "topic_id": "new-9",
+      "name_en": "Secondary school",
+      "name_cn": "中学",
+      "questions": [
+        "Is there anything you miss about your secondary school?",
+        "What was your favourite subject at secondary school?",
+        "Were there any subjects that you found difficult at secondary school?",
+        "Do you remember your first day at secondary school?"
       ],
-      "part3": [
-        "Do you think people who like to smile are more friendly?",
-        "Why do most people smile in photographs?",
-        "Do women smile more than men? Why?",
-        "Do people smile more when they are younger or older?",
-        "Is smiling important in your culture?",
-        "Are there any occasions when people need to pretend to smile?"
-      ]
+      "carried_over_from": null
     },
     {
       "id": 10,
-      "name_cn": "为家人骄傲",
-      "name_en": "Proud of a Family Member",
-      "cue_card": "Describe a time when you felt proud of a family member",
-      "cue_points": [
-        "When it happened",
-        "Who the person is",
-        "What the person did",
-        "And explain why you felt proud of him/her"
+      "topic_id": "new-10",
+      "name_en": "Name",
+      "name_cn": "名字",
+      "questions": [
+        "Do you often forget people's names?",
+        "How do you feel when people can't remember your name?",
+        "How do you remember people's names?",
+        "Is it easy for you to remember people's names?"
       ],
-      "part3": [
-        "When would parents feel proud of their children?",
-        "Should parents reward children? Why and how?",
-        "Is it good to reward children too often? Why?",
-        "On what occasions would adults be proud of themselves?",
-        "Do rewards help a child become better?",
-        "What do you think about children working hard just for grades?"
-      ]
+      "carried_over_from": null
     },
     {
       "id": 11,
-      "name_cn": "对家庭重要的东西",
-      "name_en": "Something Important in Family",
-      "cue_card": "Describe something important that has been kept in your family for a long time",
+      "topic_id": "new-11",
+      "name_en": "Opportunities",
+      "name_cn": "机会",
+      "questions": [
+        "Do you often get new opportunities?",
+        "Do you like taking on new opportunities?",
+        "Should people try as many different things as they can?",
+        "Did you have any opportunities to take part in new activities as a child?"
+      ],
+      "carried_over_from": null
+    }
+  ],
+  "part23_new": [
+    {
+      "id": 1,
+      "topic_id": "new-1",
+      "name_cn": "对结果开心的重要决定",
+      "name_en": "A Time You Made an Important Decision and Were Happy with the Result",
+      "cue_card": "Describe a time you made an important decision and were happy with the result",
       "cue_points": [
-        "What it is",
-        "When your family had it",
-        "How your family got it",
-        "And explain why it is important to your family"
+        "What the decision was",
+        "Why you made the decision",
+        "How easy it was for you to make the decision",
+        "And explain why you were happy with the result"
       ],
       "part3": [
-        "What things do families keep for a long time?",
-        "What's the difference between things valued by people in the past and today?",
-        "What kinds of things are kept in museums?",
-        "What's the influence of technology on museums?",
-        "What are the benefits of technology for learning history?",
-        "Why do people visit museums?"
-      ]
+        "Which is better, to make a decision quickly or slowly?",
+        "Do you think most people's decisions are made in their 20s?",
+        "What if people in a group have different opinions on a decision?",
+        "What little decisions do people make every day?",
+        "Do you think it is a good idea to make a small decision every day?",
+        "How can we tell the difference between an important and an easy decision?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 2,
+      "topic_id": "new-2",
+      "name_cn": "做困难事情并成功的人",
+      "name_en": "A Person You Know Who Did Something Difficult and Was Successful",
+      "cue_card": "Describe a person you know who did something difficult and was successful",
+      "cue_points": [
+        "Who this person is",
+        "What difficult thing this person did",
+        "Why this person was successful",
+        "And explain how you feel about this person"
+      ],
+      "part3": [
+        "In which sectors are companies more likely to succeed in China?",
+        "Is it easy to start up a company?",
+        "Other than making money, what is more important for a company?",
+        "Does money equal success?",
+        "How can companies help protect the environment?",
+        "Is it difficult to do business in today's world?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 3,
+      "topic_id": "new-3",
+      "name_cn": "快乐人士",
+      "name_en": "A Happy Person You Know",
+      "cue_card": "Describe a happy person you know",
+      "cue_points": [
+        "Who this person is",
+        "What he/she is like",
+        "How he/she shows happiness",
+        "And explain why you think he/she is a happy person"
+      ],
+      "part3": [
+        "When do you think people are happiest?",
+        "How can the arts spread positive emotions in society?",
+        "Do you think teachers are able to spot the unhappy children?",
+        "Should teachers know what children are doing all the time?",
+        "What would make a student happy at school?",
+        "Do you think doing a job that you like is more important than other things?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 4,
+      "topic_id": "new-4",
+      "name_cn": "看过的名人采访",
+      "name_en": "A Time You Watched a Famous Person Being Interviewed",
+      "cue_card": "Describe a time you watched a famous person being interviewed",
+      "cue_points": [
+        "Who the famous person was",
+        "What the interview was about",
+        "When and where you watched the interview",
+        "And explain how you felt about the interview"
+      ],
+      "part3": [
+        "What should people wear to a job interview?",
+        "Why do we need to attend interviews when applying for jobs?",
+        "What should people do to prepare for a job interview?",
+        "Why do some people think interviews are a waste of time?",
+        "Why do some people dislike being interviewed?",
+        "What kinds of people are usually interviewed?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 5,
+      "topic_id": "new-5",
+      "name_cn": "有条理的人",
+      "name_en": "A Person You Know Who Is Very Organized",
+      "cue_card": "Describe a person you know who is very organized",
+      "cue_points": [
+        "Who this person is",
+        "What this person usually does to stay organized",
+        "In what situations you have noticed this quality",
+        "And explain why you think being organized is important to him/her"
+      ],
+      "part3": [
+        "Do you think it is important for managers to be well organized?",
+        "Should parents teach their children to be organized?",
+        "What can people do to become more organized?",
+        "Are organized people more likely to be successful at work or in their studies?",
+        "Do you think children should learn to be organized from a young age?",
+        "Why is it important for people to be organized?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 6,
+      "topic_id": "new-6",
+      "name_cn": "嘈杂地",
+      "name_en": "A Noisy Place You Have Been to",
+      "cue_card": "Describe a noisy place you have been to",
+      "cue_points": [
+        "Where it is",
+        "When you went there",
+        "What you did there",
+        "And explain why you feel it's a noisy place"
+      ],
+      "part3": [
+        "How can people consider others' feelings when chatting in public?",
+        "How would people usually respond to noises in your country?",
+        "Which area is exposed to noise more, the city or the countryside?",
+        "What kinds of noises are there in our life?",
+        "Should children not be allowed to make noise under any circumstances?",
+        "Do you think it is good for children to make noise?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 7,
+      "topic_id": "new-7",
+      "name_cn": "喜欢的城市自然之地",
+      "name_en": "A Natural Place in Your City that You Enjoy Visiting",
+      "cue_card": "Describe a natural place in your city that you enjoy visiting",
+      "cue_points": [
+        "Where it is",
+        "What it is like",
+        "How often you go there",
+        "Who you often go there with",
+        "And explain why you enjoy visiting there"
+      ],
+      "part3": [
+        "Which is more important, protecting the environment or developing the economy?",
+        "Do you think staying in a natural place would help change people's mood?",
+        "Do you think there should be many natural places in cities?",
+        "What can governments do to encourage people to spend more time in nature?",
+        "Do you think people should spend more time in nature?",
+        "What kind of people do you think enjoy being in nature?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 8,
+      "topic_id": "new-8",
+      "name_cn": "攒钱买特别物品",
+      "name_en": "A Time When You Saved Money to Buy Something Special",
+      "cue_card": "Describe a time when you saved money to buy something special",
+      "cue_points": [
+        "What the special thing was",
+        "Why you wanted to buy it",
+        "How you saved money for it",
+        "And explain how you felt after buying it"
+      ],
+      "part3": [
+        "Should people spend time on charity, or just money?",
+        "What kind of things do people usually save money for?",
+        "Is it easier to spend money or save money?",
+        "Do you think it is easier to teach teenagers how to manage money when they are around 16 or 17 years old?",
+        "Should parents teach their children to spend money freely or to save money?",
+        "Should schools teach children how to manage money from a young age?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 9,
+      "topic_id": "new-9",
+      "name_cn": "小时候学到的新技能",
+      "name_en": "A New Skill You Learned When You Were a Child",
+      "cue_card": "Describe a new skill you learned when you were a child",
+      "cue_points": [
+        "What the skill was",
+        "Who taught you this skill",
+        "How you learned it",
+        "And explain how you felt about learning the skill"
+      ],
+      "part3": [
+        "Is it important for everyone to have a specialized skill?",
+        "Can a child learn skills from another child?",
+        "Do you think it is easier for children to learn new skills than for adults?",
+        "What are the differences between the way adults learn and the way children learn?",
+        "What are the differences between learning in a group and learning by yourself?",
+        "What skills should children learn before they go to school?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 10,
+      "topic_id": "new-10",
+      "name_cn": "喜欢拍照的人",
+      "name_en": "A Person You Know Who Really Likes Taking Photos",
+      "cue_card": "Describe a person you know who really likes taking photos",
+      "cue_points": [
+        "Who the person is",
+        "When and how you got to know him/her",
+        "Where he/she takes photos",
+        "And explain how you feel about him/her"
+      ],
+      "part3": [
+        "Some people don't mind others walking into their shot when they're taking photos.",
+        "Why do tourists like taking photos while they are travelling?",
+        "Do you think it's ok to take photos everywhere?",
+        "What kind of photos do people often take?",
+        "Why are some people keen on taking photos?",
+        "When do people like taking photos?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 11,
+      "topic_id": "new-11",
+      "name_cn": "尊敬的比你年长的人",
+      "name_en": "Someone Who Is Older than You that You Admire",
+      "cue_card": "Describe someone who is older than you that you admire",
+      "cue_points": [
+        "Who this person is",
+        "How you knew this person",
+        "What kinds of things you like to do together",
+        "And explain how you feel about this person"
+      ],
+      "part3": [
+        "What kinds of things do the elderly remember for a long time?",
+        "What sports are popular among older people?",
+        "What do old people usually do in their daily life?",
+        "Why is there a generation gap between the young and the old?",
+        "Has old people's life quality improved when compared to the past?",
+        "What can young and old people learn from each other?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 12,
-      "name_cn": "自行车/摩托车/汽车旅行",
-      "name_en": "A Vehicle Trip",
-      "cue_card": "Describe a bicycle/motorcycle/car trip you would like to go on",
+      "topic_id": "new-12",
+      "name_cn": "好的购物服务",
+      "name_en": "A Time When You Received Good Service in a Shop/store/company",
+      "cue_card": "Describe a time when you received good service in a shop/store/company",
       "cue_points": [
-        "Who you would like to go with",
-        "Where you would like to go",
-        "When you would like to go",
-        "And explain why you would like to go by that vehicle"
+        "Where the shop/store/company is",
+        "When you went to the shop/store/company",
+        "What service you received from the staff",
+        "And explain how you felt about the service"
       ],
       "part3": [
-        "Which form of vehicle is more popular in your country, bikes, cars or motorcycles?",
-        "Do you think air pollution comes mostly from mobile vehicles?",
-        "Do you think people need to change the way of transportation drastically?",
-        "How are the transportation systems in urban areas and rural areas different?",
-        "Why do more people own and drive private vehicles now?",
-        "What do you think of the future of electric cars?"
-      ]
+        "Can consumption drive economic growth?",
+        "What are the advantages and disadvantages of shopping online?",
+        "What are the differences between online shopping and in-store shopping?",
+        "Why do some people not like shopping in small shops?",
+        "What are the advantages and disadvantages of shopping in small shops?",
+        "Why are shopping malls so popular in China?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 13,
-      "name_cn": "机智解决问题的人",
-      "name_en": "Smart Problem Solver",
-      "cue_card": "Describe a person who solved a problem in a smart way",
+      "topic_id": "new-13",
+      "name_cn": "擅长做手工的人",
+      "name_en": "A Person Who Is Good at Making Things by Hand",
+      "cue_card": "Describe a person who is good at making things by hand",
       "cue_points": [
         "Who this person is",
-        "What the problem was",
-        "How he/she solved it",
-        "And explain why you think he/she did it in a smart way"
+        "What he/she makes",
+        "What materials or technologies he/she uses",
+        "And why you think this person is good at making things by hand"
       ],
       "part3": [
-        "Do you think children are born smart or they learn to become smart?",
-        "How do children become smart at school?",
-        "Why are some people well-rounded and others only good at one thing?",
-        "Why does modern society need talents of all kinds?",
-        "Do you think smart children are happier than other children?",
-        "Is it important for schools to identify and develop each student's talents?"
-      ]
+        "Does art, like music or theater, have an impact on society?",
+        "Is it good to have creative people in a team?",
+        "What impact can artistic buildings have on society?",
+        "Do children these days still like doing arts and crafts?",
+        "Why do some children enjoy making things by hand?",
+        "Do you think art classes are important for children?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 14,
-      "name_cn": "朋友自学",
-      "name_en": "Friend Who Self-Learned",
-      "cue_card": "Describe one of your friends who learned something without a teacher",
+      "topic_id": "new-14",
+      "name_cn": "和朋友度过的愉快夜晚",
+      "name_en": "An Enjoyable Evening You Had with Your Friends",
+      "cue_card": "Describe an enjoyable evening you had with your friends",
       "cue_points": [
-        "Who he/she is",
-        "What he/she learned",
-        "Why he/she learned this",
-        "And explain whether it would be easier to learn from a teacher"
+        "When and where it was",
+        "What you did",
+        "Who you spent the evening with",
+        "And explain why it was enjoyable"
       ],
       "part3": [
-        "Is it necessary to keep learning after graduating from school?",
-        "Should teachers make learning in their classes fun?",
-        "Do you think there are too many subjects for students to learn?",
-        "Is it better to focus on a few subjects or to learn many subjects?",
-        "Do you think enterprises should provide training for their employees?",
-        "Do you think it is good for older adults to continue learning?"
-      ]
+        "Why do people need friends?",
+        "Do older people prefer spending time with family or with friends?",
+        "Do young people prefer spending time with family or with friends?",
+        "What are the differences between young people's leisure time activities and those of old people?",
+        "What can we do to bring family members closer together?",
+        "How do people get along in a big family?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 15,
-      "name_cn": "不享受的音乐活动",
-      "name_en": "Unenjoyed Music Event",
-      "cue_card": "Describe an event you attended in which you didn't enjoy the music played",
+      "topic_id": "new-15",
+      "name_cn": "浪费时间的活动",
+      "name_en": "An Activity You Do Regularly that You Think Is a Waste of Time",
+      "cue_card": "Describe an activity you do regularly that you think is a waste of time",
       "cue_points": [
-        "What it was",
-        "Who you went with",
-        "Why you decided to go there",
-        "And explain why you didn't enjoy it"
+        "What it is",
+        "When you usually do it",
+        "Why you do it",
+        "And explain why you think it is a waste of time"
       ],
       "part3": [
-        "What kind of music events do people like today?",
-        "Do you think children should receive some musical education?",
-        "What are the differences between old and young people's music preferences?",
-        "What kind of music events are there in your country?",
-        "Why do many people like listening to music while doing sports?",
-        "What are the differences between listening to music at home and at a live concert?"
-      ]
+        "Why do some people refuse to abide by rules?",
+        "What kinds of things make people feel pressured?",
+        "Will you continue doing something when you are aware that it's a waste of time?",
+        "How do you balance life and work?",
+        "Is it good to have a daily routine?",
+        "Do you think stress is important in people's lives?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 16,
-      "name_cn": "近期看过且享受的电影",
-      "name_en": "A Recently Enjoyed Movie",
-      "cue_card": "Describe a movie you watched and enjoyed recently",
+      "topic_id": "new-16",
+      "name_cn": "拥挤地方",
+      "name_en": "A Crowded Place You Went to",
+      "cue_card": "Describe a crowded place you went to",
       "cue_points": [
-        "When and where you watched it",
-        "Who you watched it with",
-        "What it was about",
-        "And explain why you watched this movie"
+        "Where it was",
+        "When you went there",
+        "Who you went there with",
+        "What you did there"
       ],
       "part3": [
-        "What kinds of movies do you think are successful in your country?",
-        "What are the factors that make a successful movie?",
-        "Do you think movies influence people's behavior?",
-        "Why do some people prefer watching movies at home?",
-        "Do different age groups like the same kinds of movies?",
-        "Should films be made in local languages or in international languages?"
-      ]
+        "Do you think it is a good trend to have more big cities?",
+        "Do you think there are some people who enjoy crowded places?",
+        "Why do people go to crowded places?",
+        "Will people use bikes more or less in cities in the future?",
+        "Will there be more or less green space in cities in the future?",
+        "Which cities are overcrowded in your country?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 17,
-      "name_cn": "有趣的建筑",
-      "name_en": "An Interesting Building",
-      "cue_card": "Describe an interesting building you have seen",
+      "topic_id": "new-17",
+      "name_cn": "学习并喜欢历史的人",
+      "name_en": "A Person Who Learns History and Loves History",
+      "cue_card": "Describe a person who learns history and loves history",
       "cue_points": [
-        "Where it is",
-        "What it looks like",
-        "What it is used for",
-        "And explain why you think it is interesting"
+        "Who this person is",
+        "How he/she learns history",
+        "Why he/she loves history",
+        "And explain how you feel about him/her"
       ],
       "part3": [
-        "What kinds of buildings are popular in your country?",
-        "Is it important to preserve old buildings?",
-        "What are the differences between modern and traditional buildings?",
-        "Do buildings need to be beautiful or functional?",
-        "How does the design of a building affect people's mood?",
-        "Should governments spend money on building design?"
-      ]
+        "Besides big historical events, what else is important when learning history?",
+        "Do you think people should learn ancient history before learning modern history?",
+        "Is it important to learn how people in the past lived their lives?",
+        "How do children learn history before they attend school?",
+        "At what age do you think people should begin to learn history?",
+        "Do you think children should begin learning history from an early age?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 18,
-      "name_cn": "发挥想象力",
-      "name_en": "Using Imagination",
-      "cue_card": "Describe a time when you needed to use your imagination",
+      "topic_id": "new-18",
+      "name_cn": "教你新技能的人",
+      "name_en": "A Person Who Taught You a New Skill",
+      "cue_card": "Describe a person who taught you a new skill",
       "cue_points": [
-        "When it was",
-        "Why you needed to use your imagination",
-        "What you did",
-        "And explain how you felt about it"
+        "Who this person was",
+        "What the skill was",
+        "How you learned it",
+        "And explain how you felt about this person"
       ],
       "part3": [
-        "Is imagination important for children?",
-        "How can teachers help children develop imagination?",
-        "What jobs need imagination?",
-        "Do you think technology limits children's imagination?",
-        "How does reading help develop imagination?",
-        "Is imagination more important than knowledge?"
-      ]
+        "Why is self-discipline important when learning a new skill?",
+        "What are the differences between learning from a teacher and learning by oneself?",
+        "How do adults learn a new skill?",
+        "How can parents and teachers teach children new skills?",
+        "Where can children learn new skills?",
+        "Why should children learn new skills?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 19,
-      "name_cn": "乐于助人的人",
-      "name_en": "A Helpful Person",
-      "cue_card": "Describe a person who likes to help others",
+      "topic_id": "new-19",
+      "name_cn": "不喜欢的电影",
+      "name_en": "A Movie/film You Don't Like",
+      "cue_card": "Describe a movie/film you don't like",
       "cue_points": [
-        "Who this person is",
-        "How you knew him/her",
-        "What he/she often does to help others",
-        "And explain how you feel about this person"
+        "When you watched it",
+        "Where you watched it",
+        "What it was about",
+        "And explain why don't like it"
       ],
       "part3": [
-        "Why do some people like to help others?",
-        "How can children learn to help others?",
-        "Should helping others be taught in schools?",
-        "What are the benefits of volunteering?",
-        "Do you think people are less willing to help others nowadays?",
-        "How can technology help people help others?"
-      ]
+        "Do people's movie preferences change as they get older?",
+        "Should documentary films be completely truthful?",
+        "Can movies help people better understand the cultural background of a country?",
+        "Are movies more likely to help people become more creative than books?",
+        "What are the differences between watching movies at home and in a cinema?",
+        "What kinds of movies are the most popular in China?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 20,
-      "name_cn": "花费超过预期的物品",
-      "name_en": "An Item Cost More Than Expected",
-      "cue_card": "Describe something you bought that cost more than you expected",
+      "topic_id": "new-20",
+      "name_cn": "不喜欢的短途旅行",
+      "name_en": "A Short Trip You Often Take but Do Not Like",
+      "cue_card": "Describe a short trip you often take but do not like",
       "cue_points": [
-        "What it was",
-        "Why you bought it",
-        "How much it cost",
-        "And explain how you felt about spending more than expected"
+        "Where you go",
+        "When you go there",
+        "Why you go there",
+        "And explain why you do not like the trip"
       ],
       "part3": [
-        "Why do people sometimes spend more than they planned?",
-        "Do young people save money?",
-        "Is it important to teach children about money?",
-        "Why do people buy expensive things?",
-        "What influences people's spending habits?",
-        "Should schools teach financial literacy?"
-      ]
+        "What problems does it cause for transportation when everyone commutes at the same time?",
+        "What are the benefits of travelling abroad?",
+        "Which is better for knowing more about a country? Travelling or reading books about it?",
+        "How much time do you think people should spend on a trip abroad?",
+        "Who prefers travelling abroad? The young or the old?",
+        "Do Chinese people like travelling abroad?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 21,
-      "name_cn": "鼓励别人做不愿做的事",
-      "name_en": "Encouraging Someone Unwilling",
-      "cue_card": "Describe a time when you encouraged someone to do something they didn't want to do",
+      "topic_id": "new-21",
+      "name_cn": "受欢迎的人",
+      "name_en": "A Popular Person",
+      "cue_card": "Describe a popular person",
       "cue_points": [
-        "Who the person was",
-        "What they didn't want to do",
-        "How you encouraged them",
-        "And explain what the result was"
+        "Who this person is",
+        "What kind of person he or she is",
+        "When you see him/her normally",
+        "And explain why you think this person is popular"
       ],
       "part3": [
-        "Why are some people reluctant to try new things?",
-        "How can parents encourage their children?",
-        "Is encouragement more effective than criticism?",
-        "What kind of encouragement works best?",
-        "Should employers encourage their employees? How?",
-        "When is it better NOT to encourage someone?"
-      ]
+        "Why do people want to be popular?",
+        "Is it easier to become popular nowadays?",
+        "What are the qualities of being a good teacher?",
+        "Do you think good teachers are always popular among students?",
+        "Is it important for a teacher to be popular?",
+        "Why are some students popular in school?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 22,
-      "name_cn": "想从事的短期海外工作",
-      "name_en": "Short-term Overseas Work",
-      "cue_card": "Describe a short-term job you would like to do in a foreign country",
+      "topic_id": "new-22",
+      "name_cn": "钦佩的运动员",
+      "name_en": "A Successful Sportsperson You Admire",
+      "cue_card": "Describe a successful sportsperson you admire",
       "cue_points": [
-        "What the job is",
-        "Where you would like to go",
-        "How long you would like to work there",
-        "And explain why you want to do it"
+        "Who he/she is",
+        "What you know about him/her",
+        "What he/she is like in real life",
+        "What achievement he/she has made"
       ],
       "part3": [
-        "What short-term jobs do young people do in other countries?",
-        "What challenges do young people face when working abroad?",
-        "What are the benefits of working for an international company?",
-        "What personal skills are required to work in an international company?",
-        "What kind of work can young people do in foreign countries?",
-        "Why are some people unwilling to work in other countries?"
-      ]
+        "Why are there so few top athletes?",
+        "What is the most popular sport in your country?",
+        "Is it easy to identify children's talents?",
+        "Is talent important in sports?",
+        "What qualities should an athlete have?",
+        "Should students have physical education and do sports at school?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 23,
-      "name_cn": "爱护自然之人",
-      "name_en": "A Nature Lover",
-      "cue_card": "Describe a person who likes to look after the natural world",
+      "topic_id": "new-23",
+      "name_cn": "喜欢的公共建筑",
+      "name_en": "A Public Building You Enjoy Visiting",
+      "cue_card": "Describe a public building you enjoy visiting (e.g. a library, a shopping mall, a sports hall, etc.)",
       "cue_points": [
-        "Who this person is",
-        "What he or she does",
-        "How he or she does it",
-        "And explain how you feel about this person"
-      ],
-      "part3": [
-        "Do you think parents should teach their children how to protect the environment?",
-        "What laws about the environment are effective in your country?",
-        "Which do people prefer, rewards or punishment, for environmental protection?",
-        "Is it easy for children in cities to get close to the natural world?",
-        "What can people do to protect the natural world?",
-        "Is it important to teach students environmental protection at school?"
-      ]
-    },
-    {
-      "id": 24,
-      "name_cn": "商店",
-      "name_en": "A Shop You Enjoy Visiting",
-      "cue_card": "Describe a shop/store you enjoy visiting",
-      "cue_points": [
-        "What the shop's name is",
         "Where it is",
-        "What it sells",
+        "How you knew it",
+        "What it looks like",
         "And explain why you enjoy visiting it"
       ],
       "part3": [
-        "What kinds of shops are popular in your country?",
-        "Do you prefer shopping online or in physical stores?",
-        "How have shops changed in recent years?",
-        "What makes a shop successful?",
-        "Is customer service important in shops?",
-        "How do shops attract customers?"
-      ]
+        "Why do people visit historic buildings?",
+        "Should modern buildings replace traditional buildings?",
+        "Is it better to live in an apartment than in a house?",
+        "Is it important to protect historic buildings? Why?",
+        "Why is it hard to protect historic buildings?",
+        "Why do some people prefer to live in the countryside?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 24,
+      "topic_id": "new-24",
+      "name_cn": "印象深刻的聚会",
+      "name_en": "A Party for a Special Event that Impressed You a Lot",
+      "cue_card": "Describe a party for a special event that impressed you a lot",
+      "cue_points": [
+        "When and where it was held",
+        "What the party was held for",
+        "How many people attended it",
+        "And explain why it impressed you a lot"
+      ],
+      "part3": [
+        "When do people like to hold a party?",
+        "Do you think people nowadays prefer attending big parties or small gatherings with close friends? Why?",
+        "Are there any differences between how young people and older people celebrate events with parties?",
+        "What special events are celebrated in your country?",
+        "Do you think it's a waste of money for governments to celebrate national events?",
+        "What festivals are the most important for people in your country?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 25,
-      "name_cn": "去过且喜欢的城市",
-      "name_en": "A City You Visited and Liked",
-      "cue_card": "Describe a city you have been to and liked",
+      "topic_id": "new-25",
+      "name_cn": "有健康习惯和作息的人",
+      "name_en": "A Person You Know Who Has Healthy Habits and a Healthy Daily Routine",
+      "cue_card": "Describe a person you know who has healthy habits and a healthy daily routine",
       "cue_points": [
-        "What city it is",
-        "When you went there",
-        "What you did there",
-        "And explain why you liked it"
+        "Who this person is",
+        "How you got to know each other",
+        "What he/she does to keep this lifestyle",
+        "And explain how you feel about him/her"
       ],
       "part3": [
-        "What makes a city attractive to tourists?",
-        "How does tourism affect a city?",
-        "What are the differences between living in a big city and a small city?",
-        "Should cities limit the number of tourists?",
-        "What problems do big cities face?",
-        "How can cities become more livable?"
-      ]
+        "Does the government play an important role in promoting healthy lifestyles in a community?",
+        "Do you think it is important to live in a community where people have healthy lifestyles?",
+        "How can people relieve stress in daily life?",
+        "What effect does stress have on health?",
+        "Which group pays more attention to health, young people or old people?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 26,
-      "name_cn": "安静的地方",
-      "name_en": "A Quiet Place",
-      "cue_card": "Describe a quiet place you like to go to",
+      "topic_id": "new-26",
+      "name_cn": "读起来开心的书",
+      "name_en": "A Book You Enjoyed Reading and that Made You Happy",
+      "cue_card": "Describe a book you enjoyed reading and that made you happy",
       "cue_points": [
-        "Where it is",
-        "How often you go there",
-        "What you do there",
-        "And explain why you like this quiet place"
+        "What kind of book it was",
+        "What it was about",
+        "Why you read it",
+        "And explain why it made you happy"
       ],
       "part3": [
-        "Why do people need quiet time?",
-        "Are cities noisier now than in the past?",
-        "How does noise affect people's health?",
-        "What can people do to find quiet in a busy city?",
-        "Should there be quiet zones in cities?",
-        "How do you create a quiet environment at home?"
-      ]
+        "What kinds of books are popular in China?",
+        "Do you think people should read the original book before watching the movie?",
+        "Are success books useful to everyone?",
+        "Do you think people today read less than before? Why?",
+        "Why do some people prefer watching movies to reading books?",
+        "How can parents help children develop a love of reading?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 27,
-      "name_cn": "喜欢的电视/网络节目",
-      "name_en": "A TV/Online Program You Like",
-      "cue_card": "Describe a TV program or online show you like to watch",
+      "topic_id": "new-27",
+      "name_cn": "帮助他人",
+      "name_en": "A Time When You Helped Someone",
+      "cue_card": "Describe a time when you helped someone",
       "cue_points": [
-        "What it is about",
-        "How often you watch it",
-        "Who you watch it with",
-        "And explain why you like it"
+        "Where you helped him/her",
+        "Why you helped",
+        "How you helped",
+        "And explain how you felt about it"
       ],
       "part3": [
-        "What kinds of TV programs are popular in your country?",
-        "Do people watch more online content than TV now?",
-        "How has the internet changed the way people watch programs?",
-        "Do different age groups like different programs?",
-        "What makes a TV program successful?",
-        "Should children's TV watching be limited?"
-      ]
+        "Should children be taught to be kind to others?",
+        "Should people be very kind when they help others?",
+        "Can kids provide any help to parents?",
+        "Should parents give children advice? Why?",
+        "What kind of advice should parents give to their children?",
+        "Should parents help their kids with their homework?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 28,
+      "topic_id": "new-28",
+      "name_cn": "听不感兴趣的话",
+      "name_en": "A Time When Someone Talked About Something You Were Not Interested in but You Kept Listening",
+      "cue_card": "Describe a time when someone talked about something you were not interested in but you kept listening",
+      "cue_points": [
+        "Who the person was",
+        "What he/she talked about",
+        "Why you kept listening",
+        "And explain how you felt about the experience"
+      ],
+      "part3": [
+        "What kind of topics do young people like to talk about today?",
+        "What would happen if the listener didn't listen carefully?",
+        "How can we tell if a listener is listening carefully?",
+        "How can a teacher tell if students are listening in class?",
+        "What do you think about talking with people who have different opinions?",
+        "Do most young people in your country like to talk with elderly people?"
+      ],
+      "carried_over_from": null
+    }
+  ],
+  "part1_retained": [
+    {
+      "id": 1,
+      "topic_id": "retained-1",
+      "name_en": "Music",
+      "name_cn": "音乐",
+      "questions": [
+        "Do you prefer sad or happy music?",
+        "Does happy music make you feel more excited?",
+        "Have you taken any music classes?",
+        "Do you listen to music while doing other things?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-1"
+    },
+    {
+      "id": 2,
+      "topic_id": "retained-2",
+      "name_en": "Teachers",
+      "name_cn": "老师",
+      "questions": [
+        "Do you have a favorite teacher?",
+        "Do you want to be a teacher in the future?",
+        "Do you have a teacher from your past that you still remember?",
+        "Are you still in touch with your primary school teachers?",
+        "In what way has your favourite teacher helped you?",
+        "Do you like your primary school teachers more than your high school teachers?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-2"
+    },
+    {
+      "id": 3,
+      "topic_id": "retained-3",
+      "name_en": "Social media",
+      "name_cn": "社交媒体",
+      "questions": [
+        "Have you ever posted anything on social media?",
+        "When did you start using social media?",
+        "Do you think you spend too much time on social media?",
+        "Do your friends use social media?",
+        "What do people often do on social media?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-3"
+    },
+    {
+      "id": 4,
+      "topic_id": "retained-4",
+      "name_en": "Tidiness",
+      "name_cn": "整洁",
+      "questions": [
+        "Do you like to keep things tidy?",
+        "Did you keep your room tidy as a child?",
+        "How do you keep your work or study space tidy?",
+        "Do you think that it is necessary to be tidy?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-4"
+    },
+    {
+      "id": 5,
+      "topic_id": "retained-5",
+      "name_en": "Websites",
+      "name_cn": "网站",
+      "questions": [
+        "What kinds of websites do you often visit?",
+        "What is your favourite website?",
+        "Are there any changes to the websites you often visit?",
+        "What kinds of websites are popular in your country?",
+        "Do you prefer getting information from websites or books?",
+        "Would you like to have your own website?",
+        "What have you learned from websites that help with your life or studies?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-5"
+    },
+    {
+      "id": 6,
+      "topic_id": "retained-6",
+      "name_en": "Watch",
+      "name_cn": "手表",
+      "questions": [
+        "Do you wear a watch?",
+        "Have you ever got a watch as a gift?",
+        "Why do some people wear expensive watches?",
+        "Do you think it is important to wear a watch? Why?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-6"
+    },
+    {
+      "id": 7,
+      "topic_id": "retained-7",
+      "name_en": "Shopping",
+      "name_cn": "购物",
+      "questions": [
+        "Do you like shopping?",
+        "How often do you go shopping?",
+        "Do you prefer online shopping or in-store shopping?",
+        "Have you ever returned anything you bought online?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-7"
+    },
+    {
+      "id": 8,
+      "topic_id": "retained-8",
+      "name_en": "Cars",
+      "name_cn": "汽车",
+      "questions": [
+        "Did you enjoy traveling by car when you were a kid?",
+        "What types of cars do you like?",
+        "Do you prefer to be a driver or a passenger?",
+        "What do you usually do when there is a traffic jam?",
+        "Do you think car colours are important?",
+        "Will you buy an expensive car in the future?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-8"
+    },
+    {
+      "id": 9,
+      "topic_id": "retained-9",
+      "name_en": "Public gardens and parks",
+      "name_cn": "公园和花园",
+      "questions": [
+        "Did you like going to parks as a child?",
+        "Do you still like going to parks now?",
+        "Would you like to see more parks in your city?",
+        "Are there any parks you want to go to in the future?",
+        "Would you prefer to play in a personal garden or public garden?",
+        "How are the parks today different from those you visited as a kid?",
+        "What do you like to do when visiting a park?",
+        "Would you like to play in a public garden or park?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-9"
+    },
+    {
+      "id": 10,
+      "topic_id": "retained-10",
+      "name_en": "Science",
+      "name_cn": "科学",
+      "questions": [
+        "Do you like science?",
+        "When did you start to learn about science?",
+        "Which science subject is interesting to you?",
+        "What kinds of interesting things have you done with science?",
+        "Do you like watching science TV programs?",
+        "Do Chinese people often visit science museums?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-10"
+    },
+    {
+      "id": 11,
+      "topic_id": "retained-11",
+      "name_en": "Mirrors",
+      "name_cn": "镜子",
+      "questions": [
+        "Do you like looking at yourself in the mirror? How often?",
+        "Have you ever bought mirrors?",
+        "Do you usually take a mirror with you?",
+        "Would you use mirrors to decorate your room?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-11"
+    },
+    {
+      "id": 12,
+      "topic_id": "retained-12",
+      "name_en": "Outer space and stars",
+      "name_cn": "外太空和星星",
+      "questions": [
+        "Have you ever learnt about outer space and stars?",
+        "Do you like science fiction movies? Why?",
+        "Do you want to know more about outer space?",
+        "Do you want to go into outer space in the future?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-12"
+    },
+    {
+      "id": 13,
+      "topic_id": "retained-13",
+      "name_en": "Singing",
+      "name_cn": "唱歌",
+      "questions": [
+        "Do you like singing? Why?",
+        "Have you ever learnt how to sing?",
+        "Who do you want to sing for?",
+        "Do you think singing can bring happiness to people?",
+        "Do you like listening to others singing?",
+        "Have you ever taken a singing class?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-13"
+    },
+    {
+      "id": 14,
+      "topic_id": "retained-14",
+      "name_en": "Clothing",
+      "name_cn": "服装",
+      "questions": [
+        "What kind of clothes do you like to wear?",
+        "Do you prefer to wear comfortable and casual clothes or smart clothes?",
+        "Do you like wearing T-shirts?",
+        "Do you spend a lot of time choosing clothes?",
+        "Do you wear different styles of clothes on weekdays and weekends?",
+        "What colour clothes do you like?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-14"
+    },
+    {
+      "id": 15,
+      "topic_id": "retained-15",
+      "name_en": "Jokes & Comedies",
+      "name_cn": "笑话和喜剧",
+      "questions": [
+        "Are you good at telling jokes?",
+        "Do your friends like to tell jokes?",
+        "Do you like to watch comedies?",
+        "Have you ever watched a live show?",
+        "Are comedy shows popular in your country?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-15"
+    },
+    {
+      "id": 16,
+      "topic_id": "retained-16",
+      "name_en": "Headphones",
+      "name_cn": "耳机",
+      "questions": [
+        "Do you use headphones?",
+        "What type of headphones do you use?",
+        "When would you use headphones?",
+        "In what conditions would you not use headphones?",
+        "Is wearing headphones comfortable?"
+      ],
+      "carried_over_from": "2026-05-08:part1:new-16"
+    },
+    {
+      "id": 17,
+      "topic_id": "retained-17",
+      "name_en": "Morning time",
+      "name_cn": "早晨",
+      "questions": [
+        "Do you spend your mornings doing the same things on both weekends and weekdays? Why?",
+        "Are there any differences between what you do in the morning now and what you did in the past?",
+        "What did you do in the morning when you were little? Why?",
+        "What do you usually do in the morning?",
+        "Do you like getting up early in the morning?"
+      ],
+      "carried_over_from": "2026-05-08:part1:retained-5"
+    }
+  ],
+  "part1_essential": [
+    {
+      "id": 1,
+      "topic_id": "essential-1",
+      "name_en": "Work or studies",
+      "name_cn": "工作或学习",
+      "questions": [
+        "What subjects are you studying?",
+        "Do you like your subject?",
+        "Why did you choose to study that subject?",
+        "Do you think that your subject is popular in your country?",
+        "Do you have any plans for your studies in the next five years?",
+        "What are the benefits of being your age?",
+        "Do you want to change your major?",
+        "Do you prefer to study in the mornings or in the afternoons?",
+        "How much time do you spend on your studies each week?",
+        "Are you looking forward to working?",
+        "What technology do you use when you study?",
+        "What changes would you like to see in your school?",
+        "What work do you do?",
+        "Why did you choose to do that type of work (or that job)?",
+        "Do you like your job?",
+        "What requirements did you need to meet to get your current job?",
+        "Do you have any plans for your work in the next five years?",
+        "What do you think is the most important at the moment?",
+        "Do you want to change to another job?",
+        "Do you miss being a student?",
+        "What technology do you use at work?",
+        "Who helps you the most? And how?"
+      ],
+      "carried_over_from": "2026-05-08:part1:essential-1"
+    },
+    {
+      "id": 2,
+      "topic_id": "essential-2",
+      "name_en": "Home/accommodation",
+      "name_cn": "住所",
+      "questions": [
+        "What kind of house or apartment do you want to live in in the future?",
+        "Are the transport facilities to your home very good?",
+        "Do you prefer living in a house or an apartment?",
+        "Please describe the room you live in.",
+        "What part of your home do you like the most?",
+        "How long have you lived there?",
+        "Do you plan to live there for a long time?",
+        "What's the difference between where you are living now and where you have lived in the past?",
+        "Can you describe the place where you live?",
+        "What room does your family spend most of the time in?",
+        "What's your favorite room in your apartment or house?",
+        "What makes you feel pleasant in your home?",
+        "Do you think it is important to live in a comfortable environment?",
+        "Do you live in an apartment or a house?",
+        "Who do you live with?",
+        "What do you usually do in your apartment?",
+        "What kinds of accommodation do you live in?"
+      ],
+      "carried_over_from": "2026-05-08:part1:essential-2"
+    },
+    {
+      "id": 3,
+      "topic_id": "essential-3",
+      "name_en": "Hometown",
+      "name_cn": "家乡",
+      "questions": [
+        "Where is your hometown?",
+        "Is that a big city or a small place?",
+        "Please describe your hometown a little.",
+        "How long have you been living there?",
+        "Do you think you will continue living there for a long time?",
+        "Do you like your hometown?",
+        "Do you like living there?",
+        "What do you like (most) about your hometown?",
+        "Is there anything you dislike about it?",
+        "What's your hometown famous for?",
+        "Did you learn about the history of your hometown at school?",
+        "Are there many young people in your hometown?",
+        "Is your hometown a good place for young people to pursue their careers?",
+        "Have you learned anything about the history of your hometown?",
+        "Did you learn about the culture of your hometown in your childhood?"
+      ],
+      "carried_over_from": "2026-05-08:part1:essential-3"
+    },
+    {
+      "id": 4,
+      "topic_id": "essential-4",
+      "name_en": "The area you live in",
+      "name_cn": "居住区域",
+      "questions": [
+        "Do you like the area that you live in?",
+        "Where do you like to go in that area?",
+        "Do you know any famous people in your area?",
+        "What are some changes in the area recently?",
+        "Do you know any of your neighbors?",
+        "Are the people in your neighborhood nice and friendly?",
+        "Do you live in a noisy or a quiet area?"
+      ],
+      "carried_over_from": "2026-05-08:part1:essential-4"
+    },
+    {
+      "id": 5,
+      "topic_id": "essential-5",
+      "name_en": "The city you live in",
+      "name_cn": "居住的城市",
+      "questions": [
+        "What city do you live in?",
+        "Do you like this city? Why?",
+        "How long have you lived in this city?",
+        "Are there big changes in this city?",
+        "Is this city your permanent residence?",
+        "Are there people of different ages living in this city?",
+        "Are the people friendly in the city?",
+        "Is the city friendly to children and old people?",
+        "Do you often see your neighbors?",
+        "What's the weather like where you live?",
+        "Would you recommend your city to others?"
+      ],
+      "carried_over_from": "2026-05-08:part1:essential-5"
+    }
+  ],
+  "part23_retained": [
+    {
+      "id": 1,
+      "topic_id": "retained-1",
+      "name_cn": "喜欢或不喜欢的高建筑",
+      "name_en": "A Tall Building You Like or Dislike",
+      "cue_card": "Describe a tall building you like or dislike",
+      "cue_points": [
+        "What it is used for",
+        "Where it is",
+        "What it looks like",
+        "And explain why you like/dislike it"
+      ],
+      "part3": [
+        "Are there many tall buildings in your country?",
+        "What are the differences between those tall buildings in your country?",
+        "Why are different places laid out and designed differently?",
+        "What are the advantages of living in tall buildings?",
+        "Why do some people like to remodel and decorate their homes themselves?",
+        "What kind of interior design style do most people like?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-1"
+    },
+    {
+      "id": 2,
+      "topic_id": "retained-2",
+      "name_cn": "有趣视频",
+      "name_en": "An Interesting Video",
+      "cue_card": "Describe an interesting video",
+      "cue_points": [
+        "When and where you watched it",
+        "What it is about",
+        "Why you watched it",
+        "And explain how you feel about it"
+      ],
+      "part3": [
+        "What kind of videos do people in your country like to watch?",
+        "Which is more helpful, watching videos or reading books?",
+        "What skills can people learn from watching videos?",
+        "Are there any differences between the videos that young people and old people like to watch?",
+        "Are there any differences between the videos that young men and young women like to watch?",
+        "What makes a video go viral online?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-2"
+    },
+    {
+      "id": 3,
+      "topic_id": "retained-3",
+      "name_cn": "去过的无聊地方",
+      "name_en": "A Boring Place",
+      "cue_card": "Describe a boring place",
+      "cue_points": [
+        "Where it is",
+        "Who you went there with",
+        "What you did there",
+        "And explain why you think it is a boring place"
+      ],
+      "part3": [
+        "Why do most children think education is boring?",
+        "Why aren't young people willing to listen to the experiences of older people?",
+        "What can people do when they feel bored?",
+        "Why are some teachers' classes boring? Are there any solutions?",
+        "Why do some young people feel bored when talking with old people?",
+        "Do most people think news about celebrities is boring?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-3"
+    },
+    {
+      "id": 4,
+      "topic_id": "retained-4",
+      "name_cn": "早起经历",
+      "name_en": "A Time When You Got Up Early",
+      "cue_card": "Describe a time when you got up early",
+      "cue_points": [
+        "When it was",
+        "What you did",
+        "Why you got up early",
+        "And how you felt about it"
+      ],
+      "part3": [
+        "Do you know anyone who likes to get up early?",
+        "Why do people get up early?",
+        "What kinds of occasions need people to arrive early?",
+        "Why do some people like to stay up late?",
+        "Is it good to arrive early in any situation?",
+        "What kind of people like getting up early?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-4"
+    },
+    {
+      "id": 5,
+      "topic_id": "retained-5",
+      "name_cn": "喜欢在家/花园种菜的人",
+      "name_en": "A Person Who Loves to Grow Plants",
+      "cue_card": "Describe a person who loves to grow plants (e.g. vegetables, flowers) at home or in the garden",
+      "cue_points": [
+        "Who this person is",
+        "What plants he/she grows",
+        "How he/she grows the plants",
+        "And explain why he/she loves growing plants"
+      ],
+      "part3": [
+        "What are the advantages of growing vegetables or flowers at home?",
+        "Do many people grow vegetables or flowers at home in your country?",
+        "Is it easy to grow plants at home?",
+        "Why do some people like to grow plants?",
+        "Why do some people prefer to grow their own fruits and vegetables instead of buying them from the market?",
+        "Do you think students should learn to grow plant?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-5"
+    },
+    {
+      "id": 6,
+      "topic_id": "retained-6",
+      "name_cn": "想颁布的新法律",
+      "name_en": "A New Law You Would Like to Introduce",
+      "cue_card": "Describe a new law you would like to introduce in your country",
+      "cue_points": [
+        "What law it is",
+        "What changes this law brings",
+        "Whether this new law will be popular",
+        "How you came up with the new law",
+        "And explain how you feel about this new law"
+      ],
+      "part3": [
+        "What rules should students follow at school?",
+        "Do people in your country usually obey the law?",
+        "What kinds of behavior are considered as good behavior?",
+        "Do you think children can learn about the law outside of school?",
+        "What are the benefits for people to obey rules?",
+        "How can parents teach children to obey rules?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-6"
+    },
+    {
+      "id": 7,
+      "topic_id": "retained-7",
+      "name_cn": "发小",
+      "name_en": "A Friend from Your Childhood",
+      "cue_card": "Describe a friend from your childhood",
+      "cue_points": [
+        "Who he/she is",
+        "Where and how you met each other",
+        "What you often did together",
+        "And explain what made you like him/her"
+      ],
+      "part3": [
+        "Do you still keep in touch with your friends from childhood? Why or why not?",
+        "How important is childhood friendship to children?",
+        "What do you think of communicating via social media?",
+        "Do you think online communication through social media will replace face-to-face communication?",
+        "What's the difference between having younger friends and older friends?",
+        "Has technology changed people's friendships? How?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-7"
+    },
+    {
+      "id": 8,
+      "topic_id": "retained-8",
+      "name_cn": "想从事医疗行业的人",
+      "name_en": "Medical Field Career",
+      "cue_card": "Describe a person you know who would like to choose a career in the medical field (e.g. a doctor, a nurse)",
+      "cue_points": [
+        "When you knew him/her",
+        "When he/she started to think about that",
+        "What he/she would like to do",
+        "And explain why he/she would like to choose this career"
+      ],
+      "part3": [
+        "Do you think being a doctor is easy or difficult?",
+        "Do you think learning biology is interesting for children?",
+        "Why do some children want to become doctors?",
+        "Do you think governments should put a large amount of money into medical research?",
+        "Why is some doctors' pay high and others' low?",
+        "Do you think doctors should be paid more?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-8"
+    },
+    {
+      "id": 9,
+      "topic_id": "retained-9",
+      "name_cn": "拥有成功商业的人",
+      "name_en": "A Person with a Successful Business",
+      "cue_card": "Describe a person you know who has a successful business",
+      "cue_points": [
+        "Who this person is",
+        "How you got to know him/her",
+        "Why and how he/she started the business",
+        "What business he/she does",
+        "And explain why you think the business is successful"
+      ],
+      "part3": [
+        "Why do some people start their own business?",
+        "Should governments provide financial support to start-ups?",
+        "Do most people prefer shopping at big stores or small stores?",
+        "What makes a business successful?",
+        "What makes a business fail?",
+        "Is it easy to set up a new business in your country?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-9"
+    },
+    {
+      "id": 10,
+      "topic_id": "retained-10",
+      "name_cn": "近期改变的计划",
+      "name_en": "A Plan That You Had to Change Recently",
+      "cue_card": "Describe a plan that you had to change recently",
+      "cue_points": [
+        "When this happened",
+        "What made you change the plan",
+        "What the new plan was",
+        "And how you felt about the change"
+      ],
+      "part3": [
+        "Do people often change their plans?",
+        "Would you tell others if you change your plan?",
+        "Why do you think parents still make plans for their children nowadays?",
+        "How does technology help people make plans?",
+        "What kind of plans do people often make?",
+        "Do you think people like the process of making plans more, or the moment of carrying them out?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-10"
+    },
+    {
+      "id": 11,
+      "topic_id": "retained-11",
+      "name_cn": "在团队中工作",
+      "name_en": "Working in a Group",
+      "cue_card": "Describe a time when you worked in a group",
+      "cue_points": [
+        "What you did",
+        "Who you worked with",
+        "What problems you faced",
+        "And explain why you worked in the group"
+      ],
+      "part3": [
+        "Why do some people prefer to work by themselves?",
+        "What should a leader do to make team members want to follow him or her?",
+        "Should students learn to do group work?",
+        "What group tasks are there in schools?",
+        "What advantages are there for students experiencing teamwork at school?",
+        "How can you tell if a person is a good leader?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-11"
+    },
+    {
+      "id": 12,
+      "topic_id": "retained-12",
+      "name_cn": "重要决定",
+      "name_en": "An Important Decision",
+      "cue_card": "Describe an important decision that you made",
+      "cue_points": [
+        "What the decision was",
+        "How you made your decision",
+        "What the results of the decision were",
+        "And explain why it was important"
+      ],
+      "part3": [
+        "Do you think children sometimes have to make important decisions?",
+        "What important decisions do teenagers need to make after graduation?",
+        "Who can children turn to for help when making a decision?",
+        "Do you think advertisements can influence our decisions when shopping?",
+        "Do you think the influence of advertising is good?",
+        "How do people usually make important decisions?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-12"
+    },
+    {
+      "id": 13,
+      "topic_id": "retained-13",
+      "name_cn": "喜欢的现场体育赛事",
+      "name_en": "A Live Sports Event",
+      "cue_card": "Describe a live sports event you watched and liked",
+      "cue_points": [
+        "What it was",
+        "When and where you watched it",
+        "Who you watched it with",
+        "And explain why you liked it"
+      ],
+      "part3": [
+        "Why do some people like to watch sports events?",
+        "Where do people normally watch sports events?",
+        "What are the advantages of watching sports events online?",
+        "What sports matches are suitable for children to attend?",
+        "Why do some people spend a lot going to other countries to watch sports events?",
+        "What sports games are popular in your country?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-13"
+    },
+    {
+      "id": 14,
+      "topic_id": "retained-14",
+      "name_cn": "特别场合的食物",
+      "name_en": "Food for Special Occasions",
+      "cue_card": "Describe a food that people eat on special occasions/events",
+      "cue_points": [
+        "What it is",
+        "What the special event/occasion is",
+        "How it is cooked/made",
+        "And explain why people eat it on that special occasion/event"
+      ],
+      "part3": [
+        "Why are there special foods on special occasions or events?",
+        "What are the differences between everyday food and festival food?",
+        "Are there any differences between the food people eat today and the food people ate in the past?",
+        "Do people today prefer eating at home or in a restaurant?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-14"
+    },
+    {
+      "id": 15,
+      "topic_id": "retained-15",
+      "name_cn": "擅长学习和说语言的人",
+      "name_en": "Good at Learning Languages",
+      "cue_card": "Describe a person who is good at learning and speaking new languages",
+      "cue_points": [
+        "How you got to know him/her",
+        "How he/she learns a new language",
+        "What languages he/she can speak",
+        "And explain how you feel about him/her"
+      ],
+      "part3": [
+        "Are there many people who can speak foreign languages in your country?",
+        "Does speaking other languages help at work?",
+        "Do people learn any languages other than English?",
+        "Why is it easier for children to learn new things than for adults?",
+        "How do people learn new things?",
+        "What is the most important thing for learning a language well?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-15"
+    },
+    {
+      "id": 16,
+      "topic_id": "retained-16",
+      "name_cn": "遇到的科技问题",
+      "name_en": "A Challenging Technological Problem",
+      "cue_card": "Describe a challenging technological problem you faced",
+      "cue_points": [
+        "What the problem was",
+        "When and where you faced it",
+        "How challenging it was",
+        "And explain how you solved it"
+      ],
+      "part3": [
+        "What are the advantages and disadvantages of AI?",
+        "Do you think people today should learn about AI technology?",
+        "Should children learn to use AI?",
+        "How can AI help in our lives?",
+        "Do you think students are overly reliant on AI?",
+        "What can teachers do to stop students from relying too much on AI?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-16"
+    },
+    {
+      "id": 17,
+      "topic_id": "retained-17",
+      "name_cn": "名人出演的广告",
+      "name_en": "An Advertisement with a Famous Person",
+      "cue_card": "Describe an advertisement with a famous person in it",
+      "cue_points": [
+        "Who the person is",
+        "Where you can see it",
+        "What the advertisement is about",
+        "And explain how you feel about the advertisement"
+      ],
+      "part3": [
+        "What are the advantages and disadvantages of advertisements?",
+        "Why are many advertisements endorsed by celebrities? How useful are they?",
+        "What is the most important factor in an advertisement?",
+        "Why are some advertisements boring?",
+        "Is advertising important for a company? Why?",
+        "Which is more effective, online advertising or offline advertising?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-17"
+    },
+    {
+      "id": 18,
+      "topic_id": "retained-18",
+      "name_cn": "推荐旅行过的地方",
+      "name_en": "A Place to Recommend",
+      "cue_card": "Describe a place you have travelled to that you would like to recommend to others",
+      "cue_points": [
+        "What it is",
+        "Where it is",
+        "What you saw and did there",
+        "And explain why you would like to recommend it to others"
+      ],
+      "part3": [
+        "Where do people in your country often go for holidays?",
+        "What is the ideal length for a holiday?",
+        "How do people usually plan holidays?",
+        "Is it important to plan a holiday ahead?",
+        "Why do many countries try to attract people to visit?",
+        "How do people decide when to travel?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-18"
+    },
+    {
+      "id": 19,
+      "topic_id": "retained-19",
+      "name_cn": "喜欢拜访但不想住的家",
+      "name_en": "A Home to Visit but Not Live In",
+      "cue_card": "Describe a home that you like to visit but do not want to live in",
+      "cue_points": [
+        "Where it is",
+        "What it is like",
+        "Why you like to visit it",
+        "And explain why you would not like to live there"
+      ],
+      "part3": [
+        "Do Chinese people like to visit others' homes?",
+        "What do Chinese people do when they visit others?",
+        "What kind of place do people in your country like to live in?",
+        "What's the difference between homes in cities and those in the countryside?",
+        "What kind of gifts do people usually bring when they visit others?",
+        "How often do you visit your relatives or friends?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-19"
+    },
+    {
+      "id": 20,
+      "topic_id": "retained-20",
+      "name_cn": "包含动物的故事或书",
+      "name_en": "A Story/Book with Animals",
+      "cue_card": "Describe a story/book with animals in it",
+      "cue_points": [
+        "What animals are in it",
+        "What the story/book is about",
+        "Why you read the story/book",
+        "And explain what you think of this story/book"
+      ],
+      "part3": [
+        "Should schools teach children about animals?",
+        "Some people think pets should not be kept in cities. What do you think?",
+        "Many people regard pets as members of their family. What do you think?",
+        "Do many people keep pets in your country?",
+        "What are the advantages of keeping a pet?",
+        "Why do people always tell children stories with animals?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-20"
+    },
+    {
+      "id": 21,
+      "topic_id": "retained-21",
+      "name_cn": "保护环境的法律",
+      "name_en": "A Law on Environmental Protection",
+      "cue_card": "Describe a law on environmental protection",
+      "cue_points": [
+        "What it is",
+        "How you first learned about it",
+        "Who benefits from it",
+        "And explain how you feel about this law"
+      ],
+      "part3": [
+        "What kinds of rules do schools in China have?",
+        "Do you think school rules are important?",
+        "Are children unhappy with the school rules?",
+        "How can parents and teachers help children understand and follow rules?",
+        "What are the rules people should obey at work?",
+        "What is the purpose of punishment?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-22"
+    },
+    {
+      "id": 22,
+      "topic_id": "retained-22",
+      "name_cn": "很久没收到回复的信息",
+      "name_en": "A Time When You Sent a Message or an Email to Someone but Received No Reply for a Long Time",
+      "cue_card": "Describe a time when you sent a message or an email to someone but received no reply for a long time",
+      "cue_points": [
+        "Who you sent it to",
+        "What the message/email was about",
+        "Whether you finally received the reply",
+        "And explain how you felt about the experience"
+      ],
+      "part3": [
+        "In what situations do people spend a long time responding to others' messages?",
+        "In what situations do people not respond to messages at all?",
+        "What would you do if you did not receive a reply after sending out a message?",
+        "Why do some people prefer sending a message instead of making a call?",
+        "How do you show your respect in your messages?",
+        "Why do some people feel angry when others don't reply to their message?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 23,
+      "topic_id": "retained-23",
+      "name_cn": "长久目标/抱负",
+      "name_en": "A Long-term Goal/Ambition",
+      "cue_card": "Describe a long-term goal/ambition you would like to achieve",
+      "cue_points": [
+        "How long you have had this goal/ambition",
+        "What it is",
+        "How you will achieve it",
+        "And explain why you set it"
+      ],
+      "part3": [
+        "Why should children have ambitions?",
+        "What do you think of people going after high positions?",
+        "Why are some young people keen on being fans of superstars?",
+        "Is it good for a person to be ambitious?",
+        "Do you think it is necessary to be ambitious when working in a team in a company?",
+        "Should parents support their children in pursuing their ambitions?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-24"
+    },
+    {
+      "id": 24,
+      "topic_id": "retained-24",
+      "name_cn": "改变重要想法",
+      "name_en": "Changing an Important Opinion",
+      "cue_card": "Describe a time when you changed an important opinion of yours",
+      "cue_points": [
+        "When you changed your opinion",
+        "What the original opinion was",
+        "Why you changed it",
+        "And explain how you felt about the experience"
+      ],
+      "part3": [
+        "When do most children begin to have their own opinions?",
+        "Whose opinions are more important to children, their parents' or teachers'?",
+        "Do children communicate more with teachers or with parents?",
+        "Who do young people like to share opinions with?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-26"
+    },
+    {
+      "id": 25,
+      "topic_id": "retained-25",
+      "name_cn": "想要颁布的环保法律",
+      "name_en": "Environmental Law to Introduce",
+      "cue_card": "Describe an environmental law you would like your country to introduce",
+      "cue_points": [
+        "What law it should be",
+        "Why people should follow the law",
+        "Whether the law will be popular",
+        "And explain how you feel about this law"
+      ],
+      "part3": [
+        "How does technology affect the law?",
+        "What kinds of rules do schools in China have?",
+        "Will there be a law that is universally accepted?",
+        "What environmental laws does your country already have?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-27"
+    },
+    {
+      "id": 26,
+      "topic_id": "retained-26",
+      "name_cn": "当地新闻",
+      "name_en": "Local News",
+      "cue_card": "Describe a piece of local news that people are interested in",
+      "cue_points": [
+        "What it was about",
+        "Where you saw/heard it",
+        "Who was involved",
+        "And explain why people were interested in it"
+      ],
+      "part3": [
+        "Do people read the newspaper where you live?",
+        "Do people prefer local or international news?",
+        "Do you think it's important to have a national identity?",
+        "How can people develop their national identity?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-28"
+    },
+    {
+      "id": 27,
+      "topic_id": "retained-27",
+      "name_cn": "近期改变",
+      "name_en": "A Recent Change",
+      "cue_card": "Describe a change that you made recently",
+      "cue_points": [
+        "What the change was",
+        "What caused the change",
+        "What you did for the change",
+        "And explain how you feel about the change"
+      ],
+      "part3": [
+        "Do you think it is good to change one's daily routine?",
+        "Do you think it is good to change jobs?",
+        "Is it good for people to get a job promotion?",
+        "Do people often make plans around their regular routines?",
+        "Who tend to change their daily routine more, young people or old people?"
+      ],
+      "carried_over_from": "2026-05-08:part23:new-29"
+    }
+  ],
+  "part1_nonmainland": [
+    {
+      "id": 1,
+      "topic_id": "nonmainland-1",
+      "name_en": "Lost and found",
+      "name_cn": "失物招领",
+      "questions": [
+        "Have you ever lost your keys?",
+        "Will you post on social media if you lose your item?",
+        "Have you ever lost things?",
+        "Do you report to the police when finding something lost by others? Why?",
+        "What will you do if you find something lost by others?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 2,
+      "topic_id": "nonmainland-2",
+      "name_en": "Computers/tablets",
+      "name_cn": "电脑/平板",
+      "questions": [
+        "Would you like to use a computer or tablet?",
+        "In what conditions would you use a computer or tablet?",
+        "When was the first time you used a computer or tablet?",
+        "What would your life be like without computers or tablets?",
+        "In what conditions would it be difficult for you to use a computer or tablet?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 3,
+      "topic_id": "nonmainland-3",
+      "name_en": "Collecting things",
+      "name_cn": "收藏物品",
+      "questions": [
+        "Do you collect things?",
+        "Where do you usually keep things you need?",
+        "Would you keep old things for a long time? Why?",
+        "Are there any things you have kept from your childhood?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 4,
+      "topic_id": "nonmainland-4",
+      "name_en": "Street market",
+      "name_cn": "街边市场",
+      "questions": [
+        "Are there many street markets in China?",
+        "When was the last time you went to a street market?",
+        "Do you prefer to go shopping in the shopping mall or on the street market?",
+        "What do people usually buy on the street market?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 5,
+      "topic_id": "nonmainland-5",
+      "name_en": "Feeling bored",
+      "name_cn": "感到无聊",
+      "questions": [
+        "Do you think childhood is boring or adulthood is boring?",
+        "What do you do when you feel bored?",
+        "When would you feel bored?",
+        "Do you often feel bored?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 6,
+      "topic_id": "nonmainland-6",
+      "name_en": "Friends",
+      "name_cn": "朋友",
+      "questions": [
+        "Would you invite friends to your home?",
+        "Do you prefer to spend time with one friend or with a group of friends?",
+        "Do you have a friend you have known for a long time?",
+        "What do you usually do with your friends?",
+        "Where do you often meet each other?",
+        "Do you often go out with your friends?",
+        "How important are friends to you?",
+        "Why are some places suitable for meeting while others are not?",
+        "Is there a difference between where you meet friends now and where you used to meet them in the past?"
+      ],
+      "carried_over_from": null
     }
   ],
   "part23_nonmainland": [
     {
       "id": 1,
-      "name_cn": "想有空时去旅游的地方",
-      "name_en": "A Place to Travel in Free Time",
-      "cue_card": "Describe a place you would like to travel to when you have free time",
+      "topic_id": "nonmainland-1",
+      "name_cn": "印象深刻的课程",
+      "name_en": "A Course that Impressed You a Lot",
+      "cue_card": "Describe a course that impressed you a lot",
       "cue_points": [
-        "Where it is",
-        "How you knew about it",
-        "What you would like to do there",
-        "And explain why you would like to go there"
+        "What the course was about",
+        "Where you took the course",
+        "What you did during the course",
+        "And explain why it impressed you a lot"
       ],
       "part3": [
-        "Where do people in your country like to travel?",
-        "Is it important to take holidays?",
-        "How do people choose travel destinations?",
-        "What are the benefits of traveling?"
-      ]
+        "What can we learn from history?",
+        "What do people need to remember in their daily lives?",
+        "Can technology help people remember things better? How?",
+        "Which can help people remember things better, words or photos?",
+        "Do people like things of memorial significance?",
+        "Why do some people have a better memory than others?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 2,
-      "name_cn": "收到特殊蛋糕",
-      "name_en": "A Special Cake Received",
-      "cue_card": "Describe a special cake you received",
+      "topic_id": "nonmainland-2",
+      "name_cn": "想再去一次的城市",
+      "name_en": "A City that You Have Been to and Would Like to Visit Again",
+      "cue_card": "Describe a city that you have been to and would like to visit again",
       "cue_points": [
-        "When you received it",
-        "Who gave it to you",
-        "What it looked like",
-        "And explain why it was special"
+        "When you visited it",
+        "What you did there",
+        "What it was like",
+        "And explain why you would like to visit it again"
       ],
       "part3": [
-        "On what occasions do people give cakes?",
-        "Do people in your country prefer homemade or store-bought cakes?",
-        "What kinds of gifts do people give on special occasions?",
-        "Is gift-giving important in your culture?"
-      ]
+        "What should the government do to improve citizens' safety?",
+        "Are there any changes in your city?",
+        "Do you think people in the countryside are friendlier than people in the city?",
+        "Do you think it is possible that all of the population move to cities?",
+        "Some people say large cities are suitable for old people. What do you think?",
+        "What's the difference between the city and the countryside?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 3,
-      "name_cn": "在成功公司工作的人",
-      "name_en": "A Person Working in a Successful Company",
-      "cue_card": "Describe a person who works in a successful company",
+      "topic_id": "nonmainland-3",
+      "name_cn": "一见且想继续了解的人",
+      "name_en": "A Person You Only Met Once Recently and Want to Know More About",
+      "cue_card": "Describe a person you only met once recently and want to know more about",
       "cue_points": [
-        "Who this person is",
-        "What company he/she works for",
-        "What he/she does",
-        "And explain how you feel about this person"
+        "Who he/she is",
+        "When you met him/her",
+        "Why you want to know more about him/her",
+        "And explain how you feel about him/her"
       ],
       "part3": [
-        "What makes a company successful?",
-        "What skills do successful companies look for?",
-        "Is it better to work for a big company or a small one?",
-        "How can companies motivate their employees?"
-      ]
+        "What should we not talk about when we meet a person for the first time?",
+        "What can we do to leave a good impression on people we meet for the first time?",
+        "What qualities make true friends?",
+        "Is it important to have the same hobbies and interests when making friends?",
+        "On what occasions do people like to make friends?",
+        "How do people make friends in China?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 4,
-      "name_cn": "语言学习",
-      "name_en": "Language Learning",
-      "cue_card": "Describe an experience of learning a language",
+      "topic_id": "nonmainland-4",
+      "name_cn": "送朋友的礼物",
+      "name_en": "A Gift You Would Like to Buy for Your Friend",
+      "cue_card": "Describe a gift you would like to buy for your friend",
       "cue_points": [
-        "What language you learned",
-        "How you learned it",
-        "What difficulties you faced",
-        "And explain how you felt about it"
+        "How you knew your friend",
+        "How long you have known him/her",
+        "How you would choose a gift for him/her",
+        "And explain why you would choose that gift for him/her"
       ],
       "part3": [
-        "Why do people learn foreign languages?",
-        "Is it easier for children to learn languages?",
-        "What is the best way to learn a language?",
-        "How has technology changed language learning?",
-        "Should learning a foreign language be compulsory in schools?"
-      ]
+        "Are there any unlucky things that people should not buy as gifts in your country?",
+        "What do people usually consider when buying gifts?",
+        "Which do people give on traditional festivals, red envelopes or other kinds of gifts?",
+        "Will people feel happy when receiving an expensive gift?",
+        "Is it hard to choose a gift?",
+        "When do people normally send gifts to others?"
+      ],
+      "carried_over_from": null
     },
     {
       "id": 5,
-      "name_cn": "重要河流/湖泊",
-      "name_en": "An Important River/Lake",
-      "cue_card": "Describe an important river or lake in your country",
+      "topic_id": "nonmainland-5",
+      "name_cn": "公共场所丢物品",
+      "name_en": "An Occasion that You Lost Something in Public",
+      "cue_card": "Describe an occasion that you lost something in public",
       "cue_points": [
-        "Where it is",
-        "What it looks like",
-        "Why it is important",
-        "And explain how you feel about it"
-      ],
-      "part3": [
-        "Why are rivers and lakes important?",
-        "How do rivers and lakes affect people's lives?",
-        "What environmental problems do rivers and lakes face?",
-        "How can we protect water resources?",
-        "Are there any famous rivers or lakes in your country?"
-      ]
-    },
-    {
-      "id": 6,
-      "name_cn": "花费甚少的外出日",
-      "name_en": "A Day Out That Cost Little",
-      "cue_card": "Describe a day out that cost very little money",
-      "cue_points": [
-        "When it was",
-        "Where you went",
-        "Who you went with",
-        "And explain why it cost very little"
-      ],
-      "part3": [
-        "Do people need to spend a lot of money to have a good time?",
-        "What free activities do people enjoy in your country?",
-        "How do people budget for entertainment?",
-        "Is it important to save money?"
-      ]
-    },
-    {
-      "id": 7,
-      "name_cn": "组织快乐活动",
-      "name_en": "Organizing a Happy Event",
-      "cue_card": "Describe a time when you organized a happy event",
-      "cue_points": [
-        "What the event was",
-        "How you organized it",
-        "Who participated",
-        "And explain why it was happy"
-      ],
-      "part3": [
-        "What kinds of events do people organize?",
-        "What skills are needed to organize an event?",
-        "How do events bring people together?",
-        "What makes an event memorable?",
-        "Do people in your country like to celebrate together?"
-      ]
-    },
-    {
-      "id": 8,
-      "name_cn": "交通拥堵",
-      "name_en": "Traffic Congestion",
-      "cue_card": "Describe a time when you were stuck in a traffic jam",
-      "cue_points": [
-        "When it happened",
-        "Where it happened",
-        "What you did while waiting",
+        "What you lost",
+        "When and where you lost it",
+        "What you did to find it",
         "And explain how you felt about it"
       ],
       "part3": [
-        "What causes traffic congestion in cities?",
-        "How does traffic congestion affect people's lives?",
-        "What can governments do to reduce traffic?",
-        "Do you think public transport is the solution?",
-        "How will transportation change in the future?"
-      ]
+        "What do people often feel after losing things?",
+        "What can we do to reduce the possibility of losing things?",
+        "What kinds of people may lose things often?",
+        "Is it effective to offer rewards to find lost things?",
+        "What will people do when losing things?",
+        "What kinds of things do people usually lose?"
+      ],
+      "carried_over_from": null
+    },
+    {
+      "id": 6,
+      "topic_id": "nonmainland-6",
+      "name_cn": "节约时间的方法/改变",
+      "name_en": "A Way/change that Helps You Save a Lot of Time",
+      "cue_card": "Describe a way/change that helps you save a lot of time",
+      "cue_points": [
+        "What it is",
+        "How you implement it",
+        "How difficult it is",
+        "And explain how you feel about the way/change"
+      ],
+      "part3": [
+        "What can people do to save time?",
+        "Does technology help people save time? How and why?",
+        "Do you think parents should be responsible for teaching children to save time?",
+        "Do people who can manage time well become successful more easily?",
+        "Is it necessary for children to learn time management?",
+        "What can schools do to help students learn time management?"
+      ],
+      "carried_over_from": null
     }
   ]
 }

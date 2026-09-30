@@ -1,0 +1,11 @@
+{
+  "start_date": "2026-07-01",
+  "days_completed": 3,
+  "topics_completed": [
+    {"part": "part1", "topic_id": "new-1", "topic_name": "Music", "completed_date": "2026-07-01"},
+    {"part": "part23", "topic_id": "new-2", "topic_name": "An Interesting Video", "completed_date": "2026-07-01"},
+    {"part": "part1", "topic_id": "retained-1", "topic_name": "Food", "completed_date": "2026-07-02"},
+    {"part": "part1", "topic_id": "essential-3", "topic_name": "Hometown", "completed_date": "2026-07-02"},
+    {"part": "writing_task2", "topic_name": "Public Transport Funding", "completed_date": "2026-07-03"}
+  ]
+}

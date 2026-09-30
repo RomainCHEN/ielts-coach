@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-labelledby="t d">
+  <title id="t">The three maintenance scripts in a terminal</title>
+  <desc id="d">Real output: the bank builder parses 100 topics from the September to December 2026 PDF with a matching pdfplumber cross-check; the migration dry run carries 3 topics over; the summary site builder reports coverage.</desc>
+  <rect width="1200" height="620" rx="22" fill="#0f1535"/>
+  <rect width="1200" height="52" rx="22" fill="#1a237e"/>
+  <rect y="30" width="1200" height="22" fill="#1a237e"/>
+  <circle cx="34" cy="26" r="8" fill="#ef5350"/><circle cx="60" cy="26" r="8" fill="#ffca28"/><circle cx="86" cy="26" r="8" fill="#66bb6a"/>
+  <text x="600" y="33" text-anchor="middle" fill="#c5cae9" font-family="'Segoe UI',system-ui,sans-serif" font-size="18" font-weight="600">ielts-coach — maintenance scripts</text>
+  <g font-family="Consolas,'Cascadia Mono',Menlo,'DejaVu Sans Mono',monospace" font-size="19">
+    <text x="36" y="96"><tspan fill="#ffc107">$</tspan><tspan fill="#ffffff"> python scripts/build_complete_bank.py --pdf season-0924.pdf \</tspan></text>
+    <text x="36" y="122" fill="#ffffff">&#160;&#160;&#160;&#160;--season "2026年9-12月" --season-code 2026-09-12 --previous-json old.json</text>
+    <text x="36" y="152" fill="#80cbc4">cross-check question lines: primary=596 pdfplumber=596 OK</text>
+    <text x="36" y="178" fill="#c5cae9">&#160;&#160;part1_new&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;11&#160;&#160;(declared 11)&#160;&#160;&#160;&#160;&#160;part1_retained&#160;&#160;&#160;&#160;17&#160;&#160;(declared 17)</text>
+    <text x="36" y="204" fill="#c5cae9">&#160;&#160;part23_new&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;28&#160;&#160;(declared 28)&#160;&#160;&#160;&#160;&#160;part23_retained&#160;&#160;&#160;27&#160;&#160;(declared 27)</text>
+    <text x="36" y="230" fill="#c5cae9">&#160;&#160;part1_essential&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;5&#160;&#160;(declared 5)&#160;&#160;&#160;&#160;&#160;&#160;nonmainland&#160;&#160;&#160;&#160;6 + 6</text>
+    <text x="36" y="256" fill="#ffffff" font-weight="700">&#160;&#160;total 100 | mainland 88 | carried over 48</text>
+
+    <text x="36" y="310"><tspan fill="#ffc107">$</tspan><tspan fill="#ffffff"> python scripts/migrate_season.py --root .</tspan></text>
+    <text x="36" y="340" fill="#c5cae9">migrating 2026-05-08 -&gt; 2026-09-12</text>
+    <text x="36" y="366" fill="#c5cae9">&#160;&#160;progress.json topics_completed: <tspan fill="#80cbc4">3 carried over</tspan>, 1 retired, 1 untouched</text>
+    <text x="36" y="392" fill="#9fa8da">dry run: re-run with --apply to write (backups are made first)</text>
+
+    <text x="36" y="446"><tspan fill="#ffc107">$</tspan><tspan fill="#ffffff"> python scripts/build_summary_site.py --root .</tspan></text>
+    <text x="36" y="476" fill="#c5cae9">summary site written to ./summary_site</text>
+    <text x="36" y="502" fill="#c5cae9">&#160;&#160;coverage <tspan fill="#80cbc4">27% (24/88)</tspan> | answers 6 | expressions 16 | essays 2</text>
+    <text x="36" y="528" fill="#9fa8da">&#160;&#160;open index.html in a browser. It contains personal data: publish only if you mean to.</text>
+    <text x="36" y="574"><tspan fill="#ffc107">$</tspan><tspan fill="#ffffff"> </tspan><tspan fill="#ffffff" fill-opacity="0.8">▍</tspan></text>
+  </g>
+  <text x="1164" y="598" text-anchor="end" fill="#5c6bc0" font-family="'Segoe UI',system-ui,sans-serif" font-size="16">output from the demo fixture in tests/fixtures/demo</text>
+</svg>

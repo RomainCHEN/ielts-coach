@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Writing Task 2 模板速查</title>
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+        --navy: #1a237e;
+        --navy-light: #283593;
+        --gold: #ffc107;
+        --gold-light: #fff8e1;
+        --coral: #e91e63;
+        --teal: #00897b;
+        --teal-light: #e0f2f1;
+        --purple: #6a1b9a;
+        --purple-light: #f3e5f5;
+        --blue: #1565c0;
+        --blue-light: #e3f2fd;
+        --green: #2e7d32;
+        --green-light: #e8f5e9;
+        --orange: #e65100;
+        --orange-light: #fff3e0;
+        --pink: #c2185b;
+        --pink-light: #fce4ec;
+        --bg: #f5f6fa;
+        --card-bg: #ffffff;
+        --text: #212121;
+        --text-secondary: #616161;
+        --border: #e0e0e0;
+        --shadow: 0 2px 10px rgba(26,35,126,0.06);
+        --radius: 14px;
+        --radius-sm: 8px;
+    }
+
+    body {
+        font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+    }
+
+    .header {
+        background: linear-gradient(135deg, var(--navy) 0%, #3949ab 60%, #e65100 160%);
+        color: white;
+        padding: 1.4rem 1.5rem 1.2rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 14px rgba(0,0,0,0.2);
+    }
+    .header-inner { max-width: 1000px; margin: 0 auto; }
+    .header h1 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.3px; }
+    .header h1 .icon { margin-right: 0.4rem; }
+    .header p.sub { font-size: 0.82rem; opacity: 0.92; margin-top: 0.3rem; }
+    .header-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.7rem; }
+    .chip {
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.25);
+        padding: 0.22rem 0.7rem;
+        border-radius: 99px;
+        font-size: 0.72rem;
+        font-weight: 600;
+    }
+    .chip a { color: white; text-decoration: none; }
+    .chip a:hover { text-decoration: underline; }
+
+    .toc {
+        max-width: 1000px;
+        margin: 1.2rem auto 0;
+        padding: 0 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 0.6rem;
+    }
+    .toc-item {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0.7rem 0.9rem;
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--navy);
+        text-decoration: none;
+        box-shadow: var(--shadow);
+        transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .toc-item:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(26,35,126,0.15); }
+    .toc-item .emoji { display: block; font-size: 1.2rem; margin-bottom: 0.15rem; }
+
+    .main { max-width: 1000px; margin: 0 auto; padding: 1.2rem 1.5rem 3rem; }
+
+    .section-title {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--navy);
+        margin: 2.2rem 0 1rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 3px solid var(--gold);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .section-title:first-child { margin-top: 0.5rem; }
+
+    .card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 1.3rem 1.5rem;
+        margin-bottom: 1.2rem;
+        border: 1px solid rgba(224,224,224,0.6);
+    }
+
+    /* Structure flow */
+    .structure-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.9rem; }
+    .flow-step {
+        background: var(--navy-light);
+        color: white;
+        border-radius: var(--radius-sm);
+        padding: 0.9rem 1rem;
+    }
+    .flow-step .step-num {
+        display: inline-block;
+        background: var(--gold);
+        color: var(--navy);
+        font-weight: 800;
+        border-radius: 99px;
+        width: 26px; height: 26px;
+        line-height: 26px;
+        text-align: center;
+        font-size: 0.8rem;
+        margin-bottom: 0.4rem;
+    }
+    .flow-step .step-title { font-weight: 700; font-size: 0.92rem; }
+    .flow-step .step-desc { font-size: 0.75rem; opacity: 0.92; margin-top: 0.25rem; }
+    .flow-step .step-wc { font-size: 0.7rem; color: var(--gold); font-weight: 700; margin-top: 0.2rem; }
+
+    .warning-box {
+        background: #fff3f0;
+        border-left: 4px solid var(--coral);
+        border-radius: var(--radius-sm);
+        padding: 1rem 1.2rem;
+        margin-top: 1.2rem;
+    }
+    .warning-box .w-title { font-weight: 800; color: var(--coral); font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .warning-box ul { padding-left: 1.2rem; font-size: 0.87rem; }
+    .warning-box li { margin-bottom: 0.3rem; }
+    .warning-box .ok { color: var(--green); font-weight: 600; }
+
+    /* Essay type cards */
+    .essay-card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+        border: 1px solid rgba(224,224,224,0.6);
+    }
+    .essay-card-header {
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: white;
+    }
+    .essay-card-header .big-icon { font-size: 1.7rem; }
+    .essay-card-header .h-title { font-size: 1.1rem; font-weight: 800; }
+    .essay-card-header .h-sub { font-size: 0.78rem; opacity: 0.92; margin-top: 0.1rem; }
+    .essay-card-header.opinion { background: linear-gradient(135deg, #1565c0, #1e88e5); }
+    .essay-card-header.discussion { background: linear-gradient(135deg, #00695c, #00897b); }
+    .essay-card-header.problem { background: linear-gradient(135deg, #e65100, #f57c00); }
+    .essay-card-header.ad { background: linear-gradient(135deg, #c2185b, #e91e63); }
+    .essay-card-header.twopart { background: linear-gradient(135deg, #4a148c, #7b1fa2); }
+
+    .essay-card-body { padding: 1.2rem 1.5rem 1.5rem; }
+
+    .recog-box {
+        background: var(--gold-light);
+        border: 1px dashed var(--gold);
+        border-radius: var(--radius-sm);
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+        margin-bottom: 1.1rem;
+    }
+    .recog-box .recog-label { font-weight: 800; color: var(--navy); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 0.3rem; }
+
+    .tpl-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 1.1rem; }
+    .tpl-box {
+        background: #fafbfe;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0.9rem 1.1rem;
+    }
+    .tpl-box .tpl-label {
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--navy);
+        margin-bottom: 0.5rem;
+    }
+    .tpl-box p { font-size: 0.87rem; margin-bottom: 0.45rem; }
+    .tpl-box p:last-child { margin-bottom: 0; }
+
+    .fill {
+        background: var(--gold-light);
+        border: 1px dashed var(--gold);
+        border-radius: 4px;
+        padding: 0 0.25rem;
+        color: var(--navy);
+        font-weight: 600;
+    }
+    .alt { color: var(--teal); font-weight: 600; font-size: 0.8rem; }
+
+    .sub-h { font-size: 0.95rem; font-weight: 800; color: var(--navy); margin: 1.1rem 0 0.5rem; }
+    .sub-h .cn { color: var(--text-secondary); font-weight: 600; font-size: 0.85rem; margin-left: 0.4rem; }
+
+    .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.5rem; }
+    .vocab-item {
+        background: var(--blue-light);
+        border-radius: var(--radius-sm);
+        padding: 0.5rem 0.8rem;
+        font-size: 0.84rem;
+    }
+    .vocab-item .en { font-weight: 700; color: var(--blue); }
+    .vocab-item .cn { color: var(--text-secondary); font-size: 0.78rem; margin-left: 0.3rem; }
+    .vocab-item.teal { background: var(--teal-light); }
+    .vocab-item.teal .en { color: var(--teal); }
+    .vocab-item.orange { background: var(--orange-light); }
+    .vocab-item.orange .en { color: var(--orange); }
+    .vocab-item.pink { background: var(--pink-light); }
+    .vocab-item.pink .en { color: var(--pink); }
+    .vocab-item.purple { background: var(--purple-light); }
+    .vocab-item.purple .en { color: var(--purple); }
+    .vocab-item.green { background: var(--green-light); }
+    .vocab-item.green .en { color: var(--green); }
+
+    .example-box {
+        background: #fbfcff;
+        border: 2px solid var(--navy-light);
+        border-radius: var(--radius-sm);
+        padding: 1rem 1.2rem;
+        margin-top: 1rem;
+    }
+    .example-box .ex-title {
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: var(--navy);
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+    }
+    .example-box p { font-size: 0.87rem; margin-bottom: 0.5rem; }
+    .example-box .note { font-size: 0.76rem; color: var(--text-secondary); border-top: 1px dashed var(--border); padding-top: 0.5rem; margin-top: 0.5rem; }
+    .example-box em { color: var(--teal); font-style: normal; font-weight: 700; }
+
+    /* Anti-AI table */
+    .ai-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .ai-table th {
+        background: var(--coral);
+        color: white;
+        text-align: left;
+        padding: 0.55rem 0.9rem;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+    }
+    .ai-table td {
+        padding: 0.55rem 0.9rem;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+    }
+    .ai-table tr:nth-child(even) td { background: #fafbfe; }
+    .ai-table .avoid { color: var(--coral); font-weight: 600; }
+    .ai-table .use { color: var(--green); font-weight: 600; }
+
+    /* Cohesion bank */
+    .coh-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.7rem; }
+    .coh-box {
+        background: #fafbfe;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0.8rem 1rem;
+    }
+    .coh-box .coh-label { font-size: 0.75rem; font-weight: 800; color: var(--purple); margin-bottom: 0.4rem; }
+    .coh-box .bad { color: var(--coral); font-size: 0.82rem; }
+    .coh-box .good { color: var(--green); font-size: 0.82rem; font-weight: 600; }
+
+    .footer {
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        border-top: 1px solid var(--border);
+        margin-top: 1rem;
+    }
+
+    @media (max-width: 640px) {
+        .main { padding: 1rem 0.9rem 2rem; }
+        .essay-card-body { padding: 1rem 1rem 1.2rem; }
+        .header h1 { font-size: 1.1rem; }
+        .tpl-row { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <h1><span class="icon">✍️</span>IELTS Writing Task 2 模板速查</h1>
+        <p class="sub">5 大题型模板 + Band 7 衔接 + 反 AI 味自查 · 目标 {{TARGET_WRITING}} · {{COUNTDOWN}}</p>
+        <div class="header-chips">
+            <span class="chip">🗣️ Opinion 观点题</span>
+            <span class="chip">💬 Discussion 讨论题</span>
+            <span class="chip">🛠️ Problem-Solution 问题解决</span>
+            <span class="chip">⚖️ Advantages/Disadvantages 利弊</span>
+            <span class="chip">❓ Two-part 双问题</span>
+        </div>
+    </div>
+</header>
+
+<nav class="toc">
+    <a class="toc-item" href="#structure"><span class="emoji">🏗️</span>万能结构</a>
+    <a class="toc-item" href="#opinion"><span class="emoji">🗣️</span>观点题</a>
+    <a class="toc-item" href="#discussion"><span class="emoji">💬</span>讨论题</a>
+    <a class="toc-item" href="#problem"><span class="emoji">🛠️</span>问题解决</a>
+    <a class="toc-item" href="#ad"><span class="emoji">⚖️</span>利弊题</a>
+    <a class="toc-item" href="#twopart"><span class="emoji">❓</span>双问题</a>
+    <a class="toc-item" href="#anti"><span class="emoji">🚫</span>反AI味</a>
+    <a class="toc-item" href="#cohesion"><span class="emoji">🔗</span>Band 7衔接</a>
+    <a class="toc-item" href="#phrases"><span class="emoji">🧰</span>万能表达</a>
+</nav>
+
+<main class="main">
+
+    <!-- ===== 万能结构 ===== -->
+    <div id="structure">
+        <h2 class="section-title">🏗️ 万能四段结构（所有题型通用）</h2>
+        <div class="card">
+            <div class="structure-flow">
+                <div class="flow-step">
+                    <span class="step-num">1</span>
+                    <div class="step-title">Introduction 开头</div>
+                    <div class="step-wc">40-50 词</div>
+                    <div class="step-desc">改写题目 + 亮出明确立场（审题最关键）</div>
+                </div>
+                <div class="flow-step">
+                    <span class="step-num">2</span>
+                    <div class="step-title">Body 1 主体段1</div>
+                    <div class="step-wc">80-100 词</div>
+                    <div class="step-desc">主观点 1：观点句 + 解释 + 具体例子</div>
+                </div>
+                <div class="flow-step">
+                    <span class="step-num">3</span>
+                    <div class="step-title">Body 2 主体段2</div>
+                    <div class="step-wc">80-100 词</div>
+                    <div class="step-desc">主观点 2（或让步反驳）+ 解释 + 例子</div>
+                </div>
+                <div class="flow-step">
+                    <span class="step-num">4</span>
+                    <div class="step-title">Conclusion 结尾</div>
+                    <div class="step-wc">30-40 词</div>
+                    <div class="step-desc">换词重申立场 + 总结论证逻辑（不引新观点）</div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <div class="w-title">⚠️ 写给 7.0 的你：定位是关键</div>
+                <ul>
+                    <li><span class="ok">✅ 立场要贯穿全文</span>：开头定了立场，主体段和结尾要持续强化，不能模糊。</li>
+                    <li><span class="ok">✅ 每个主体段一个中心观点</span>：观点句开头，解释展开，例子支撑，不跑题。</li>
+                    <li><span class="ok">✅ 例子必须具体</span>：真实案例 / 你自己的观察 / 你练过的题材，不要空泛。</li>
+                    <li>❌ 开头 40 词以内必须出现你的立场，别拖到结尾才说。</li>
+                    <li>❌ 结尾绝不引入新观点，只总结。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 观点题 ===== -->
+    <div id="opinion">
+        <h2 class="section-title">🗣️ Opinion 观点题（To what extent do you agree or disagree?）</h2>
+        <div class="essay-card">
+            <div class="essay-card-header opinion">
+                <span class="big-icon">🗣️</span>
+                <div>
+                    <div class="h-title">高频指数 ★★★★★ · 考得最多</div>
+                    <div class="h-sub">看到 "To what extent do you agree or disagree" / "Do you agree that..." / "Is this a positive or negative development"</div>
+                </div>
+            </div>
+            <div class="essay-card-body">
+                <div class="recog-box">
+                    <div class="recog-label">🔍 一眼认出它</div>
+                    <b>To what extent do you agree or disagree?</b> · <b>Do you agree that...?</b> · <b>Do the advantages outweigh...?</b>(见利弊题) · 题目有明确的"观点"等你表态
+                </div>
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">✏️ 开头（40-50词 · 必须表态）</div>
+                        <p>The question of whether <span class="fill">X 应该做某事</span> has attracted considerable debate. While I accept that <span class="fill">承认反方一个优点</span>, I would argue that <span class="fill">你的立场</span>.</p>
+                        <p class="alt">变体 1（彻底同意）：I agree with this view wholeheartedly, for two main reasons.</p>
+                        <p class="alt">变体 2（8分式微调）：I largely agree, although I would add one important caveat about <span class="fill">限定条件</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🛡️ 主体段1（主理由）</div>
+                        <p>The main reason I take this view is that <span class="fill">理由1</span>. <span class="fill">一句话解释为什么</span>. For example, <span class="fill">具体例子</span>. This suggests that <span class="fill">回扣立场</span>.</p>
+                    </div>
+                </div>
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">⚔️ 主体段2（让步 + 反驳）</div>
+                        <p>Nevertheless, it would be wrong to ignore <span class="fill">反方观点</span>. Those who <span class="fill">支持反方的人</span> point to <span class="fill">反方理由</span>. However, in my experience, <span class="fill">反驳（用例子/观察）</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🎯 结尾（30-40词 · 换词重申）</div>
+                        <p>In conclusion, while there is some merit in the opposing view, I remain convinced that <span class="fill">用不同词重申立场</span>, because <span class="fill">一句话总结核心理由</span>.</p>
+                        <p class="alt">变体：Ultimately, <span class="fill">立场</span>. Whatever one's view, the evidence points in this direction.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-h">🎯 观点题专属表达 <span class="cn">（表态用词）</span></h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item"><span class="en">I would argue that / I am convinced that</span><span class="cn">我认为（直接明确）</span></div>
+                    <div class="vocab-item"><span class="en">I largely agree, with one caveat</span><span class="cn">大体同意，有一个保留</span></div>
+                    <div class="vocab-item"><span class="en">the question of whether ... has attracted debate</span><span class="cn">是否...引发了争论</span></div>
+                    <div class="vocab-item"><span class="en">while it is true that ..., I believe ...</span><span class="cn">虽然...属实，但我认为...</span></div>
+                    <div class="vocab-item"><span class="en">I take the view that / my position is that</span><span class="cn">我的立场是</span></div>
+                    <div class="vocab-item"><span class="en">I am firmly of the opinion that</span><span class="cn">我坚定地认为</span></div>
+                    <div class="vocab-item"><span class="en">the main reason I take this view is that</span><span class="cn">我持此观点的主要原因是</span></div>
+                    <div class="vocab-item"><span class="en">there is some merit in ...</span><span class="cn">...确实有可取之处</span></div>
+                    <div class="vocab-item"><span class="en">the evidence points in this direction</span><span class="cn">证据指向这个方向</span></div>
+                    <div class="vocab-item"><span class="en">wholeheartedly / firmly / strongly</span><span class="cn">完全地 / 坚定地（程度副词）</span></div>
+                </div>
+
+                <div class="example-box">
+                    <div class="ex-title">💡 你练过的类似题：AI 将彻底改变教育（AI's impact on education）</div>
+                    <p><em>Intro:</em> The question of whether artificial intelligence will fundamentally transform education has attracted considerable debate. While I accept that traditional teachers will always have a role, I would argue that AI will reshape how students learn in profound ways.</p>
+                    <p><em>Body1 开头句:</em> The main reason I take this view is that AI makes personalised learning genuinely possible. A system can now analyse a student's weak points and adapt exercises in real time, something no human teacher could do for forty students at once.</p>
+                    <p class="note">📌 记住：观点题第一段就亮明立场（"I would argue"），比 "In my opinion" 更书面；让步段用"while it is true that"再反驳，结构就完整了。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 讨论题 ===== -->
+    <div id="discussion">
+        <h2 class="section-title">💬 Discussion 讨论题（Discuss both views and give your opinion）</h2>
+        <div class="essay-card">
+            <div class="essay-card-header discussion">
+                <span class="big-icon">💬</span>
+                <div>
+                    <div class="h-title">高频指数 ★★★★☆ · 两个观点都要谈</div>
+                    <div class="h-sub">看到 "Discuss both views and give your opinion" / "Some people think X, others believe Y"</div>
+                </div>
+            </div>
+            <div class="essay-card-body">
+                <div class="recog-box">
+                    <div class="recog-label">🔍 一眼认出它</div>
+                    <b>Discuss both views and give your own opinion.</b> 题目明确给了<b>两种对立观点</b>，两方都必须讨论，最后表态。
+                </div>
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">✏️ 开头（40-50词 · 提两方 + 表态）</div>
+                        <p>There is an ongoing debate about whether <span class="fill">观点A</span> or <span class="fill">观点B</span> is preferable. Supporters of the former emphasise <span class="fill">A的理由</span>, whereas proponents of the latter point to <span class="fill">B的理由</span>. In my view, <span class="fill">你的立场</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🅰️ 主体段1（讨论一方）</div>
+                        <p>Those who advocate <span class="fill">观点A</span> argue that <span class="fill">A的理由</span>. A case in point is <span class="fill">例子</span>. This view has considerable appeal, since <span class="fill">为什么有道理</span>.</p>
+                    </div>
+                </div>
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">🅱️ 主体段2（讨论另一方）</div>
+                        <p>By contrast, proponents of <span class="fill">观点B</span> contend that <span class="fill">B的理由</span>. For instance, <span class="fill">例子</span>. This is particularly true in <span class="fill">具体情境</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🎯 结尾（30-40词 · 明确表态）</div>
+                        <p>Ultimately, although both perspectives have merit, I believe that <span class="fill">你的立场</span>, because <span class="fill">一句核心理由</span>. This is not to dismiss the other view entirely, but the balance of evidence favours it.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-h">🎯 讨论题专属表达 <span class="cn">（两方切换不机械）</span></h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item teal"><span class="en">those who advocate X argue that ...</span><span class="cn">支持X的人认为</span></div>
+                    <div class="vocab-item teal"><span class="en">proponents of ... / opponents contend that ...</span><span class="cn">支持者 / 反对者主张</span></div>
+                    <div class="vocab-item teal"><span class="en">supporters of the former ... / the latter</span><span class="cn">前者 / 后者（替代重复）</span></div>
+                    <div class="vocab-item teal"><span class="en">this view has considerable appeal</span><span class="cn">这个观点很有说服力</span></div>
+                    <div class="vocab-item teal"><span class="en">I find the opposing view more persuasive</span><span class="cn">我觉得反方更有说服力</span></div>
+                    <div class="vocab-item teal"><span class="en">both perspectives have merit</span><span class="cn">两方都有道理</span></div>
+                    <div class="vocab-item teal"><span class="en">the balance of evidence favours ...</span><span class="cn">证据的天平倾向...</span></div>
+                    <div class="vocab-item teal"><span class="en">a case in point is ...</span><span class="cn">一个典型例子是</span></div>
+                    <div class="vocab-item teal"><span class="en">this is not to dismiss ... entirely</span><span class="cn">这并不是完全否定...</span></div>
+                    <div class="vocab-item teal"><span class="en">underpins / reinforces their position</span><span class="cn">支撑 / 强化他们的立场</span></div>
+                </div>
+
+                <div class="example-box">
+                    <div class="ex-title">💡 你练过的类似题：社交媒体对年轻人心理健康（Social media & youth mental health）</div>
+                    <p><em>Intro:</em> There is an ongoing debate about whether social media harms young people's mental health or brings more good than harm. Supporters of the former emphasise constant comparison and anxiety, whereas proponents of the latter point to connection and community. In my view, the negative effects are more significant.</p>
+                    <p class="note">📌 讨论题最容易犯的错：只谈一方。两方各一段，每段都配例子，最后一句明确"我站哪边"。别用 "On the one hand / On the other hand" 这种机械切换（见反AI味自查）。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 问题解决 ===== -->
+    <div id="problem">
+        <h2 class="section-title">🛠️ Problem-Solution 问题解决题（What problems does X cause? What solutions...?）</h2>
+        <div class="essay-card">
+            <div class="essay-card-header problem">
+                <span class="big-icon">🛠️</span>
+                <div>
+                    <div class="h-title">高频指数 ★★★★☆ · 问题 + 对策各占一段</div>
+                    <div class="h-sub">看到 "What problems does X cause?" / "Why is this happening? What can be done?"</div>
+                </div>
+            </div>
+            <div class="essay-card-body">
+                <div class="recog-box">
+                    <div class="recog-label">🔍 一眼认出它</div>
+                    <b>What problems does ... cause?</b> · <b>What solutions can you suggest?</b> · <b>What measures should be taken?</b> 题干直接问"问题"和"对策"。
+                </div>
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">✏️ 开头（40-50词 · 点出严重性）</div>
+                        <p><span class="fill">X 现象</span> has become an increasingly serious concern in recent years. <span class="fill">一句话说明为什么值得关注</span>. A range of measures are therefore needed to tackle this issue.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🩹 主体段1（问题段）</div>
+                        <p>One of the most serious problems associated with <span class="fill">X</span> is <span class="fill">问题1</span>. <span class="fill">解释问题的严重性</span>. For example, <span class="fill">数据/案例</span>. <span class="fill">如果有必要再加问题2</span>.</p>
+                    </div>
+                </div>
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">💊 主体段2（对策段）</div>
+                        <p>The most effective way to address this would be for <span class="fill">主体（政府/学校/个人）</span> to <span class="fill">对策</span>. <span class="fill">对策怎么起作用</span>. If this were implemented, <span class="fill">预期效果</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🎯 结尾（30-40词）</div>
+                        <p>To sum up, although <span class="fill">X</span> presents considerable challenges, they are not insurmountable. With a combination of <span class="fill">对策1</span> and <span class="fill">对策2</span>, the situation could be significantly improved.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-h">🎯 问题解决题专属表达</h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item orange"><span class="en">has become an increasingly serious concern</span><span class="cn">已成为日益严重的问题</span></div>
+                    <div class="vocab-item orange"><span class="en">the most effective way to address this is ...</span><span class="cn">解决这个最有效的办法是</span></div>
+                    <div class="vocab-item orange"><span class="en">presents considerable challenges</span><span class="cn">带来相当大的挑战</span></div>
+                    <div class="vocab-item orange"><span class="en">not insurmountable</span><span class="cn">并非不可逾越</span></div>
+                    <div class="vocab-item orange"><span class="en">measures should be taken / implemented</span><span class="cn">应该采取措施</span></div>
+                    <div class="vocab-item orange"><span class="en">if this were implemented, ...</span><span class="cn">如果这项措施得以实施（虚拟语气加分）</span></div>
+                    <div class="vocab-item orange"><span class="en">one of the most serious problems is ...</span><span class="cn">最严重的问题之一是</span></div>
+                    <div class="vocab-item orange"><span class="en">governments could legislate / fund / subsidise</span><span class="cn">政府可以立法 / 资助 / 补贴</span></div>
+                    <div class="vocab-item orange"><span class="en">raise public awareness through campaigns</span><span class="cn">通过活动提高公众意识</span></div>
+                    <div class="vocab-item orange"><span class="en">tackle / address / remedy the problem</span><span class="cn">解决 / 处理 / 补救问题</span></div>
+                </div>
+
+                <div class="example-box">
+                    <div class="ex-title">💡 你练过的类似题：动物灭绝（Animal Extinction）</div>
+                    <p><em>Problem 段开头:</em> One of the most serious problems associated with biodiversity loss is the accelerating rate of habitat destruction, driven largely by deforestation and urban expansion. As natural habitats shrink, countless species face extinction within decades.</p>
+                    <p><em>Solution 段开头:</em> The most effective way to address this would be for governments to designate more protected areas and strictly enforce anti-poaching laws. If this were implemented alongside public education, endangered populations could begin to recover.</p>
+                    <p class="note">📌 结构铁律：问题段别把每个问题都展开，重点写透 1-2 个；对策段必须有"谁来管（政府/学校/个人）+ 怎么做 + 预期效果"，一个对策写透比列三个空洞对策好。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 利弊题 ===== -->
+    <div id="ad">
+        <h2 class="section-title">⚖️ Advantages / Disadvantages 利弊题（Do the advantages outweigh the disadvantages?）</h2>
+        <div class="essay-card">
+            <div class="essay-card-header ad">
+                <span class="big-icon">⚖️</span>
+                <div>
+                    <div class="h-title">高频指数 ★★★☆☆ · 必须表态"哪边更重"</div>
+                    <div class="h-sub">看到 "Do the advantages outweigh the disadvantages?" / "What are the advantages and disadvantages of X?"</div>
+                </div>
+            </div>
+            <div class="essay-card-body">
+                <div class="recog-box">
+                    <div class="recog-label">🔍 一眼认出它</div>
+                    <b>Do the advantages outweigh the disadvantages?</b> · <b>What are the advantages and disadvantages of ...?</b> 关键词 <b>advantages / disadvantages / benefits / drawbacks</b>。
+                </div>
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">✏️ 开头（40-50词 · 亮明哪边重）</div>
+                        <p>Like most developments, <span class="fill">X</span> brings both benefits and drawbacks. While <span class="fill">简单承认反方</span>, I would argue that the <span class="fill">advantages / disadvantages</span> are more significant.</p>
+                        <p class="alt">变体（利大于弊）：On balance, the benefits of X outweigh its drawbacks, for reasons explained below.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">📈 主体段1（利或弊）</div>
+                        <p>On the benefit side, <span class="fill">好处1</span>. <span class="fill">解释</span>. For instance, <span class="fill">例子</span>. This enables <span class="fill">谁</span> to <span class="fill">结果</span>.</p>
+                    </div>
+                </div>
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">📉 主体段2（另一面）</div>
+                        <p>Against this, there are also real drawbacks. <span class="fill">坏处</span>. <span class="fill">解释严重性</span>. For example, <span class="fill">例子</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🎯 结尾（30-40词 · 明确"重"在哪边）</div>
+                        <p>In conclusion, even though <span class="fill">X</span> has certain <span class="fill">advantages / disadvantages</span>, I am convinced that the <span class="fill">另一边</span> are more considerable, because <span class="fill">一句话核心理由</span>.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-h">🎯 利弊题专属表达 <span class="cn">（权衡语气）</span></h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item pink"><span class="en">the benefits outweigh the drawbacks</span><span class="cn">利大于弊</span></div>
+                    <div class="vocab-item pink"><span class="en">on balance / on the whole</span><span class="cn">总的来说</span></div>
+                    <div class="vocab-item pink"><span class="en">a double-edged sword</span><span class="cn">双刃剑</span></div>
+                    <div class="vocab-item pink"><span class="en">brings both benefits and drawbacks</span><span class="cn">带来利与弊</span></div>
+                    <div class="vocab-item pink"><span class="en">one notable advantage / drawback is ...</span><span class="cn">一个显著的好处 / 坏处是</span></div>
+                    <div class="vocab-item pink"><span class="en">the advantages are more considerable</span><span class="cn">优势更为显著</span></div>
+                    <div class="vocab-item pink"><span class="en">against this, there are real drawbacks</span><span class="cn">与此相对，确实存在坏处</span></div>
+                    <div class="vocab-item pink"><span class="en">I am convinced that the balance tips toward ...</span><span class="cn">我确信天平倾向...</span></div>
+                    <div class="vocab-item pink"><span class="en">long-term gains vs short-term costs</span><span class="cn">长期收益 vs 短期代价</span></div>
+                    <div class="vocab-item pink"><span class="en">mitigate the drawbacks</span><span class="cn">减轻弊端</span></div>
+                </div>
+
+                <div class="example-box">
+                    <div class="ex-title">💡 你练过的类似题：出国留学（Advantages and disadvantages of studying abroad）</div>
+                    <p><em>Intro:</em> Like most major life choices, studying abroad brings both benefits and drawbacks. While it can be expensive and lonely, I would argue that the advantages are more significant for a young person's growth.</p>
+                    <p><em>结尾:</em> In conclusion, even though studying overseas has certain drawbacks, I am convinced that the benefits are more considerable, because the independence and global perspective it cultivates are hard to gain any other way.</p>
+                    <p class="note">📌 关键：题问"哪边 outweigh"，结尾必须明确回答"哪边更重"，不能只说"两边都有"。你出国读研的亲身计划就是最好的例子素材。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 双问题 ===== -->
+    <div id="twopart">
+        <h2 class="section-title">❓ Two-part 双问题题（Why...? What can be done...?）</h2>
+        <div class="essay-card">
+            <div class="essay-card-header twopart">
+                <span class="big-icon">❓</span>
+                <div>
+                    <div class="h-title">高频指数 ★★★☆☆ · 一个题目问两个问题</div>
+                    <div class="h-sub">题干里有两个问号："Why is this?" + "What can be done?" 一个主体段回答一个问题</div>
+                </div>
+            </div>
+            <div class="essay-card-body">
+                <div class="recog-box">
+                    <div class="recog-label">🔍 一眼认出它</div>
+                    题目同时问<b>两个问题</b>（一个问原因，一个问对策）："Why is this the case? What can be done about it?" 两个问题都要各占一段回答。
+                </div>
+
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">✏️ 开头（40-50词 · 点题+预告两部分）</div>
+                        <p><span class="fill">X 现象</span> has become increasingly common. Understanding why this has happened, and what can be done about it, is therefore important.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">❓ 主体段1（回答第一个问题 · 原因）</div>
+                        <p>The reasons for this are varied, but one of the most significant is <span class="fill">原因</span>. <span class="fill">解释</span>. This is borne out by <span class="fill">例子/观察</span>. A further contributing factor is <span class="fill">次要原因</span>.</p>
+                    </div>
+                </div>
+                <div class="tpl-row">
+                    <div class="tpl-box">
+                        <div class="tpl-label">💡 主体段2（回答第二个问题 · 对策）</div>
+                        <p>Turning to possible responses, <span class="fill">对策</span> would help, because <span class="fill">为什么有效</span>. For example, <span class="fill">案例</span>. More broadly, <span class="fill">更大范围的对策</span>.</p>
+                    </div>
+                    <div class="tpl-box">
+                        <div class="tpl-label">🎯 结尾（30-40词 · 两个问题各一句）</div>
+                        <p>In summary, <span class="fill">X 现象</span> can be attributed mainly to <span class="fill">原因</span>, and the most promising way forward is <span class="fill">对策</span>. With sustained effort, the situation can be improved.</p>
+                    </div>
+                </div>
+
+                <h3 class="sub-h">🎯 双问题专属表达 <span class="cn">（原因 + 对策切换）</span></h3>
+                <div class="vocab-grid">
+                    <div class="vocab-item purple"><span class="en">the reasons for this are varied</span><span class="cn">原因多种多样</span></div>
+                    <div class="vocab-item purple"><span class="en">one of the most significant is ...</span><span class="cn">其中一个最主要的是</span></div>
+                    <div class="vocab-item purple"><span class="en">a further contributing factor is ...</span><span class="cn">另一个促成因素是</span></div>
+                    <div class="vocab-item purple"><span class="en">this is borne out by ...</span><span class="cn">这一点由...证实</span></div>
+                    <div class="vocab-item purple"><span class="en">turning to possible responses, ...</span><span class="cn">说到可能的对策</span></div>
+                    <div class="vocab-item purple"><span class="en">the most promising way forward is ...</span><span class="cn">最有希望的前进方向是</span></div>
+                    <div class="vocab-item purple"><span class="en">can be attributed mainly to ...</span><span class="cn">主要归因于</span></div>
+                    <div class="vocab-item purple"><span class="en">with sustained effort</span><span class="cn">通过持续努力</span></div>
+                    <div class="vocab-item purple"><span class="en">stem from / arise from / result from</span><span class="cn">源于 / 由...引起（原因动词）</span></div>
+                    <div class="vocab-item purple"><span class="en">would go a long way toward ...</span><span class="cn">对...大有帮助</span></div>
+                </div>
+
+                <div class="example-box">
+                    <div class="ex-title">💡 你练过的类似题：年轻人更多待在室内（Outdoor Activities / 儿童户外活动减少）</div>
+                    <p><em>原因段开头:</em> The reasons for this are varied, but one of the most significant is the rise of digital entertainment. A child today can be endlessly absorbed by a tablet, which is far more immediately rewarding than going outside to play.</p>
+                    <p><em>对策段开头:</em> Turning to possible responses, redesigning school curriculums to guarantee outdoor time would go a long way toward reversing the trend, because regular, structured outdoor play would become a habit rather than an exception.</p>
+                    <p class="note">📌 双问题最容易翻车：只回答了一个问题，或两个问题混在一起写。秘诀：开头明确写"我讲两件事：原因 + 对策"，然后主体段各答一问，结尾各总结一句。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 反AI味 ===== -->
+    <div id="anti">
+        <h2 class="section-title">🚫 反 AI 味自查（考官能认出 AI 作文，必须避开）</h2>
+        <div class="card">
+            <table class="ai-table">
+                <tr><th style="width:38%">AI 味模式（避开）</th><th>自然人类写法（用这个）</th></tr>
+                <tr><td class="avoid">Em dash（—）</td><td class="use">用逗号、冒号、分号或拆句。你的整篇作文里 em dash 应为 0 个。</td></tr>
+                <tr><td class="avoid">"In today's modern society..." / "In this day and age..."</td><td class="use">直接说事："Childhood obesity has risen sharply since the early 2000s."</td></tr>
+                <tr><td class="avoid">"It is noteworthy that..." / "It is worth mentioning that..."</td><td class="use">直接陈述事实，不要"值得注意"的废话开场。</td></tr>
+                <tr><td class="avoid">"This essay will discuss..." / "This essay will examine..."</td><td class="use">直接给立场："I believe that... because..."</td></tr>
+                <tr><td class="avoid">"Firstly, Secondly, Finally" 流水账</td><td class="use">"The first factor to consider is..." / "Equally important is..." / "Beyond these concerns..."</td></tr>
+                <tr><td class="avoid">"On the one hand... on the other hand" 反复用</td><td class="use">"While some argue X, others contend Y" / "The case for X is strong, yet Y presents a different picture."</td></tr>
+                <tr><td class="avoid">"Not only... but also..." 用两次以上</td><td class="use">换强调结构："What matters most is..." / "Equally crucial is..."</td></tr>
+                <tr><td class="avoid">"In conclusion" 后逐字重复开头</td><td class="use">换词总结："Ultimately..." / "Taken together..." / 或直接自然收束。</td></tr>
+                <tr><td class="avoid">滥用引号 "so-called" 讽刺语</td><td class="use">正常直接说这个词，不要加引号。</td></tr>
+                <tr><td class="avoid">空泛抽象名词堆砌（"the phenomenon of globalization"）</td><td class="use">用具体例子接地气，从你的真实观察出发。</td></tr>
+            </table>
+
+            <div class="warning-box">
+                <div class="w-title">💡 为什么这条对你 7.0 至关重要</div>
+                <ul>
+                    <li><b>Lexical Resource</b>：机械连词（Firstly/Secondly）是 Band 6 的信号，Band 7 要求衔接"灵活、自然"。</li>
+                    <li><b>真实感</b>：AI 味越重，考官越觉得你在背模板，Coherence 印象分会受影响。</li>
+                    <li><b>好习惯</b>：长短句交错（一句短一句长）、具体例子、直接观点，这些让文章像"人在写"。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Band 7 衔接 ===== -->
+    <div id="cohesion">
+        <h2 class="section-title">🔗 Band 6 → 7 的分水岭：衔接方式</h2>
+        <div class="card">
+            <div class="coh-grid">
+                <div class="coh-box">
+                    <div class="coh-label">🚫 Band 6（机械衔接）</div>
+                    <p class="bad">"Firstly, ... Secondly, ... Finally, ..."</p>
+                    <p class="bad">"On the one hand... On the other hand..."</p>
+                    <p class="bad">每句都用连接词开头，像套了链子。</p>
+                </div>
+                <div class="coh-box">
+                    <div class="coh-label">✅ Band 7（灵活衔接）</div>
+                    <p class="good">用引用（reference）：this, these, such, the former, the latter</p>
+                    <p class="good">用替代（substitution）：one, do so</p>
+                    <p class="good">句子之间靠逻辑自然流动，不是靠胶水连词。</p>
+                </div>
+            </div>
+
+            <h3 class="sub-h">📌 引用 + 替代 = Band 7 的秘密武器 <span class="cn">（你已经会用，现在有意识地用）</span></h3>
+            <div class="vocab-grid">
+                <div class="vocab-item green"><span class="en">This / These</span><span class="cn">指代上文观点："Many cities restrict cars. This has reduced congestion."</span></div>
+                <div class="vocab-item green"><span class="en">Such + 名词</span><span class="cn">"Students who study online save time, but such learners may lack discipline."</span></div>
+                <div class="vocab-item green"><span class="en">the former / the latter</span><span class="cn">指代前一句提到的两者，避免重复。</span></div>
+                <div class="vocab-item green"><span class="en">one / do so</span><span class="cn">替代："Some prefer traditional classrooms; others do not."</span></div>
+                <div class="vocab-item green"><span class="en">this, in turn, means that ...</span><span class="cn">层层递进，逻辑自然衔接。</span></div>
+                <div class="vocab-item green"><span class="en">which is why ...</span><span class="cn">"Exams create stress, which is why some favour continuous assessment."</span></div>
+            </div>
+
+            <h3 class="sub-h">🎯 少量高质量连词就够 <span class="cn">（每段 1-2 个即可，别堆）</span></h3>
+            <div class="vocab-grid">
+                <div class="vocab-item green"><span class="en">Furthermore / Moreover</span><span class="cn">此外（递进）</span></div>
+                <div class="vocab-item green"><span class="en">By contrast / In contrast</span><span class="cn">相比之下（对比）</span></div>
+                <div class="vocab-item green"><span class="en">Admittedly / Granted</span><span class="cn">诚然（让步）</span></div>
+                <div class="vocab-item green"><span class="en">Nevertheless / Yet</span><span class="cn">然而（转折）</span></div>
+                <div class="vocab-item green"><span class="en">As a result / Consequently</span><span class="cn">因此（结果）</span></div>
+                <div class="vocab-item green"><span class="en">In practice / In reality</span><span class="cn">实际上（收束到现实）</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 万能表达 ===== -->
+    <div id="phrases">
+        <h2 class="section-title">🧰 万能论证表达（跨题型通用）</h2>
+        <div class="card">
+            <div class="vocab-grid">
+                <div class="vocab-item"><span class="en">The underlying reason is that ...</span><span class="cn">根本原因是（说原因）</span></div>
+                <div class="vocab-item"><span class="en">This is largely because ...</span><span class="cn">这主要是因为（说原因）</span></div>
+                <div class="vocab-item"><span class="en">A case in point is ...</span><span class="cn">一个典型例子是（举例）</span></div>
+                <div class="vocab-item"><span class="en">Take ... as an example</span><span class="cn">以...为例（举例）</span></div>
+                <div class="vocab-item"><span class="en">This is evident in ...</span><span class="cn">这在...中显而易见（举例）</span></div>
+                <div class="vocab-item"><span class="en">Admittedly, ...</span><span class="cn">诚然（让步）</span></div>
+                <div class="vocab-item"><span class="en">While it is true that ..., ...</span><span class="cn">虽然...属实（让步）</span></div>
+                <div class="vocab-item"><span class="en">What matters most is ...</span><span class="cn">最重要的是（强调）</span></div>
+                <div class="vocab-item"><span class="en">The crux of the matter is ...</span><span class="cn">事情的关键是（强调）</span></div>
+                <div class="vocab-item"><span class="en">Equally important is ...</span><span class="cn">同样重要的是（并列）</span></div>
+                <div class="vocab-item"><span class="en">This, in turn, ...</span><span class="cn">这进而...（递进）</span></div>
+                <div class="vocab-item"><span class="en">Taken together, ...</span><span class="cn">综合来看（收尾）</span></div>
+                <div class="vocab-item"><span class="en">In the long run, ...</span><span class="cn">从长远看（时间维度）</span></div>
+                <div class="vocab-item"><span class="en">The scale of the problem demands ...</span><span class="cn">问题的规模要求...（对策力度）</span></div>
+                <div class="vocab-item"><span class="en">far from being a minor issue, ...</span><span class="cn">远非小问题（强调严重性）</span></div>
+                <div class="vocab-item"><span class="en">across the board</span><span class="cn">全面地（范围）</span></div>
+            </div>
+
+            <div class="example-box">
+                <div class="ex-title">💡 一组万能"开头句式"清单（避免每题都背同一句）</div>
+                <p>1. <em>Whether ... is a question that divides opinion.</em></p>
+                <p>2. <em>The way we approach ... says a lot about our priorities.</em></p>
+                <p>3. <em>Few would dispute that ...; the disagreement lies in how to respond.</em></p>
+                <p>4. <em>It is tempting to assume ..., but the reality is more complicated.</em></p>
+                <p class="note">📌 考前把这些句式混着用，避免每篇开头都一样（雷同本身就是 AI 味）。</p>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer">
+    IELTS Task 2 模板速查 · 冲刺 7.0 · 5 大题型模板 + 反 AI 味 + Band 7 衔接 · 考前反复刷
+</footer>
+
+</body>
+</html>
